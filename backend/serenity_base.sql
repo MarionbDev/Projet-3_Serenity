@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
--- Host: localhost    Database: serenity_br
+-- Host: localhost    Database: serenity
 -- ------------------------------------------------------
 -- Server version	8.0.32
 
@@ -35,7 +35,6 @@ CREATE TABLE `checklist` (
 
 LOCK TABLES `checklist` WRITE;
 /*!40000 ALTER TABLE `checklist` DISABLE KEYS */;
-INSERT INTO `checklist` VALUES (1,'Apporter sa pièce d\'identité'),(2,'Consultation anesthésique'),(3,'Test COVID datant de moins de 3 jours');
 /*!40000 ALTER TABLE `checklist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,7 +54,10 @@ CREATE TABLE `content` (
   `source` varchar(255) NOT NULL,
   `step` int DEFAULT NULL,
   `category` enum('compréhension','administration','préparation') NOT NULL,
-  PRIMARY KEY (`id`)
+  `protocol_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_content_protocol` (`protocol_id`),
+  CONSTRAINT `fk_content_protocol` FOREIGN KEY (`protocol_id`) REFERENCES `protocol` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -65,7 +67,6 @@ CREATE TABLE `content` (
 
 LOCK TABLES `content` WRITE;
 /*!40000 ALTER TABLE `content` DISABLE KEYS */;
-INSERT INTO `content` VALUES (2,'tout comprendre sur l\'opération du ménisque','video','00:20:00','Lorem ipsum dolor sit amet.','https://www.ortho-7.fr/fr/article/video-arthroscopie-du-genou-pour-lesion-meniscale-7.html',NULL,'compréhension'),(3,'La douche bétadinée','image',NULL,'Lorem ipsum dolor sit amet.','https://www.pourquoidonc.com/wp-content/uploads/2021/01/Femme-blonde-sous-la-douche.jpg',1,'préparation');
 /*!40000 ALTER TABLE `content` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -104,7 +105,6 @@ CREATE TABLE `doctor` (
 
 LOCK TABLES `doctor` WRITE;
 /*!40000 ALTER TABLE `doctor` DISABLE KEYS */;
-INSERT INTO `doctor` VALUES (1,'John','Doe','01 23 45 67 89','john.doe@example.com','password123','profile1.jpg','English','Lorem ipsum dolor sit amet.','Certificate of Excellence','Praticien','Advanced Training in Pediatrics','10 years of experience in medical practice','Collaboration with local hospitals','Published articles in medical journals','Recipient of Best Doctor Award'),(2,'Jane','Smith','06 12 34 56 78','jane.smith@example.com','password456','profile2.jpg','French','Lorem ipsum dolor sit amet.','Board Certification in Dermatology','Praticien','Dermatology Fellowship','15 years of experience in dermatology','Partnership with cosmetic clinics','Presentations at international conferences','Recipient of Dermatology Excellence Award'),(3,'Michael','Nerisson','02 98 76 54 32','michael.nerisson@example.com','password789','profile3.jpg','Spanish','Lorem ipsum dolor sit amet.','Advanced Cardiac Life Support (ACLS) Certification','Admin',NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `doctor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,7 +118,13 @@ DROP TABLE IF EXISTS `intervention`;
 CREATE TABLE `intervention` (
   `id` int NOT NULL AUTO_INCREMENT,
   `time` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  `patient_id` int NOT NULL,
+  `protocol_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_intervention_patient` (`patient_id`),
+  KEY `fk_intervention_protocol` (`protocol_id`),
+  CONSTRAINT `fk_intervention_patient` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`id`),
+  CONSTRAINT `fk_intervention_protocol` FOREIGN KEY (`protocol_id`) REFERENCES `protocol` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -128,7 +134,6 @@ CREATE TABLE `intervention` (
 
 LOCK TABLES `intervention` WRITE;
 /*!40000 ALTER TABLE `intervention` DISABLE KEYS */;
-INSERT INTO `intervention` VALUES (1,'2023-03-28 22:33:00'),(2,'2032-02-29 22:31:00'),(3,'2012-08-08 03:59:00');
 /*!40000 ALTER TABLE `intervention` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +176,6 @@ CREATE TABLE `patient` (
 
 LOCK TABLES `patient` WRITE;
 /*!40000 ALTER TABLE `patient` DISABLE KEYS */;
-INSERT INTO `patient` VALUES (1,'Aphone','Bénédicte',NULL,NULL,'1965-05-10','Féminin','Madame','Marié(e)','Employé','Traductrice',2,'8 rue de la presse','France',75000,'Paris','01 24 35 48 51','aphone_benedicte@gmail.com','aphben',NULL),(2,'Power','Agathe',NULL,NULL,'1981-11-25','Féminin','Mademoiselle','Célibataire','Employé','Journaliste',0,'25 rue de la République','France',34000,'Montpellier','04 67 51 01 94','agathe_power@gmail.com','agathepow',NULL),(3,'Sung','Sam',NULL,NULL,'1995-01-08','Masculin','Monsieur','Pacsé(e)','Artisan/Commerçant/Chef d\'entreprise','Directeur',0,'8 rue de la Paix','France',34000,'Montpellier','04 67 48 21 51','sam_sung@gmail.com','samsung',NULL);
 /*!40000 ALTER TABLE `patient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -188,7 +192,10 @@ CREATE TABLE `podcast` (
   `format` enum('image','video','music') NOT NULL,
   `description` text NOT NULL,
   `source` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
+  `doctor_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_podcast_doctor` (`doctor_id`),
+  CONSTRAINT `fk_podcast_doctor` FOREIGN KEY (`doctor_id`) REFERENCES `doctor` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -198,7 +205,6 @@ CREATE TABLE `podcast` (
 
 LOCK TABLES `podcast` WRITE;
 /*!40000 ALTER TABLE `podcast` DISABLE KEYS */;
-INSERT INTO `podcast` VALUES (1,'Podcast 1','image','Description du premier podcast','https://source-du-podcast1.com'),(2,'Podcast 2','video','Description du deuxième podcast','https://source-du-podcast2.com'),(3,'Podcast 3','music','Description du troisième podcast','https://source-du-podcast3.com');
 /*!40000 ALTER TABLE `podcast` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -230,7 +236,6 @@ CREATE TABLE `profesionnel` (
 
 LOCK TABLES `profesionnel` WRITE;
 /*!40000 ALTER TABLE `profesionnel` DISABLE KEYS */;
-INSERT INTO `profesionnel` VALUES (1,'Jean-Claude','BYZAR','0556303254','https://thumbs.dreamstime.com/z/m%C3%A9decin-g%C3%A9n%C3%A9raliste-40482496.jpg','Psychologue','rue Général Leclerc','Bordeaux',33000,'FRANCE'),(2,'Céline','BOITEUX','0556329475','https://thumbs.dreamstime.com/z/m%C3%A9decin-g%C3%A9n%C3%A9raliste-40482496.jpg','Kinésithérapeute','rue Louis Pasteur','Bordeaux',33000,'FRANCE'),(3,'Patrice','CONTENT','0556647512','https://thumbs.dreamstime.com/z/m%C3%A9decin-g%C3%A9n%C3%A9raliste-40482496.jpg','Infirmier','rue Jules Ferry','Bordeaux',33000,'FRANCE');
 /*!40000 ALTER TABLE `profesionnel` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -255,7 +260,6 @@ CREATE TABLE `protocol` (
 
 LOCK TABLES `protocol` WRITE;
 /*!40000 ALTER TABLE `protocol` DISABLE KEYS */;
-INSERT INTO `protocol` VALUES (1,'opération du ménisque','Neque porro quisquam est qui dolorem ipsum quia dolor sit amet'),(2,'appendicectomie','Neque porro quisquam est qui dolorem ipsum quia dolor sit amet');
 /*!40000 ALTER TABLE `protocol` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -269,7 +273,13 @@ DROP TABLE IF EXISTS `surgery_type`;
 CREATE TABLE `surgery_type` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
+  `doctor_id` int NOT NULL,
+  `intervention_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_surgery_type_doctor` (`doctor_id`),
+  KEY `fk_surgery_type_intervention` (`intervention_id`),
+  CONSTRAINT `fk_surgery_type_doctor` FOREIGN KEY (`doctor_id`) REFERENCES `doctor` (`id`),
+  CONSTRAINT `fk_surgery_type_intervention` FOREIGN KEY (`intervention_id`) REFERENCES `intervention` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -279,7 +289,6 @@ CREATE TABLE `surgery_type` (
 
 LOCK TABLES `surgery_type` WRITE;
 /*!40000 ALTER TABLE `surgery_type` DISABLE KEYS */;
-INSERT INTO `surgery_type` VALUES (1,'élongation croisée du genoux'),(2,'Thermocoagulation'),(3,'Hystéroscopie');
 /*!40000 ALTER TABLE `surgery_type` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -292,4 +301,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-05 11:58:24
+-- Dump completed on 2023-06-05 14:31:02
