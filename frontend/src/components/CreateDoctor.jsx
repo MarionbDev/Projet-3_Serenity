@@ -8,16 +8,16 @@ export default function CreateDoctor() {
   const [tel, setTel] = useState("");
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
-  const [image, setImage] = useState("");
-  const [language, setLanguage] = useState("");
-  const [bio, setBio] = useState("");
-  const [certificate, setCertificate] = useState("");
+  // const [image, setImage] = useState("");
+  // const [language, setLanguage] = useState("");
+  // const [bio, setBio] = useState("");
+  // const [certificate, setCertificate] = useState("");
   const [role, setRole] = useState("");
-  const [otherFormation, setOtherFormation] = useState("");
-  const [experience, setExperience] = useState("");
-  const [partnership, setPartnership] = useState("");
-  const [worksAndPublication, setWorksAndPublication] = useState("");
-  const [awardAndRecognition, setAwardAndRecognition] = useState("");
+  // const [otherFormation, setOtherFormation] = useState("");
+  // const [experience, setExperience] = useState("");
+  // const [partnership, setPartnership] = useState("");
+  // const [worksAndPublication, setWorksAndPublication] = useState("");
+  // const [awardAndRecognition, setAwardAndRecognition] = useState("");
 
   const handleChangeFirstname = (e) => {
     setFirstname(e.target.value);
@@ -39,48 +39,48 @@ export default function CreateDoctor() {
     setPassword(e.target.value);
   };
 
-  const handleChangeImage = (e) => {
-    setImage(e.target.value);
-  };
+  // const handleChangeImage = (e) => {
+  //   setImage(e.target.value);
+  // };
 
-  const handleChangeLanguage = (e) => {
-    setLanguage(e.target.value);
-  };
+  // const handleChangeLanguage = (e) => {
+  //   setLanguage(e.target.value);
+  // };
 
-  const handleChangeBio = (e) => {
-    setBio(e.target.value);
-  };
+  // const handleChangeBio = (e) => {
+  //   setBio(e.target.value);
+  // };
 
-  const handleChangeCertificate = (e) => {
-    setCertificate(e.target.value);
-  };
+  // const handleChangeCertificate = (e) => {
+  //   setCertificate(e.target.value);
+  // };
 
   const handleChangeRole = (e) => {
     setRole(e.target.value);
   };
 
-  const handleChangeOtherFormation = (e) => {
-    setOtherFormation(e.target.value);
-  };
+  // const handleChangeOtherFormation = (e) => {
+  //   setOtherFormation(e.target.value);
+  // };
 
-  const handleChangeExperience = (e) => {
-    setExperience(e.target.value);
-  };
+  // const handleChangeExperience = (e) => {
+  //   setExperience(e.target.value);
+  // };
 
-  const handleChangePartnership = (e) => {
-    setPartnership(e.target.value);
-  };
+  // const handleChangePartnership = (e) => {
+  //   setPartnership(e.target.value);
+  // };
 
-  const handleChangeWorksAndPublication = (e) => {
-    setWorksAndPublication(e.target.value);
-  };
+  // const handleChangeWorksAndPublication = (e) => {
+  //   setWorksAndPublication(e.target.value);
+  // };
 
-  const handleChangeAwardAndRecognition = (e) => {
-    setAwardAndRecognition(e.target.value);
-  };
+  // const handleChangeAwardAndRecognition = (e) => {
+  //   setAwardAndRecognition(e.target.value);
+  // };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
+    //  e.preventDefault();
 
     const data = {
       firstname,
@@ -88,19 +88,19 @@ export default function CreateDoctor() {
       tel,
       mail,
       password,
-      image,
-      language,
-      bio,
-      certificate,
+      // image,
+      // language,
+      // bio,
+      // certificate,
       role,
-      otherFormation,
-      experience,
-      partnership,
-      worksAndPublication,
-      awardAndRecognition,
+      // otherFormation,
+      // experience,
+      // partnership,
+      // worksAndPublication,
+      // awardAndRecognition,
     };
 
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/doctors`, {
+    fetch("http://localhost:8000/api/doctors", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -181,19 +181,19 @@ export default function CreateDoctor() {
             onChange={handleChangePassword}
           />
         </label>
-        <label
-          htmlFor="image"
-          className="flex text-2xl m-4 w-full items-center"
+        {/* <label
+           htmlFor="image"
+           className="flex text-2xl m-4 w-full items-center"
         >
-          Image:
-          <input
-            className="ml-4 px-4 py-1 text-black flex-1 rounded-full"
-            type="text"
-            id="image"
-            value={image}
-            onChange={handleChangeImage}
-          />
-        </label>
+           Image:
+           <input
+             className="ml-4 px-4 py-1 text-black flex-1 rounded-full"
+             type="text"
+             id="image"
+             value={image}
+             onChange={handleChangeImage}
+           /> 
+         </label>
         <label
           htmlFor="language"
           className="flex text-2xl m-4 w-full items-center"
@@ -206,8 +206,8 @@ export default function CreateDoctor() {
             value={language}
             onChange={handleChangeLanguage}
           />
-        </label>
-        <label htmlFor="bio" className="flex text-2xl m-4 w-full items-center">
+        </label> 
+         <label htmlFor="bio" className="flex text-2xl m-4 w-full items-center">
           Bio:
           <textarea
             className="ml-4 px-4 py-1 text-black flex-1 rounded"
@@ -215,8 +215,8 @@ export default function CreateDoctor() {
             value={bio}
             onChange={handleChangeBio}
           />
-        </label>
-        <label
+        </label> 
+         <label
           htmlFor="certificate"
           className="flex text-2xl m-4 w-full items-center"
         >
@@ -228,7 +228,7 @@ export default function CreateDoctor() {
             value={certificate}
             onChange={handleChangeCertificate}
           />
-        </label>
+        </label>  */}
         <label htmlFor="role" className="flex text-2xl m-4 w-full items-center">
           Role:
           <input
@@ -239,7 +239,7 @@ export default function CreateDoctor() {
             onChange={handleChangeRole}
           />
         </label>
-        <label
+        {/* <label
           htmlFor="otherFormation"
           className="flex text-2xl m-4 w-full items-center"
         >
@@ -303,7 +303,7 @@ export default function CreateDoctor() {
             value={awardAndRecognition}
             onChange={handleChangeAwardAndRecognition}
           />
-        </label>
+        </label> */}
         <button
           type="submit"
           className="bg-blue-500 text-white px-6 py-2 rounded-full mt-6"
