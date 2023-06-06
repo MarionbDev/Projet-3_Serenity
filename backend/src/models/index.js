@@ -29,16 +29,34 @@ pool.getConnection().catch(() => {
 
 const models = {};
 
-const ItemManager = require("./ItemManager");
 const DoctorManager = require("./DoctorManager");
 const PatientManager = require("./PatientManager");
+const ContentManager = require("./ContentManager");
+const InterventionManager = require("./InterventionManager");
+const ProfesionnelManager = require("./ProfesionnelManager");
+const ChecklistManager = require("./ChecklistManager");
+const PodcastManager = require("./PodcastManager");
+const SurgeryTypeManager = require("./SurgeryTypeManager");
+const ProtocolManager = require("./ProtocolManager");
 
-models.item = new ItemManager();
-models.item.setDatabase(pool);
 models.doctor = new DoctorManager();
 models.doctor.setDatabase(pool);
 models.patient = new PatientManager();
 models.patient.setDatabase(pool);
+models.content = new ContentManager();
+models.content.setDatabase(pool);
+models.intervention = new InterventionManager();
+models.intervention.setDatabase(pool);
+models.profesionnel = new ProfesionnelManager();
+models.profesionnel.setDatabase(pool);
+models.checklist = new ChecklistManager();
+models.checklist.setDatabase(pool);
+models.podcast = new PodcastManager();
+models.podcast.setDatabase(pool);
+models.surgeryType = new SurgeryTypeManager();
+models.surgeryType.setDatabase(pool);
+models.protocol = new ProtocolManager();
+models.protocol.setDatabase(pool);
 
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
