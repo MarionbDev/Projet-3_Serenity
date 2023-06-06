@@ -32,6 +32,9 @@ const models = {};
 const ItemManager = require("./ItemManager");
 const DoctorManager = require("./DoctorManager");
 const PatientManager = require("./PatientManager");
+const PodcastManager = require("./PodcastManager");
+const SurgeryTypeManager = require("./SurgeryTypeManager");
+const ProtocolManager = require("./ProtocolManager");
 
 models.item = new ItemManager();
 models.item.setDatabase(pool);
@@ -39,6 +42,12 @@ models.doctor = new DoctorManager();
 models.doctor.setDatabase(pool);
 models.patient = new PatientManager();
 models.patient.setDatabase(pool);
+models.podcast = new PodcastManager();
+models.podcast.setDatabase(pool);
+models.surgeryType = new SurgeryTypeManager();
+models.surgeryType.setDatabase(pool);
+models.protocol = new ProtocolManager();
+models.protocol.setDatabase(pool);
 
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
