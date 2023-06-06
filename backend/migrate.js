@@ -22,6 +22,10 @@ const migrate = async () => {
 
   await connection.query(sql);
 
+  const sqlData = fs.readFileSync("./serenity_datas.sql", "utf8");
+
+  await connection.query(sqlData);
+
   connection.end();
 };
 
