@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 function Connexion({ utilisateur }) {
+  const navigate = useNavigate();
   const [passwordIsVisible, setPasswordIsVisible] = useState(false);
-
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
+  // const [id, setId] = useState("");
 
   const handleChangeMail = (e) => {
     setMail(e.target.value);
@@ -36,7 +38,8 @@ function Connexion({ utilisateur }) {
           return res.json();
         })
         .then((data) => {
-          console.warn(data);
+          console.warn(data.id);
+          navigate(`/patient/${data.id}`);
         })
         .catch(() => {
           alert("Error to login please try again !");
