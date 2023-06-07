@@ -5,7 +5,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import Connexion from "./pages/Connexion";
 import PrepaPatientMobile from "./pages/PrepaPatientMobile";
-import PrepaPatientPc from "./pages/PrepaPatientPc";
+// import PrepaPatientPc from "./pages/PrepaPatientPc";
 
 function App() {
   return (
