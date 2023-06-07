@@ -128,5 +128,6 @@ function Connexion({ utilisateur }) {
     </div>
   );
 }
-Connexion.protoTypes = { utilisateur: PropTypes.string.isRequired };
+Connexion.propTypes = { utilisateur: PropTypes.string.isRequired };
+
 export default Connexion;
