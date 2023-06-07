@@ -24,6 +24,12 @@ class PatientManager extends AbstractManager {
       ]
     );
   }
+
+  findByEmail(mail) {
+    return this.database.query(`SELECT * FROM  ${this.table} WHERE mail=?`, [
+      mail,
+    ]);
+  }
 }
 
 module.exports = PatientManager;
