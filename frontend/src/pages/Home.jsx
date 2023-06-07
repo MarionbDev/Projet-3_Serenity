@@ -5,7 +5,7 @@ import Carousel from "../components/Carousel";
 
 const Home = () => {
   return (
-    <div className=" md:min-h-screen md:flex ">
+    <div className=" min-h-screen md:flex bg-teal-500 w-[100%] h-[100%]">
       <div className="md:mt-5 md:ml-10">
         <Carousel />
       </div>
