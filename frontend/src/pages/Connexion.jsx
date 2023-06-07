@@ -33,7 +33,7 @@ function Connexion({ utilisateur }) {
         }),
       })
         .then((res) => {
-          res.json();
+          return res.json();
         })
         .then((data) => {
           console.warn(data);
