@@ -49,12 +49,14 @@ function Connexion({ utilisateur }) {
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen bg-teal-500 ">
-      <h1 className="font-extrabold text-white text-5xl h-16 flex justify-center md:text-6xl">
-        Connectez vous
-      </h1>
-      <h2 className="font-extrabold text-white text-xl h-20 flex justify-center md:text-3xl">
-        à votre espace personnel
-      </h2>
+      <div className=" mb-36">
+        <h1 className="font-extrabold text-white text-5xl h-16 flex justify-center md:text-6xl">
+          Connectez vous
+        </h1>
+        <h2 className="font-extrabold text-white text-xl h-0 flex justify-center md:text-3xl">
+          à votre espace personnel
+        </h2>
+      </div>
       <form
         className="flex flex-col items-start"
         name="connexion"
@@ -119,7 +121,7 @@ function Connexion({ utilisateur }) {
           Mot de passe oublié?
         </Link> */}
         <button
-          className="bg-rose-400 text-white font-bold text-2xl mt-14 rounded-lg w-40 h-10 md:w-52 h-12 "
+          className="mx-auto bg-rose-400 text-white font-bold text-2xl mt-14 rounded-lg w-40 h-10 md:w-52 md:h-12 "
           type="submit"
         >
           S'identifier
