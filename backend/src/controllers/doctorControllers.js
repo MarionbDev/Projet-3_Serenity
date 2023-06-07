@@ -82,10 +82,33 @@ const destroy = (req, res) => {
     });
 };
 
+const login = (req, res) => {
+  const { mail, password } = req.body;
+
+  models.doctor
+    .findByEmail(mail)
+    .then(([doctors]) => {
+      if (doctors.length === 0) {
+        res.sendStatus(404);
+      } else if (doctors[0].password !== password) {
+        res.sendStatus(404);
+      } else {
+        const doctor = { ...doctors[0] };
+        delete doctor.password;
+        res.json(doctor);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
   edit,
   add,
   destroy,
+  login,
 };

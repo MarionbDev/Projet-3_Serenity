@@ -3,8 +3,8 @@
 
 // function Connexion() {
 //   const [formValues, setFormValues] = useState({
-//     email: "",
-//     mdp: "",
+//     mail: "",
+//     password: "",
 //   });
 //   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -19,6 +19,29 @@
 //   const handleSubmit = (event) => {
 //     event.preventDefault();
 //     // Ici vous pouvez effectuer une action telle qu'envoyer les données à un serveur
+//     if (!mail || !password) {
+//       alert("You must provide an email and a password!!!!");
+//     } else {
+//       fetch(`${import.meta.env.VITE_BACKEND_URL}/api/patient/login`, {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({
+//           mail,
+//           password,
+//         }),
+//       })
+//         .then((res) => res.json())
+//         .then((data) => {
+//           console.warn(data);
+//           // dispatch({ type: "SET_USER", payload: data });
+//           // navigate(`/`);
+//         })
+//         .catch(() => {
+//           alert("Error to login, please try again!!!");
+//         });
+//     }
 
 //     // Réinitialiser les valeurs du formulaire
 //     setFormValues({
@@ -43,24 +66,24 @@
 //         name="connexion"
 //         onSubmit={handleSubmit}
 //       >
-//         <label className="font-bold text-white text-base" htmlFor="email">
+//         <label className="font-bold text-white text-base" htmlFor="mail">
 //           Adress Email
 //         </label>
 //         <input
 //           className="bg-teal-600 rounded-lg text-black w-60"
 //           type="text"
-//           name="email"
+//           name="mail"
 //           required
 //           value={formValues.email}
 //           onChange={handleChange}
 //         />
-//         <label className="font-bold text-white text-base" htmlFor="mdp">
+//         <label className="font-bold text-white text-base" htmlFor="password">
 //           Mot de passe
 //         </label>
 //         <input
 //           className="bg-teal-600 rounded-lg text-black w-60"
 //           type="text"
-//           name="mdp"
+//           name="password"
 //           required
 //           value={formValues.mdp}
 //           onChange={handleChange}
