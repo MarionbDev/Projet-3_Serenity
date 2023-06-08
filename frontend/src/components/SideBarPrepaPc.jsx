@@ -1,6 +1,6 @@
 export default function SideBarPrepaPc() {
   return (
-    <div className="min-h-screen w-[17%] border-r-2">
+    <div className="min-h-screen w-64 border-r-2 fixed">
       <div className="pt-6 pl-8 ">
         <img src="/src/assets/logo/logo1.png" alt="logo" />
       </div>
