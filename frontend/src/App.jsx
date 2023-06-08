@@ -20,7 +20,7 @@ function App() {
           element={<PrepaPatientMobile utilisateur="patient" />}
         />
         <Route path="/doctor" element={<Connexion utilisateur="doctor" />} />
-        <Route path="/doctor/:id" element={<Test utilisateur="doctor" />} />
+        {/* <Route path="/doctor/:id" element={<Test utilisateur="doctor" />} /> */}
         <Route path="/create-doctor" element={<CreateDoctor />} />
       </Routes>
     </UserContextProvider>
