@@ -1,4 +1,9 @@
-export default function SideBarPrepaPc() {
+// import PropTypes from "prop-types";
+// import { useUserContext } from "../contexts/UserContext";
+
+export default function SideBarDoctor() {
+  // const { idDoctor } = useUserContext();
+
   return (
     <div className="min-h-screen w-64 border-r-2 fixed">
       <div className="pt-6 pl-8 ">
@@ -14,7 +19,7 @@ export default function SideBarPrepaPc() {
             src="/src/assets/logo/icon1.png"
             alt="icon"
           />
-          <p className="m-2 text-white font-semibold">Ma préparation</p>
+          <p className="m-2 text-white font-semibold">Mon activité</p>
         </button>
         <button
           type="button"
@@ -25,7 +30,7 @@ export default function SideBarPrepaPc() {
             src="/src/assets/logo/bag.png"
             alt="icon"
           />
-          <p className="m-3 text-gray-500 font-semibold">Ma préparation</p>
+          <p className="m-3 text-gray-500 font-semibold">praticiens</p>
         </button>
         <button
           className="flex items-center rounded-lg w-[90%] h-14"
@@ -36,11 +41,22 @@ export default function SideBarPrepaPc() {
             src="/src/assets/logo/Chart.png"
             alt="icon"
           />
-          <p className="m-3 text-gray-500 font-semibold">Agenda</p>
+          <p className="m-3 text-gray-500 font-semibold">patients</p>
+        </button>
+        <button
+          className="flex items-center rounded-lg w-[90%] h-14"
+          type="button"
+        >
+          <img
+            className="ml-7 mr-2"
+            src="/src/assets/logo/Chart.png"
+            alt="icon"
+          />
+          <p className="m-3 text-gray-500 font-semibold">intervention</p>
         </button>
       </div>
       <div className="mt-20 ml-4">
-        <p className="m-3 text-gray-500 font-semibold text-sm">Des nouvelles</p>
+        <p className="m-3 text-gray-500 font-semibold text-sm">Agenda</p>
         <button
           className="flex items-center rounded-lg w-[90%] h-14"
           type="button"
@@ -75,3 +91,4 @@ export default function SideBarPrepaPc() {
     </div>
   );
 }
+// SideBarDoctor.propTypes = { utilisateur: PropTypes.string.isRequired };
