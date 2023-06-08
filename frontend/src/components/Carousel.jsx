@@ -35,13 +35,13 @@ const datas = [
 
 export default function Carrousel() {
   return (
-    <div>
+    <div className=" max-h-[500px] sm:max-h-screen max-w-screen overflow-hidden sm:w-1/2">
       <Carousel
-        interval={4000}
+        autoPlay
         infiniteLoop
         showThumbs={false}
         showStatus={false}
-        showIndicators={false}
+        showArrows={false}
       >
         {datas.map((data) => (
           <div key={data.id}>
