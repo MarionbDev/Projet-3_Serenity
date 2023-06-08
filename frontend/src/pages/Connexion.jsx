@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useUserContext } from "../contexts/UserContext";
-
-// import { Link } from "react-router-dom";
 
 function Connexion({ utilisateur }) {
   const { setIdPatient } = useUserContext();
@@ -49,7 +47,8 @@ function Connexion({ utilisateur }) {
             setIdDoctor(data.id);
           }
         })
-        .catch(() => {
+        .catch((err) => {
+          console.error(err);
           alert("Error to login please try again !");
         });
     }
@@ -128,9 +127,9 @@ function Connexion({ utilisateur }) {
             )}
           </button>
         </div>
-        {/* <Link className="text-base text-black" to="/password">
+        <Link className="text-base text-black" to="/password">
           Mot de passe oublié?
-        </Link> */}
+        </Link>
         <button
           className="mx-auto bg-rose-400 text-white font-bold text-2xl mt-14 rounded-lg w-40 h-10 md:w-52 md:h-12 "
           type="submit"
