@@ -60,7 +60,7 @@ function Connexion({ utilisateur }) {
   return (
     <div className="flex flex-col justify-center items-center min-h-screen bg-teal-500 ">
       <div className=" mb-36">
-        <h1 className="font-extrabold text-white text-5xl h-16 flex justify-center md:text-6xl">
+        <h1 className="font-extrabold text-white text-4xl h-16 flex justify-center md:text-6xl">
           Connectez vous
         </h1>
         <h2 className="font-extrabold text-white text-xl h-0 flex justify-center md:text-3xl">
@@ -127,9 +127,9 @@ function Connexion({ utilisateur }) {
             )}
           </button>
         </div>
-        <Link className="text-base text-black" to="/password">
+        {/* <Link className="text-base text-black" to="/password">
           Mot de passe oublié?
-        </Link>
+        </Link> */}
         <button
           className="mx-auto bg-rose-400 text-white font-bold text-2xl mt-14 rounded-lg w-40 h-10 md:w-52 md:h-12 "
           type="submit"
