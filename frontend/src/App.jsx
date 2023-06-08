@@ -4,7 +4,7 @@ import CreateDoctor from "./components/CreateDoctor";
 import "./App.css";
 import Home from "./pages/Home";
 import Connexion from "./pages/Connexion";
-// import Test from "./components/Test";
+import SideBarDoctor from "./components/SideBarDoctor";
 import PreparationEtapeFirst from "./pages/PreparationEtapeFirst";
 import PrepaPatientMobile from "./pages/PrepaPatientMobile";
 
@@ -21,7 +21,10 @@ function App() {
           element={<PreparationEtapeFirst />}
         />
         <Route path="/doctor" element={<Connexion utilisateur="doctor" />} />
-        {/* <Route path="/doctor/:id" element={<Test utilisateur="doctor" />} /> */}
+        <Route
+          path="/doctor/:id"
+          element={<SideBarDoctor utilisateur="/doctor/:id" />}
+        />
         <Route path="/create-doctor" element={<CreateDoctor />} />
       </Routes>
     </UserContextProvider>
