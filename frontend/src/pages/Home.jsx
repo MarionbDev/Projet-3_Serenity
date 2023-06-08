@@ -5,7 +5,7 @@ import Carousel from "../components/Carousel";
 
 const Home = () => {
   return (
-    <div className="flex flex-col sm:flex-row sm: justify-evenly">
+    <div className="flex flex-col sm:flex-row sm: justify-evenly bg-teal-500">
       <Carousel />
       <div className=" basis-5/12 sm:basis-1/2 flex flex-col gap-6">
         <div>
