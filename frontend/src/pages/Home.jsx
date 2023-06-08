@@ -5,20 +5,19 @@ import Carousel from "../components/Carousel";
 
 const Home = () => {
   return (
-    <div className=" md:min-h-screen md:flex ">
-      <div className="md:mt-5 md:ml-10">
-        <Carousel />
-      </div>
-      <div className="h-[254px] pt-14 flex flex-col md:w-96 md:mt-24 md:ml-20 md:mr-20">
-        <div className="mb-5 md:mb-20">
+    <div className="flex flex-col sm:flex-row sm: justify-evenly">
+      <Carousel />
+      <div className=" basis-5/12 sm:basis-1/2 flex flex-col gap-6">
+        <div>
           <Link to="/patient">
+            <Button value="Connexion Patient" />
+          </Link>
+        </div>
+        <div>
+          <Link to="/doctor">
             <Button value="Connexion Médecin" />
           </Link>
         </div>
-
-        <Link to="/doctor">
-          <Button value="Connexion Patient" />
-        </Link>
       </div>
     </div>
   );

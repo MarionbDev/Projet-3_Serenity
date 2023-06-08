@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Connexion({ utilisateur }) {
   const [passwordIsVisible, setPasswordIsVisible] = useState(false);
-
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -33,12 +32,13 @@ function Connexion({ utilisateur }) {
         }),
       })
         .then((res) => {
-          res.json();
+          return res.json();
         })
         .then((data) => {
           console.warn(data);
         })
-        .catch(() => {
+        .catch((err) => {
+          console.error(err);
           alert("Error to login please try again !");
         });
     }
@@ -117,9 +117,9 @@ function Connexion({ utilisateur }) {
             )}
           </button>
         </div>
-        {/* <Link className="text-base text-black" to="/password">
+        <Link className="text-base text-black" to="/password">
           Mot de passe oublié?
-        </Link> */}
+        </Link>
         <button
           className="mx-auto bg-rose-400 text-white font-bold text-2xl mt-14 rounded-lg w-40 h-10 md:w-52 md:h-12 "
           type="submit"
