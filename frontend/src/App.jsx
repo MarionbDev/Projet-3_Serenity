@@ -7,6 +7,7 @@ import Connexion from "./pages/Connexion";
 // import Test from "./components/Test";
 import PrepaPatientPc from "./pages/PrepaPatientPc";
 import PrepaPatientMobile from "./pages/PrepaPatientMobile";
+import PreparationEtapeFirst from "./pages/PreparationEtapeFirst";
 
 function App() {
   return (
@@ -16,6 +17,10 @@ function App() {
 
         <Route path="/patient" element={<Connexion utilisateur="patient" />} />
         {/* <Route path="/patient/:id" element={<Test utilisateur="patient" />} /> */}
+        <Route
+          path="/patient/preparation"
+          element={<PreparationEtapeFirst />}
+        />
 
         <Route path="/doctor" element={<Connexion utilisateur="doctor" />} />
         {/* <Route path="/doctor/:id" element={<Test utilisateur="doctor" />} /> */}
