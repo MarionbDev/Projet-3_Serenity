@@ -77,7 +77,7 @@ function Connexion({ utilisateur }) {
           Adresse Email
         </label>
         <input
-          className="bg-teal-600 rounded-lg text-black w-60 h-8 md:w-96"
+          className="bg-teal-600 rounded-lg text-black w-60 h-8 p-2 md:w-96"
           type="text"
           name="mail"
           required
@@ -92,7 +92,7 @@ function Connexion({ utilisateur }) {
         </label>
         <div className="flex">
           <input
-            className="bg-teal-600 rounded-lg text-black w-60 h-8 md:w-96"
+            className="bg-teal-600 rounded-lg text-black w-60 h-8 p-2 md:w-96"
             type={passwordIsVisible ? "text" : "password"}
             name="password"
             required
