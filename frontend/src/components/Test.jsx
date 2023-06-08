@@ -3,5 +3,7 @@
 // export default function Test({ utilisateur }) {
 //   const { idDoctor } = useUserContext();
 
-//   return <p>id du praticien est : {idDoctor}</p>;
+//   return
+
+//   <p>id du praticien est : {idDoctor}</p>;
 // }
