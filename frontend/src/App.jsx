@@ -5,7 +5,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import Connexion from "./pages/Connexion";
 import PrepaPatientMobile from "./pages/PrepaPatientMobile";
-// import PrepaPatientPc from "./pages/PrepaPatientPc";
+import PrepaPatientPc from "./pages/PrepaPatientPc";
 
 function App() {
   return (
@@ -19,8 +19,8 @@ function App() {
           />
         </Route> */}
       {/* <Route path="/:id" element={<PrepaPatientPc />} /> */}
-      <Route path="/preparation" element={<PrepaPatientMobile />} />
-
+      <Route path="/preparation-mobile" element={<PrepaPatientMobile />} />
+      <Route path="/preparation-pc" element={<PrepaPatientPc />} />
       <Route path="/doctor" element={<Connexion utilisateur="doctors" />} />
       <Route path="/create-doctor" element={<CreateDoctor />} />
     </Routes>

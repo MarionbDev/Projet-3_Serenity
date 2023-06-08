@@ -4,7 +4,7 @@ export default function HeaderMobilePrepaPatient() {
       <div className="flex justify-around m-6">
         <img
           className="h-24 w-24 rounded-lg "
-          src="/src/assets/patient1.png"
+          src="/src/assets/images/patient1.png"
           alt="avatar"
         />
         <div className="flex-col">
