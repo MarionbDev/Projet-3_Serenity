@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../contexts/UserContext";
+
 // import { Link } from "react-router-dom";
 
 function Connexion({ utilisateur }) {
+  const { setIdPatient } = useUserContext();
+  const { setIdDoctor } = useUserContext();
   const navigate = useNavigate();
   const [passwordIsVisible, setPasswordIsVisible] = useState(false);
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
-  // const [id, setId] = useState("");
 
   const handleChangeMail = (e) => {
     setMail(e.target.value);
@@ -24,7 +27,7 @@ function Connexion({ utilisateur }) {
     if (!mail || !password) {
       alert("You must provide an email and a password !");
     } else {
-      fetch(`${import.meta.env.VITE_BACKEND_URL}/api/${utilisateur}/login`, {
+      fetch(`${import.meta.env.VITE_BACKEND_URL}/api/${utilisateur}s/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +42,12 @@ function Connexion({ utilisateur }) {
         })
         .then((data) => {
           console.warn(data.id);
-          navigate(`/patient/${data.id}`);
+          navigate(`/${utilisateur}/${data.id}`);
+          if (utilisateur === "patient") {
+            setIdPatient(data.id);
+          } else {
+            setIdDoctor(data.id);
+          }
         })
         .catch(() => {
           alert("Error to login please try again !");
