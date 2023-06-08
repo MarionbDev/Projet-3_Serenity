@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import { useNavigate, Link } from "react-router-dom";
 import { useUserContext } from "../contexts/UserContext";
 
-// import { Link } from "react-router-dom";
-
 function Connexion({ utilisateur }) {
   const { setIdPatient } = useUserContext();
   const { setIdDoctor } = useUserContext();
