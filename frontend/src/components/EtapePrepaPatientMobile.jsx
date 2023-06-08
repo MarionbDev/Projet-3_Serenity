@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function EtapePrepaPatientMobile() {
   return (
     <div className="m-8">
-      <Link to="/Comprendre-mon-opération">
+      <Link to="/patient/:id/comprendre-mon-operation">
         <button type="button" className="w-[100%] h-20 rounded-xl bg-amber-300">
           <p className="p-4 text-base w-52 text-white">
             Comprendre mon opération
