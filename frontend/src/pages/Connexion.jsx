@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 function Connexion({ utilisateur }) {
+  const navigate = useNavigate();
   const [passwordIsVisible, setPasswordIsVisible] = useState(false);
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
+  // const [id, setId] = useState("");
 
   const handleChangeMail = (e) => {
     setMail(e.target.value);
@@ -35,7 +38,8 @@ function Connexion({ utilisateur }) {
           return res.json();
         })
         .then((data) => {
-          console.warn(data);
+          console.warn(data.id);
+          navigate(`/patient/${data.id}`);
         })
         .catch((err) => {
           console.error(err);
@@ -66,7 +70,7 @@ function Connexion({ utilisateur }) {
           Adresse Email
         </label>
         <input
-          className="bg-teal-600 rounded-lg text-black w-60 h-8 md:w-96"
+          className="bg-teal-600 rounded-lg text-black w-60 h-8 p-2 md:w-96"
           type="text"
           name="mail"
           required
@@ -81,7 +85,7 @@ function Connexion({ utilisateur }) {
         </label>
         <div className="flex">
           <input
-            className="bg-teal-600 rounded-lg text-black w-60 h-8 md:w-96"
+            className="bg-teal-600 rounded-lg text-black w-60 h-8 p-2 md:w-96"
             type={passwordIsVisible ? "text" : "password"}
             name="password"
             required
