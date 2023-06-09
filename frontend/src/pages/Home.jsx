@@ -5,10 +5,10 @@ import Carousel from "../components/Carousel";
 
 const Home = () => {
   return (
-    <div className="flex flex-col sm:flex-row sm: justify-evenly bg-teal-500">
+    <div className="flex flex-col sm:flex-row sm:  min-h-screen bg-teal-500">
       <Carousel />
-      <div className=" basis-5/12 sm:basis-1/2 flex flex-col gap-6">
-        <div>
+      <div className=" basis-5/12 sm:basis-1/2 flex flex-col mt-6 gap-6 sm:mt-48">
+        <div className="">
           <Link to="/patient">
             <Button value="Connexion Patient" />
           </Link>
