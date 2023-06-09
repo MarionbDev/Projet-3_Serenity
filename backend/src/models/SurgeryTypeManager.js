@@ -17,6 +17,14 @@ class PodcastManager extends AbstractManager {
       [surgeryType.name, surgeryType.id]
     );
   }
+
+  findAllInterventions(idDoctor) {
+    console.warn(idDoctor);
+    return this.database.query(
+      `SELECT surgery_type.name, count(intervention.id) AS intervention_count FROM ${this.table} JOIN doctor ON doctor.id = doctor_id JOIN intervention ON intervention.id = intervention_id WHERE doctor.id = ? GROUP BY surgery_type.id`,
+      [idDoctor]
+    );
+  }
 }
 
 module.exports = PodcastManager;

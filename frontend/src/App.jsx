@@ -5,8 +5,8 @@ import CreateDoctor from "./components/CreateDoctor";
 import "./App.css";
 import Home from "./pages/Home";
 import Connexion from "./pages/Connexion";
-import SideBarDoctor from "./components/SideBarDoctor";
-// import PreparationEtapeFirst from "./pages/PreparationEtapeFirst";
+import AccueilDoctor from "./pages/AccueilDoctor";
+import InterventionDoctor from "./components/InterventionDoctor";
 import PrepaPatientMobile from "./pages/PrepaPatientMobile";
 import PrepaPatientPc from "./pages/PrepaPatientPc";
 
@@ -48,7 +48,13 @@ function App() {
         <Route path="/doctor" element={<Connexion utilisateur="doctor" />} />
         <Route
           path="/doctor/:id"
-          element={<SideBarDoctor utilisateur="/doctor/:id" />}
+          element={<AccueilDoctor utilisateur="/doctor/:id" />}
+        />
+        <Route
+          path="/doctor/:id/intervention"
+          element={
+            <InterventionDoctor utilisateur="/doctor/:id/intervention" />
+          }
         />
         <Route path="/create-doctor" element={<CreateDoctor />} />
       </Routes>

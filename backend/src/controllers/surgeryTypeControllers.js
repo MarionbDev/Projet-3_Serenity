@@ -82,10 +82,25 @@ const destroy = (req, res) => {
     });
 };
 
+const allInterventions = (req, res) => {
+  const idDoctor = req.params.id;
+
+  models.surgeryType
+    .findAllInterventions(parseInt(idDoctor, 10))
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
   edit,
   add,
   destroy,
+  allInterventions,
 };
