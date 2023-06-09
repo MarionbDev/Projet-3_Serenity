@@ -1,7 +1,7 @@
 // import { useUserContext } from "../contexts/UserContext";
 
 // export default function Test({ utilisateur }) {
-//   const { idDoctor } = useUserContext();
+//   const { idPatient } = useUserContext();
 
 //   return;
 
