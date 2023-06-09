@@ -6,7 +6,7 @@ const surgeryTypeControllers = require("../controllers/surgeryTypeControllers");
 router.get("/", doctorControllers.browse);
 router.get("/:id", doctorControllers.read);
 router.get("/:id/interventions", surgeryTypeControllers.allInterventions);
-router.get("/:id/praticien", doctorControllers);
+router.get("/:id/praticien", doctorControllers.findPraticien);
 router.put("/:id", doctorControllers.edit);
 router.post("/", doctorControllers.add);
 router.post("/login", doctorControllers.login);
