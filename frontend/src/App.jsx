@@ -6,8 +6,6 @@ import Home from "./pages/Home";
 import Connexion from "./pages/Connexion";
 import AccueilDoctor from "./pages/AccueilDoctor";
 import InterventionDoctor from "./components/InterventionDoctor";
-// import PreparationEtapeFirst from "./pages/PreparationEtapeFirst";
-// import SideBarDoctor from "./components/SideBarDoctor";
 import PreparationEtapeFirst from "./pages/PreparationEtapeFirst";
 import PrepaPatientMobile from "./pages/PrepaPatientMobile";
 

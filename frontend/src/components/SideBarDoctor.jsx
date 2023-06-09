@@ -1,9 +1,9 @@
 // import PropTypes from "prop-types";
 // import { useUserContext } from "../contexts/UserContext";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function SideBarDoctor() {
-  // const { idDoctor } = useUserContext();
+  const { id } = useParams();
 
   return (
     <div className="min-h-screen w-64 border-r-[1px] border-[#a5a5a5]/20  fixed ">
@@ -48,7 +48,7 @@ export default function SideBarDoctor() {
           />
           <p className="m-3 text-gray-500 font-semibold">Patients</p>
         </button>
-        <Link to="doctor/id/intervention">
+        <Link to={`/doctor/${id}/intervention`}>
           <button
             className="flex items-center rounded-lg w-[90%] h-14"
             type="button"

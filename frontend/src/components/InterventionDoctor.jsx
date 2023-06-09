@@ -1,19 +1,31 @@
 import { useState, useEffect } from "react";
+import { useUserContext } from "../contexts/UserContext";
+
 // import PropTypes from "prop-types";
 import SideBarDoctor from "./SideBarDoctor";
 import search from "../assets/logo/Search.png";
 
 export default function InterventionDoctor() {
-  const [setInterventions] = useState([]);
+  const [interventions, setInterventions] = useState([]);
+  const { idDoctor } = useUserContext();
 
   const getAllInterventions = () => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/doctor/:id/intervention`)
-      .then((resp) => resp.json())
-      .then((data) => setInterventions(data));
+    fetch(
+      `${
+        import.meta.env.VITE_BACKEND_URL
+      }/api/doctors/${idDoctor}/interventions`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setInterventions(data);
+        console.warn(data);
+      });
   };
-
   useEffect(() => {
-    getAllInterventions();
+    if (idDoctor !== "") {
+      getAllInterventions();
+      console.warn(interventions);
+    }
   }, []);
 
   return (
@@ -21,7 +33,7 @@ export default function InterventionDoctor() {
       <SideBarDoctor />
       <div className="absolute  w-2/3 mt-[48px] ml-[321px] text-[#FFFFFF]">
         <p className="text-[24px]">Bonjour Dr </p>
-        <p className="text-[37px]">Une nouvelle intervention ?!</p>
+        {/* <p className="text-[37px]">{interventions[0].name} ?!</p> */}
       </div>
       <div className="absolute w-[1055px] h-96 ml-[321px] mt-[172px] rounded-2xl shadow-lg shadow-slate-950/70    ">
         <div className="flex mt-[32px]  ">
