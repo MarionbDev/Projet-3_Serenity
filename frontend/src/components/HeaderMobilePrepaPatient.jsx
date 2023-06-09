@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useUserContext } from "../contexts/UserContext";
+import avatar from "../assets/logo/avatar1.png";
 
 export default function HeaderMobilePrepaPatient() {
   const [interventionInfo, setInterventionInfo] = useState("");
@@ -31,11 +32,12 @@ export default function HeaderMobilePrepaPatient() {
   return (
     <>
       <div className="flex justify-around m-6">
-        <img
-          className="h-24 w-24 rounded-lg "
-          src="/src/assets/images/patient1.png"
-          alt="avatar"
-        />
+        {interventionInfo.image !== null ? (
+          interventionInfo.image
+        ) : (
+          <img className="ml-4 w-20 h-20" src={avatar} alt="avatar" />
+        )}
+
         <div className="flex-col">
           <h1 className="text-2xl ml-6 mt-2">{interventionInfo.firstname}</h1>
           <p className="flex items-center text-xs w-52 h-10 ml-6">
