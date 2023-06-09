@@ -1,17 +1,18 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useUserContext } from "../contexts/UserContext";
 
 export default function EtapePrepaPatientMobile() {
-  const { id } = useParams();
+  const { idPatient } = useUserContext();
   return (
     <div className="m-8">
-      <Link to={`/patient/${id}/comprendre-mon-operation`}>
+      <Link to={`/patient/${idPatient}/comprendre-mon-operation`}>
         <button type="button" className="w-[100%] h-20 rounded-xl bg-amber-300">
           <p className="p-4 text-base w-52 text-white">
             Comprendre mon opération
           </p>
         </button>
       </Link>
-      <Link to="/démarches-administratives">
+      <Link to="/demarches-administratives">
         <button
           type="button"
           className="w-[100%] h-20 rounded-xl mt-4 bg-teal-400"
@@ -44,7 +45,7 @@ export default function EtapePrepaPatientMobile() {
           type="button"
           className="w-[100%] h-20 rounded-xl mt-4 bg-indigo-500"
         >
-          <p className="p-4 text-base w-54 text-white">
+          <p className="p-4 text-base w-52 text-white">
             Ma check-list avant le départ à la Clinique
           </p>
         </button>

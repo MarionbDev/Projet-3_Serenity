@@ -7,15 +7,7 @@ export default function SideBarPrepaPc() {
   const [interventionInfo, setInterventionInfo] = useState("");
 
   const getInterventionInfo = () => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/interventions/home`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        idPatient,
-      }),
-    })
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/patients/${idPatient}/home`)
       .then((res) => {
         return res.json();
       })
