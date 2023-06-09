@@ -106,8 +106,8 @@ const login = (req, res) => {
 
 const findPraticien = (req, res) => {
   const idPatient = req.params.id;
-  models.intervention
-    .interventionInfo(parseInt(idPatient, 10))
+  models.praticien
+    .PraticienInfo(parseInt(idPatient, 10))
     .then(([rows]) => {
       if (rows[0] == null) {
         res.sendStatus(404);

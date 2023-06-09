@@ -7,7 +7,7 @@ import trash from "../assets/logo/trash.png";
 import SideBarDoctor from "./SideBarDoctor";
 import search from "../assets/logo/Search.png";
 
-export default function doctorDetails() {
+export default function DoctorList() {
   const [praticien, setPraticien] = useState([]);
   const { idDoctor } = useUserContext();
 
@@ -60,8 +60,9 @@ export default function doctorDetails() {
           </div>
 
           <div className="text-white flex h-[104px] mt-[31px]">
-            {doctorDetails.map((doctor) => (
+            {DoctorList.map((doctor) => (
               <div key={doctor.id} className="flex">
+                <p className="ml-8">{doctor.lastname}</p>
                 <p className="ml-8">{doctor.firstname}</p>
                 <p className="ml-[34rem]">{doctor.intervention_count}</p>
               </div>
@@ -72,3 +73,4 @@ export default function doctorDetails() {
     </div>
   );
 }
+// DoctorList.propTypes = { lastname: PropTypes.string.isRequired };

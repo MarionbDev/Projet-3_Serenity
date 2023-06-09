@@ -9,6 +9,7 @@ import AccueilDoctor from "./pages/AccueilDoctor";
 import InterventionDoctor from "./components/InterventionDoctor";
 import PrepaPatientMobile from "./pages/PrepaPatientMobile";
 import PrepaPatientPc from "./pages/PrepaPatientPc";
+import DoctorList from "./components/DoctorList";
 
 function getCurrentDimension() {
   return {
@@ -55,6 +56,10 @@ function App() {
           element={
             <InterventionDoctor utilisateur="/doctor/:id/intervention" />
           }
+        />
+        <Route
+          path="/doctor/:id/praticien"
+          element={<DoctorList utilisateur="/doctor/:id/praticien" />}
         />
         <Route path="/create-doctor" element={<CreateDoctor />} />
       </Routes>
