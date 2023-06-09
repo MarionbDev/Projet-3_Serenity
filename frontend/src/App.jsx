@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { UserContextProvider } from "./contexts/UserContext";
 import CreateDoctor from "./components/CreateDoctor";
@@ -8,21 +9,43 @@ import Connexion from "./pages/Connexion";
 import PrepaPatientPcOne from "./pages/PrepaPatientPcOne";
 import PrepaPatientMobile from "./pages/PrepaPatientMobile";
 import SideBarDoctor from "./components/SideBarDoctor";
-import PreparationEtapeFirst from "./pages/PreparationEtapeFirst";
+// import PreparationEtapeFirst from "./pages/PreparationEtapeFirst";
 
+function getCurrentDimension() {
+  return {
+    width: window.innerWidth,
+    height: window.innerHeight,
+  };
+}
 function App() {
+  const [screenSize, setScreenSize] = useState(getCurrentDimension());
+
+  useEffect(() => {
+    const updateDimension = () => {
+      setScreenSize(getCurrentDimension());
+    };
+    window.addEventListener("resize", updateDimension);
+
+    return () => {
+      window.removeEventListener("resize", updateDimension);
+    };
+  }, [screenSize]);
   return (
     <UserContextProvider>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/patient" element={<Connexion utilisateur="patient" />} />
-        <Route path="/patient/:id" element={<PrepaPatientMobile />} />
-        <Route path="/patient/prepa/:id" element={<PrepaPatientPcOne />} />
+        {window.innerWidth < 768 ? (
+          <Route path="/patient/:id" element={<PrepaPatientMobile />} />
+        ) : (
+          // <Route
+          //   path="/patient/:id/comprendre-mon-operation"
+          //   element={<PreparationEtapeFirst />}
+          // />
 
-        <Route
-          path="/patient/:id/comprendre-mon-operation"
-          element={<PreparationEtapeFirst />}
-        />
+          <Route path="/patient/:id" element={<PrepaPatientPcOne />} />
+        )}
+
         <Route path="/doctor" element={<Connexion utilisateur="doctor" />} />
         <Route
           path="/doctor/:id"

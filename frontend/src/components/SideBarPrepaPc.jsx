@@ -1,4 +1,35 @@
+import { useState, useEffect } from "react";
+import { useUserContext } from "../contexts/UserContext";
+import avatar from "../assets/logo/avatar1.png";
+
 export default function SideBarPrepaPc() {
+  const { idPatient } = useUserContext();
+  const [interventionInfo, setInterventionInfo] = useState("");
+
+  const getInterventionInfo = () => {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/interventions/home`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idPatient,
+      }),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setInterventionInfo(data);
+      });
+  };
+
+  useEffect(() => {
+    if (idPatient !== "") {
+      getInterventionInfo();
+    }
+  }, []);
+
   return (
     <div className="min-h-screen w-64 border-r-2 fixed">
       <div className="pt-6 pl-8 ">
@@ -64,13 +95,16 @@ export default function SideBarPrepaPc() {
           <p className="m-3 text-gray-500 font-semibold">Messagerie</p>
         </button>
       </div>
-      <div className="mt-44 ml-4 flex">
-        <img
-          className="ml-4 w-14"
-          src="/src/assets/logo/avatar1.png"
-          alt="avatar"
-        />
-        <p className="m-3 text-gray-500 font-semibold">Bé Bert</p>
+      <div className=" mt-28 ml-4 flex">
+        {interventionInfo.image !== null ? (
+          interventionInfo.image
+        ) : (
+          <img className="ml-4 w-14" src={avatar} alt="avatar" />
+        )}
+
+        <p className="m-3 text-gray-500 font-semibold">
+          {interventionInfo.firstname}
+        </p>
       </div>
     </div>
   );
