@@ -83,7 +83,7 @@ const destroy = (req, res) => {
 };
 
 const findIntervention = (req, res) => {
-  const { idPatient } = req.body;
+  const idPatient = req.params.id;
   models.intervention
     .interventionInfo(parseInt(idPatient, 10))
     .then(([rows]) => {
