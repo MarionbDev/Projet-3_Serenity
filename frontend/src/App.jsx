@@ -8,7 +8,7 @@ import Connexion from "./pages/Connexion";
 import AccueilDoctor from "./pages/AccueilDoctor";
 import InterventionDoctor from "./components/InterventionDoctor";
 import PrepaPatientMobile from "./pages/PrepaPatientMobile";
-import PrepaPatientPc from "./pages/PrepaPatientPc";
+import PrepaPatientPcOne from "./pages/PrepaPatientPcOne";
 
 function getCurrentDimension() {
   return {
@@ -42,7 +42,7 @@ function App() {
           //   element={<PreparationEtapeFirst />}
           // />
 
-          <Route path="/patient/:id" element={<PrepaPatientPc />} />
+          <Route path="/patient/:id" element={<PrepaPatientPcOne />} />
         )}
 
         <Route path="/doctor" element={<Connexion utilisateur="doctor" />} />
