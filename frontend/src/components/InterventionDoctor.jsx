@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useUserContext } from "../contexts/UserContext";
+import edit from "../assets/logo/edit.png";
+import trash from "../assets/logo/trash.png";
 
 // import PropTypes from "prop-types";
 import SideBarDoctor from "./SideBarDoctor";
@@ -32,11 +34,11 @@ export default function InterventionDoctor() {
     <div className="min-h-screen bg-[#242731]">
       <SideBarDoctor />
       <div className="absolute  w-2/3 mt-[48px] ml-[321px] text-[#FFFFFF]">
-        <p className="text-[24px]">Bonjour Dr </p>
-        {/* <p className="text-[37px]">{interventions[0].name} ?!</p> */}
+        <p className="text-[24px]">Bonjour, </p>
+        <p className="text-[37px]">Une nouvelle intervention ?!</p>
       </div>
       <div className="absolute w-[1055px] h-96 ml-[321px] mt-[172px] rounded-2xl shadow-lg shadow-slate-950/70    ">
-        <div className="flex mt-[32px]  ">
+        <div className="flex mt-[32px] ">
           <img
             src={search}
             alt="search"
@@ -49,8 +51,26 @@ export default function InterventionDoctor() {
             // onChange={(e) => setQuery(e.target.value)}
             // value={query}
           />
+          <div className="flex  ml-[35rem] items-center">
+            <img src={edit} alt="edit" className="w-[24px] h-[24px] mr-8" />
+            <img src={trash} alt="trash" className="w-[24px] h-[24px]" />
+          </div>
         </div>
-        {/* <div>{interventions.map((intervention) => )}</div> */}
+        <section>
+          <div className=" text-gray-500 flex mt-8 text-[16px] h-[45px]">
+            <p className="ml-8">Sélection</p>
+            <p className="ml-[40rem]">Nombre réalisé</p>
+          </div>
+
+          <div className="text-white flex h-[104px] mt-[31px]">
+            {interventions.map((intervention) => (
+              <div key={intervention.id} className="flex">
+                <p className="ml-8">{intervention.name}</p>
+                <p className="ml-[34rem]">{intervention.intervention_count}</p>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );
