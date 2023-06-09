@@ -82,10 +82,27 @@ const destroy = (req, res) => {
     });
 };
 
+const findIntervention = (req, res) => {
+  const { idPatient } = req.body;
+  models.intervention
+    .interventionInfo(parseInt(idPatient, 10))
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows[0]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 module.exports = {
   browse,
   read,
   edit,
   add,
   destroy,
+  findIntervention,
 };
