@@ -7,7 +7,7 @@ class InterventionManager extends AbstractManager {
 
   insert(intervention) {
     return this.database.query(
-      `insert into ${this.table} (time, ) values (?)`,
+      `insert into ${this.table} (time, intervention_id) values (?)`,
       [intervention.time]
     );
   }

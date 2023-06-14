@@ -104,6 +104,23 @@ const login = (req, res) => {
     });
 };
 
+const findSurgeriesAndPatients = (req, res) => {
+  const idDoctor = req.params.id;
+  models.doctor
+    .findAllPraticiensWithSurgeryQuantityAndPatientQuantity(idDoctor)
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
@@ -111,4 +128,5 @@ module.exports = {
   add,
   destroy,
   login,
+  findSurgeriesAndPatients,
 };
