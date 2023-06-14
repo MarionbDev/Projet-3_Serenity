@@ -7,6 +7,9 @@ import Connexion from "./pages/Connexion";
 import SideBarDoctor from "./components/SideBarDoctor";
 import PreparationEtapeFirst from "./pages/PreparationEtapeFirst";
 import PrepaPatientMobile from "./pages/PrepaPatientMobile";
+import PreparationEtapeTwo from "./pages/PreparationEtapeTwo";
+import PreparationEtapeThree from "./pages/PreparationEtapeThree";
+import PreparationEtapeFour from "./pages/PreparationEtapeFour";
 
 function App() {
   return (
@@ -19,6 +22,18 @@ function App() {
         <Route
           path="/patient/:id/comprendre-mon-operation"
           element={<PreparationEtapeFirst />}
+        />
+        <Route
+          path="/patient/:id/demarches-administratives"
+          element={<PreparationEtapeTwo />}
+        />
+        <Route
+          path="/patient/:id/preparer-mon-arrivee"
+          element={<PreparationEtapeThree />}
+        />
+        <Route
+          path="/patient/:id/anticiper ma sortie"
+          element={<PreparationEtapeFour />}
         />
         <Route path="/doctor" element={<Connexion utilisateur="doctor" />} />
         <Route

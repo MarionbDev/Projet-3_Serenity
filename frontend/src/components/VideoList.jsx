@@ -4,7 +4,7 @@ import image5 from "../assets/images/Img5.png";
 function VideoList() {
   return (
     <>
-      <div className="mt-10 ml-14 mb-2">
+      <div className="mt-8 ml-14 mb-2">
         <h1>Les vidéos du Dr Noailles</h1>
       </div>
       <div className="flex">
