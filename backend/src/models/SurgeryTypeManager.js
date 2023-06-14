@@ -26,5 +26,4 @@ class PodcastManager extends AbstractManager {
     );
   }
 }
-
 module.exports = PodcastManager;

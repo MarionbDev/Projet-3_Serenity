@@ -48,7 +48,7 @@ export default function SideBarPrepaPc() {
             src="/src/assets/logo/bag.png"
             alt="icon"
           />
-          <p className="m-3 text-gray-500 font-semibold">Ma préparation</p>
+          <p className="m-2 text-gray-500 font-semibold">Gagner en sécurité</p>
         </button>
         <button
           className="flex items-center rounded-lg w-[90%] h-14"
@@ -70,7 +70,7 @@ export default function SideBarPrepaPc() {
         >
           <img
             className="ml-7 mr-2"
-            src="/src/assets/logo/Notification.png"
+            src="/src/assets/logo/Chart.png"
             alt="icon"
           />
           <p className="m-3 text-gray-500 font-semibold">Agenda</p>
@@ -79,11 +79,7 @@ export default function SideBarPrepaPc() {
           className="flex items-center rounded-lg w-[90%] h-14"
           type="button"
         >
-          <img
-            className="ml-7 mr-2"
-            src="/src/assets/logo/Chat.png"
-            alt="icon"
-          />
+          <img className="ml-7 mr-2" src="/src/assets/icon1.png" alt="icon" />
           <p className="m-3 text-gray-500 font-semibold">Messagerie</p>
         </button>
       </div>
