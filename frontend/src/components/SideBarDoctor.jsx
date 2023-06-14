@@ -26,17 +26,19 @@ export default function SideBarDoctor() {
           />
           <p className="m-2 text-white font-semibold">Mon activité</p>
         </button>
-        <button
-          type="button"
-          className="flex items-center rounded-lg w-[90%] h-14"
-        >
-          <img
-            className="ml-7 mr-2"
-            src="/src/assets/logo/Chart.png"
-            alt="icon"
-          />
-          <p className="m-3 text-gray-500 font-semibold">Praticiens</p>
-        </button>
+        <Link to={`/doctor/${id}/praticien`}>
+          <button
+            type="button"
+            className="flex items-center rounded-lg w-[90%] h-14"
+          >
+            <img
+              className="ml-7 mr-2"
+              src="/src/assets/logo/Chart.png"
+              alt="icon"
+            />
+            <p className="m-3 text-gray-500 font-semibold">Praticiens</p>
+          </button>
+        </Link>
         <button
           className="flex items-center rounded-lg w-[90%] h-14"
           type="button"

@@ -6,9 +6,10 @@ class PodcastManager extends AbstractManager {
   }
 
   insert(surgeryType) {
-    return this.database.query(`insert into ${this.table} (name) values (?)`, [
-      surgeryType.name,
-    ]);
+    return this.database.query(
+      `insert into ${this.table} (name, doctor_id, intervention_id) values (?, ?,?)`,
+      [surgeryType.name, surgeryType.doctor_id, surgeryType.intervention_id]
+    );
   }
 
   update(surgeryType) {
