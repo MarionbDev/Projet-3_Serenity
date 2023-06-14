@@ -37,11 +37,6 @@ function App() {
         {window.innerWidth < 768 ? (
           <Route path="/patient/:id" element={<PrepaPatientMobile />} />
         ) : (
-          // <Route
-          //   path="/patient/:id/comprendre-mon-operation"
-          //   element={<PreparationEtapeFirst />}
-          // />
-
           <Route path="/patient/:id" element={<PrepaPatientPc />} />
         )}
 
