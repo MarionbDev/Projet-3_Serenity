@@ -81,7 +81,10 @@ function App() {
           path="/doctor/:id/praticien"
           element={<PrivateRoutes authorizedRoles="Admin" />}
         >
-          <Route path="/CreateDoctor" element={<CreateDoctor />} />
+          <Route
+            path="/doctor/:id/praticien/CreateDoctor"
+            element={<CreateDoctor />}
+          />
         </Route> */}
       </Routes>
     </UserContextProvider>
