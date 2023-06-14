@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useUserContext } from "../contexts/UserContext";
 import edit from "../assets/logo/edit.png";
 import trash from "../assets/logo/trash.png";
+import PrivateLink from "./PrivateLink";
 
 // import PropTypes from "prop-types";
 import SideBarDoctor from "./SideBarDoctor";
@@ -13,7 +14,7 @@ export default function DoctorList() {
 
   const getAllPraticien = () => {
     fetch(
-      `${import.meta.env.VITE_BACKEND_URL}/api/doctors/${idDoctor}/praticien`
+      `${import.meta.env.VITE_BACKEND_URL}/api/doctors/${idDoctor}/praticiens`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -32,8 +33,10 @@ export default function DoctorList() {
     <div className="min-h-screen bg-[#242731]">
       <SideBarDoctor />
       <div className="absolute  w-2/3 mt-[48px] ml-[321px] text-[#FFFFFF]">
-        <p className="text-[24px]">Bonjour, </p>
+        <p className="text-[24px]">Bonjour, mon frèrito</p>
+        <p className="text-[37px]">ça va mon reuf ? </p>
       </div>
+      <PrivateLink to="/CreateDoctor" text="ADD" authorizedRoles={["Admin"]} />
       <div className="absolute w-[1055px] h-96 ml-[321px] mt-[172px] rounded-2xl shadow-lg shadow-slate-950/70    ">
         <div className="flex mt-[32px] ">
           <img
@@ -60,7 +63,7 @@ export default function DoctorList() {
           </div>
 
           <div className="text-white flex h-[104px] mt-[31px]">
-            {DoctorList.map((doctor) => (
+            {praticien.map((doctor) => (
               <div key={doctor.id} className="flex">
                 <p className="ml-8">{doctor.lastname}</p>
                 <p className="ml-8">{doctor.firstname}</p>

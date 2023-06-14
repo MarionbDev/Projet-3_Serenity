@@ -104,15 +104,15 @@ const login = (req, res) => {
     });
 };
 
-const findPraticien = (req, res) => {
-  const idPatient = req.params.id;
-  models.praticien
-    .PraticienInfo(parseInt(idPatient, 10))
+const findSurgeriesAndPatients = (req, res) => {
+  const idDoctor = req.params.id;
+  models.doctor
+    .findAllPraticiensWithSurgeryQuantityAndPatientQuantity(idDoctor)
     .then(([rows]) => {
       if (rows[0] == null) {
         res.sendStatus(404);
       } else {
-        res.send(rows[0]);
+        res.send(rows);
       }
     })
     .catch((err) => {
@@ -128,5 +128,5 @@ module.exports = {
   add,
   destroy,
   login,
-  findPraticien,
+  findSurgeriesAndPatients,
 };

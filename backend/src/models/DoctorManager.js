@@ -40,14 +40,9 @@ class DoctorManager extends AbstractManager {
     ]);
   }
 
-  findAllPraticien() {
-    return this.database.query(`
-  SELECT d.firstname, d.lastname, COUNT(i.id) AS intervention_count, COUNT(DISTINCT i.patient_id) AS patient_count
-  -> FROM ${this.table}
-  -> JOIN surgery_type st ON d.id = st.doctor_id
-  -> JOIN intervention i ON st.intervention_id = i.id
-  -> GROUP BY d.id;
-  `);
+  findAllPraticiensWithSurgeryQuantityAndPatientQuantity(idDoctor) {
+    const sql = `SELECT d.firstname, d.lastname, COUNT(i.id) AS intervention_count, COUNT(DISTINCT i.patient_id) AS patient_count FROM ${this.table} d JOIN surgery_type st ON d.id = st.doctor_id JOIN intervention i ON st.intervention_id = i.id GROUP BY d.id HAVING d.id = ?`;
+    return this.database.query(sql, [idDoctor]);
   }
 }
 
