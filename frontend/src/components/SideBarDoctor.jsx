@@ -44,7 +44,7 @@ export default function SideBarDoctor() {
           )}
         </NavLink>
 
-        <NavLink to={`/doctor/${id}/doctors`}>
+        <NavLink to={`/doctor/${id}/praticien`}>
           {({ isActive }) => (
             <button
               type="button"
