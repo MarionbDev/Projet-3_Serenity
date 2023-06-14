@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { UserContextProvider } from "./contexts/UserContext";
-import CreateDoctor from "./components/CreateDoctor";
+// import CreateDoctor from "./components/CreateDoctor";
 import "./App.css";
 import Home from "./pages/Home";
 import Connexion from "./pages/Connexion";
@@ -14,7 +14,7 @@ import PreparationEtapeTwo from "./pages/PreparationEtapeTwo";
 import PreparationEtapeThree from "./pages/PreparationEtapeThree";
 import PreparationEtapeFour from "./pages/PreparationEtapeFour";
 import PrepaPatientPcOne from "./pages/PrepaPatientPcOne";
-import PrivateRoutes from "./components/PrivateRoutes";
+// import PrivateRoutes from "./components/PrivateRoutes";
 
 function getCurrentDimension() {
   return {
@@ -77,12 +77,12 @@ function App() {
           path="/doctor/:id/praticien"
           element={<DoctorList utilisateur="/doctor/:id/praticien" />}
         />
-        <Route
+        {/* <Route
           path="/doctor/:id/praticien"
           element={<PrivateRoutes authorizedRoles="Admin" />}
         >
           <Route path="/CreateDoctor" element={<CreateDoctor />} />
-        </Route>
+        </Route> */}
       </Routes>
     </UserContextProvider>
   );

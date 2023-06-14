@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useUserContext } from "../contexts/UserContext";
 import edit from "../assets/logo/edit.png";
 import trash from "../assets/logo/trash.png";
-import PrivateLink from "./PrivateLink";
+// import PrivateLink from "./PrivateLink";
 
 // import PropTypes from "prop-types";
 import SideBarDoctor from "./SideBarDoctor";
@@ -36,7 +36,7 @@ export default function DoctorList() {
         <p className="text-[24px]">Bonjour, mon frèrito</p>
         <p className="text-[37px]">ça va mon reuf ? </p>
       </div>
-      <PrivateLink to="/CreateDoctor" text="ADD" authorizedRoles={["Admin"]} />
+      {/* <PrivateLink to="/CreateDoctor" text="ADD" authorizedRoles={["Admin"]} /> */}
       <div className="absolute w-[1055px] h-96 ml-[321px] mt-[172px] rounded-2xl shadow-lg shadow-slate-950/70    ">
         <div className="flex mt-[32px] ">
           <img
