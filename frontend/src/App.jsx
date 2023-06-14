@@ -10,6 +10,7 @@ import InterventionDoctor from "./components/InterventionDoctor";
 import PrepaPatientMobile from "./pages/PrepaPatientMobile";
 import DoctorList from "./components/DoctorList";
 import PrepaPatientPcOne from "./pages/PrepaPatientPcOne";
+import PrivateRoutes from "./components/PrivateRoutes";
 
 function getCurrentDimension() {
   return {
@@ -61,7 +62,12 @@ function App() {
           path="/doctor/:id/praticien"
           element={<DoctorList utilisateur="/doctor/:id/praticien" />}
         />
-        <Route path="/create-doctor" element={<CreateDoctor />} />
+        <Route
+          path="/doctor/:id/praticien"
+          element={<PrivateRoutes authorizedRoles="Admin" />}
+        >
+          <Route path="/CreateDoctor" element={<CreateDoctor />} />
+        </Route>
       </Routes>
     </UserContextProvider>
   );
