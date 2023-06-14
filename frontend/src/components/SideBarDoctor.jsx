@@ -1,5 +1,5 @@
 import { NavLink, useParams } from "react-router-dom";
-import logoPraticien from "../assets/logo/logoDoctor/Chart.png";
+import logoPraticient from "../assets/logo/logoDoctor/Chart.png";
 import logoPatient from "../assets/logo/logoDoctor/Discovery.png";
 
 export default function SideBarDoctor() {
@@ -7,9 +7,8 @@ export default function SideBarDoctor() {
 
   return (
     <div className="min-h-screen w-64 border-r-[1px] border-[#a5a5a5]/20  fixed ">
-      <div className="pt-[48px] pl-9 flex  ">
-        <img src="/src/assets/logo/logo1.png" alt="logo" />
-        <p className="text-gray-500 text-[20px] pl-4">SERENITY</p>
+      <div className="pt-6 pl-8 ">
+        <img src={logoPraticient} alt="logo" />
       </div>
 
       <div className="mt-20 ml-4">
@@ -54,7 +53,7 @@ export default function SideBarDoctor() {
                   : "flex items-center rounded-lg w-[90%] h-14 "
               }
             >
-              <img className="ml-7 mr-2" src={logoPraticien} alt="icon" />
+              <img className="ml-7 mr-2" src={logoPraticient} alt="icon" />
               <p
                 className={
                   isActive
