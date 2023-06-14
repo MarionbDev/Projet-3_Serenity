@@ -1,15 +1,19 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { UserContextProvider } from "./contexts/UserContext";
-import CreateDoctor from "./components/CreateDoctor";
+// import CreateDoctor from "./components/CreateDoctor";
 import "./App.css";
 import Home from "./pages/Home";
 import Connexion from "./pages/Connexion";
 import AccueilDoctor from "./pages/AccueilDoctor";
 import InterventionDoctor from "./components/InterventionDoctor";
 import PrepaPatientMobile from "./pages/PrepaPatientMobile";
-import PrepaPatientPcOne from "./pages/PrepaPatientPcOne";
+import DoctorList from "./components/DoctorList";
 import PreparationEtapeFirst from "./pages/PreparationEtapeFirst";
+import PreparationEtapeTwo from "./pages/PreparationEtapeTwo";
+import PreparationEtapeThree from "./pages/PreparationEtapeThree";
+import PreparationEtapeFour from "./pages/PreparationEtapeFour";
+import PrepaPatientPcOne from "./pages/PrepaPatientPcOne";
 
 function getCurrentDimension() {
   return {
@@ -45,7 +49,18 @@ function App() {
           path="/patient/:id/comprendre-mon-operation"
           element={<PreparationEtapeFirst />}
         />
-
+        <Route
+          path="/patient/:id/demarches-administratives"
+          element={<PreparationEtapeTwo />}
+        />
+        <Route
+          path="/patient/:id/preparer-mon-arrivee"
+          element={<PreparationEtapeThree />}
+        />
+        <Route
+          path="/patient/:id/anticiper ma sortie"
+          element={<PreparationEtapeFour />}
+        />
         <Route path="/doctor" element={<Connexion utilisateur="doctor" />} />
         <Route
           path="/doctor/:id"
@@ -57,7 +72,16 @@ function App() {
             <InterventionDoctor utilisateur="/doctor/:id/intervention" />
           }
         />
-        <Route path="/create-doctor" element={<CreateDoctor />} />
+        <Route
+          path="/doctor/:id/praticien"
+          element={<DoctorList utilisateur="/doctor/:id/praticien" />}
+        />
+        {/* <Route
+          path="/doctor/:id/praticien"
+          element={<PrivateRoutes authorizedRoles="Admin" />}
+        >
+          <Route path="/CreateDoctor" element={<CreateDoctor />} />
+        </Route> */}
       </Routes>
     </UserContextProvider>
   );

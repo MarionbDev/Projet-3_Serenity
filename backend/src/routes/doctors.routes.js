@@ -14,6 +14,7 @@ router.post(
   doctorControllers.login,
   passwordControllers.verifyPassword
 );
+router.get("/:id/praticiens", doctorControllers.findSurgeriesAndPatients);
 router.delete("/:id", doctorControllers.destroy);
 
 module.exports = router;

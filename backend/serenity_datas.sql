@@ -91,7 +91,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `protocol` WRITE;
 /*!40000 ALTER TABLE `protocol` DISABLE KEYS */;
-INSERT INTO `protocol` VALUES (1,'opération du ménisque','Neque porro quisquam est qui dolorem ipsum quia dolor sit amet'),(2,'appendicectomie','Neque porro quisquam est qui dolorem ipsum quia dolor sit amet');
+INSERT INTO `protocol` VALUES (1,'Opération du ménisque','Neque porro quisquam est qui dolorem ipsum quia dolor sit amet'),(2,'Appendicectomie','Neque porro quisquam est qui dolorem ipsum quia dolor sit amet');
 /*!40000 ALTER TABLE `protocol` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -101,7 +101,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `surgery_type` WRITE;
 /*!40000 ALTER TABLE `surgery_type` DISABLE KEYS */;
-INSERT INTO `surgery_type` VALUES (1,'élongation croisée du genoux',1,2),(2,'Thermocoagulation',2,3),(3,'Hystéroscopie',3,1);
+INSERT INTO `surgery_type` VALUES (1,'Elongation croisée du genoux',1,2),(2,'Thermocoagulation',2,3),(3,'Hystéroscopie',3,1);
 /*!40000 ALTER TABLE `surgery_type` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

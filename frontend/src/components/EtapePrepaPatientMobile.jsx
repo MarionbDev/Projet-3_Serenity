@@ -12,7 +12,7 @@ export default function EtapePrepaPatientMobile() {
           </p>
         </button>
       </Link>
-      <Link to="/demarches-administratives">
+      <Link to="/patient/:id/demarches-administratives">
         <button
           type="button"
           className="w-[100%] h-20 rounded-xl mt-4 bg-teal-400"
@@ -22,7 +22,7 @@ export default function EtapePrepaPatientMobile() {
           </p>
         </button>
       </Link>
-      <Link to="/Préparer-mon-arrivée">
+      <Link to="/patient/:id/preparer-mon-arrivee">
         <button
           type="button"
           className="w-[100%] h-20 rounded-xl mt-4 bg-rose-400"
@@ -32,10 +32,10 @@ export default function EtapePrepaPatientMobile() {
           </p>
         </button>
       </Link>
-      <Link to="/Anticiper-ma-sortie">
+      <Link to="/patient/:id/anticiper ma sortie">
         <button
           type="button"
-          className="w-[100%] h-20 rounded-xl mt-4 bg-lime-300"
+          className="w-[100%] h-20 rounded-xl mt-4 bg-green-400"
         >
           <p className="flex justify-start pl-4 -mt-6 text-xs text-white font-semibold">
             Anticiper ma sortie
