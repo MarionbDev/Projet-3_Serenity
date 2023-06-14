@@ -1,5 +1,5 @@
 import SideBarPrepaPc from "../components/SideBarPrepaPc";
 
-export default function PrepaPatientPc() {
+export default function PrepaEtapeFirstPc() {
   return <SideBarPrepaPc />;
 }
