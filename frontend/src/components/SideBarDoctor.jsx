@@ -1,6 +1,7 @@
 // import PropTypes from "prop-types";
 // import { useUserContext } from "../contexts/UserContext";
 import { Link, useParams } from "react-router-dom";
+import logoPraticient from "../assets/logoDoctor/Chart.png";
 
 export default function SideBarDoctor() {
   const { id } = useParams();
@@ -8,7 +9,7 @@ export default function SideBarDoctor() {
   return (
     <div className="min-h-screen w-64 border-r-[1px] border-[#a5a5a5]/20  fixed ">
       <div className="pt-6 pl-8 ">
-        <img src="/src/assets/logo/logo1.png" alt="logo" />
+        <img src={logoPraticient} alt="logo" />
       </div>
 
       <div className="mt-20 ml-4">
@@ -19,22 +20,14 @@ export default function SideBarDoctor() {
           className="bg-indigo-500 flex items-center rounded-lg w-[90%] h-14"
           type="button"
         >
-          <img
-            className="ml-6 mr-2"
-            src="/src/assets/logo/icon1.png"
-            alt="icon"
-          />
+          <img className="ml-6 mr-2" src={logoPraticient} alt="icon" />
           <p className="m-2 text-white font-semibold">Mon activité</p>
         </button>
         <button
           type="button"
           className="flex items-center rounded-lg w-[90%] h-14"
         >
-          <img
-            className="ml-7 mr-2"
-            src="/src/assets/logo/Chart.png"
-            alt="icon"
-          />
+          <img className="ml-7 mr-2" src={logoPraticient} alt="icon" />
           <p className="m-3 text-gray-500 font-semibold">Praticiens</p>
         </button>
         <button

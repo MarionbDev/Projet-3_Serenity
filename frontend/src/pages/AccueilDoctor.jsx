@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import SideBarDoctor from "../components/SideBarDoctor";
-import search from "../assets/logo/Search.png";
-import notification from "../assets/logo/bell.png";
+import search from "../assets/logoDoctor/Search.png";
+import notification from "../assets/logoDoctor/bell.png";
 
 export default function AccueilDoctor() {
   const [doctor, setDoctor] = useState(null);

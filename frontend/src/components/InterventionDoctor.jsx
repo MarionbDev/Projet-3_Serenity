@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { useUserContext } from "../contexts/UserContext";
-import edit from "../assets/logo/edit.png";
-import trash from "../assets/logo/trash.png";
+import edit from "../assets/logoDoctor/edit.png";
+import trash from "../assets/logoDoctor/trash.png";
 
 // import PropTypes from "prop-types";
 import SideBarDoctor from "./SideBarDoctor";
-import search from "../assets/logo/Search.png";
+import search from "../assets/logoDoctor/Search.png";
 
 export default function InterventionDoctor() {
   const [interventions, setInterventions] = useState([]);

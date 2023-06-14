@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import { useUserContext } from "../contexts/UserContext";
-import avatar from "../assets/logo/avatar1.png";
+import avatar from "../assets/logoPatient/avatar1.png";
+import logoSerenity from "../assets/logoPatient/logo1.png";
+import iconPrepa from "../assets/logoPatient/preparation.png";
+import iconBag from "../assets/logoPatient/Bag.png";
+import iconAgenda from "../assets/logoPatient/Chart.png";
+import iconNotif from "../assets/logoPatient/Notification.png";
+import iconChat from "../assets/logoPatient/Chat.png";
 
 export default function SideBarPrepaPc() {
   const { idPatient } = useUserContext();
@@ -25,69 +31,49 @@ export default function SideBarPrepaPc() {
   return (
     <div className="min-h-screen w-64 border-r-2 fixed">
       <div className="pt-6 pl-8 ">
-        <img src="/src/assets/logo/logo1.png" alt="logo" />
+        <img src={logoSerenity} alt="logo" />
       </div>
       <div className="mt-20 ml-4">
         <button
           className="bg-indigo-500 flex items-center rounded-lg w-[90%] h-14"
           type="button"
         >
-          <img
-            className="ml-6 mr-2"
-            src="/src/assets/logo/icon1.png"
-            alt="icon"
-          />
+          <img className="ml-6 mr-2" src={iconPrepa} alt="icon" />
           <p className="m-2 text-white font-semibold">Ma préparation</p>
         </button>
         <button
           type="button"
-          className="flex items-center rounded-lg w-[90%] h-14"
+          className="flex items-center rounded-lg w-[100%] h-14"
         >
-          <img
-            className="ml-7 mr-2"
-            src="/src/assets/logo/bag.png"
-            alt="icon"
-          />
-          <p className="m-3 text-gray-500 font-semibold">Ma préparation</p>
+          <img className="ml-7 mr-2" src={iconBag} alt="icon" />
+          <p className="m-3 text-gray-500 font-semibold">Gagner en sérénité</p>
         </button>
         <button
           className="flex items-center rounded-lg w-[90%] h-14"
           type="button"
         >
-          <img
-            className="ml-7 mr-2"
-            src="/src/assets/logo/Chart.png"
-            alt="icon"
-          />
+          <img className="ml-7 mr-2" src={iconAgenda} alt="icon" />
           <p className="m-3 text-gray-500 font-semibold">Agenda</p>
         </button>
       </div>
-      <div className="mt-20 ml-4">
+      <div className="border-t-2 mt-20 ml-4 mr-4">
         <p className="m-3 text-gray-500 font-semibold text-sm">Des nouvelles</p>
         <button
           className="flex items-center rounded-lg w-[90%] h-14"
           type="button"
         >
-          <img
-            className="ml-7 mr-2"
-            src="/src/assets/logo/Notification.png"
-            alt="icon"
-          />
-          <p className="m-3 text-gray-500 font-semibold">Agenda</p>
+          <img className="ml-7 mr-2" src={iconNotif} alt="icon" />
+          <p className="m-3 text-gray-500 font-semibold">Notification</p>
         </button>
         <button
           className="flex items-center rounded-lg w-[90%] h-14"
           type="button"
         >
-          <img
-            className="ml-7 mr-2"
-            src="/src/assets/logo/Chat.png"
-            alt="icon"
-          />
+          <img className="ml-7 mr-2 fill-black" src={iconChat} alt="icon" />
           <p className="m-3 text-gray-500 font-semibold">Messagerie</p>
         </button>
       </div>
-      <div className=" mt-28 ml-4 flex">
+      <div className=" mt-40 ml-4 flex">
         {interventionInfo.image !== null ? (
           interventionInfo.image
         ) : (
