@@ -22,7 +22,7 @@ class ContentManager extends AbstractManager {
 
   update(content) {
     return this.database.query(
-      `update ${this.table} set tilte = ?, type = ?, timing = ?, description = ?, source = ?, step = ?, category = ? = ? where id = ?`,
+      `update ${this.table} set title = ?, type = ?, timing = ?, description = ?, source = ?, step = ?, category = ? = ? where id = ?`,
       [
         content.title,
         content.type,

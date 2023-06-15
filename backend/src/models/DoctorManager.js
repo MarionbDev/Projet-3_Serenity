@@ -7,13 +7,13 @@ class DoctorManager extends AbstractManager {
 
   insert(doctor) {
     return this.database.query(
-      `insert into ${this.table} (firstname, lastname, tel, mail, password, role) values (?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (firstname, lastname, tel, mail, hashedPassword, role) values (?, ?, ?, ?, ?, ?)`,
       [
         doctor.firstname,
         doctor.lastname,
         doctor.tel,
         doctor.mail,
-        doctor.password,
+        doctor.hashedPassword,
         doctor.role,
       ]
     );
@@ -21,13 +21,13 @@ class DoctorManager extends AbstractManager {
 
   update(doctor) {
     return this.database.query(
-      `update ${this.table} set firstname = ?, lastname = ?, tel = ?, mail = ?, password = ?, role = ? = ? where id = ?`,
+      `update ${this.table} set firstname = ?, lastname = ?, tel = ?, mail = ?, hashedPassword = ?, role = ? = ? where id = ?`,
       [
         doctor.firstname,
         doctor.lastname,
         doctor.tel,
         doctor.mail,
-        doctor.password,
+        doctor.hashedPassword,
         doctor.role,
         doctor.id,
       ]

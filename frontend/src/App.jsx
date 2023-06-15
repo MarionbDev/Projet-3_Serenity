@@ -14,7 +14,6 @@ import PreparationEtapeTwo from "./pages/PreparationEtapeTwo";
 import PreparationEtapeThree from "./pages/PreparationEtapeThree";
 import PreparationEtapeFour from "./pages/PreparationEtapeFour";
 import PrepaPatientPcOne from "./pages/PrepaPatientPcOne";
-// import PrivateRoutes from "./components/PrivateRoutes";
 
 function getCurrentDimension() {
   return {
