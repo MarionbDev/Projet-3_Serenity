@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useUserContext } from "../contexts/UserContext";
-import edit from "../assets/logo/logoDoctor/edit.png";
 import trash from "../assets/logo/logoDoctor/trash.png";
 import search from "../assets/logo/logoDoctor/Search.png";
 import SideBarDoctor from "./SideBarDoctor";
