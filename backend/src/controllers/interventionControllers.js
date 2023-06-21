@@ -53,7 +53,7 @@ const edit = (req, res) => {
 const add = (req, res) => {
   const intervention = req.body;
 
-  models.protocol
+  models.intervention
     .insert(intervention)
     .then(([result]) => {
       res.status(201).json(result);

@@ -100,7 +100,10 @@ export default function InterventionDoctor() {
           </ul>
         </section>
         <div className="flex justify-center mt-8">
-          <Link to={`/doctors/${idDoctor}/interventions/create-intervention`}>
+          <Link
+            to={`/doctors/${idDoctor}/interventions/create-intervention`}
+            className="bg-black inline-block rounded-full shadow-xl px-6 py-2 text-white hover:text-white hover:border-2 hover:border-white"
+          >
             ADD
           </Link>
         </div>
