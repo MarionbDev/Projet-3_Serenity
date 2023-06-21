@@ -1,6 +1,6 @@
-import HeaderMobilePrepaPatient from "../components/HeaderMobilePrepaPatient";
-import HeaderPreparation from "../components/HeaderPreparation";
-import ImageListTwo from "../components/ImageListTwo";
+import HeaderMobilePrepaPatient from "../componentsPatient/mobile/HeaderMobilePrepaPatient";
+import HeaderPreparation from "../componentsPatient/mobile/HeaderPreparation";
+import ImageListTwo from "../componentsPatient/mobile/ImageListTwo";
 
 function PreparationEtapeTwo() {
   return (

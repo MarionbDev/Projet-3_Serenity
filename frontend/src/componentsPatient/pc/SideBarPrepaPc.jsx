@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { useUserContext } from "../contexts/UserContext";
-import avatar from "../assets/logoPatient/avatar1.png";
-import logoSerenity from "../assets/logoPatient/logo1.png";
-import iconPrepa from "../assets/logoPatient/preparation.png";
-import iconBag from "../assets/logoPatient/Bag.png";
-import iconAgenda from "../assets/logoPatient/Chart.png";
-import iconNotif from "../assets/logoPatient/Notification.png";
-import iconChat from "../assets/logoPatient/Chat.png";
+import { useUserContext } from "../../contexts/UserContext";
+import avatar from "../../assets/logo/logoPatient/avatar1.png";
+import logoSerenity from "../../assets/logo/logoPatient/logo1.png";
+import iconPrepa from "../../assets/logo/logoPatient/preparation.png";
+import iconBag from "../../assets/logo/logoPatient/Bag.png";
+import iconAgenda from "../../assets/logo/logoPatient/Chart.png";
+import iconNotif from "../../assets/logo/logoPatient/Notification.png";
+import iconChat from "../../assets/logo/logoPatient/Chat.png";
 
 export default function SideBarPrepaPc() {
   const { idPatient } = useUserContext();

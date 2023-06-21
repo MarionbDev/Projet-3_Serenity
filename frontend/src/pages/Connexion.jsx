@@ -4,8 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../contexts/UserContext";
 
 function Connexion({ utilisateur }) {
-  const { setIdPatient } = useUserContext();
-  const { setIdDoctor } = useUserContext();
+  const { setIdPatient, setIdDoctor, setRole } = useUserContext();
   const navigate = useNavigate();
   const [passwordIsVisible, setPasswordIsVisible] = useState(false);
   const [mail, setMail] = useState("");
@@ -25,7 +24,7 @@ function Connexion({ utilisateur }) {
     if (!mail || !password) {
       alert("You must provide an email and a password !");
     } else {
-      fetch(`${import.meta.env.VITE_BACKEND_URL}/api/${utilisateur}s/login`, {
+      fetch(`${import.meta.env.VITE_BACKEND_URL}/api/${utilisateur}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -45,6 +44,9 @@ function Connexion({ utilisateur }) {
             setIdPatient(data.id);
           } else {
             setIdDoctor(data.id);
+          }
+          if (data.role) {
+            setRole(data.role);
           }
         })
         .catch((err) => {

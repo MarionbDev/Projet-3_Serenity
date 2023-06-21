@@ -16,3 +16,9 @@ body {
   height: 50vh;
   margin: auto;
 }
+
+::-webkit-scrollbar {
+  background: transparent;
+  height: 10px;
+  width: 0;
+}
