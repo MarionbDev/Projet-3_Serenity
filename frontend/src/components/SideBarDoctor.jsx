@@ -15,7 +15,7 @@ export default function SideBarDoctor() {
         <p className="text-gray-500 text-[12px] pb-4 ml-7">
           Console d'administration
         </p>
-        <NavLink to={`/doctor/${id}/`}>
+        <NavLink to={`/doctors/${id}/`}>
           {({ isActive }) => (
             <button
               className={
@@ -43,7 +43,7 @@ export default function SideBarDoctor() {
           )}
         </NavLink>
 
-        <NavLink to={`/doctor/${id}/praticien`}>
+        <NavLink to={`/doctors/${id}/praticiens`}>
           {({ isActive }) => (
             <button
               type="button"
@@ -67,7 +67,7 @@ export default function SideBarDoctor() {
           )}
         </NavLink>
 
-        <NavLink to={`/doctor/${id}/patients`}>
+        <NavLink to={`/doctors/${id}/patients`}>
           {({ isActive }) => (
             <button
               className={
@@ -91,7 +91,7 @@ export default function SideBarDoctor() {
           )}
         </NavLink>
 
-        <NavLink to={`/doctor/${id}/intervention`}>
+        <NavLink to={`/doctors/${id}/interventions`}>
           {({ isActive }) => (
             <button
               className={
