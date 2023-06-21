@@ -11,6 +11,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.leaflet-container {
+  width: 90%;
+  height: 50vh;
+  margin: auto;
+}
+
 ::-webkit-scrollbar {
   background: transparent;
   height: 10px;
