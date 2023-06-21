@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { useUserContext } from "../contexts/UserContext";
 import edit from "../assets/logo/logoDoctor/edit.png";
 import trash from "../assets/logo/logoDoctor/trash.png";
-import PrivateLink from "./PrivateLink";
+import PrivateLink from "../components/PrivateLink";
 // import PropTypes from "prop-types";
 import SideBarDoctor from "./SideBarDoctor";
 import search from "../assets/logo/logoDoctor/Search.png";
 import HeaderDoctor from "./HeaderDoctor";
-import imgList from "../assets/logo/logoDoctor/imgList.png";
+import imgList from "../assets/images/Img.png";
 
 export default function DoctorList() {
   const [praticien, setPraticien] = useState([]);
