@@ -12,6 +12,8 @@ import PreparationEtapeFirst from "./pages/PreparationEtapeFirst";
 import PreparationEtapeTwo from "./pages/PreparationEtapeTwo";
 import PreparationEtapeThree from "./pages/PreparationEtapeThree";
 import PreparationEtapeFour from "./pages/PreparationEtapeFour";
+import PreparationEtapeFive from "./pages/PreparationEtapeFive";
+
 import PrepaPatientPcOne from "./pages/PrepaPatientPcOne";
 
 function getCurrentDimension() {
@@ -59,6 +61,10 @@ function App() {
         <Route
           path="/patient/:id/anticiper ma sortie"
           element={<PreparationEtapeFour />}
+        />
+        <Route
+          path="/patient/:id/Ma-check-list"
+          element={<PreparationEtapeFive />}
         />
         <Route path="/doctor" element={<Connexion utilisateur="doctor" />} />
         <Route

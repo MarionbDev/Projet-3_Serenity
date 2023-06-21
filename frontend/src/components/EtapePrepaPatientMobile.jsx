@@ -42,7 +42,7 @@ export default function EtapePrepaPatientMobile() {
           </p>
         </button>
       </Link>
-      <Link to="/Ma-check-list">
+      <Link to="/patient/:id/Ma-check-list">
         <button
           type="button"
           className="w-[100%] h-20 rounded-xl mt-4 bg-indigo-500"
