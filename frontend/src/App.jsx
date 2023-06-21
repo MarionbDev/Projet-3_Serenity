@@ -6,6 +6,7 @@ import PrivateRoutes from "./components/PrivateRoutes";
 import "./App.css";
 import Home from "./pages/Home";
 import Connexion from "./pages/Connexion";
+import LatLongApi from "./pages/LatLongApi";
 import AccueilDoctor from "./pageDoctor/AccueilDoctor";
 import InterventionDoctor from "./componentsDoctor/InterventionDoctor";
 import PrepaPatientMobile from "./pagePatient/PrepaPatientMobile";
@@ -55,11 +56,11 @@ function App() {
         )}
 
         <Route
-          path="/patient/:id/comprendre-mon-operation"
+          path="/patients/:id/comprendre-mon-operation"
           element={<PreparationEtapeFirst />}
         />
         <Route
-          path="/patient/:id/demarches-administratives"
+          path="/patients/:id/demarches-administratives"
           intervention
           element={<PreparationEtapeTwo />}
         />
@@ -68,11 +69,15 @@ function App() {
           element={<PreparationEtapeThree />}
         />
         <Route
-          path="/patients/:id/anticiper ma sortie"
+          path="/patients/:id/anticiper-ma-sortie"
           element={<PreparationEtapeFour />}
         />
         <Route
-          path="/patient/:id/Ma-check-list"
+          path="/patients/:id/anticiper-ma-sortie/latlong"
+          element={<LatLongApi />}
+        />
+        <Route
+          path="/patients/:id/Ma-check-list"
           element={<PreparationEtapeFive />}
         />
         <Route path="/doctor" element={<Connexion utilisateur="doctor" />} />

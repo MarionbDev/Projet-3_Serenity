@@ -1,4 +1,7 @@
 const models = require("../models");
+require("dotenv").config();
+
+const { TOKEN_API } = process.env;
 
 const browse = (req, res) => {
   models.profesionnel
@@ -58,7 +61,40 @@ const add = (req, res) => {
   models.profesionnel
     .insert(profesionnel)
     .then(([result]) => {
-      res.location(`/profesionnels/${result.insertId}`).sendStatus(201);
+      models.profesionnel
+        .find(result.insertId)
+        .then(([pro]) => {
+          fetch(
+            `https://api.geoapify.com/v1/geocode/search?text=${pro[0].road} ${pro[0].zip_code} ${pro[0].city} ${pro[0].country}&apiKey=${TOKEN_API}`
+          )
+            .then((response) => {
+              return response.json();
+            })
+            .then((data) => {
+              const proId = data;
+              proId.latitude = data.features[0].properties.lat;
+              proId.longitude = data.features[0].properties.lon;
+              proId.id = result.insertId;
+              models.profesionnel
+                .updateLatLong(proId)
+                .then(([resultnewLatLong]) => {
+                  if (resultnewLatLong.affectedRows === 0) {
+                    res.sendStatus(404);
+                  } else {
+                    res.sendStatus(204);
+                  }
+                })
+                .catch((err) => {
+                  console.error(err);
+                  res.sendStatus(500);
+                });
+            })
+            .catch((err) => console.error(err));
+        })
+        .catch((err) => {
+          console.error(err);
+          res.sendStatus(500);
+        });
     })
     .catch((err) => {
       console.error(err);
