@@ -6,7 +6,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import Connexion from "./pages/Connexion";
 import AccueilDoctor from "./pages/AccueilDoctor";
-import InterventionDoctor from "./components/InterventionDoctor";
+import InterventionDoctor from "./pages/InterventionDoctor";
 import PrepaPatientMobile from "./pages/PrepaPatientMobile";
 import DoctorList from "./components/DoctorList";
 import PreparationEtapeFirst from "./pages/PreparationEtapeFirst";
