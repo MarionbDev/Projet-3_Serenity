@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useUserContext } from "../contexts/UserContext";
 import edit from "../assets/logo/logoDoctor/edit.png";
 import trash from "../assets/logo/logoDoctor/trash.png";
@@ -98,6 +99,11 @@ export default function InterventionDoctor() {
             ))}
           </ul>
         </section>
+        <div className="flex justify-center mt-8">
+          <Link to={`/doctors/${idDoctor}/interventions/create-intervention`}>
+            ADD
+          </Link>
+        </div>
       </div>
     </div>
   );
