@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useUserContext } from "../contexts/UserContext";
 import trash from "../assets/logo/logoDoctor/trash.png";
 import search from "../assets/logo/logoDoctor/Search.png";
@@ -142,13 +142,13 @@ export default function InterventionDoctor() {
               ))}
             </ul>
           </div>
-          <div className="flex justify-center ">
-            <button
-              type="button"
-              className=" flex justify-center items-center bg-black text-white text-[14px] w-[166px] h-[56px] mb-2 mt-[38px] rounded-[16px] "
+          <div className="flex justify-center mt-8">
+            <Link
+              to={`/doctors/${idDoctor}/interventions/create-intervention`}
+              className="bg-black  rounded-full shadow-xl px-6 py-2 text-white hover:text-white hover:border-2 hover:border-white "
             >
-              <p>Nouvelle intervention</p>
-            </button>
+              ADD
+            </Link>
           </div>
         </section>
       </div>
