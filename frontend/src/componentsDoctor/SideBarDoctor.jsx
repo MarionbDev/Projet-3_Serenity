@@ -6,7 +6,7 @@ export default function SideBarDoctor() {
   const { id } = useParams();
 
   return (
-    <div className="min-h-screen w-64 border-r-[1px] border-[#a5a5a5]/20  fixed ">
+    <div className="min-h-screen w-64 border-r-[1px] border-[#a5a5a5]/20 fixed">
       <div className="pt-6 pl-8 ">
         <img src={logoPraticient} alt="logo" />
       </div>

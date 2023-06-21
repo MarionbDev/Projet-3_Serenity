@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
-import { useUserContext } from "../contexts/UserContext";
-import { convertDateFormat, convertHourFormat } from "../services/convertTime";
-import notif from "../assets/logoPatient/bell.png";
+import { useUserContext } from "../../contexts/UserContext";
+import {
+  convertDateFormat,
+  convertHourFormat,
+} from "/src/services/convertTime";
+import notif from "../../assets/logo/logoPatient/Notification.png";
 
 export default function HeaderPrepaPatientPc() {
   const [interventionInfo, setInterventionInfo] = useState("");
