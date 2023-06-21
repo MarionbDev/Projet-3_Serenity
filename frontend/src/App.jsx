@@ -69,11 +69,11 @@ function App() {
           element={<PreparationEtapeThree />}
         />
         <Route
-          path="/patient/:id/anticiper-ma-sortie"
+          path="/patients/:id/anticiper-ma-sortie"
           element={<PreparationEtapeFour />}
         />
         <Route
-          path="/patient/:id/anticiper-ma-sortie/latlong"
+          path="/patients/:id/anticiper-ma-sortie/latlong"
           element={<LatLongApi />}
         />
         <Route
