@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useUserContext } from "../../contexts/UserContext";
+import { useUserContext } from "../contexts/UserContext";
 
 export default function EtapePrepaPatientMobile() {
   const { idPatient } = useUserContext();
