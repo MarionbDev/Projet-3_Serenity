@@ -1,6 +1,6 @@
-import image1 from "/src/assets/images/Img.png";
-import image2 from "/src/assets/images/Img2.png";
-import image3 from "/src/assets/images/Img3.png";
+import image1 from "../../assets/images/Img.png";
+import image2 from "../../assets/images/Img2.png";
+import image3 from "../../assets/images/Img3.png";
 
 function ImageList() {
   return (
