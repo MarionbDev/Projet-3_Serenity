@@ -56,11 +56,11 @@ function App() {
         )}
 
         <Route
-          path="/patient/:id/comprendre-mon-operation"
+          path="/patients/:id/comprendre-mon-operation"
           element={<PreparationEtapeFirst />}
         />
         <Route
-          path="/patient/:id/demarches-administratives"
+          path="/patients/:id/demarches-administratives"
           intervention
           element={<PreparationEtapeTwo />}
         />
@@ -69,15 +69,15 @@ function App() {
           element={<PreparationEtapeThree />}
         />
         <Route
-          path="/patient/:id/anticiper-ma-sortie"
+          path="/patients/:id/anticiper-ma-sortie"
           element={<PreparationEtapeFour />}
         />
         <Route
-          path="/patient/:id/anticiper-ma-sortie/latlong"
+          path="/patients/:id/anticiper-ma-sortie/latlong"
           element={<LatLongApi />}
         />
         <Route
-          path="/patient/:id/Ma-check-list"
+          path="/patients/:id/Ma-check-list"
           element={<PreparationEtapeFive />}
         />
         <Route path="/doctor" element={<Connexion utilisateur="doctor" />} />
