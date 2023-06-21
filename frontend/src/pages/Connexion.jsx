@@ -26,6 +26,7 @@ function Connexion({ utilisateur }) {
     } else {
       fetch(`${import.meta.env.VITE_BACKEND_URL}/api/${utilisateur}/login`, {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
