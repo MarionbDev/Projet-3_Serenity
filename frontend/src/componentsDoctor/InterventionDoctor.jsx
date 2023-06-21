@@ -1,34 +1,52 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useUserContext } from "../contexts/UserContext";
 import edit from "../assets/logo/logoDoctor/edit.png";
 import trash from "../assets/logo/logoDoctor/trash.png";
-import PrivateLink from "./PrivateLink";
-// import PropTypes from "prop-types";
-import SideBarDoctor from "./SideBarDoctor";
 import search from "../assets/logo/logoDoctor/Search.png";
+import SideBarDoctor from "./SideBarDoctor";
 import HeaderDoctor from "./HeaderDoctor";
-import imgList from "../assets/logo/logoDoctor/imgList.png";
+import imgList from "../assets/images/Img.png";
 
-export default function DoctorList() {
-  const [praticien, setPraticien] = useState([]);
+export default function InterventionDoctor() {
+  const [interventions, setInterventions] = useState([]);
   const { idDoctor } = useUserContext();
 
-  const getAllPraticien = () => {
+  const getAllInterventions = () => {
     fetch(
-      `${import.meta.env.VITE_BACKEND_URL}/api/doctors/${idDoctor}/praticiens`
+      `${
+        import.meta.env.VITE_BACKEND_URL
+      }/api/doctors/${idDoctor}/interventions`
     )
       .then((res) => res.json())
       .then((data) => {
-        setPraticien(data);
+        setInterventions(data);
         console.warn(data);
       });
   };
   useEffect(() => {
     if (idDoctor !== "") {
-      getAllPraticien();
-      console.warn(praticien);
+      getAllInterventions();
+      console.warn(interventions);
     }
   }, []);
+
+  // const deleteIntervention = (interventionId) => {
+  //   fetch(
+  //     `${import.meta.env.VITE_BACKEND_URL}/api/interventions/${interventionId}`,
+  //     {
+  //       method: "DELETE",
+  //     }
+  //   ).then((res) => {
+  //     if (res.ok) {
+  //       getAllInterventions();
+  //     } else {
+  //       console.error(
+  //         "Une erreur s'est produite lors de la suppression de l'intervention."
+  //       );
+  //     }
+  //   });
+  // };
 
   return (
     <div className="min-h-screen bg-[#242731]">
@@ -61,8 +79,8 @@ export default function DoctorList() {
           </div>
 
           <ul className="text-white flex items-start border-b-[1px] border-[#a5a5a5]/20 h-[104px]  ml-[32px] mt-[31px]">
-            {praticien.map((doctor) => (
-              <li key={doctor.id} className="flex items-center">
+            {interventions.map((intervention) => (
+              <li key={intervention.id} className="flex items-center">
                 <button type="button">
                   <img src={trash} alt="trash" className="w-[24px] h-[24px]" />
                 </button>
@@ -72,24 +90,21 @@ export default function DoctorList() {
                   alt="logo"
                 />
                 <div className="flex">
-                  <p className=" ml-8">{doctor.firstname}</p>
-                  <p className=" ml-8">{doctor.lastname}</p>
-
-                  <p className="ml-[28rem]">{doctor.intervention_count}</p>
+                  <p className=" ml-8">{intervention.name}</p>
+                  <p className="ml-[25rem]">
+                    {intervention.intervention_count}
+                  </p>
                 </div>
               </li>
             ))}
           </ul>
         </section>
         <div className="flex justify-center mt-8">
-          <PrivateLink
-            to={`/doctors/${idDoctor}/praticiens/admin/CreateDoctor`}
-            text="ADD"
-            authorizedRoles={["Admin"]}
-          />
+          <Link to={`/doctors/${idDoctor}/interventions/create-intervention`}>
+            ADD
+          </Link>
         </div>
       </div>
     </div>
   );
 }
-// DoctorList.propTypes = { lastname: PropTypes.string.isRequired };

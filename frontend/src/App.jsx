@@ -1,21 +1,21 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { UserContextProvider } from "./contexts/UserContext";
-import CreateDoctor from "./components/CreateDoctor";
+import CreateDoctor from "./componentsDoctor/CreateDoctor";
 import PrivateRoutes from "./components/PrivateRoutes";
 import "./App.css";
 import Home from "./pages/Home";
 import Connexion from "./pages/Connexion";
-import AccueilDoctor from "./pages/AccueilDoctor";
-import InterventionDoctor from "./components/InterventionDoctor";
-import PrepaPatientMobile from "./pages/PrepaPatientMobile";
-import DoctorList from "./components/DoctorList";
-import PreparationEtapeFirst from "./pages/PreparationEtapeFirst";
-import PreparationEtapeTwo from "./pages/PreparationEtapeTwo";
-import PreparationEtapeThree from "./pages/PreparationEtapeThree";
-import PreparationEtapeFour from "./pages/PreparationEtapeFour";
-import PrepaPatientPcOne from "./pages/PrepaPatientPcOne";
-import CreateIntervention from "./components/CreateIntervention";
+import AccueilDoctor from "./pageDoctor/AccueilDoctor";
+import InterventionDoctor from "./componentsDoctor/InterventionDoctor";
+import PrepaPatientMobile from "./pagePatient/PrepaPatientMobile";
+import DoctorList from "./componentsDoctor/DoctorList";
+import PreparationEtapeFirst from "./pagePatient/PreparationEtapeFirst";
+import PreparationEtapeTwo from "./pagePatient/PreparationEtapeTwo";
+import PreparationEtapeThree from "./pagePatient/PreparationEtapeThree";
+import PreparationEtapeFour from "./pagePatient/PreparationEtapeFour";
+import PrepaPatientPcOne from "./pagePatient/PrepaPatientPcOne";
+import CreateIntervention from "./componentsDoctor/CreateIntervention";
 
 function getCurrentDimension() {
   return {

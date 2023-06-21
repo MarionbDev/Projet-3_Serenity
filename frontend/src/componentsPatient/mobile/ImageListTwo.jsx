@@ -1,6 +1,6 @@
-import image6 from "../assets/images/Img6.png";
-import image7 from "../assets/images/Img7.png";
-import image8 from "../assets/images/Img8.png";
+import image6 from "../../assets/images/Img6.png";
+import image7 from "../../assets/images/Img7.png";
+import image8 from "../../assets/images/Img8.png";
 
 function ImageList() {
   return (
