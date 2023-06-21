@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import { useUserContext } from "../contexts/UserContext";
 import edit from "../assets/logo/logoDoctor/edit.png";
 import trash from "../assets/logo/logoDoctor/trash.png";
-// import PrivateLink from "./PrivateLink";
-
+import PrivateLink from "../components/PrivateLink";
 // import PropTypes from "prop-types";
 import SideBarDoctor from "./SideBarDoctor";
 import search from "../assets/logo/logoDoctor/Search.png";
+import HeaderDoctor from "./HeaderDoctor";
+import imgList from "../assets/images/Img.png";
 
 export default function DoctorList() {
   const [praticien, setPraticien] = useState([]);
@@ -33,10 +34,8 @@ export default function DoctorList() {
     <div className="min-h-screen bg-[#242731]">
       <SideBarDoctor />
       <div className="absolute  w-2/3 mt-[48px] ml-[321px] text-[#FFFFFF]">
-        <p className="text-[24px]">Bonjour, mon frèrito</p>
-        <p className="text-[37px]">ça va mon reuf ? </p>
+        <HeaderDoctor />
       </div>
-      {/* <PrivateLink to="/CreateDoctor" text="ADD" authorizedRoles={["Admin"]} /> */}
       <div className="absolute w-[1055px] h-96 ml-[321px] mt-[172px] rounded-2xl shadow-lg shadow-slate-950/70    ">
         <div className="flex mt-[32px] ">
           <img
@@ -48,30 +47,47 @@ export default function DoctorList() {
             className="h-[56px] w-[320px] text-gray-500 pl-10 bg-[#282b33]  shadow-slate-950/70 shadow-sm rounded-2xl"
             type="text"
             placeholder="Search "
-            // onChange={(e) => setQuery(e.target.value)}
-            // value={query}
           />
           <div className="flex  ml-[35rem] items-center">
-            <img src={edit} alt="edit" className="w-[24px] h-[24px] mr-8" />
-            <img src={trash} alt="trash" className="w-[24px] h-[24px]" />
+            <button type="button">
+              <img src={edit} alt="edit" className="w-[24px] h-[24px] mr-8" />
+            </button>
           </div>
         </div>
         <section>
-          <div className=" text-gray-500 flex mt-8 text-[16px] h-[45px]">
+          <div className="flex border-b-[1px] border-[#a5a5a5]/20 ml-[32px]  text-gray-500 mt-8 text-[16px] h-[45px] w-[991px]">
             <p className="ml-8">Sélection</p>
             <p className="ml-[40rem]">Nombre réalisé</p>
           </div>
 
-          <div className="text-white flex h-[104px] mt-[31px]">
+          <ul className="text-white flex items-start border-b-[1px] border-[#a5a5a5]/20 h-[104px]  ml-[32px] mt-[31px]">
             {praticien.map((doctor) => (
-              <div key={doctor.id} className="flex">
-                <p className="ml-8">{doctor.lastname}</p>
-                <p className="ml-8">{doctor.firstname}</p>
-                <p className="ml-[34rem]">{doctor.intervention_count}</p>
-              </div>
+              <li key={doctor.id} className="flex items-center">
+                <button type="button">
+                  <img src={trash} alt="trash" className="w-[24px] h-[24px]" />
+                </button>
+                <img
+                  className="w-[96px] h-[80px] ml-[36px]  "
+                  src={imgList}
+                  alt="logo"
+                />
+                <div className="flex">
+                  <p className=" ml-8">{doctor.firstname}</p>
+                  <p className=" ml-8">{doctor.lastname}</p>
+
+                  <p className="ml-[28rem]">{doctor.intervention_count}</p>
+                </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
+        <div className="flex justify-center mt-8">
+          <PrivateLink
+            to={`/doctors/${idDoctor}/praticiens/admin/CreateDoctor`}
+            text="ADD"
+            authorizedRoles={["Admin"]}
+          />
+        </div>
       </div>
     </div>
   );

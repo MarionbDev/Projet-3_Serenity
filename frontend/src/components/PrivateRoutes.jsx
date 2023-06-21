@@ -1,13 +1,20 @@
-// import { Outlet, Navigate } from "react-router-dom";
+import React from "react";
+import PropTypes from "prop-types";
+import { Outlet, Navigate } from "react-router-dom";
+import { useUserContext } from "../contexts/UserContext";
 
-// function PrivateRoutes({ authorizedRoles }) {
-//   const [{ user }] = useUserContext();
+function PrivateRoutes({ authorizedRoles }) {
+  const { role } = useUserContext();
 
-//   if (!user || !authorizedRoles.find((role) => role === user.role)) {
-//     return <Navigate to="./pages/Connexion" />;
-//   }
+  if (!authorizedRoles.find((item) => item === role)) {
+    return <Navigate to="/" />;
+  }
 
-//   return <Outlet />;
-// }
+  return <Outlet />;
+}
 
-// export default PrivateRoutes;
+PrivateRoutes.propTypes = {
+  authorizedRoles: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+};
+
+export default PrivateRoutes;

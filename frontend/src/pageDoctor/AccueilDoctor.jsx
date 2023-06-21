@@ -1,5 +1,5 @@
-import SideBarDoctor from "../components/SideBarDoctor";
-import HeaderDoctor from "../components/HeaderDoctor";
+import SideBarDoctor from "../componentsDoctor/SideBarDoctor";
+import HeaderDoctor from "../componentsDoctor/HeaderDoctor";
 import search from "../assets/logo/logoDoctor/Search.png";
 import notification from "../assets/logo/logoDoctor/bell.png";
 

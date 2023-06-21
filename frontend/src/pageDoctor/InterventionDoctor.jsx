@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { useUserContext } from "../contexts/UserContext";
 import trash from "../assets/logo/logoDoctor/trash.png";
 import search from "../assets/logo/logoDoctor/Search.png";
-import SideBarDoctor from "../components/SideBarDoctor";
-import HeaderDoctor from "../components/HeaderDoctor";
-import imgList from "../assets/logo/logoDoctor/imgList.png";
+import SideBarDoctor from "../componentsDoctor/SideBarDoctor";
+import HeaderDoctor from "../componentsDoctor/HeaderDoctor";
+import imgList from "../assets/images/Img.png";
 
 export default function InterventionDoctor() {
   const [interventions, setInterventions] = useState([]);

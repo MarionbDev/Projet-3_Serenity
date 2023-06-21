@@ -54,9 +54,7 @@ const add = (req, res) => {
   const intervention = req.body;
   // console.log(intervention);
 
-  // TODO validations (length, format...)
-
-  models.intervention
+  models.protocol
     .insert(intervention)
     .then(([result]) => {
       res.status(201).json(result);

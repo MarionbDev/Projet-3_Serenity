@@ -7,14 +7,14 @@ const Home = () => {
   return (
     <div className="flex flex-col sm:flex-row sm:justify-between  min-h-screen bg-teal-500">
       <Carousel />
-      <div className=" basis-5/12 sm:basis-1/2 flex flex-col  sm:items-center mt-6 gap-6 sm:mt-48">
-        <div className="sm:w-96">
-          <Link to="/patient">
+      <div className=" basis-5/12 sm:basis-1/2 flex flex-col mt-6 gap-6 sm:mt-48">
+        <div className="">
+          <Link to="/patients">
             <Button value="Connexion Patient" />
           </Link>
         </div>
-        <div className="sm:w-96">
-          <Link to="/doctor">
+        <div>
+          <Link to="/doctors">
             <Button value="Connexion Médecin" />
           </Link>
         </div>

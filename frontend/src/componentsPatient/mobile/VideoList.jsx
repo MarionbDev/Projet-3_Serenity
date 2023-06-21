@@ -1,5 +1,5 @@
-import image4 from "../assets/images/Img4.png";
-import image5 from "../assets/images/Img5.png";
+import image4 from "../../assets/images/Img4.png";
+import image5 from "../../assets/images/Img5.png";
 
 function VideoList() {
   return (

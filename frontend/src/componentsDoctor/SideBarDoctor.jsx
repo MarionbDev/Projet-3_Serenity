@@ -2,9 +2,9 @@ import { NavLink, useParams } from "react-router-dom";
 import logoPraticient from "../assets/logo/logoDoctor/Chart.png";
 import logoPatient from "../assets/logo/logoDoctor/Discovery.png";
 import logoInterventions from "../assets/logo/logoDoctor/Wallet.png";
-import logoAvatar from "../assets/logoPatient/avatar1.png";
-import logoActivity from "../assets/logoDoctor/activite.png";
-import serenity from "../assets/logoDoctor/logoSerenity.png";
+import logoAvatar from "../assets/logo/logoPatient/avatar1.png";
+import logoActivity from "../assets/logo/logoPatient/activite.png";
+import serenity from "../assets/logo/logoPatient/logoSerenity.png";
 
 export default function SideBarDoctor() {
   const { id } = useParams();
@@ -20,7 +20,7 @@ export default function SideBarDoctor() {
         <p className="text-gray-500 text-[12px] pb-4 ml-7">
           Console d'administration
         </p>
-        <NavLink to={`/doctor/${id}/`}>
+        <NavLink to={`/doctors/${id}/`}>
           {({ isActive }) => (
             <button
               className={
@@ -44,7 +44,7 @@ export default function SideBarDoctor() {
           )}
         </NavLink>
 
-        <NavLink to={`/doctor/${id}/praticien`}>
+        <NavLink to={`/doctors/${id}/praticiens`}>
           {({ isActive }) => (
             <button
               type="button"
@@ -68,7 +68,7 @@ export default function SideBarDoctor() {
           )}
         </NavLink>
 
-        <NavLink to={`/doctor/${id}/patients`}>
+        <NavLink to={`/doctors/${id}/patients`}>
           {({ isActive }) => (
             <button
               className={
@@ -92,7 +92,7 @@ export default function SideBarDoctor() {
           )}
         </NavLink>
 
-        <NavLink to={`/doctor/${id}/intervention`}>
+        <NavLink to={`/doctors/${id}/interventions`}>
           {({ isActive }) => (
             <button
               className={
