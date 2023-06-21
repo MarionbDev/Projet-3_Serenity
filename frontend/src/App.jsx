@@ -14,6 +14,7 @@ import PreparationEtapeTwo from "./pages/PreparationEtapeTwo";
 import PreparationEtapeThree from "./pages/PreparationEtapeThree";
 import PreparationEtapeFour from "./pages/PreparationEtapeFour";
 import PrepaPatientPcOne from "./pages/PrepaPatientPcOne";
+import LatLongApi from "./pages/LatLongApi";
 
 function getCurrentDimension() {
   return {
@@ -58,8 +59,12 @@ function App() {
           element={<PreparationEtapeThree />}
         />
         <Route
-          path="/patient/:id/anticiper ma sortie"
+          path="/patient/:id/anticiper-ma-sortie"
           element={<PreparationEtapeFour />}
+        />
+        <Route
+          path="/patient/:id/anticiper-ma-sortie/latlong"
+          element={<LatLongApi />}
         />
         <Route path="/doctor" element={<Connexion utilisateur="doctor" />} />
         <Route

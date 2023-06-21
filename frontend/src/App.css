@@ -10,3 +10,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.leaflet-container {
+  width: 90%;
+  height: 50vh;
+  margin: auto;
+}

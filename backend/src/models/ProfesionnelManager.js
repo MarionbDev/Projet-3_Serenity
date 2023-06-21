@@ -39,6 +39,13 @@ class ProfesionnelManager extends AbstractManager {
       ]
     );
   }
+
+  updateLatLong(proId) {
+    return this.database.query(
+      `update ${this.table} set latitude = ?, longitude = ? where id = ?`,
+      [proId.latitude, proId.longitude, proId.id]
+    );
+  }
 }
 
 module.exports = ProfesionnelManager;

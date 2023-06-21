@@ -16,26 +16,26 @@ function PreparationEtapeFour() {
         </p>
       </div>
       <div className=" m-8 ">
-        <button type="button" className="w-36 h-12 rounded-xl bg-green-400">
+        <button
+          value="Kinésithérapeute"
+          type="button"
+          className=" h-12 rounded-xl bg-green-400"
+        >
           <p className="p-4 text-base w-52 text-white">Kinésithérapeute</p>
         </button>
         <button
+          value="Infirmier"
           type="button"
-          className="w-36 h-12 rounded-xl mt-4 bg-green-400"
+          className=" h-12 rounded-xl mt-4 bg-green-400"
         >
-          <p className="p-4 text-base w-52 text-white">Infimier</p>
+          <p className="p-4 text-base w-52 text-white">Infirmier</p>
         </button>
         <button
+          value="Psychologue"
           type="button"
-          className="w-36 h-12 rounded-xl mt-4 bg-green-400"
+          className=" h-12 rounded-xl mt-4 bg-green-400"
         >
           <p className="p-4 text-base w-52 text-white">Psychologue</p>
-        </button>
-        <button
-          type="button"
-          className="w-36 h-12 rounded-xl mt-4 bg-green-400"
-        >
-          <p className="p-4 text-base w-52 text-white">Ordonnance</p>
         </button>
       </div>
     </>
