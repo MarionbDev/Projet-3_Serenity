@@ -83,7 +83,7 @@ CREATE TABLE `doctor` (
   `lastname` varchar(100) NOT NULL,
   `tel` varchar(50) NOT NULL,
   `mail` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `hashedPassword` varchar(255) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `language` varchar(255) DEFAULT NULL,
   `bio` text,
@@ -163,7 +163,7 @@ CREATE TABLE `patient` (
   `city` varchar(50) DEFAULT NULL,
   `tel_fixe` varchar(50) DEFAULT NULL,
   `mail` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `hashedPassword` varchar(255) NOT NULL,
   `tel_portable` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `mail` (`mail`)

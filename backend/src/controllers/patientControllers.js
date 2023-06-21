@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 const models = require("../models");
 
 const browse = (req, res) => {
@@ -82,20 +83,17 @@ const destroy = (req, res) => {
     });
 };
 
-const login = (req, res) => {
-  const { mail, password } = req.body;
+const login = (req, res, next) => {
+  const { mail } = req.body;
 
   models.patient
     .findByEmail(mail)
     .then(([patients]) => {
-      if (patients.length === 0) {
-        res.sendStatus(404);
-      } else if (patients[0].password !== password) {
-        res.sendStatus(404);
+      if (patients[0] != null) {
+        req.patient = patients[0];
+        next();
       } else {
-        const patient = { ...patients[0] };
-        delete patient.password;
-        res.json(patient);
+        res.sendStatus(401);
       }
     })
     .catch((err) => {

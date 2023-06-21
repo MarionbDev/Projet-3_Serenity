@@ -1,5 +1,5 @@
-import HeaderMobilePrepaPatient from "../components/HeaderMobilePrepaPatient";
-import HeaderPreparation from "../components/HeaderPreparation";
+import HeaderMobilePrepaPatient from "../componentsPatient/mobile/HeaderMobilePrepaPatient";
+import HeaderPreparation from "../componentsPatient/mobile/HeaderPreparation";
 
 function PreparationEtapeFive() {
   return (

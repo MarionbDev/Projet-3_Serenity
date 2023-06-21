@@ -1,36 +1,16 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import SideBarDoctor from "../components/SideBarDoctor";
-import search from "../assets/logo/Search.png";
-import notification from "../assets/logo/bell.png";
+import SideBarDoctor from "../componentsDoctor/SideBarDoctor";
+import HeaderDoctor from "../componentsDoctor/HeaderDoctor";
+import search from "../assets/logo/logoDoctor/Search.png";
+import notification from "../assets/logo/logoDoctor/bell.png";
 
 export default function AccueilDoctor() {
-  const [doctor, setDoctor] = useState(null);
-
-  const { id } = useParams();
-
-  const getOneDoctor = () => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/doctors/${id}`)
-      .then((resp) => resp.json())
-      .then((data) => setDoctor(data))
-      .catch((err) => console.error(err));
-  };
-
-  useEffect(() => {
-    getOneDoctor();
-  }, [id]);
-
-  if (!doctor) {
-    return <p>Loading the doctor...</p>;
-  }
-
   return (
     <div className="min-h-screen bg-[#242731]">
       <SideBarDoctor />
-      <div className="absolute  w-2/3 mt-[48px] ml-[321px] text-[#FFFFFF] ">
-        <p className="text-[24px]">Bonjour Dr {doctor.lastname} </p>
-        <p className="text-[37px]">Comment vont vos patients ?!</p>
+      <div className="absolute  w-2/3 mt-[48px] ml-[321px] text-[#FFFFFF]">
+        <HeaderDoctor />{" "}
       </div>
+
       <div className=" flex  w-[426px]  absolute right-0 border-l-[1px] min-h-screen border-[#a5a5a5]/20 ">
         <div className="flex pt-[60px] ">
           <img
