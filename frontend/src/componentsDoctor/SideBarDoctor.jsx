@@ -1,14 +1,19 @@
 import { NavLink, useParams } from "react-router-dom";
 import logoPraticient from "../assets/logo/logoDoctor/Chart.png";
 import logoPatient from "../assets/logo/logoDoctor/Discovery.png";
+import logoInterventions from "../assets/logo/logoDoctor/Wallet.png";
+import logoAvatar from "../assets/logo/logoPatient/avatar1.png";
+import logoActivity from "../assets/logo/logoPatient/activite.png";
+import serenity from "../assets/logo/logoPatient/logoSerenity.png";
 
 export default function SideBarDoctor() {
   const { id } = useParams();
 
   return (
     <div className="min-h-screen w-64 border-r-[1px] border-[#a5a5a5]/20  fixed ">
-      <div className="pt-6 pl-8 ">
-        <img src={logoPraticient} alt="logo" />
+      <div className="flex pt-[59px] pl-8 ">
+        <img src={serenity} alt="logo" className="w-[45px] h-[42px] " />
+        <p className="text-white text-[20px] ml-2 ">SERENITY</p>
       </div>
 
       <div className="mt-20 ml-4">
@@ -25,11 +30,7 @@ export default function SideBarDoctor() {
               }
               type="button"
             >
-              <img
-                className="ml-6 mr-2"
-                src="/src/assets/logo/icon1.png"
-                alt="icon"
-              />
+              <img className="ml-7 mr-2" src={logoActivity} alt="icon" />
               <p
                 className={
                   isActive
@@ -103,7 +104,7 @@ export default function SideBarDoctor() {
             >
               <img
                 className="ml-7 mr-2 w-[24px] h-[24px]"
-                src="/src/assets/logo/Wallet.png"
+                src={logoInterventions}
                 alt="icon"
               />
               <p
@@ -120,11 +121,7 @@ export default function SideBarDoctor() {
         </NavLink>
       </div>
       <div className="mt-48 ml-4 flex">
-        <img
-          className="ml-4 w-14"
-          src="/src/assets/logo/avatar1.png"
-          alt="avatar"
-        />
+        <img className="ml-4 w-14" src={logoAvatar} alt="avatar" />
         <p className="m-3 text-gray-500 font-semibold">Dr Bé Bert</p>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useUserContext } from "../contexts/UserContext";
+import { useUserContext } from "../../contexts/UserContext";
 
 export default function EtapePrepaPatientMobile() {
   const { idPatient } = useUserContext();
@@ -12,7 +12,7 @@ export default function EtapePrepaPatientMobile() {
           </p>
         </button>
       </Link>
-      <Link to={`/patient/${idPatient}/demarches-administratives`}>
+      <Link to="/patient/:id/demarches-administratives">
         <button
           type="button"
           className="w-[100%] h-20 rounded-xl mt-4 bg-teal-400"
@@ -22,7 +22,7 @@ export default function EtapePrepaPatientMobile() {
           </p>
         </button>
       </Link>
-      <Link to={`/patient/${idPatient}/preparer-mon-arrivee`}>
+      <Link to="/patient/:id/preparer-mon-arrivee">
         <button
           type="button"
           className="w-[100%] h-20 rounded-xl mt-4 bg-rose-400"
@@ -32,7 +32,7 @@ export default function EtapePrepaPatientMobile() {
           </p>
         </button>
       </Link>
-      <Link to={`/patient/${idPatient}/anticiper-ma-sortie`}>
+      <Link to="/patient/:id/anticiper ma sortie">
         <button
           type="button"
           className="w-[100%] h-20 rounded-xl mt-4 bg-green-400"

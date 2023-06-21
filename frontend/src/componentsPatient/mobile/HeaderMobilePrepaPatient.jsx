@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
-import { useUserContext } from "../contexts/UserContext";
-import avatar from "../assets/logoPatient/avatar1.png";
-import { convertDateFormat, convertHourFormat } from "../services/convertTime";
+import { useUserContext } from "../../contexts/UserContext";
+import avatar from "../../assets/logo/logoPatient/avatar1.png";
+import {
+  convertDateFormat,
+  convertHourFormat,
+} from "../../services/convertTime";
 
 export default function HeaderMobilePrepaPatient() {
   const [interventionInfo, setInterventionInfo] = useState("");

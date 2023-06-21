@@ -1,5 +1,5 @@
-import HeaderMobilePrepaPatient from "../components/HeaderMobilePrepaPatient";
-import HeaderPreparation from "../components/HeaderPreparation";
+import HeaderMobilePrepaPatient from "../componentsPatient/mobile/HeaderMobilePrepaPatient";
+import HeaderPreparation from "../componentsPatient/mobile/HeaderPreparation";
 
 function PreparationEtapeFour() {
   return (
@@ -15,25 +15,30 @@ function PreparationEtapeFour() {
           invite à prendre rendez-vous avec les professionnels de santé suivant:
         </p>
       </div>
-      <div className=" m-8 ">
-        <button type="button" className="w-36 h-12 rounded-xl bg-green-400">
+      <div className=" flex flex-col m-8 ">
+        <button
+          type="button"
+          className="w-36 h-12 mb-1 rounded-xl bg-green-400"
+        >
           <p className="p-4 text-base w-52 text-white">Kinésithérapeute</p>
         </button>
         <button
+          value="Infirmier"
           type="button"
-          className="w-36 h-12 rounded-xl mt-4 bg-green-400"
+          className="w-36 h-12 mb-1 rounded-xl mt-4 bg-green-400"
         >
-          <p className="p-4 text-base w-52 text-white">Infimier</p>
+          <p className="p-4 text-base w-52 text-white">Infirmier</p>
         </button>
         <button
+          value="Psychologue"
           type="button"
-          className="w-36 h-12 rounded-xl mt-4 bg-green-400"
+          className="w-36 h-12 mb-1 rounded-xl mt-4 bg-green-400"
         >
           <p className="p-4 text-base w-52 text-white">Psychologue</p>
         </button>
         <button
           type="button"
-          className="w-36 h-12 rounded-xl mt-4 bg-green-400"
+          className="w-36 h-12 mb-1 rounded-xl mt-4 bg-green-400"
         >
           <p className="p-4 text-base w-52 text-white">Ordonnance</p>
         </button>

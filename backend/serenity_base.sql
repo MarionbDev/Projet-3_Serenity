@@ -221,10 +221,12 @@ CREATE TABLE `profesionnel` (
   `lastname` varchar(100) NOT NULL,
   `tel` varchar(50) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
-  `speciality` varchar(100) NOT NULL,
+  `speciality` enum('Psychologue','Kinésithérapeute','Infirmier') NOT NULL,
   `road` varchar(100) NOT NULL,
   `city` varchar(50) NOT NULL,
   `zip_code` int NOT NULL,
+  `latitude` Decimal(8,6) NULL,
+  `longitude` Decimal(9,6) NULL,
   `country` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
