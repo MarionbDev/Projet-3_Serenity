@@ -53,12 +53,10 @@ const edit = (req, res) => {
 const add = (req, res) => {
   const intervention = req.body;
 
-  // TODO validations (length, format...)
-
-  models.intervention
+  models.protocol
     .insert(intervention)
     .then(([result]) => {
-      res.location(`/interventions/${result.insertId}`).sendStatus(201);
+      res.status(201).json(result);
     })
     .catch((err) => {
       console.error(err);

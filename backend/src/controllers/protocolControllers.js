@@ -58,7 +58,7 @@ const add = (req, res) => {
   models.protocol
     .insert(protocol)
     .then(([result]) => {
-      res.location(`/protocols/${result.insertId}`).sendStatus(201);
+      res.status(201).json(result);
     })
     .catch((err) => {
       console.error(err);
