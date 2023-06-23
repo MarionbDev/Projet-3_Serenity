@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import Arrow from "../assets/images/Arrow.png";
+
 import HeaderMobilePrepaPatient from "../componentsPatient/mobile/HeaderMobilePrepaPatient";
 import HeaderPreparation from "../componentsPatient/mobile/HeaderPreparation";
 // import { Link } from "react-router-dom";
@@ -6,6 +9,9 @@ function PreparationEtapeThree() {
   return (
     <div>
       <HeaderMobilePrepaPatient />
+      <Link to="/patients/:id">
+        <img src={Arrow} alt="doc12" className="mb-2 ml-3" />
+      </Link>
       <HeaderPreparation
         text="Préparer mon arrivée en toute sérénité"
         color="bg-pink-400"

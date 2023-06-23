@@ -4,12 +4,12 @@ import image8 from "../../assets/images/Img8.png";
 
 function ImageList() {
   return (
-    <div className="flex">
+    <div className="flex justify-center">
       <div className="p-2 ml-3">
-        <img src={image6} alt="doc6" className="mx-1 w-30 h-auto" />
-        <p className="ml-5 mb-2 w-44h-auto text-sm">Fiche administrative</p>
-        <img src={image6} alt="doc7" className="mx-1 w-30 h-auto" />
-        <p className="ml-5 mb-2 w-44 h-auto text-sm">Consentement éclairé</p>
+        <img src={image6} alt="doc6" className="ml-5 mx-1 w-30 h-auto" />
+        <p className="ml-7 mb-2 w-44 h-auto text-sm">Fiche administrative</p>
+        <img src={image6} alt="doc7" className="ml-5 mx-1 w-30 h-auto" />
+        <p className="ml-7 mb-2 w-44 h-auto text-sm">Consentement éclairé</p>
       </div>
       <div className="p-2">
         <img src={image8} alt="doc8" className="mx-1 w-30 h-auto" />
