@@ -14,7 +14,9 @@ export default function SideBarDoctor() {
   const { idDoctor } = useUserContext();
 
   const getAllPraticien = () => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/doctors/${idDoctor}/`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/doctors/${idDoctor}/`, {
+      credentials: "include",
+    })
       .then((res) => res.json())
       .then((data) => {
         setDoctor(data);

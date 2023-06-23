@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useUserContext } from "../contexts/UserContext";
+import { convertDateFormat, convertHourFormat } from "../services/convertTime";
 import trash from "../assets/logo/logoDoctor/trash.png";
 import search from "../assets/logo/logoDoctor/Search.png";
 import SideBarDoctor from "./SideBarDoctor";
@@ -142,7 +143,14 @@ export default function InterventionDoctor() {
                                     <p>{item.patient.lastname}</p>
                                   </div>
                                   <div className="flex justify-end ">
-                                    <p>{item.time}</p>
+                                    <p className="mr-6 text-[14px]">
+                                      {surgeryTypes &&
+                                        convertDateFormat(item.time)}
+                                    </p>
+                                    <p className="text-[14px]">
+                                      {surgeryTypes &&
+                                        convertHourFormat(item.time)}
+                                    </p>
                                   </div>
 
                                   <div className="flex">
@@ -173,9 +181,12 @@ export default function InterventionDoctor() {
           <div className="flex justify-center mt-8">
             <Link
               to={`/doctors/${idDoctor}/interventions/create-intervention`}
-              className="bg-black  rounded-full shadow-xl px-6 py-2 text-white hover:text-white hover:border-2 hover:border-white "
+              className="bg-black  rounded-full shadow-xl  mb-5 text-white hover:text-white hover:border-2 hover:border-white "
+              Une
+              nouvelle
+              intervention
             >
-              ADD
+              <p className="flex px-6 py-2">Une nouvelle intervention</p>
             </Link>
           </div>
         </section>
