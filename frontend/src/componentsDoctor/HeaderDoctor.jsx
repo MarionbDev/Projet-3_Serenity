@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
 import { useUserContext } from "../contexts/UserContext";
 
-export default function HeaderDoctor() {
+export default function HeaderDoctor({ text }) {
   const [doctor, setDoctor] = useState(null);
-  const location = useLocation();
-  const isInterventionPage = location.pathname.includes("/intervention");
 
   const { idDoctor } = useUserContext();
 
@@ -29,12 +27,11 @@ export default function HeaderDoctor() {
   return (
     <div>
       <p className="text-[24px]">Bonjour Dr {doctor.lastname} </p>
-
-      {isInterventionPage ? (
-        <p className="text-[37px]">Une nouvelle intervention ?!</p>
-      ) : (
-        <p className="text-[37px]">Comment vont vos patients ?!</p>
-      )}
+      <p className="text-[37px]">{text}</p>
     </div>
   );
 }
+
+HeaderDoctor.propTypes = {
+  text: PropTypes.string.isRequired,
+};

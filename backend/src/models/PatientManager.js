@@ -19,7 +19,7 @@ class PatientManager extends AbstractManager {
 
   update(patient) {
     return this.database.query(
-      `update ${this.table} set firstname = ?, lastname = ?, mail = ?, hashedPassword = ? = ? where id = ?`,
+      `update ${this.table} set firstname = ?, lastname = ?, mail = ?, hashedPassword = ?  where id = ?`,
       [
         patient.firstname,
         patient.lastname,
