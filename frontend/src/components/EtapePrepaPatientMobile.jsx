@@ -5,7 +5,7 @@ export default function EtapePrepaPatientMobile() {
   const { idPatient } = useUserContext();
   return (
     <div className="m-8">
-      <Link to={`/patienst/${idPatient}/comprendre-mon-operation`}>
+      <Link to={`/patients/${idPatient}/comprendre-mon-operation`}>
         <button type="button" className="w-[100%] h-20 rounded-xl bg-amber-300">
           <p className="flex justify-start pl-4 -mt-6 text-xs text-white font-semibold">
             Comprendre mon opération
