@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useUserContext } from "../contexts/UserContext";
 
 export default function HeaderDoctor() {
   const [doctor, setDoctor] = useState(null);
   const location = useLocation();
   const isInterventionPage = location.pathname.includes("/intervention");
 
-  const { id } = useParams();
+  const { idDoctor } = useUserContext();
 
   const getOneDoctor = () => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/doctors/${id}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/doctors/${idDoctor}`, {
+      credentials: "include",
+    })
       .then((resp) => resp.json())
       .then((data) => setDoctor(data))
       .catch((err) => console.error(err));
@@ -17,7 +20,7 @@ export default function HeaderDoctor() {
 
   useEffect(() => {
     getOneDoctor();
-  }, [id]);
+  }, [idDoctor]);
 
   if (!doctor) {
     return <p>Loading the doctor...</p>;
