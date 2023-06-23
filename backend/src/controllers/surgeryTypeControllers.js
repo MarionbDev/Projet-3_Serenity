@@ -58,7 +58,7 @@ const add = (req, res) => {
   models.surgeryType
     .insert(surgeryType)
     .then(([result]) => {
-      res.sendStatus(200).json(result);
+      res.status(200).json(result);
     })
     .catch((err) => {
       console.error(err);

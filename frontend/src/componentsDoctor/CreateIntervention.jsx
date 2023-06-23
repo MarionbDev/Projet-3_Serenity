@@ -105,7 +105,7 @@ export default function CreateIntervention() {
     <div className="min-h-screen bg-[#242731]">
       <SideBarDoctor />
       <div className="absolute w-2/3 mt-[48px] ml-[321px] text-[#FFFFFF]">
-        <HeaderDoctor />
+        <HeaderDoctor text="ajout d'une intervention" />
       </div>
       <div className="flex justify-center items-center h-screen">
         <div className="absolute left-[321px] top-[172px] rounded-2xl shadow-lg shadow-slate-950/70">

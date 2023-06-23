@@ -135,7 +135,7 @@ export default function SideBarDoctor() {
                     : "m-3 text-gray-500 font-semibold"
                 }
               >
-                Intervention
+                Interventions
               </p>
             </button>
           )}
