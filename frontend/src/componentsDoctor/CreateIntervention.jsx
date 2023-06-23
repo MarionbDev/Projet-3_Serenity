@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
 import SideBarDoctor from "./SideBarDoctor";
 import edit from "../assets/logo/logoDoctor/edit.png";
 import HeaderDoctor from "./HeaderDoctor";
 
 export default function CreateIntervention() {
-  // const navigate = useNavigate();
-  const [surgeryType, setSurgeryType] = useState("");
-  const [doctor, setDoctor] = useState("");
+  const [name, setName] = useState("");
+  const [doctorId, setDoctorId] = useState("");
   const [patientId, setPatientId] = useState("");
   const [time, setTime] = useState("");
   const [doctorsList, setDoctorsList] = useState([]);
@@ -24,16 +22,16 @@ export default function CreateIntervention() {
       .then((data) => setPatientsList(data));
   }, []);
 
-  const handleChangeSurgeryType = (e) => {
-    setSurgeryType(e.target.value);
+  const handleChangeName = (e) => {
+    setName(e.target.value);
   };
 
   const handleChangeProtocol = (e) => {
     setTitle(e.target.value);
   };
 
-  const handleChangeDoctor = (e) => {
-    setDoctor(e.target.value);
+  const handleChangeDoctorId = (e) => {
+    setDoctorId(e.target.value);
   };
 
   const handleChangePatient = (e) => {
@@ -46,13 +44,6 @@ export default function CreateIntervention() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // const data = {
-    //   surgeryType,
-    //   doctor,
-    //   patientId,
-    //   time,
-    //   title,
-    // };
 
     fetch("http://localhost:8000/api/protocols", {
       method: "POST",
@@ -66,6 +57,7 @@ export default function CreateIntervention() {
       .then((res) => res.json())
       .then((protocolData) => {
         const protocolId = protocolData.insertId;
+
         fetch("http://localhost:8000/api/interventions", {
           method: "POST",
           headers: {
@@ -79,14 +71,33 @@ export default function CreateIntervention() {
         })
           .then((res) => res.json())
           .then((interventionData) => {
-            console.warn(interventionData);
+            const interventionId = interventionData.insertId;
+
+            fetch("http://localhost:8000/api/surgeryTypes", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                name,
+                doctor_id: doctorId,
+                intervention_id: interventionId,
+              }),
+            })
+              .then((res) => res.json())
+              .then((surgeryTypeData) => {
+                console.warn(surgeryTypeData);
+              })
+              .catch((error) => {
+                console.error(error);
+              });
           })
           .catch((error) => {
-            console.error("2", error);
+            console.error(error);
           });
       })
       .catch((error) => {
-        console.error("1", error);
+        console.error(error);
       });
   };
 
@@ -121,8 +132,8 @@ export default function CreateIntervention() {
                       type="text"
                       id="surgeryType"
                       className="px-4 py-1 text-black rounded-full"
-                      value={surgeryType}
-                      onChange={handleChangeSurgeryType}
+                      value={name}
+                      onChange={handleChangeName}
                       placeholder="Enter surgery type"
                     />
                   </div>
@@ -152,8 +163,8 @@ export default function CreateIntervention() {
                     <select
                       id="doctor"
                       className="px-4 py-1 text-black rounded-full"
-                      value={doctor}
-                      onChange={handleChangeDoctor}
+                      value={doctorId}
+                      onChange={handleChangeDoctorId}
                     >
                       <option value="">Select a doctor</option>
                       {doctorsList.map((doc) => (
@@ -194,7 +205,7 @@ export default function CreateIntervention() {
                       Date & Time
                     </label>
                     <input
-                      type="datetime"
+                      type="datetime-local"
                       id="time"
                       className="px-4 py-1 text-black rounded-full"
                       value={time}
