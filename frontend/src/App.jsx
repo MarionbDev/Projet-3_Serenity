@@ -16,9 +16,13 @@ import PreparationEtapeTwo from "./pagePatient/PreparationEtapeTwo";
 import PreparationEtapeThree from "./pagePatient/PreparationEtapeThree";
 import PreparationEtapeFour from "./pagePatient/PreparationEtapeFour";
 import PreparationEtapeFive from "./pagePatient/PreparationEtapeFive";
-
 import PrepaPatientPcOne from "./pagePatient/PrepaPatientPcOne";
 import CreateIntervention from "./componentsDoctor/CreateIntervention";
+import MonOperation from "./componentsPatient/pc/MonOperation";
+import Administratif from "./componentsPatient/pc/Administratif";
+import MonArrivee from "./componentsPatient/pc/MonArrivee";
+import Anticiper from "./componentsPatient/pc/Anticiper";
+import CheckList from "./componentsPatient/pc/CheckList";
 
 function getCurrentDimension() {
   return {
@@ -79,7 +83,16 @@ function App() {
             />
           </>
         ) : (
-          <Route path="/patients/:id" element={<PrepaPatientPcOne />} />
+          <Route path="/patients/:id" element={<PrepaPatientPcOne />}>
+            <Route path="comprendre-mon-operation" element={<MonOperation />} />
+            <Route
+              path="demarches-administratives"
+              element={<Administratif />}
+            />
+            <Route path="preparer-mon-arrivee" element={<MonArrivee />} />
+            <Route path="anticiper-ma-sortie" element={<Anticiper />} />
+            <Route path="Ma-check-list" element={<CheckList />} />
+          </Route>
         )}
 
         <Route path="/doctor" element={<Connexion utilisateur="doctor" />} />
