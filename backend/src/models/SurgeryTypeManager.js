@@ -21,7 +21,7 @@ class PodcastManager extends AbstractManager {
 
   findAllInterventions(idDoctor) {
     return this.database.query(
-      `SELECT surgery_type.name, count(intervention.id) AS intervention_count FROM ${this.table} JOIN doctor ON doctor.id = doctor_id JOIN intervention ON intervention.id = intervention_id WHERE doctor.id = 1 GROUP BY surgery_type.name`,
+      `SELECT surgery_type.name, count(intervention.id) AS intervention_count FROM ${this.table} JOIN doctor ON doctor.id = doctor_id JOIN intervention ON intervention.id = intervention_id WHERE doctor.id = ? GROUP BY surgery_type.name`,
       [idDoctor]
     );
   }
