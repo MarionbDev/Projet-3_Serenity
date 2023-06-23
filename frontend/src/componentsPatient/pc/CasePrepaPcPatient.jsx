@@ -6,7 +6,7 @@ export default function CasePrepaPcPatient() {
   return (
     <div className="fixed">
       <div className="flex justify-around ml-[256px] font-semibold text-xs">
-        <NavLink to={`/patients/${id}/comprendre-mon-opération`}>
+        <NavLink to={`/patients/${id}/comprendre-mon-operation`}>
           {({ isActive }) => (
             <button
               className={
