@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import Arrow from "../assets/images/Arrow.png";
+
 import HeaderMobilePrepaPatient from "../componentsPatient/mobile/HeaderMobilePrepaPatient";
 import HeaderPreparation from "../componentsPatient/mobile/HeaderPreparation";
 
@@ -6,6 +9,9 @@ function PreparationEtapeFour() {
     <>
       <div>
         <HeaderMobilePrepaPatient />
+        <Link to="/patients/:id">
+          <img src={Arrow} alt="doc13" className="mb-2 ml-3" />
+        </Link>
         <HeaderPreparation
           text="Anticiper ma sortie en prenant rendez-vous"
           color="bg-green-400"
@@ -18,27 +24,27 @@ function PreparationEtapeFour() {
       <div className=" flex flex-col m-8 ">
         <button
           type="button"
-          className="w-36 h-12 mb-1 rounded-xl bg-green-400"
+          className="flex justify-center w-36 h-12 mb-1 rounded-xl bg-green-400"
         >
           <p className="p-4 text-base w-52 text-white">Kinésithérapeute</p>
         </button>
         <button
           value="Infirmier"
           type="button"
-          className="w-36 h-12 mb-1 rounded-xl mt-4 bg-green-400"
+          className="flex justify-center w-36 h-12 mb-1 rounded-xl mt-4 bg-green-400"
         >
           <p className="p-4 text-base w-52 text-white">Infirmier</p>
         </button>
         <button
           value="Psychologue"
           type="button"
-          className="w-36 h-12 mb-1 rounded-xl mt-4 bg-green-400"
+          className="flex justify-center w-36 h-12 mb-1 rounded-xl mt-4 bg-green-400"
         >
           <p className="p-4 text-base w-52 text-white">Psychologue</p>
         </button>
         <button
           type="button"
-          className="w-36 h-12 mb-1 rounded-xl mt-4 bg-green-400"
+          className="flex justify-center w-36 h-12 mb-1 rounded-xl mt-4 bg-green-400"
         >
           <p className="p-4 text-base w-52 text-white">Ordonnance</p>
         </button>

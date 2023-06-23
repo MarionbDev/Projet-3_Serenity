@@ -22,7 +22,7 @@ function Connexion({ utilisateur }) {
     event.preventDefault();
     // Ici vous pouvez effectuer une action telle qu'envoyer les données à un serveur
     if (!mail || !password) {
-      alert("You must provide an email and a password !");
+      // alert("You must provide an email and a password !");
     } else {
       fetch(`${import.meta.env.VITE_BACKEND_URL}/api/${utilisateur}/login`, {
         method: "POST",
@@ -52,7 +52,7 @@ function Connexion({ utilisateur }) {
         })
         .catch((err) => {
           console.error(err);
-          alert("Error to login please try again !");
+          // alert("Error to login please try again !");
         });
     }
     // Réinitialiser les valeurs du formulaire

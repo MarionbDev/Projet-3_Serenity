@@ -16,9 +16,13 @@ import PreparationEtapeTwo from "./pagePatient/PreparationEtapeTwo";
 import PreparationEtapeThree from "./pagePatient/PreparationEtapeThree";
 import PreparationEtapeFour from "./pagePatient/PreparationEtapeFour";
 import PreparationEtapeFive from "./pagePatient/PreparationEtapeFive";
-
 import PrepaPatientPcOne from "./pagePatient/PrepaPatientPcOne";
 import CreateIntervention from "./componentsDoctor/CreateIntervention";
+import MonOperation from "./componentsPatient/pc/MonOperation";
+import Administratif from "./componentsPatient/pc/Administratif";
+import MonArrivee from "./componentsPatient/pc/MonArrivee";
+import Anticiper from "./componentsPatient/pc/Anticiper";
+import CheckList from "./componentsPatient/pc/CheckList";
 
 function getCurrentDimension() {
   return {
@@ -50,36 +54,47 @@ function App() {
           element={<Connexion utilisateur="patients" />}
         />
         {window.innerWidth < 768 ? (
-          <Route path="/patients/:id" element={<PrepaPatientMobile />} />
+          <>
+            <Route path="/patients/:id" element={<PrepaPatientMobile />} />
+            <Route
+              path="/patients/:id/comprendre-mon-operation"
+              element={<PreparationEtapeFirst />}
+            />
+            <Route
+              path="/patients/:id/demarches-administratives"
+              intervention
+              element={<PreparationEtapeTwo />}
+            />
+            <Route
+              path="/patients/:id/preparer-mon-arrivee"
+              element={<PreparationEtapeThree />}
+            />
+            <Route
+              path="/patients/:id/anticiper-ma-sortie"
+              element={<PreparationEtapeFour />}
+            />
+            <Route
+              path="/patients/:id/anticiper-ma-sortie/latlong"
+              element={<LatLongApi />}
+            />
+            <Route
+              path="/patients/:id/Ma-check-list"
+              element={<PreparationEtapeFive />}
+            />
+          </>
         ) : (
-          <Route path="/patients/:id" element={<PrepaPatientPcOne />} />
+          <Route path="/patients/:id" element={<PrepaPatientPcOne />}>
+            <Route path="comprendre-mon-operation" element={<MonOperation />} />
+            <Route
+              path="demarches-administratives"
+              element={<Administratif />}
+            />
+            <Route path="preparer-mon-arrivee" element={<MonArrivee />} />
+            <Route path="anticiper-ma-sortie" element={<Anticiper />} />
+            <Route path="Ma-check-list" element={<CheckList />} />
+          </Route>
         )}
 
-        <Route
-          path="/patients/:id/comprendre-mon-operation"
-          element={<PreparationEtapeFirst />}
-        />
-        <Route
-          path="/patients/:id/demarches-administratives"
-          intervention
-          element={<PreparationEtapeTwo />}
-        />
-        <Route
-          path="/patients/:id/preparer-mon-arrivee"
-          element={<PreparationEtapeThree />}
-        />
-        <Route
-          path="/patients/:id/anticiper-ma-sortie"
-          element={<PreparationEtapeFour />}
-        />
-        <Route
-          path="/patients/:id/anticiper-ma-sortie/latlong"
-          element={<LatLongApi />}
-        />
-        <Route
-          path="/patients/:id/Ma-check-list"
-          element={<PreparationEtapeFive />}
-        />
         <Route path="/doctor" element={<Connexion utilisateur="doctor" />} />
         <Route path="/doctors" element={<Connexion utilisateur="doctors" />} />
         <Route
