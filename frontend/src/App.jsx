@@ -50,36 +50,38 @@ function App() {
           element={<Connexion utilisateur="patients" />}
         />
         {window.innerWidth < 768 ? (
-          <Route path="/patients/:id" element={<PrepaPatientMobile />} />
+          <>
+            <Route path="/patients/:id" element={<PrepaPatientMobile />} />
+            <Route
+              path="/patients/:id/comprendre-mon-operation"
+              element={<PreparationEtapeFirst />}
+            />
+            <Route
+              path="/patients/:id/demarches-administratives"
+              intervention
+              element={<PreparationEtapeTwo />}
+            />
+            <Route
+              path="/patients/:id/preparer-mon-arrivee"
+              element={<PreparationEtapeThree />}
+            />
+            <Route
+              path="/patients/:id/anticiper-ma-sortie"
+              element={<PreparationEtapeFour />}
+            />
+            <Route
+              path="/patients/:id/anticiper-ma-sortie/latlong"
+              element={<LatLongApi />}
+            />
+            <Route
+              path="/patients/:id/Ma-check-list"
+              element={<PreparationEtapeFive />}
+            />
+          </>
         ) : (
           <Route path="/patients/:id" element={<PrepaPatientPcOne />} />
         )}
 
-        <Route
-          path="/patients/:id/comprendre-mon-operation"
-          element={<PreparationEtapeFirst />}
-        />
-        <Route
-          path="/patients/:id/demarches-administratives"
-          intervention
-          element={<PreparationEtapeTwo />}
-        />
-        <Route
-          path="/patients/:id/preparer-mon-arrivee"
-          element={<PreparationEtapeThree />}
-        />
-        <Route
-          path="/patients/:id/anticiper-ma-sortie"
-          element={<PreparationEtapeFour />}
-        />
-        <Route
-          path="/patients/:id/anticiper-ma-sortie/latlong"
-          element={<LatLongApi />}
-        />
-        <Route
-          path="/patients/:id/Ma-check-list"
-          element={<PreparationEtapeFive />}
-        />
         <Route path="/doctor" element={<Connexion utilisateur="doctor" />} />
         <Route path="/doctors" element={<Connexion utilisateur="doctors" />} />
         <Route
