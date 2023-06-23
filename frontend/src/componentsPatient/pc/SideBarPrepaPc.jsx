@@ -1,3 +1,4 @@
+import { NavLink, useParams, Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useUserContext } from "../../contexts/UserContext";
 import avatar from "../../assets/logo/logoPatient/avatar1.png";
@@ -9,6 +10,7 @@ import iconNotif from "../../assets/logo/logoPatient/Notification.png";
 import iconChat from "../../assets/logo/logoPatient/Chat.png";
 
 export default function SideBarPrepaPc() {
+  const { id } = useParams();
   const { idPatient } = useUserContext();
   const [interventionInfo, setInterventionInfo] = useState("");
 
@@ -34,44 +36,82 @@ export default function SideBarPrepaPc() {
         <img src={logoSerenity} alt="logo" />
       </div>
       <div className="mt-20 ml-4">
-        <button
-          className="bg-indigo-500 flex items-center rounded-lg w-[90%] h-14"
-          type="button"
-        >
-          <img className="ml-6 mr-2" src={iconPrepa} alt="icon" />
-          <p className="m-2 text-white font-semibold">Ma préparation</p>
-        </button>
-        <button
-          type="button"
-          className="flex items-center rounded-lg w-[100%] h-14"
-        >
-          <img className="ml-7 mr-2" src={iconBag} alt="icon" />
-          <p className="m-3 text-gray-500 font-semibold">Gagner en sérénité</p>
-        </button>
-        <button
-          className="flex items-center rounded-lg w-[90%] h-14"
-          type="button"
-        >
-          <img className="ml-7 mr-2" src={iconAgenda} alt="icon" />
-          <p className="m-3 text-gray-500 font-semibold">Agenda</p>
-        </button>
+        <NavLink to={``}>
+          {({ isActive }) => (
+            <button
+              className={
+                isActive
+                  ? "bg-indigo-500 flex items-center rounded-lg w-[90%] h-14"
+                  : ""
+              }
+              type="button"
+            >
+              <img className="ml-6 mr-2" src={iconPrepa} alt="icon" />
+              <p className="m-2 text-white font-semibold">Ma préparation</p>
+            </button>
+          )}
+        </NavLink>
+
+        <NavLink to={``}>
+          {({ isActive }) => (
+            <button
+              className={
+                isActive ? "flex items-center rounded-lg w-[100%] h-14" : ""
+              }
+              type="button"
+            >
+              <img className="ml-7 mr-2" src={iconBag} alt="icon" />
+              <p className="m-3 text-gray-500 font-semibold">
+                Gagner en sérénité
+              </p>
+            </button>
+          )}
+        </NavLink>
+
+        <NavLink to={``}>
+          {({ isActive }) => (
+            <button
+              className={
+                isActive ? "flex items-center rounded-lg w-[90%] h-14" : ""
+              }
+              type="button"
+            >
+              <img className="ml-7 mr-2" src={iconAgenda} alt="icon" />
+              <p className="m-3 text-gray-500 font-semibold">Agenda</p>
+            </button>
+          )}
+        </NavLink>
       </div>
       <div className="border-t-2 mt-20 ml-4 mr-4">
         <p className="m-3 text-gray-500 font-semibold text-sm">Des nouvelles</p>
-        <button
-          className="flex items-center rounded-lg w-[90%] h-14"
-          type="button"
-        >
-          <img className="ml-7 mr-2" src={iconNotif} alt="icon" />
-          <p className="m-3 text-gray-500 font-semibold">Notification</p>
-        </button>
-        <button
-          className="flex items-center rounded-lg w-[90%] h-14"
-          type="button"
-        >
-          <img className="ml-7 mr-2 fill-black" src={iconChat} alt="icon" />
-          <p className="m-3 text-gray-500 font-semibold">Messagerie</p>
-        </button>
+
+        <NavLink to={``}>
+          {({ isActive }) => (
+            <button
+              className={
+                isActive ? "flex items-center rounded-lg w-[90%] h-14" : ""
+              }
+              type="button"
+            >
+              <img className="ml-7 mr-2" src={iconNotif} alt="icon" />
+              <p className="m-3 text-gray-500 font-semibold">Notification</p>
+            </button>
+          )}
+        </NavLink>
+
+        <NavLink to={``}>
+          {({ isActive }) => (
+            <button
+              className={
+                isActive ? "flex items-center rounded-lg w-[90%] h-14" : ""
+              }
+              type="button"
+            >
+              <img className="ml-7 mr-2 fill-black" src={iconChat} alt="icon" />
+              <p className="m-3 text-gray-500 font-semibold">Messagerie</p>
+            </button>
+          )}
+        </NavLink>
       </div>
       <div className=" mt-40 ml-4 flex">
         {interventionInfo.image !== null ? (
@@ -84,6 +124,7 @@ export default function SideBarPrepaPc() {
           {interventionInfo.firstname}
         </p>
       </div>
+      <Outlet />
     </div>
   );
 }

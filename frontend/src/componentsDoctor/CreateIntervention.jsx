@@ -9,7 +9,7 @@ export default function CreateIntervention() {
   const [surgeryType, setSurgeryType] = useState("");
   const [doctor, setDoctor] = useState("");
   const [patientId, setPatientId] = useState("");
-  const [dateTime, setDateTime] = useState("");
+  const [time, setTime] = useState("");
   const [doctorsList, setDoctorsList] = useState([]);
   const [patientsList, setPatientsList] = useState([]);
   const [title, setTitle] = useState("");
@@ -40,8 +40,8 @@ export default function CreateIntervention() {
     setPatientId(e.target.value);
   };
 
-  const handleChangeDateTime = (e) => {
-    setDateTime(e.target.value);
+  const handleChangeTime = (e) => {
+    setTime(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -50,7 +50,7 @@ export default function CreateIntervention() {
     //   surgeryType,
     //   doctor,
     //   patientId,
-    //   dateTime,
+    //   time,
     //   title,
     // };
 
@@ -72,21 +72,21 @@ export default function CreateIntervention() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            dateTime,
+            time,
             protocol_id: protocolId,
             patient_id: patientId,
           }),
         })
           .then((res) => res.json())
           .then((interventionData) => {
-            console.error(interventionData);
+            console.warn(interventionData);
           })
           .catch((error) => {
-            console.error(error);
+            console.error("2", error);
           });
       })
       .catch((error) => {
-        console.error(error);
+        console.error("1", error);
       });
   };
 
@@ -197,8 +197,8 @@ export default function CreateIntervention() {
                       type="datetime"
                       id="time"
                       className="px-4 py-1 text-black rounded-full"
-                      value={dateTime}
-                      onChange={handleChangeDateTime}
+                      value={time}
+                      onChange={handleChangeTime}
                     />
                   </div>
                 </div>
