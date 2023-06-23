@@ -54,10 +54,9 @@ function App() {
           element={<Connexion utilisateur="patients" />}
         />
         {window.innerWidth < 768 ? (
-          <>
-            <Route path="/patients/:id" element={<PrepaPatientMobile />} />
+          <Route path="/patients/:id" element={<PrepaPatientMobile />}>
             <Route
-              path="/patients/:id/comprendre-mon-operation"
+              path="/patients/:id/comprendre-mon-opération"
               element={<PreparationEtapeFirst />}
             />
             <Route
@@ -81,26 +80,26 @@ function App() {
               path="/patients/:id/Ma-check-list"
               element={<PreparationEtapeFive />}
             />
-          </>
+          </Route>
         ) : (
           <Route path="/patients/:id" element={<PrepaPatientPcOne />}>
             <Route
-              path="patients/:id/comprendre-mon-opération"
+              path="/patients/:id/comprendre-mon-opération"
               element={<MonOperation />}
             />
             <Route
-              path="/patients/:id/formalitées-administrative"
+              path="/patients/:id/demarches-administratives"
               element={<Administratif />}
             />
             <Route
-              path="/patients/:id/préparer-mon-arrivée"
+              path="/patients/:id/preparer-mon-arrivee"
               element={<MonArrivee />}
             />
             <Route
               path="/patients/:id/anticiper-ma-sortie"
               element={<Anticiper />}
             />
-            <Route path="/patients/:id/ma-check-list" element={<CheckList />} />
+            <Route path="/patients/:id/Ma-check-list" element={<CheckList />} />
           </Route>
         )}
 
