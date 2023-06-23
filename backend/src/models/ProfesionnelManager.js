@@ -24,7 +24,7 @@ class ProfesionnelManager extends AbstractManager {
 
   update(profesionnel) {
     return this.database.query(
-      `update ${this.table} set lastname = ?, firstname = ?, tel = ?, image = ?, speciality = ?, road = ?, city = ?, zip_code = ?, country = ? = ? where id = ?`,
+      `update ${this.table} set lastname = ?, firstname = ?, tel = ?, image = ?, speciality = ?, road = ?, city = ?, zip_code = ?, country = ?  where id = ?`,
       [
         profesionnel.lastname,
         profesionnel.firstname,

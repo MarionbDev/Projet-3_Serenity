@@ -14,7 +14,7 @@ class ChecklistManager extends AbstractManager {
 
   update(checklist) {
     return this.database.query(
-      `update ${this.table} set title = ? = ? where id = ?`,
+      `update ${this.table} set title = ?  where id = ?`,
       [checklist.title, checklist.id]
     );
   }

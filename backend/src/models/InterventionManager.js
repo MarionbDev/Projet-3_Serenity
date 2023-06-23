@@ -14,7 +14,7 @@ class InterventionManager extends AbstractManager {
 
   update(intervention) {
     return this.database.query(
-      `update ${this.table} set time = ? = ? where id = ?`,
+      `update ${this.table} set time = ?  where id = ?`,
       [intervention.time, intervention.id]
     );
   }

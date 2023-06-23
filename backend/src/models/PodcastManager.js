@@ -14,7 +14,7 @@ class PodcastManager extends AbstractManager {
 
   update(podcast) {
     return this.database.query(
-      `update ${this.table} set title = ?, format = ?, description = ?, source = ? = ? where id = ?`,
+      `update ${this.table} set title = ?, format = ?, description = ?, source = ?  where id = ?`,
       [
         podcast.title,
         podcast.format,

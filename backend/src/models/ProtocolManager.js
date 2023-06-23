@@ -14,7 +14,7 @@ class ProtocolManager extends AbstractManager {
 
   update(protocol) {
     return this.database.query(
-      `update ${this.table} set title = ?, description = ? = ? where id = ?`,
+      `update ${this.table} set title = ?, description = ?  where id = ?`,
       [protocol.title, protocol.description, protocol.id]
     );
   }
