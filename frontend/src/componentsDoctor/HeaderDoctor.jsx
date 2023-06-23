@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { useUserContext } from "../contexts/UserContext";
 
 export default function HeaderDoctor() {
+  const id = parseInt(useParams().id, 10);
+  const navigate = useNavigate();
   const [doctor, setDoctor] = useState(null);
   const location = useLocation();
   const isInterventionPage = location.pathname.includes("/intervention");
@@ -21,6 +23,12 @@ export default function HeaderDoctor() {
   useEffect(() => {
     getOneDoctor();
   }, [idDoctor]);
+
+  useEffect(() => {
+    if (id !== idDoctor) {
+      navigate("/doctors");
+    }
+  }, [id]);
 
   if (!doctor) {
     return <p>Loading the doctor...</p>;

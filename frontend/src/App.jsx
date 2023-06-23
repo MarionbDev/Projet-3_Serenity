@@ -16,7 +16,6 @@ import PreparationEtapeTwo from "./pagePatient/PreparationEtapeTwo";
 import PreparationEtapeThree from "./pagePatient/PreparationEtapeThree";
 import PreparationEtapeFour from "./pagePatient/PreparationEtapeFour";
 import PreparationEtapeFive from "./pagePatient/PreparationEtapeFive";
-
 import PrepaPatientPcOne from "./pagePatient/PrepaPatientPcOne";
 import CreateIntervention from "./componentsDoctor/CreateIntervention";
 

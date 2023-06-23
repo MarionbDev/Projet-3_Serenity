@@ -1,5 +1,7 @@
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useUserContext } from "../../contexts/UserContext";
+
 import avatar from "../../assets/logo/logoPatient/avatar1.png";
 import {
   convertDateFormat,
@@ -7,6 +9,8 @@ import {
 } from "../../services/convertTime";
 
 export default function HeaderMobilePrepaPatient() {
+  const navigate = useNavigate();
+  const id = parseInt(useParams().id, 10);
   const [interventionInfo, setInterventionInfo] = useState("");
   const { idPatient } = useUserContext();
 
@@ -25,6 +29,12 @@ export default function HeaderMobilePrepaPatient() {
   useEffect(() => {
     getInterventionInfo();
   }, [idPatient]);
+
+  useEffect(() => {
+    if (id !== idPatient) {
+      navigate("/patients");
+    }
+  }, [id]);
 
   if (interventionInfo === "") {
     return <p>Chargement de la page</p>;
