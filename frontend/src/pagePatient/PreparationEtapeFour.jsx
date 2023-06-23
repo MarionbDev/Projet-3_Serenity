@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
 import Arrow from "../assets/images/Arrow.png";
+import { useUserContext } from "../contexts/UserContext";
 
 import HeaderMobilePrepaPatient from "../componentsPatient/mobile/HeaderMobilePrepaPatient";
 import HeaderPreparation from "../componentsPatient/mobile/HeaderPreparation";
 
 function PreparationEtapeFour() {
+  const { idPatient } = useUserContext();
+
   return (
     <>
       <div>
         <HeaderMobilePrepaPatient />
-        <Link to="/patients/:id">
+        <Link to={`/patients/${idPatient}`}>
           <img src={Arrow} alt="doc13" className="mb-2 ml-3" />
         </Link>
         <HeaderPreparation
