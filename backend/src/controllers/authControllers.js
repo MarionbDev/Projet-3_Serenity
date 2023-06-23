@@ -5,7 +5,6 @@ const models = require("../models");
 
 const { JWT_SECRET, JWT_EXPIRESIN, JWT_SECURE, JWT_COOKIE_MAXAGE } =
   process.env;
-console.log(JWT_SECRET);
 
 const createToken = (req, res) => {
   const { id, role } = req.body;
