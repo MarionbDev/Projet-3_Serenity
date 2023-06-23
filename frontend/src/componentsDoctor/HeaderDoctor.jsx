@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useUserContext } from "../contexts/UserContext";
 
 export default function HeaderDoctor({ text }) {
+  const id = parseInt(useParams().id, 10);
+  const navigate = useNavigate();
   const [doctor, setDoctor] = useState(null);
-
   const { idDoctor } = useUserContext();
 
   const getOneDoctor = () => {
@@ -19,6 +21,12 @@ export default function HeaderDoctor({ text }) {
   useEffect(() => {
     getOneDoctor();
   }, [idDoctor]);
+
+  useEffect(() => {
+    if (id !== idDoctor) {
+      navigate("/doctors");
+    }
+  }, [id]);
 
   if (!doctor) {
     return <p>Loading the doctor...</p>;
