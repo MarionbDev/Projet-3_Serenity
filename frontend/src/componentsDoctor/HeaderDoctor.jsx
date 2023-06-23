@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
+import { useUserContext } from "../contexts/UserContext";
 
 export default function HeaderDoctor({ text }) {
   const [doctor, setDoctor] = useState(null);
 
-  const { id } = useParams();
+  const { idDoctor } = useUserContext();
 
   const getOneDoctor = () => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/doctors/${id}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/doctors/${idDoctor}`, {
+      credentials: "include",
+    })
       .then((resp) => resp.json())
       .then((data) => setDoctor(data))
       .catch((err) => console.error(err));
@@ -16,7 +18,7 @@ export default function HeaderDoctor({ text }) {
 
   useEffect(() => {
     getOneDoctor();
-  }, [id]);
+  }, [idDoctor]);
 
   if (!doctor) {
     return <p>Loading the doctor...</p>;

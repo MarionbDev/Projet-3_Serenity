@@ -5,7 +5,7 @@ export default function CasePrepaPcPatient() {
 
   return (
     <div className="flex justify-around ml-[256px] font-semibold text-xs fixed">
-      <NavLink to={`/patient/${id}/mon-operation`}>
+      <NavLink to={`/patients/${id}/mon-operation`}>
         {({ isActive }) => (
           <button
             className={
@@ -20,7 +20,7 @@ export default function CasePrepaPcPatient() {
         )}
       </NavLink>
 
-      <NavLink to={`/patient/${id}/administratif`}>
+      <NavLink to={`/patients/${id}/administratif`}>
         {({ isActive }) => (
           <button
             className={
@@ -35,7 +35,7 @@ export default function CasePrepaPcPatient() {
         )}
       </NavLink>
 
-      <NavLink to={`/patient/${id}/mon-arrivée`}>
+      <NavLink to={`/patients/${id}/mon-arrivée`}>
         {({ isActive }) => (
           <button
             className={
@@ -50,7 +50,7 @@ export default function CasePrepaPcPatient() {
         )}
       </NavLink>
 
-      <NavLink to={`/patient/${id}/ma-sortie`}>
+      <NavLink to={`/patients/${id}/ma-sortie`}>
         {({ isActive }) => (
           <button
             className={
@@ -65,7 +65,7 @@ export default function CasePrepaPcPatient() {
         )}
       </NavLink>
 
-      <NavLink to={`/patient/${id}/ma-checklist`}>
+      <NavLink to={`/patients/${id}/ma-checklist`}>
         {({ isActive }) => (
           <button
             className={

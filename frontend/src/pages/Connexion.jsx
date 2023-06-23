@@ -26,6 +26,7 @@ function Connexion({ utilisateur }) {
     } else {
       fetch(`${import.meta.env.VITE_BACKEND_URL}/api/${utilisateur}/login`, {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
@@ -40,7 +41,7 @@ function Connexion({ utilisateur }) {
         .then((data) => {
           console.warn(data.id);
           navigate(`/${utilisateur}/${data.id}`);
-          if (utilisateur === "patient") {
+          if (utilisateur === "patients") {
             setIdPatient(data.id);
           } else {
             setIdDoctor(data.id);
