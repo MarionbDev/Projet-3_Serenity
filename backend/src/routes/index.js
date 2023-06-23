@@ -8,7 +8,14 @@ const checklistsRouter = require("./checklists.routes");
 const podcastsRouter = require("./podcasts.routes");
 const surgeryTypesRouter = require("./surgeryTypes.routes");
 const protocolRouter = require("./protocols.routes");
+const authControllers = require("../controllers/authControllers");
 
+router.get(
+  "/refresh-token",
+  authControllers.verifyToken,
+  authControllers.refreshToken,
+  authControllers.createToken
+);
 router.use("/doctors", doctorsRouter);
 router.use("/patients", patientsRouter);
 router.use("/contents", contentsRouter);
