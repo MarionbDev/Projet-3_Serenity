@@ -58,7 +58,7 @@ const add = (req, res) => {
   models.surgeryType
     .insert(surgeryType)
     .then(([result]) => {
-      res.location(`/surgeryTypes/${result.insertId}`).sendStatus(201);
+      res.sendStatus(200).json(result);
     })
     .catch((err) => {
       console.error(err);
@@ -88,7 +88,50 @@ const allInterventions = (req, res) => {
   models.surgeryType
     .findAllInterventions(parseInt(idDoctor, 10))
     .then(([rows]) => {
-      res.send(rows);
+      if (rows.length === 0) {
+        res.json([]);
+      } else {
+        const surgeryTypes = [];
+
+        for (let i = 0; i < rows.length; i += 1) {
+          const {
+            id,
+            name,
+            time,
+            interventionId,
+            patientId,
+            lastname,
+            firstname,
+          } = rows[i];
+          if (i !== 0 && surgeryTypes[surgeryTypes.length - 1].name === name) {
+            surgeryTypes[surgeryTypes.length - 1].count += 1;
+            surgeryTypes[surgeryTypes.length - 1].interventions.push({
+              id: interventionId,
+              time,
+              patient: {
+                id: patientId,
+                lastname,
+                firstname,
+              },
+            });
+          } else {
+            surgeryTypes.push({
+              id,
+              name,
+              count: 1,
+              interventions: [
+                {
+                  id: interventionId,
+                  time,
+                  patient: { id: patientId, lastname, firstname },
+                },
+              ],
+            });
+          }
+        }
+
+        res.send(surgeryTypes);
+      }
     })
     .catch((err) => {
       console.error(err);

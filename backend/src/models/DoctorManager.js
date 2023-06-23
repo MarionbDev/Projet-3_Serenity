@@ -21,7 +21,7 @@ class DoctorManager extends AbstractManager {
 
   update(doctor) {
     return this.database.query(
-      `update ${this.table} set firstname = ?, lastname = ?, tel = ?, mail = ?, hashedPassword = ?, role = ? = ? where id = ?`,
+      `update ${this.table} set firstname = ?, lastname = ?, tel = ?, mail = ?, hashedPassword = ?, role = ?  where id = ?`,
       [
         doctor.firstname,
         doctor.lastname,

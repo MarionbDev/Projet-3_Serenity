@@ -1,4 +1,6 @@
 import { NavLink, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useUserContext } from "../contexts/UserContext";
 import logoPraticient from "../assets/logo/logoDoctor/Chart.png";
 import logoPatient from "../assets/logo/logoDoctor/Discovery.png";
 import logoInterventions from "../assets/logo/logoDoctor/Wallet.png";
@@ -7,7 +9,26 @@ import logoActivity from "../assets/logo/logoPatient/activite.png";
 import serenity from "../assets/logo/logoPatient/logoSerenity.png";
 
 export default function SideBarDoctor() {
+  const [doctor, setDoctor] = useState({});
   const { id } = useParams();
+  const { idDoctor } = useUserContext();
+
+  const getAllPraticien = () => {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/doctors/${idDoctor}/`, {
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setDoctor(data);
+        console.warn(data);
+      });
+  };
+  useEffect(() => {
+    if (idDoctor !== "") {
+      getAllPraticien();
+      console.warn(doctor);
+    }
+  }, []);
 
   return (
     <div className="min-h-screen w-64 border-r-[1px] border-[#a5a5a5]/20  fixed ">
@@ -120,9 +141,10 @@ export default function SideBarDoctor() {
           )}
         </NavLink>
       </div>
+
       <div className="mt-48 ml-4 flex">
         <img className="ml-4 w-14" src={logoAvatar} alt="avatar" />
-        <p className="m-3 text-gray-500 font-semibold">Dr Bé Bert</p>
+        <p className="m-3 text-gray-500 font-semibold">Dr {doctor.lastname} </p>
       </div>
     </div>
   );
