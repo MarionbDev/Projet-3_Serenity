@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
 import {
   convertDateFormat,
@@ -7,15 +8,22 @@ import {
 import notif from "../../assets/logo/logoPatient/Notification.png";
 
 export default function HeaderPrepaPatientPc() {
+  const navigate = useNavigate();
   const [interventionInfo, setInterventionInfo] = useState("");
   const { idPatient } = useUserContext();
 
   const getInterventionInfo = () => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/patients/${idPatient}/home`)
+    fetch(
+      `${import.meta.env.VITE_BACKEND_URL}/api/patients/${idPatient}/home`,
+      { credentials: "include" }
+    )
       .then((res) => {
         return res.json();
       })
       .then((data) => {
+        if (!idPatient) {
+          navigate("/patients");
+        }
         setInterventionInfo(data);
       });
   };
@@ -23,7 +31,7 @@ export default function HeaderPrepaPatientPc() {
     if (idPatient !== "") {
       getInterventionInfo();
     }
-  }, []);
+  }, [idPatient]);
 
   return (
     <div className="flex justify-around ml-[256px]">

@@ -11,7 +11,10 @@ export default function HeaderMobilePrepaPatient() {
   const { idPatient } = useUserContext();
 
   const getInterventionInfo = () => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/patients/${idPatient}/home`)
+    fetch(
+      `${import.meta.env.VITE_BACKEND_URL}/api/patients/${idPatient}/home`,
+      { credentials: "include" }
+    )
       .then((res) => {
         return res.json();
       })
@@ -20,10 +23,8 @@ export default function HeaderMobilePrepaPatient() {
       });
   };
   useEffect(() => {
-    if (idPatient !== "") {
-      getInterventionInfo();
-    }
-  }, []);
+    getInterventionInfo();
+  }, [idPatient]);
 
   if (interventionInfo === "") {
     return <p>Chargement de la page</p>;
