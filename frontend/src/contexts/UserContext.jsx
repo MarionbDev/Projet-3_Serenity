@@ -23,29 +23,31 @@ const UserContextProvider = ({ children }) => {
   }));
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/refresh-token`, {
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => {
-        return res.json();
+    if (location.pathname !== "/") {
+      fetch(`${import.meta.env.VITE_BACKEND_URL}/api/refresh-token`, {
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
       })
-      .then((data) => {
-        console.warn(data.id);
-        navigate(location.pathname);
-        if (!data.role) {
-          setIdPatient(data.id);
-        } else {
-          setIdDoctor(data.id);
-          setRole(data.role);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        alert("Error to login please try again !");
-      });
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          console.warn(data.id);
+          navigate(location.pathname);
+          if (!data.role) {
+            setIdPatient(data.id);
+          } else {
+            setIdDoctor(data.id);
+            setRole(data.role);
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+          alert("Error to login please try again !");
+        });
+    }
   }, []);
 
   return (
