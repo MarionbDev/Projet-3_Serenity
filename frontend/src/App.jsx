@@ -6,7 +6,6 @@ import PrivateRoutes from "./components/PrivateRoutes";
 import "./App.css";
 import Home from "./pages/Home";
 import Connexion from "./pages/Connexion";
-import LatLongApi from "./pages/LatLongApi";
 import AccueilDoctor from "./pageDoctor/AccueilDoctor";
 import InterventionDoctor from "./componentsDoctor/InterventionDoctor";
 import PrepaPatientMobile from "./pagePatient/PrepaPatientMobile";
@@ -72,10 +71,6 @@ function App() {
             <Route
               path="/patients/:id/anticiper-ma-sortie"
               element={<PreparationEtapeFour />}
-            />
-            <Route
-              path="/patients/:id/anticiper-ma-sortie/latlong"
-              element={<LatLongApi />}
             />
             <Route
               path="/patients/:id/Ma-check-list"
