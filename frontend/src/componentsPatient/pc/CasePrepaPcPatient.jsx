@@ -4,8 +4,8 @@ export default function CasePrepaPcPatient() {
   const { id } = useParams();
 
   return (
-    <div className="fixed">
-      <div className="flex justify-around ml-[256px] font-semibold text-xs">
+    <div>
+      <div className=" flex justify-around ml-[256px] font-semibold text-xs">
         <NavLink to={`/patients/${id}/comprendre-mon-operation`}>
           {({ isActive }) => (
             <button

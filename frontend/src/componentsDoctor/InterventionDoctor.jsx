@@ -44,6 +44,7 @@ export default function InterventionDoctor() {
       }/api/doctors/${idDoctor}/interventions/${id}`,
       {
         method: "DELETE",
+        credentials: "include",
       }
     )
       .then(() => {
