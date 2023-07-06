@@ -8,7 +8,7 @@ import iconPrepaBlanc from "../../assets/logo/logoPatient/activite.png";
 import iconBag from "../../assets/logo/logoPatient/Bag.png";
 import iconBagBlanc from "../../assets/logo/logoPatient/bag-blanc.png";
 import iconAgenda from "../../assets/logo/logoPatient/Chart.png";
-import iconAgendaBlanc from "../../assets/logo/logoPatient/agenda.png";
+import iconAgendaBlanc from "../../assets/logo/logoPatient/Agenda.png";
 import iconNotif from "../../assets/logo/logoPatient/Notification.png";
 import iconChat from "../../assets/logo/logoPatient/Chat.png";
 
