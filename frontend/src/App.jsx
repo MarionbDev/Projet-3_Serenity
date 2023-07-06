@@ -23,6 +23,7 @@ import Administratif from "./componentsPatient/pc/Administratif";
 import MonArrivee from "./componentsPatient/pc/MonArrivee";
 import Anticiper from "./componentsPatient/pc/Anticiper";
 import CheckList from "./componentsPatient/pc/CheckList";
+import CasePrepaPcPatient from "./componentsPatient/pc/CasePrepaPcPatient";
 
 function getCurrentDimension() {
   return {
@@ -57,44 +58,59 @@ function App() {
           <>
             <Route path="/patients/:id" element={<PrepaPatientMobile />} />
             <Route
-              path="/patients/:id/comprendre-mon-operation"
+              path="/patients/:id/ma-preparation/comprendre-mon-operation"
               element={<PreparationEtapeFirst />}
             />
             <Route
-              path="/patients/:id/demarches-administratives"
+              path="/patients/:id/ma-preparation/demarches-administratives"
               intervention
               element={<PreparationEtapeTwo />}
             />
             <Route
-              path="/patients/:id/preparer-mon-arrivee"
+              path="/patients/:id/ma-preparation/preparer-mon-arrivee"
               element={<PreparationEtapeThree />}
             />
             <Route
-              path="/patients/:id/anticiper-ma-sortie"
+              path="/patients/:id/ma-preparation/anticiper-ma-sortie"
               element={<PreparationEtapeFour />}
             />
             <Route
-              path="/patients/:id/anticiper-ma-sortie/latlong"
+              path="/patients/:id/ma-preparation/anticiper-ma-sortie/latlong"
               element={<LatLongApi />}
             />
             <Route
-              path="/patients/:id/Ma-check-list"
+              path="/patients/:id/ma-preparation/Ma-check-list"
               element={<PreparationEtapeFive />}
             />
           </>
         ) : (
           <Route path="/patients/:id" element={<PrepaPatientPcOne />}>
-            <Route path="comprendre-mon-operation" element={<MonOperation />} />
-            <Route
-              path="demarches-administratives"
-              element={<Administratif />}
-            />
-            <Route path="preparer-mon-arrivee" element={<MonArrivee />} />
-            <Route path="anticiper-ma-sortie" element={<Anticiper />} />
-            <Route path="Ma-check-list" element={<CheckList />} />
+            <Route path="ma-preparation" element={<CasePrepaPcPatient />}>
+              <Route
+                path="comprendre-mon-operation"
+                element={<MonOperation />}
+              />
+              <Route
+                path="demarches-administratives"
+                element={<Administratif />}
+              />
+              <Route path="preparer-mon-arrivee" element={<MonArrivee />} />
+              <Route path="anticiper-ma-sortie" element={<Anticiper />} />
+              <Route path="Ma-check-list" element={<CheckList />} />
+            </Route>
           </Route>
         )}
 
+        <Route path="/patients/:id/serenite" element={<PrepaPatientPcOne />} />
+        <Route path="/patients/:id/agenda" element={<PrepaPatientPcOne />} />
+        <Route
+          path="/patients/:id/notifications"
+          element={<PrepaPatientPcOne />}
+        />
+        <Route
+          path="/patients/:id/messagerie"
+          element={<PrepaPatientPcOne />}
+        />
         <Route path="/doctor" element={<Connexion utilisateur="doctor" />} />
         <Route path="/doctors" element={<Connexion utilisateur="doctors" />} />
         <Route
@@ -109,6 +125,7 @@ function App() {
           path="/doctors/:id/interventions/create-intervention"
           element={<CreateIntervention />}
         />
+
         <Route
           path="/doctors/:id/praticiens"
           element={<PrivateRoutes authorizedRoles={["Admin", "Praticien"]} />}
