@@ -23,6 +23,9 @@ dependencies:
   react-responsive-carousel:
     specifier: ^3.2.23
     version: 3.2.23
+  react-responsive-modal:
+    specifier: ^6.4.2
+    version: 6.4.2(react-dom@18.2.0)(react@18.2.0)
   react-router-dom:
     specifier: ^6.11.2
     version: 6.11.2(react-dom@18.2.0)(react@18.2.0)
@@ -391,6 +394,29 @@ packages:
       "@babel/helper-string-parser": 7.21.5
       "@babel/helper-validator-identifier": 7.19.1
       to-fast-properties: 2.0.0
+    dev: false
+
+  /@bedrock-layout/use-forwarded-ref@1.6.1(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-GD9A9AFLzFNjr7k6fgerSqxfwDWl+wsPS11PErOKe1zkVz0y7RGC9gzlOiX/JrgpyB3NFHWIuGtoOQqifJQQpw==,
+      }
+    peerDependencies:
+      react: ^16.8 || ^17 || ^18
+    dependencies:
+      "@bedrock-layout/use-stateful-ref": 1.4.1(react@18.2.0)
+      react: 18.2.0
+    dev: false
+
+  /@bedrock-layout/use-stateful-ref@1.4.1(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-4eKO2KdQEXcR5LI4QcxqlJykJUDQJWDeWYAukIn6sRQYoabcfI5kDl61PUi6FR6o8VFgQ8IEP7HleKqWlSe8SQ==,
+      }
+    peerDependencies:
+      react: ^16.8 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /@esbuild/android-arm64@0.16.17:
@@ -1060,6 +1086,13 @@ packages:
       }
     engines: { node: ">=8" }
     dev: true
+
+  /body-scroll-lock@3.1.5:
+    resolution:
+      {
+        integrity: sha512-Yi1Xaml0EvNA0OYWxXiYNqY24AfWkbA6w5vxE7GWxtKfzIbZM+Qw+aSmkgsbWzbHiy/RCSkUZBplVxTA+E4jJg==,
+      }
+    dev: false
 
   /brace-expansion@1.1.11:
     resolution:
@@ -3234,6 +3267,22 @@ packages:
       classnames: 2.3.2
       prop-types: 15.8.1
       react-easy-swipe: 0.0.21
+    dev: false
+
+  /react-responsive-modal@6.4.2(react-dom@18.2.0)(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-ARjGEKE5Gu5CSvyA8U9ARVbtK4SMAtdXsjtzwtxRlQIHC99RQTnOUctLpl7+/sp1Kg1OJZ6yqvp6ivd4TBueEw==,
+      }
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+      react-dom: ^16.8.0 || ^17 || ^18
+    dependencies:
+      "@bedrock-layout/use-forwarded-ref": 1.6.1(react@18.2.0)
+      body-scroll-lock: 3.1.5
+      classnames: 2.3.2
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /react-router-dom@6.11.2(react-dom@18.2.0)(react@18.2.0):

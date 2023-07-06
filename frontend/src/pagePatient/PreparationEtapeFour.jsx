@@ -1,12 +1,15 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Arrow from "../assets/images/Arrow.png";
 import { useUserContext } from "../contexts/UserContext";
 
 import HeaderMobilePrepaPatient from "../componentsPatient/mobile/HeaderMobilePrepaPatient";
 import HeaderPreparation from "../componentsPatient/mobile/HeaderPreparation";
+import LatLongApi from "../pages/LatLongApi";
 
 function PreparationEtapeFour() {
   const { idPatient } = useUserContext();
+  const [mapIsVisible, setMapIsVisible] = useState(false);
 
   return (
     <>
@@ -25,34 +28,21 @@ function PreparationEtapeFour() {
         </p>
       </div>
       <div className=" flex flex-col m-8 ">
-        <button
-          type="button"
-          className="flex justify-center w-36 h-12 mb-1 rounded-xl bg-green-400"
-        >
-          <p className="p-4 text-base w-52 text-white">Kinésithérapeute</p>
-        </button>
-        <button
-          value="Infirmier"
-          type="button"
-          className="flex justify-center w-36 h-12 mb-1 rounded-xl mt-4 bg-green-400"
-        >
-          <p className="p-4 text-base w-52 text-white">Infirmier</p>
-        </button>
-        <button
-          value="Psychologue"
-          type="button"
-          className="flex justify-center w-36 h-12 mb-1 rounded-xl mt-4 bg-green-400"
-        >
-          <p className="p-4 text-base w-52 text-white">Psychologue</p>
-        </button>
-        <button
-          type="button"
-          className="flex justify-center w-48 h-12 mb-1 rounded-xl mt-4 bg-green-400"
-        >
-          <p className="p-4 text-base w-52 text-white">
-            Tous les professionels
-          </p>
-        </button>
+        {mapIsVisible ? (
+          <LatLongApi />
+        ) : (
+          <button
+            type="button"
+            className="flex justify-center mb-1 rounded-xl mt-4 bg-green-400"
+            onClick={() => {
+              setMapIsVisible(true);
+            }}
+          >
+            <p className="p-4 text-base w-52 text-white">
+              Afficher les Spécialistes autour de chez moi
+            </p>
+          </button>
+        )}
       </div>
     </>
   );

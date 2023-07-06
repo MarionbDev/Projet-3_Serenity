@@ -1,7 +1,34 @@
+import { useState } from "react";
+import LatLongApi from "../../pages/LatLongApi";
+
 export default function Anticiper() {
+  const [mapIsVisible, setMapIsVisible] = useState(false);
+
   return (
     <div className="ml-[256px] mt-[40px]">
-      <p>anticiper</p>
+      <div>
+        <p className="text-center ml-10 mb-2 mr-5">
+          Afin de securiser votre retour à la maison votre chirurgien vous
+          invite à prendre rendez-vous avec les professionnels de santé suivant:
+        </p>
+      </div>
+      <div className=" flex flex-col m-8 ">
+        {mapIsVisible ? (
+          <LatLongApi />
+        ) : (
+          <button
+            type="button"
+            className="flex justify-center mb-1 rounded-xl mt-4 bg-green-400 w-6/12 mx-auto"
+            onClick={() => {
+              setMapIsVisible(true);
+            }}
+          >
+            <p className="p-4 text-base w-52 text-white">
+              Afficher les Spécialistes autour de chez moi
+            </p>
+          </button>
+        )}
+      </div>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Modal } from "react-responsive-modal";
 import { useUserContext } from "../contexts/UserContext";
 import { convertDateFormat, convertHourFormat } from "../services/convertTime";
 import trash from "../assets/logo/logoDoctor/trash.png";
@@ -12,8 +13,14 @@ export default function InterventionDoctor() {
   const [surgeryTypes, setSurgeryTypes] = useState([]);
   const [selectedIntervention, setSelectedIntervention] = useState(null);
   const [searchInput, setSearchInput] = useState("");
+  const [open, setOpen] = useState(false);
 
-  // console.log(searchInput);
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
+
+  const handleNonButtonClick = () => {
+    onCloseModal();
+  };
 
   const { idDoctor } = useUserContext();
 
@@ -38,18 +45,11 @@ export default function InterventionDoctor() {
 
   const deleteIntervention = (id) => {
     // if (confirm("Voulez-vous supprimer cette intervention ?")) {
-    fetch(
-      `${
-        import.meta.env.VITE_BACKEND_URL
-      }/api/doctors/${idDoctor}/interventions/${id}`,
-      {
-        method: "DELETE",
-      }
-    )
-      .then(() => {
-        // console.log("Intervention supprimée avec succès");
-        getAllSurgeryTypes();
-      })
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/surgeryTypes/${id}`, {
+      method: "DELETE",
+      credentials: "include",
+    })
+      .then(() => getAllSurgeryTypes())
       .catch((err) => console.error(err));
     // }
   };
@@ -77,8 +77,8 @@ export default function InterventionDoctor() {
       <div className="absolute  w-2/3 mt-[48px] ml-[321px] text-[#FFFFFF]">
         <HeaderDoctor text="Une nouvelle intervention ?!" />
       </div>
-      <div className="absolute w-[1055px]  ml-[321px] mt-[172px] rounded-2xl shadow-lg shadow-slate-950/70    ">
-        <div className="flex mt-[32px] ">
+      <div className="absolute w-[1055px]  ml-[321px] mt-[162px] rounded-2xl shadow-lg shadow-slate-950/70  h-[500px]  ">
+        <div className="flex mt-[32px]  ">
           <img
             src={search}
             alt="search"
@@ -157,7 +157,7 @@ export default function InterventionDoctor() {
                                     <button
                                       type="button"
                                       onClick={() =>
-                                        deleteIntervention(item.id)
+                                        deleteIntervention(item.surgeryTypeId)
                                       }
                                     >
                                       <img
@@ -178,16 +178,53 @@ export default function InterventionDoctor() {
                 ))}
             </ul>
           </div>
-          <div className="flex justify-center mt-8">
-            <Link
-              to={`/doctors/${idDoctor}/interventions/create-intervention`}
-              className="bg-black  rounded-full shadow-xl  mb-5 text-white hover:text-white hover:border-2 hover:border-white "
-              Une
-              nouvelle
-              intervention
+          <div className="flex justify-center mt-4">
+            <button
+              type="button"
+              onClick={onOpenModal}
+              className="bg-[#323847] rounded-full shadow-xl mb-5 text-white
+            hover:text-white sm:hover:bg-white/30  "
             >
               <p className="flex px-6 py-2">Une nouvelle intervention</p>
-            </Link>
+            </button>
+            <Modal
+              open={open}
+              onClose={onCloseModal}
+              center
+              classNames={{ overlay: "customOverlay", modal: "customModal" }}
+              closeIcon={
+                <span
+                  style={{
+                    fontSize: "20px",
+                    width: "20px",
+                    height: "20px",
+                    color: "white",
+                  }}
+                >
+                  X
+                </span>
+              }
+            >
+              <h1 className="text-[#FFFFFF] font-semibold">
+                Souhaitez-vous créer une nouvelle intervention ?
+              </h1>
+
+              <div className="flex justify-center mt-2 gap-6 ">
+                <Link
+                  to={`/doctors/${idDoctor}/patients/create-intervention`}
+                  className="text-[#FFFFFF] bg-[#323847] sm:rounded-full sm:mt-3 sm:w-20 sm:hover:bg-white/30  sm:hover:font-semibold"
+                >
+                  <p className=" text-center p-1">Oui</p>
+                </Link>
+                <button
+                  type="button"
+                  onClick={handleNonButtonClick}
+                  className="text-[#FFFFFF] bg-[#323847] sm:rounded-full sm:mt-3 sm:w-20 sm:hover:bg-white/30  sm:hover:font-semibold"
+                >
+                  <p className=" text-center p-1">Non</p>
+                </button>
+              </div>
+            </Modal>
           </div>
         </section>
       </div>
