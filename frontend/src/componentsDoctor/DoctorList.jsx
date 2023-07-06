@@ -59,7 +59,6 @@ export default function DoctorList() {
             <p className="ml-8">Sélection</p>
             <p className="ml-[40rem]">Nombre réalisé</p>
           </div>
-
           <ul className="text-white flex items-start border-b-[1px] border-[#a5a5a5]/20 h-[104px]  ml-[32px] mt-[31px]">
             {praticien.map((doctor) => (
               <li key={doctor.id} className="flex items-center">
@@ -71,7 +70,7 @@ export default function DoctorList() {
                   src={imgList}
                   alt="logo"
                 />
-                <div className="flex">
+                <div className="flex ">
                   <p className=" ml-8">{doctor.firstname}</p>
                   <p className=" ml-8">{doctor.lastname}</p>
 

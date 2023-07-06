@@ -276,12 +276,12 @@ CREATE TABLE `surgery_type` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `doctor_id` int NOT NULL,
-  `intervention_id` int NOT NULL,
+  `intervention_id` int NULL,
   PRIMARY KEY (`id`),
   KEY `fk_surgery_type_doctor` (`doctor_id`),
   KEY `fk_surgery_type_intervention` (`intervention_id`),
   CONSTRAINT `fk_surgery_type_doctor` FOREIGN KEY (`doctor_id`) REFERENCES `doctor` (`id`),
-  CONSTRAINT `fk_surgery_type_intervention` FOREIGN KEY (`intervention_id`) REFERENCES `intervention` (`id`)
+  CONSTRAINT `fk_surgery_type_intervention` FOREIGN KEY (`intervention_id`) REFERENCES `intervention` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
