@@ -8,7 +8,7 @@ import "react-responsive-modal/styles.css";
 import "./modalStyles.css";
 import Home from "./pages/Home";
 import Connexion from "./pages/Connexion";
-import LatLongApi from "./pages/LatLongApi";
+// import LatLongApi from "./pages/LatLongApi";
 import AccueilDoctorMobile from "./pageDoctor/AccueilDoctorMobile";
 import AccueilDoctor from "./pageDoctor/AccueilDoctor";
 import InterventionDoctor from "./componentsDoctor/InterventionDoctor";
@@ -78,10 +78,6 @@ function App() {
             <Route
               path="/patients/:id/anticiper-ma-sortie"
               element={<PreparationEtapeFour />}
-            />
-            <Route
-              path="/patients/:id/anticiper-ma-sortie/latlong"
-              element={<LatLongApi />}
             />
             <Route
               path="/patients/:id/Ma-check-list"
