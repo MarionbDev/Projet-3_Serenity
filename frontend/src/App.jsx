@@ -22,6 +22,7 @@ import Administratif from "./componentsPatient/pc/Administratif";
 import MonArrivee from "./componentsPatient/pc/MonArrivee";
 import Anticiper from "./componentsPatient/pc/Anticiper";
 import CheckList from "./componentsPatient/pc/CheckList";
+import ChangePassword from "./componentsDoctor/ChangePassword";
 
 function getCurrentDimension() {
   return {
@@ -48,6 +49,7 @@ function App() {
     <UserContextProvider>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/changer-mon-mot-de-passe" element={<ChangePassword />} />
         <Route
           path="/patients"
           element={<Connexion utilisateur="patients" />}
