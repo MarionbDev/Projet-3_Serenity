@@ -17,6 +17,9 @@ import PreparationEtapeThree from "./pagePatient/PreparationEtapeThree";
 import PreparationEtapeFour from "./pagePatient/PreparationEtapeFour";
 import PreparationEtapeFive from "./pagePatient/PreparationEtapeFive";
 import PrepaPatientPcOne from "./pagePatient/PrepaPatientPcOne";
+import PrepaEtapeThreeOne from "./pagePatient/PrepaEtapeThreeOne";
+import PrepaEtapeThreeTwo from "./pagePatient/PrepaEtapeThreeTwo";
+
 import CreateIntervention from "./componentsDoctor/CreateIntervention";
 import MonOperation from "./componentsPatient/pc/MonOperation";
 import Administratif from "./componentsPatient/pc/Administratif";
@@ -68,6 +71,14 @@ function App() {
             <Route
               path="/patients/:id/preparer-mon-arrivee"
               element={<PreparationEtapeThree />}
+            />
+            <Route
+              path="/patients/:id/preparer-mon-arrivee/1"
+              element={<PrepaEtapeThreeOne />}
+            />
+            <Route
+              path="/patients/:id/preparer-mon-arrivee/2"
+              element={<PrepaEtapeThreeTwo />}
             />
             <Route
               path="/patients/:id/anticiper-ma-sortie"

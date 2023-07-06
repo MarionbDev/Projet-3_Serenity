@@ -47,9 +47,11 @@ function PreparationEtapeFour() {
         </button>
         <button
           type="button"
-          className="flex justify-center w-36 h-12 mb-1 rounded-xl mt-4 bg-green-400"
+          className="flex justify-center w-48 h-12 mb-1 rounded-xl mt-4 bg-green-400"
         >
-          <p className="p-4 text-base w-52 text-white">Ordonnance</p>
+          <p className="p-4 text-base w-52 text-white">
+            Tous les professionels
+          </p>
         </button>
       </div>
     </>
