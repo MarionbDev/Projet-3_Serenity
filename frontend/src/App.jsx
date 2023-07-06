@@ -4,18 +4,28 @@ import { UserContextProvider } from "./contexts/UserContext";
 import CreateDoctor from "./componentsDoctor/CreateDoctor";
 import PrivateRoutes from "./components/PrivateRoutes";
 import "./App.css";
+import "react-responsive-modal/styles.css";
+import "./modalStyles.css";
 import Home from "./pages/Home";
 import Connexion from "./pages/Connexion";
+// import LatLongApi from "./pages/LatLongApi";
+import AccueilDoctorMobile from "./pageDoctor/AccueilDoctorMobile";
 import AccueilDoctor from "./pageDoctor/AccueilDoctor";
 import InterventionDoctor from "./componentsDoctor/InterventionDoctor";
 import PrepaPatientMobile from "./pagePatient/PrepaPatientMobile";
+import InterventionDoctorMobile from "./componentsDoctor/InterventionDoctorMobile";
 import DoctorList from "./componentsDoctor/DoctorList";
+import DoctorPatientList from "./componentsDoctor/PatientsList";
+import CreatePatient from "./componentsDoctor/CreatePatient";
 import PreparationEtapeFirst from "./pagePatient/PreparationEtapeFirst";
 import PreparationEtapeTwo from "./pagePatient/PreparationEtapeTwo";
 import PreparationEtapeThree from "./pagePatient/PreparationEtapeThree";
 import PreparationEtapeFour from "./pagePatient/PreparationEtapeFour";
 import PreparationEtapeFive from "./pagePatient/PreparationEtapeFive";
 import PrepaPatientPcOne from "./pagePatient/PrepaPatientPcOne";
+import PrepaEtapeThreeOne from "./pagePatient/PrepaEtapeThreeOne";
+import PrepaEtapeThreeTwo from "./pagePatient/PrepaEtapeThreeTwo";
+
 import CreateIntervention from "./componentsDoctor/CreateIntervention";
 import MonOperation from "./componentsPatient/pc/MonOperation";
 import Administratif from "./componentsPatient/pc/Administratif";
@@ -71,12 +81,29 @@ function App() {
               element={<PreparationEtapeThree />}
             />
             <Route
+              path="/patients/:id/preparer-mon-arrivee/1"
+              element={<PrepaEtapeThreeOne />}
+            />
+            <Route
+              path="/patients/:id/preparer-mon-arrivee/2"
+              element={<PrepaEtapeThreeTwo />}
+            />
+            <Route
               path="/patients/:id/anticiper-ma-sortie"
               element={<PreparationEtapeFour />}
             />
             <Route
               path="/patients/:id/Ma-check-list"
               element={<PreparationEtapeFive />}
+            />
+
+            <Route
+              path="/doctors/:id"
+              element={<AccueilDoctorMobile utilisateur="/doctors/:id" />}
+            />
+            <Route
+              path="/doctors/:id/interventions"
+              element={<InterventionDoctorMobile />}
             />
           </>
         ) : (
@@ -94,10 +121,12 @@ function App() {
 
         <Route path="/doctor" element={<Connexion utilisateur="doctor" />} />
         <Route path="/doctors" element={<Connexion utilisateur="doctors" />} />
+
         <Route
           path="/doctors/:id"
           element={<AccueilDoctor utilisateur="/doctors/:id" />}
         />
+
         <Route
           path="/doctors/:id/interventions"
           element={<InterventionDoctor />}
@@ -118,6 +147,11 @@ function App() {
             <Route path="CreateDoctor" element={<CreateDoctor />} />
           </Route>
         </Route>
+        <Route path="/doctors/:id/patients/" element={<DoctorPatientList />} />
+        <Route
+          path="/doctors/:id/patients/create-patient"
+          element={<CreatePatient />}
+        />
 
         {/* Nouvelle route pour créer une intervention */}
         <Route

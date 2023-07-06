@@ -6,7 +6,6 @@ import logoPatient from "../assets/logo/logoDoctor/Discovery.png";
 import logoInterventions from "../assets/logo/logoDoctor/Wallet.png";
 import logoAvatar from "../assets/logo/logoPatient/avatar1.png";
 import logoActivity from "../assets/logo/logoPatient/activite.png";
-import serenity from "../assets/logo/logoPatient/logoSerenity.png";
 
 export default function SideBarDoctor() {
   const [doctor, setDoctor] = useState({});
@@ -31,120 +30,140 @@ export default function SideBarDoctor() {
   }, []);
 
   return (
-    <div className="min-h-screen w-64 border-r-[1px] border-[#a5a5a5]/20  fixed ">
-      <div className="flex pt-[59px] pl-8 ">
-        <img src={serenity} alt="logo" className="w-[45px] h-[42px] " />
-        <p className="text-white text-[20px] ml-2 ">SERENITY</p>
-      </div>
-
-      <div className="mt-20 ml-4">
-        <p className="text-gray-500 text-[12px] pb-4 ml-7">
+    <div className=" md:min-h-screen md:mt-3 md:w-64 md:border-r-[1px] md:border-[#a5a5a5]/20  md:fixed ">
+      <div className="flex flex-col items-center md:items-start md:mt-40 lg:mt-36 md:ml-4">
+        <p className="text-gray-500 invisible  text-[12px] md:visible  md:pb-4">
           Console d'administration
         </p>
-        <NavLink to={`/doctors/${id}/`}>
-          {({ isActive }) => (
-            <button
-              className={
-                isActive
-                  ? " flex items-center bg-indigo-500 rounded-lg w-[90%] h-14"
-                  : "flex items-center rounded-lg w-[90%] h-14 "
-              }
-              type="button"
-            >
-              <img className="ml-7 mr-2" src={logoActivity} alt="icon" />
-              <p
-                className={
-                  isActive
-                    ? "m-2 text-white font-semibold"
-                    : "m-2 text-gray-500 font-semibold"
-                }
-              >
-                Mon activité
-              </p>
-            </button>
-          )}
-        </NavLink>
 
-        <NavLink to={`/doctors/${id}/praticiens`}>
-          {({ isActive }) => (
-            <button
-              type="button"
-              className={
-                isActive
-                  ? " flex items-center bg-indigo-500 rounded-lg w-[90%] h-14"
-                  : "flex items-center rounded-lg w-[90%] h-14 "
-              }
-            >
-              <img className="ml-7 mr-2" src={logoPraticient} alt="icon" />
-              <p
-                className={
-                  isActive
-                    ? "m-2 text-white font-semibold"
-                    : "m-2 text-gray-500 font-semibold"
-                }
-              >
-                Praticiens
-              </p>
-            </button>
-          )}
-        </NavLink>
+        <div className="flex flex-col w-[100%] px-8 mt-6 sm:px-0 sm:pr-8 sm:mt-0">
+          <NavLink to={`/doctors/${id}/`}>
+            {({ isActive }) => (
+              <div className=" mb-5 shadow-slate-950/80 shadow-lg border-[#a5a5a5]/20  border-2 py-5 px-12 rounded-lg md:px-0 md:py-1 md:border-none md:mb-0 md:shadow-none">
+                <button
+                  className={
+                    isActive
+                      ? " flex md:items-center md:bg-indigo-500 rounded-lg md:w-[13rem]  md:h-14"
+                      : "flex md:items-center md:rounded-lg md:h-14 md:w-[13rem]"
+                  }
+                  type="button"
+                >
+                  <img
+                    className=" mr-4 md:ml-7 md:mr-2"
+                    src={logoActivity}
+                    alt="icon"
+                  />
+                  <p
+                    className={
+                      isActive
+                        ? "md:m-2 text-[#FFFFFF] font-semibold"
+                        : "text-[#FFFFFF] md:m-2 md:text-gray-500 font-semibold"
+                    }
+                  >
+                    Mon activité
+                  </p>
+                </button>
+              </div>
+            )}
+          </NavLink>
 
-        <NavLink to={`/doctors/${id}/patients`}>
-          {({ isActive }) => (
-            <button
-              className={
-                isActive
-                  ? " flex items-center bg-indigo-500 rounded-lg w-[90%] h-14"
-                  : "flex items-center rounded-lg w-[90%] h-14 "
-              }
-              type="button"
-            >
-              <img className="ml-7 mr-2" src={logoPatient} alt="icon" />
-              <p
-                className={
-                  isActive
-                    ? "m-2 text-white font-semibold"
-                    : "m-2 text-gray-500 font-semibold"
-                }
-              >
-                Patients
-              </p>
-            </button>
-          )}
-        </NavLink>
+          <NavLink to={`/doctors/${id}/praticiens`}>
+            {({ isActive }) => (
+              <div className=" mb-5 shadow-slate-950/80 shadow-lg border-[#a5a5a5]/20  border-2 py-5 px-12 rounded-lg md:px-0 md:py-1 md:border-none md:mb-0 md:shadow-none ">
+                <button
+                  type="button"
+                  className={
+                    isActive
+                      ? " flex md:items-center bg-indigo-500 rounded-lg md:w-[13rem] md:h-14"
+                      : "flex md:items-center rounded-lg md:w-[13rem] md:h-14 "
+                  }
+                >
+                  <img
+                    className="mr-4 md:ml-7 md:mr-2"
+                    src={logoPraticient}
+                    alt="icon"
+                  />
+                  <p
+                    className={
+                      isActive
+                        ? "md:m-2 text-[#FFFFFF] font-semibold"
+                        : "text-[#FFFFFF] md:m-2 md:text-gray-500 font-semibold"
+                    }
+                  >
+                    Praticiens
+                  </p>
+                </button>
+              </div>
+            )}
+          </NavLink>
 
-        <NavLink to={`/doctors/${id}/interventions`}>
-          {({ isActive }) => (
-            <button
-              className={
-                isActive
-                  ? " bg-indigo-500 flex items-center rounded-lg w-[90%] h-14"
-                  : "flex items-center rounded-lg w-[90%] h-14"
-              }
-              type="button"
-            >
-              <img
-                className="ml-7 mr-2 w-[24px] h-[24px]"
-                src={logoInterventions}
-                alt="icon"
-              />
-              <p
-                className={
-                  isActive
-                    ? "text-white font-semibold"
-                    : "m-3 text-gray-500 font-semibold"
-                }
-              >
-                Interventions
-              </p>
-            </button>
-          )}
-        </NavLink>
+          <NavLink to={`/doctors/${id}/patients`}>
+            {({ isActive }) => (
+              <div className=" mb-5 shadow-slate-950/80 shadow-lg border-[#a5a5a5]/20  border-2 py-5 px-12 rounded-lg md:px-0 md:py-1 md:border-none md:mb-0 md:shadow-none">
+                <button
+                  className={
+                    isActive
+                      ? " flex md:items-center bg-indigo-500 rounded-lg md:w-[13rem] md:h-14"
+                      : "flex items-center rounded-lg md:w-[13rem] md:h-14 "
+                  }
+                  type="button"
+                >
+                  <img
+                    className="mr-4 md:ml-7 md:mr-2"
+                    src={logoPatient}
+                    alt="icon"
+                  />
+                  <p
+                    className={
+                      isActive
+                        ? "md:m-2 text-[#FFFFFF] font-semibold"
+                        : "text-[#FFFFFF] md:m-2 md:text-gray-500 font-semibold"
+                    }
+                  >
+                    Patients
+                  </p>
+                </button>
+              </div>
+            )}
+          </NavLink>
+
+          <NavLink to={`/doctors/${id}/interventions`}>
+            {({ isActive }) => (
+              <div className=" mb-5 shadow-slate-950/80 shadow-lg border-[#a5a5a5]/20  border-2 py-5 px-12 rounded-lg md:px-0 md:py-1 md:border-none md:mb-0 md:shadow-none ">
+                <button
+                  className={
+                    isActive
+                      ? " bg-indigo-500 flex md:items-center rounded-lg md:w-[13rem] md:h-14"
+                      : "flex md:items-center rounded-lg md:w-[13rem] md:h-14"
+                  }
+                  type="button"
+                >
+                  <img
+                    className="mr-4 md:ml-7 md:mr-2 md:w-[24px] md:h-[24px]"
+                    src={logoInterventions}
+                    alt="icon"
+                  />
+                  <p
+                    className={
+                      isActive
+                        ? "md:m-2 text-[#FFFFFF] font-semibold"
+                        : "text-[#FFFFFF] md:m-2 md:text-gray-500 font-semibold"
+                    }
+                  >
+                    Interventions
+                  </p>
+                </button>
+              </div>
+            )}
+          </NavLink>
+        </div>
       </div>
 
-      <div className="mt-48 ml-4 flex">
-        <img className="ml-4 w-14" src={logoAvatar} alt="avatar" />
-        <p className="m-3 text-gray-500 font-semibold">Dr {doctor.lastname} </p>
+      <div className="flex invisible md:visible md:mt-16  md:ml-4 lg:mt-14 xl:mt-40">
+        <img className="md:ml-4 md:w-14" src={logoAvatar} alt="avatar" />
+        <p className="md:m-3 text-gray-500 font-semibold">
+          Dr {doctor.lastname}
+        </p>
       </div>
     </div>
   );

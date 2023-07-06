@@ -1,0 +1,184 @@
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Modal } from "react-responsive-modal";
+import { useUserContext } from "../contexts/UserContext";
+import SideBarDoctor from "./SideBarDoctor";
+import HeaderDoctor from "./HeaderDoctor";
+import search from "../assets/logo/logoDoctor/Search.png";
+import edit from "../assets/logo/logoDoctor/edit.png";
+import trash from "../assets/logo/logoDoctor/trash.png";
+
+export default function DoctorPatientList() {
+  const [patient, setPatient] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
+
+  const [open, setOpen] = useState(false);
+
+  const { idDoctor } = useUserContext();
+  // const { idPatient } = useUserContext();
+
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
+
+  const handleNonButtonClick = () => {
+    onCloseModal();
+  };
+
+  const getAllPatients = () => {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/patients`)
+      .then((res) => res.json())
+      .then((data) => {
+        setPatient(data);
+        console.warn(data);
+      });
+  };
+
+  useEffect(() => {
+    getAllPatients();
+  }, []);
+
+  const deleteIntervention = (id) => {
+    // if (confirm("Voulez-vous supprimer cette intervention ?")) {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/patients/${id}`, {
+      method: "DELETE",
+      credentials: "include",
+    })
+      .then(() => getAllPatients())
+      .catch((err) => console.error(err));
+    // }
+  };
+
+  if (!patient) {
+    return <p>Loading page</p>;
+  }
+
+  return (
+    <div className="min-h-screen bg-[#242731]">
+      <SideBarDoctor />
+      <div className="absolute  w-2/3 mt-[48px] ml-[321px] text-[#FFFFFF]">
+        <HeaderDoctor text="Un nouveau patient ?!" />
+      </div>
+      <div className="absolute w-[1055px] ml-[321px] mt-[162px] rounded-2xl shadow-lg shadow-slate-950/70  h-[500px]  ">
+        <div className="flex mt-[32px] ">
+          <img
+            src={search}
+            alt="search"
+            className="relative left-12 bottom-1 w-[24px] h-[24px] mt-5 mr-4 flex"
+          />
+          <input
+            className="h-[56px] w-[320px] text-gray-500 pl-10 bg-[#282b33]  shadow-slate-950/70 shadow-sm rounded-2xl"
+            type="text"
+            placeholder="Nom de votre patient "
+            onChange={(e) => setSearchInput(e.target.value)}
+          />
+          <div className="flex  ml-[35rem] items-center">
+            <button type="button">
+              <img src={edit} alt="edit" className="w-[24px] h-[24px] mr-8" />
+            </button>
+          </div>
+        </div>
+        <section>
+          <div className="flex grid-cols-5 gap-[9%] border-t-[1px] border-[#a5a5a5]/20 ml-[32px]  text-gray-500 mt-5 pt-2 text-[16px] h-[28px] w-[991px]">
+            <p className="ml-8">Prénom</p>
+            <p>Nom</p>
+            <p>Téléphone fixe</p>
+            <p>Téléphone portable</p>
+            <p>Mail</p>
+          </div>
+
+          <div className="flex border-b-[1px] border-[#a5a5a5]/20 ml-[32px]  text-gray-500 mt-4 text-[16px] h-[1px] w-[991px]">
+            <ul className="overflow-y-auto overflow-hidden h-[15rem] text-[#FFFFFF] w-[991px] flex flex-col  border-b-[1px] border-[#a5a5a5]/20  mt-[20px]">
+              <div className="w-[720px] ">
+                {patient
+                  .filter(
+                    (item) =>
+                      item.lastname
+                        .toLowerCase()
+                        .includes(searchInput.toLowerCase()) ||
+                      item.firstname
+                        .toLowerCase()
+                        .includes(searchInput.toLowerCase())
+                  )
+                  .map((item) => (
+                    <li
+                      key={item.id}
+                      className="flex justify-between ml-8 text-[16px] list-disc mb-2"
+                    >
+                      <div className="flex grid-cols-5 gap-14">
+                        <p className="w-20">{item.firstname}</p>
+                        <p className="w-20">{item.lastname}</p>
+                        <p className="w-36">{item.tel_fixe}</p>
+                        <p className="w-36">{item.tel_portable}</p>
+                        <p className="w-56">{item.mail}</p>
+                        <div className="flex">
+                          <button
+                            type="button"
+                            onClick={() => deleteIntervention(item.id)}
+                          >
+                            <img
+                              src={trash}
+                              alt="trash"
+                              className="w-[20px] h-[20px]"
+                            />
+                          </button>
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+              </div>
+            </ul>
+          </div>
+          <div className="flex justify-center mt-8">
+            <Modal
+              open={open}
+              onClose={onCloseModal}
+              center
+              classNames={{ overlay: "customOverlay", modal: "customModal" }}
+              closeIcon={
+                <span
+                  style={{
+                    fontSize: "20px",
+                    width: "18px",
+                    height: "18px",
+                    color: "white",
+                  }}
+                >
+                  X
+                </span>
+              }
+            >
+              <h1 className="text-[#FFFFFF] text-center">
+                Souhaitez-vous créer un nouveau patient ?
+              </h1>
+              <div className="flex justify-center mt-2 gap-6 ">
+                <Link
+                  to={`/doctors/${idDoctor}/patients/create-patient`}
+                  className="text-[#FFFFFF] bg-[#323847] sm:rounded-full sm:mt-3 sm:w-20 sm:hover:bg-white/30  sm:hover:font-semibold"
+                >
+                  <p className=" text-center p-1">Oui</p>
+                </Link>
+                <button
+                  type="button"
+                  onClick={handleNonButtonClick}
+                  className="text-[#FFFFFF] bg-[#323847] sm:rounded-full sm:mt-3 sm:w-20 sm:hover:bg-white/30  sm:hover:font-semibold"
+                >
+                  <p className=" text-center p-1">Non</p>
+                </button>
+              </div>
+            </Modal>
+          </div>
+          <div className="flex justify-center mt-[250px]">
+            <button
+              type="button"
+              onClick={onOpenModal}
+              className="bg-[#323847] rounded-full shadow-xl mb-5 text-white
+            hover:text-white sm:hover:bg-white/30  "
+            >
+              <p className="flex px-6 py-2">Un nouveau patient</p>
+            </button>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}
