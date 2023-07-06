@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useUserContext } from "../contexts/UserContext";
 import SideBarDoctor from "../componentsDoctor/SideBarDoctor";
 import HeaderDoctor from "../componentsDoctor/HeaderDoctor";
@@ -35,24 +36,23 @@ export default function AccueilDoctor() {
   return (
     <div className="min-h-screen bg-[#242731]">
       <SideBarDoctor />
-      <div className="absolute  w-2/3 mt-[48px] ml-[321px] text-[#FFFFFF]">
-        <HeaderDoctor text="Comment vont vos patients ?!" />{" "}
+      <div className="absolute md:w-2/3 md:mt- lg:mt-[48px] md:ml-[321px] text-[#FFFFFF]">
+        <HeaderDoctor text="" />
       </div>
-
-      <div className=" flex flex-col  w-[426px]  absolute right-0 border-l-[1px] min-h-screen border-[#a5a5a5]/20 ">
-        <div className="flex pt-[56px] ">
+      <div className=" min-h-screen absolute md:flex-col md:justify-center md:items-center md:w-[500px] md:border-0 md:right-0 md:border-[#a5a5a5]/20 lg:border-l-[1px] lg:w-[300px] xl:w-[500px] ">
+        <div className="flex  md:mt-10 lg:ml-[-20px] lg:mt-8">
           <img
             src={search}
             alt="search"
-            className="relative top-2 left-10 w-[20px] h-[20px]  mr-4 flex"
+            className="flex relative w-[20px] h-[20px]  md:top-2 md:mt-36 md:left-10 md:mr-4 lg:mt-0 "
           />
           <input
-            className="h-[36px] w-56  py-3 pl-10 bg-[#282b33] text-[14px] rounded-xl shadow-slate-950/80 shadow-lg italic text-[#FFFFFF] "
+            className="  md:mt-36 md:mr-28 md:h-[36px] md:w-72 lg:w-48 xl:w-56 md:py-3 md:pl-10 lg:mt-0 bg-[#282b33] rounded-xl shadow-slate-950/80 shadow-lg italic text-[#FFFFFF] text-[14px] "
             type="text"
             placeholder="Nom de votre patient "
             onChange={(e) => setSearchInput(e.target.value)}
           />
-          <div className="rounded-full ml-20 mt-[-17px] h-[50px] w-[54px]  shadow-lg shadow-slate-950/80 flex justify-center items-center">
+          <div className="rounded-full md:h-[50px] md:w-[54px] md:mr-4 md:mt-[-30px]  shadow-lg shadow-slate-950/80 flex md:justify-center md:items-center lg:ml-[-90px] lg:w-[40px] lg:h-[40px] xl:ml-20 xl:mt-[-18px] xl:mr-0 2xl:mt-[-15px] 2xl:mr-8">
             <img
               src={notification}
               alt="notification"
@@ -60,9 +60,8 @@ export default function AccueilDoctor() {
             />
           </div>
         </div>
-
-        <div className="flex m-6 overflow-y-auto overflow-hidden h-[570px] border-[1px] border-[#a5a5a5]/20 ">
-          <ul className="overflow-y-auto  overflow-hidden text-[#FFFFFF]  w-[991px] flex flex-col  m-4">
+        <div className="flex  md:m-6  md:overflow-y-auto md:overflow-hidden md:h-[370px] md:border-[1px] md:border-[#a5a5a5]/20 lg:h-[490px] xl:h-[570px] ">
+          <ul className="md:overflow-y-auto  flex md:flex-col md:m-4 md:overflow-hidden text-[#FFFFFF] md:w-[391px] lg:w-[200px]  xl:w-[391px]  ">
             {patients
               .filter(
                 (patient) =>
@@ -74,20 +73,24 @@ export default function AccueilDoctor() {
                     .includes(searchInput.toLowerCase())
               )
               .map((patient) => (
-                <li
-                  key={`item-${patients.id}`}
-                  className="flex gap-2 mb-3 text-[16px] "
-                >
-                  <p>{patient.firstname}</p>
-                  <p>{patient.lastname}</p>
-                </li>
+                <Link to="patients">
+                  <li
+                    key={`item-${patients.id}`}
+                    className="flex md:gap-2 md:mb-3 text-[16px] "
+                  >
+                    <p>{patient.firstname}</p>
+                    <p>{patient.lastname}</p>
+                  </li>{" "}
+                </Link>
               ))}
           </ul>
         </div>
       </div>
-      <div className="flex absolute ml-72 mt-56 text-[#FFFFFF] w-[800px] h-auto">
-        <p className="italic">Informations sur le patient :</p>
-      </div>
+      {/* <div className="flex absolute md:ml-72 md:mt-5  text-[#FFFFFF] md:w-[800px] lg:mt-[210px] ">
+        <p className="italic md:invisible lg:visible text-[16px]">
+          Informations sur le patient :
+        </p>
+      </div> */}
     </div>
   );
 }
