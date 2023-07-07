@@ -8,7 +8,7 @@ import "react-responsive-modal/styles.css";
 import "./modalStyles.css";
 import Home from "./pages/Home";
 import Connexion from "./pages/Connexion";
-// import LatLongApi from "./pages/LatLongApi";
+import LatLongApi from "./pages/LatLongApi";
 import AccueilDoctorMobile from "./pageDoctor/AccueilDoctorMobile";
 import AccueilDoctor from "./pageDoctor/AccueilDoctor";
 import InterventionDoctor from "./componentsDoctor/InterventionDoctor";
@@ -25,7 +25,6 @@ import PreparationEtapeFive from "./pagePatient/PreparationEtapeFive";
 import PrepaPatientPcOne from "./pagePatient/PrepaPatientPcOne";
 import PrepaEtapeThreeOne from "./pagePatient/PrepaEtapeThreeOne";
 import PrepaEtapeThreeTwo from "./pagePatient/PrepaEtapeThreeTwo";
-
 import CreateIntervention from "./componentsDoctor/CreateIntervention";
 import MonOperation from "./componentsPatient/pc/MonOperation";
 import Administratif from "./componentsPatient/pc/Administratif";
@@ -33,6 +32,7 @@ import MonArrivee from "./componentsPatient/pc/MonArrivee";
 import Anticiper from "./componentsPatient/pc/Anticiper";
 import CheckList from "./componentsPatient/pc/CheckList";
 import ChangePassword from "./componentsDoctor/ChangePassword";
+import CasePrepaPcPatient from "./componentsPatient/pc/CasePrepaPcPatient";
 
 function getCurrentDimension() {
   return {
@@ -66,34 +66,49 @@ function App() {
         />
         {window.innerWidth < 768 ? (
           <>
-            <Route path="/patients/:id" element={<PrepaPatientMobile />} />
             <Route
-              path="/patients/:id/comprendre-mon-operation"
+              path="/patients/:id/ma-preparation"
+              element={<PrepaPatientMobile />}
+            />
+            <Route
+              path="/patients/:id/ma-preparation/comprendre-mon-operation"
               element={<PreparationEtapeFirst />}
             />
             <Route
-              path="/patients/:id/demarches-administratives"
+              path="/patients/:id/ma-preparation/demarches-administratives"
               intervention
               element={<PreparationEtapeTwo />}
             />
             <Route
-              path="/patients/:id/preparer-mon-arrivee"
+              path="/patients/:id/ma-preparation/preparer-mon-arrivee"
               element={<PreparationEtapeThree />}
             />
             <Route
-              path="/patients/:id/preparer-mon-arrivee/1"
-              element={<PrepaEtapeThreeOne />}
-            />
-            <Route
-              path="/patients/:id/preparer-mon-arrivee/2"
-              element={<PrepaEtapeThreeTwo />}
-            />
-            <Route
-              path="/patients/:id/anticiper-ma-sortie"
+              path="/patients/:id/ma-preparation/anticiper-ma-sortie"
               element={<PreparationEtapeFour />}
             />
             <Route
-              path="/patients/:id/Ma-check-list"
+              path="/patients/:id/ma-preparation/anticiper-ma-sortie/latlong"
+              element={<LatLongApi />}
+            />
+            <Route
+              path="/patients/:id/ma-preparation/Ma-check-list"
+              element={<PreparationEtapeFive />}
+            />
+            <Route
+              path="/patients/:id/ma-preparation/preparer-mon-arrivee/1"
+              element={<PrepaEtapeThreeOne />}
+            />
+            <Route
+              path="/patients/:id/ma-preparation/preparer-mon-arrivee/2"
+              element={<PrepaEtapeThreeTwo />}
+            />
+            <Route
+              path="/patients/:id/ma-preparation/anticiper-ma-sortie"
+              element={<PreparationEtapeFour />}
+            />
+            <Route
+              path="/patients/:id/ma-preparation/Ma-check-list"
               element={<PreparationEtapeFive />}
             />
 
@@ -107,7 +122,10 @@ function App() {
             />
           </>
         ) : (
-          <Route path="/patients/:id" element={<PrepaPatientPcOne />}>
+          <Route
+            path="/patients/:id/ma-preparation"
+            element={<PrepaPatientPcOne />}
+          >
             <Route path="comprendre-mon-operation" element={<MonOperation />} />
             <Route
               path="demarches-administratives"
@@ -119,9 +137,17 @@ function App() {
           </Route>
         )}
 
-        <Route path="/doctor" element={<Connexion utilisateur="doctor" />} />
+        <Route path="/patients/:id/serenite" element={<PrepaPatientPcOne />} />
+        <Route path="/patients/:id/agenda" element={<PrepaPatientPcOne />} />
+        <Route
+          path="/patients/:id/notifications"
+          element={<PrepaPatientPcOne />}
+        />
+        <Route
+          path="/patients/:id/messagerie"
+          element={<PrepaPatientPcOne />}
+        />
         <Route path="/doctors" element={<Connexion utilisateur="doctors" />} />
-
         <Route
           path="/doctors/:id"
           element={<AccueilDoctor utilisateur="/doctors/:id" />}
@@ -135,6 +161,7 @@ function App() {
           path="/doctors/:id/interventions/create-intervention"
           element={<CreateIntervention />}
         />
+
         <Route
           path="/doctors/:id/praticiens"
           element={<PrivateRoutes authorizedRoles={["Admin", "Praticien"]} />}

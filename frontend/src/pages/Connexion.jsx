@@ -40,7 +40,7 @@ function Connexion({ utilisateur }) {
         })
         .then((data) => {
           console.warn(data.id);
-          navigate(`/${utilisateur}/${data.id}`);
+          navigate(`/${utilisateur}/${data.id}/ma-preparation`);
           if (utilisateur === "patients") {
             setIdPatient(data.id);
           } else {

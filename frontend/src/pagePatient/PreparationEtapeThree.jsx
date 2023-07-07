@@ -12,7 +12,7 @@ function PreparationEtapeThree() {
     <>
       <div>
         <HeaderMobilePrepaPatient />
-        <Link to={`/patients/${idPatient}`}>
+        <Link to={`/patients/${idPatient}/ma-preparation`}>
           <img src={Arrow} alt="doc12" className="mb-2 ml-3" />
         </Link>
         <HeaderPreparation
@@ -24,7 +24,7 @@ function PreparationEtapeThree() {
           histoire d'être en toute sérénité le jour J{" "}
         </p>
       </div>
-      <Link to={`/patients/${idPatient}/preparer-mon-arrivee/1`}>
+      <Link to={`/patients/${idPatient}/ma-preparation/preparer-mon-arrivee/1`}>
         <button
           type="button"
           className="flex items-center rounded-xl m-8 p-4 h-14 text-xl mt-20 bg-pink-400"
