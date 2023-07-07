@@ -25,6 +25,7 @@ import PreparationEtapeFive from "./pagePatient/PreparationEtapeFive";
 import PrepaPatientPcOne from "./pagePatient/PrepaPatientPcOne";
 import PrepaEtapeThreeOne from "./pagePatient/PrepaEtapeThreeOne";
 import PrepaEtapeThreeTwo from "./pagePatient/PrepaEtapeThreeTwo";
+
 import CreateIntervention from "./componentsDoctor/CreateIntervention";
 import MonOperation from "./componentsPatient/pc/MonOperation";
 import Administratif from "./componentsPatient/pc/Administratif";
