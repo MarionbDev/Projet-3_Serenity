@@ -66,7 +66,7 @@ export default function InterventionDoctor() {
   }
 
   return (
-    <div className="h-[115vh] bg-[#242731]">
+    <div className="h-[105vh] bg-[#242731]">
       <SideBarDoctor />
       <div className="absolute  w-2/3 mt-[48px] ml-[321px] text-[#FFFFFF]">
         <HeaderDoctor text="Une nouvelle intervention ?!" />
