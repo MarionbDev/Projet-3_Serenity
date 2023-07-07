@@ -65,7 +65,7 @@ export default function LatLongApi() {
   return (
     <section>
       <div
-        className="mb-4 flex flex-wrap
+        className="mb-4 flex flex-wrap gap-1
       "
       >
         <button
@@ -73,7 +73,7 @@ export default function LatLongApi() {
           onClick={() => {
             setCurrentSpeciality("Psychologue");
           }}
-          className="mx-auto flex justify-center mb-1 rounded-xl mt-4 bg-green-400 p-2 text-base w-52 text-white"
+          className="mx-auto flex justify-center mb-1 rounded-xl mt-4 bg-green-400 p-2 text-base w-40 text-white"
         >
           Psychologue
         </button>
@@ -82,7 +82,7 @@ export default function LatLongApi() {
           onClick={() => {
             setCurrentSpeciality("Kinésithérapeute");
           }}
-          className="mx-auto flex justify-center mb-1 rounded-xl mt-4 bg-green-400 p-2 text-base w-52 text-white"
+          className="mx-auto flex justify-center mb-1 rounded-xl mt-4 bg-green-400 p-2 text-base w-40 text-white"
         >
           Kinésithérapeute
         </button>
@@ -91,7 +91,7 @@ export default function LatLongApi() {
           onClick={() => {
             setCurrentSpeciality("Infirmier");
           }}
-          className="mx-auto flex justify-center mb-1 rounded-xl mt-4 bg-green-400 p-2 text-base w-52 text-white"
+          className="mx-auto flex justify-center mb-1 rounded-xl mt-4 bg-green-400 p-2 text-base w-40 text-white"
         >
           Infirmier
         </button>
@@ -100,7 +100,7 @@ export default function LatLongApi() {
           onClick={() => {
             setCurrentSpeciality("");
           }}
-          className="mx-auto flex justify-center mb-1 rounded-xl mt-4 bg-green-400 p-2 text-base w-52 text-white"
+          className="mx-auto flex justify-center mb-1 rounded-xl mt-4 bg-green-400 p-2 text-base w-40 text-white"
         >
           Tous
         </button>
@@ -143,15 +143,15 @@ export default function LatLongApi() {
           </Marker>
         ))}
       </MapContainer>
-      <div className="mt-4 w-full mx-auto  md:w-10/12 md:flex md:flex-wrap">
+      <div className="mt-4 w-full mx-auto lg:flex lg:flex-wrap lg:gap-2">
         {adresses.map((adress) => (
-          <figure className="m-4 bg-gray-200 hover:bg-gray-300 rounded-lg duration-300 md:flex md:w-5/12 md:mx-auto md:justify-stretch">
+          <figure className="m-4 bg-gray-200 hover:bg-gray-300 rounded-lg duration-300 lg:flex  lg:mx-auto lg:justify-stretch lg:h-36">
             <img
-              className=" rounded-t-lg h-full md:w-36 md:h-36 md:rounded-l-lg md:rounded-none"
+              className=" rounded-t-lg h-full lg:w-36 lg:h-36 lg:rounded-l-lg lg:rounded-none"
               src={adress.image}
               alt="spécialiste"
             />
-            <figcaption className=" text-center py-4 px-2 md:w-full">
+            <figcaption className=" text-center px-2 ">
               <h3 className="font-bold pt-2">{`${adress.firstname} ${adress.lastname}`}</h3>
               <p>{`${adress.speciality} : ${adress.tel}`}</p>
               <p>{adress.road}</p>

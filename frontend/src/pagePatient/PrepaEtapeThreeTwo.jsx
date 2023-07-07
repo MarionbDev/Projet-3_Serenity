@@ -12,7 +12,7 @@ function PrepaEtapeThreeOne() {
   return (
     <div>
       <HeaderMobilePrepaPatient />
-      <Link to={`/patients/${idPatient}/preparer-mon-arrivee/1`}>
+      <Link to={`/patients/${idPatient}/ma-preparation/preparer-mon-arrivee/1`}>
         <img src={Arrow} alt="doc15" className="mb-2 ml-3" />
       </Link>
       <HeaderPreparation
