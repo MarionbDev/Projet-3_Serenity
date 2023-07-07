@@ -5,7 +5,7 @@ export default function Anticiper() {
   const [mapIsVisible, setMapIsVisible] = useState(false);
 
   return (
-    <div className="ml-[256px] mt-[40px]">
+    <div className=" mt-[40px] w-[70vw] border-2">
       <div>
         <p className="text-center ml-10 mb-2 mr-5">
           Afin de securiser votre retour à la maison votre chirurgien vous

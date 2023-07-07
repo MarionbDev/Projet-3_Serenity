@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import Arrow from "../assets/images/Arrow.png";
 import { useUserContext } from "../contexts/UserContext";
-
+import Arrow from "../assets/images/Arrow.png";
 import HeaderMobilePrepaPatient from "../componentsPatient/mobile/HeaderMobilePrepaPatient";
 import HeaderPreparation from "../componentsPatient/mobile/HeaderPreparation";
 import ImageList from "../componentsPatient/mobile/ImageList";
@@ -13,7 +12,7 @@ function PreparationEtapeFirst() {
   return (
     <div>
       <HeaderMobilePrepaPatient />
-      <Link to={`/patients/${idPatient}`}>
+      <Link to={`/patients/${idPatient}/ma-preparation`}>
         <img src={Arrow} alt="doc10" className="mb-2 ml-3" />
       </Link>
       <HeaderPreparation text="Comprendre mon opération" color="bg-amber-300" />
