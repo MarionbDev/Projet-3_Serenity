@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useUserContext } from "../contexts/UserContext";
-// import { convertDateFormat, convertHourFormat } from "../services/convertTime";
+import { convertDateFormat, convertHourFormat } from "../services/convertTime";
 import SideBarDoctor from "../componentsDoctor/SideBarDoctor";
 import HeaderDoctor from "../componentsDoctor/HeaderDoctor";
 import search from "../assets/logo/logoDoctor/Search.png";
@@ -10,10 +10,10 @@ import notification from "../assets/logo/logoDoctor/bell.png";
 export default function AccueilDoctor() {
   const [patients, setPatients] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-  // const [interventions, setInterventions] = useState([]);
+  const [surgeryTypes, setSurgeryTypes] = useState([]);
 
   const { idPatient } = useUserContext();
-  // const { idDoctor } = useUserContext();
+  const { idDoctor } = useUserContext();
 
   const getAllPatients = () => {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/api/patients`)
@@ -24,21 +24,25 @@ export default function AccueilDoctor() {
       });
   };
 
-  // const getAllInterventions = () => {
-  //   fetch(`${import.meta.env.VITE_BACKEND_URL}/api/interventions`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setInterventions(data);
-  //       console.warn(data);
-  //     });
-  // };
+  const getAllSurgeryTypes = () => {
+    fetch(
+      `${
+        import.meta.env.VITE_BACKEND_URL
+      }/api/doctors/${idDoctor}/interventions`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setSurgeryTypes(data);
+        console.warn(data);
+      });
+  };
 
-  // useEffect(() => {
-  //   if (idDoctor !== "") {
-  //     getAllInterventions();
-  //     console.warn(interventions);
-  //   }
-  // }, [idDoctor]);
+  useEffect(() => {
+    if (idDoctor !== "") {
+      getAllSurgeryTypes();
+      console.warn(surgeryTypes);
+    }
+  }, [idDoctor]);
 
   useEffect(() => {
     if (idPatient !== "") {
@@ -55,21 +59,32 @@ export default function AccueilDoctor() {
   return (
     <div className="min-h-screen bg-[#242731]">
       <SideBarDoctor />
-      <div className="absolute md:w-2/3 md:mt- lg:mt-[48px] md:ml-[321px] text-[#FFFFFF]">
-        <HeaderDoctor text="" />
-        {/* <div className="mt-[66px]">
-          {interventions.map((intervention) => (
-            <li key={`intervention-${intervention.id}`}>
-              <p>{interventions && convertDateFormat(intervention.time)}</p>
-              <p>{interventions && convertHourFormat(intervention.time)}</p>
-              {intervention.patients.map((item) => (
-                <div key={`item-${item.id}`}>
-                  <p>{item.patient.lastname}</p>
-                </div>
-              ))}
-            </li>
-          ))}
-        </div> */}
+      <div className="absolute md:w-[770px] md:mt- lg:mt-[48px] md:ml-[321px] text-[#FFFFFF]">
+        <HeaderDoctor text="Vos rendez-vous :" />
+        <div className="mt-[100px]">
+          <ul className="w-600">
+            {surgeryTypes.map((surgeryType) => (
+              <div
+                key={`intervention-${surgeryType.id}`}
+                className="flex flex-col"
+              >
+                {surgeryType.interventions.map((item) => (
+                  <li key={`item-${item.id}`} className="flex ">
+                    <p className="w-40 mr-2 mb-5">
+                      {surgeryTypes && convertDateFormat(item.time)}
+                    </p>
+                    <p className="w-16">
+                      {surgeryTypes && convertHourFormat(item.time)}
+                    </p>
+                    <p className="w-64 ml-2">{surgeryType.name}</p>
+                    <p className="">{item.patient.firstname}</p>
+                    <p className="ml-3">{item.patient.lastname}</p>
+                  </li>
+                ))}
+              </div>
+            ))}
+          </ul>
+        </div>
       </div>
       <div className=" min-h-screen absolute md:flex-col md:justify-center md:items-center md:w-[500px] md:border-0 md:right-0 md:border-[#a5a5a5]/20 lg:border-l-[1px] lg:w-[300px] xl:w-[500px] ">
         <div className="flex  md:mt-10 lg:ml-[-20px] lg:mt-8">

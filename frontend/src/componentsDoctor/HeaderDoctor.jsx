@@ -64,7 +64,7 @@ export default function HeaderDoctor({ text }) {
         <p className="mb-1 text-[18px] font-semibold md:text-[24px]">
           Bonjour Dr {doctor.lastname} ,
         </p>
-        <p className="italic md:text-[30px]  xl:text-[37px]">{text}</p>
+        <p className="italic md:text-[28px]  xl:text-[35px]">{text}</p>
       </div>
     </div>
   );
