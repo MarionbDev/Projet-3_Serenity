@@ -32,7 +32,6 @@ import MonArrivee from "./componentsPatient/pc/MonArrivee";
 import Anticiper from "./componentsPatient/pc/Anticiper";
 import CheckList from "./componentsPatient/pc/CheckList";
 import ChangePassword from "./componentsDoctor/ChangePassword";
-import CasePrepaPcPatient from "./componentsPatient/pc/CasePrepaPcPatient";
 
 function getCurrentDimension() {
   return {
