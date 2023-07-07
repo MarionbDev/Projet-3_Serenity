@@ -22,7 +22,7 @@ function Connexion({ utilisateur }) {
     event.preventDefault();
     // Ici vous pouvez effectuer une action telle qu'envoyer les données à un serveur
     if (!mail || !password) {
-      // alert("You must provide an email and a password !");
+      alert("You must provide an email and a password !");
     } else {
       fetch(`${import.meta.env.VITE_BACKEND_URL}/api/${utilisateur}/login`, {
         method: "POST",
@@ -40,7 +40,7 @@ function Connexion({ utilisateur }) {
         })
         .then((data) => {
           console.warn(data.id);
-          navigate(`/${utilisateur}/${data.id}`);
+          navigate(`/${utilisateur}/${data.id}/ma-preparation`);
           if (utilisateur === "patients") {
             setIdPatient(data.id);
           } else {

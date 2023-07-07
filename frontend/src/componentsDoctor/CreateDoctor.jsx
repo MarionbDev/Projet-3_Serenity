@@ -82,8 +82,8 @@ export default function CreateDoctor() {
   //   setAwardAndRecognition(e.target.value);
   // };
 
-  const handleSubmit = () => {
-    //  e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
     const data = {
       firstname,
@@ -141,7 +141,7 @@ export default function CreateDoctor() {
                       htmlFor="firstname"
                       className="text-2xl mb-2 text-white"
                     >
-                      Firstname
+                      Prénom
                     </label>
                     <input
                       className="px-4 py-1 text-black rounded-full"
@@ -157,7 +157,7 @@ export default function CreateDoctor() {
                       htmlFor="lastname"
                       className="text-2xl mb-2 text-white"
                     >
-                      Lastname
+                      Nom
                     </label>
                     <input
                       className="px-4 py-1 text-black rounded-full"
@@ -170,7 +170,7 @@ export default function CreateDoctor() {
                   </div>
                   <div className="flex flex-col items-center">
                     <label htmlFor="tel" className="text-2xl mb-2 text-white">
-                      Tel
+                      Téléphone
                     </label>
                     <input
                       className="px-4 py-1 text-black rounded-full"
@@ -197,7 +197,7 @@ export default function CreateDoctor() {
                       htmlFor="password"
                       className="text-2xl mb-2 text-white"
                     >
-                      Password
+                      Mot de passe
                     </label>
                     <input
                       className="px-4 py-1 text-black rounded-full"
@@ -226,7 +226,7 @@ export default function CreateDoctor() {
                     type="submit"
                     className="bg-black text-white px-6 py-2 rounded-full mt-6"
                   >
-                    Submit
+                    Enregistrer
                   </button>
                 </div>
               </div>
