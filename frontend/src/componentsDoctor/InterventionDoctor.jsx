@@ -7,13 +7,12 @@ import search from "../assets/logo/logoDoctor/Search.png";
 import SideBarDoctor from "./SideBarDoctor";
 import HeaderDoctor from "./HeaderDoctor";
 import imgList from "../assets/images/Img.png";
+import CreateContentForm from "./addContents";
 
 export default function InterventionDoctor() {
   const [surgeryTypes, setSurgeryTypes] = useState([]);
   const [selectedIntervention, setSelectedIntervention] = useState(null);
   const [searchInput, setSearchInput] = useState("");
-
-  // console.log(searchInput);
 
   const { idDoctor } = useUserContext();
 
@@ -26,7 +25,6 @@ export default function InterventionDoctor() {
       .then((res) => res.json())
       .then((data) => {
         setSurgeryTypes(data);
-        console.warn(data);
       });
   };
 
@@ -37,7 +35,6 @@ export default function InterventionDoctor() {
   };
 
   const deleteIntervention = (id) => {
-    // if (confirm("Voulez-vous supprimer cette intervention ?")) {
     fetch(
       `${
         import.meta.env.VITE_BACKEND_URL
@@ -47,17 +44,14 @@ export default function InterventionDoctor() {
       }
     )
       .then(() => {
-        // console.log("Intervention supprimée avec succès");
         getAllSurgeryTypes();
       })
       .catch((err) => console.error(err));
-    // }
   };
 
   useEffect(() => {
     if (idDoctor !== "") {
       getAllSurgeryTypes();
-      console.warn(surgeryTypes);
     }
   }, [idDoctor]);
 
@@ -72,7 +66,7 @@ export default function InterventionDoctor() {
   }
 
   return (
-    <div className="min-h-screen bg-[#242731]">
+    <div className="h-[115vh] bg-[#242731]">
       <SideBarDoctor />
       <div className="absolute  w-2/3 mt-[48px] ml-[321px] text-[#FFFFFF]">
         <HeaderDoctor text="Une nouvelle intervention ?!" />
@@ -178,18 +172,17 @@ export default function InterventionDoctor() {
                 ))}
             </ul>
           </div>
+
           <div className="flex justify-center mt-8">
             <Link
               to={`/doctors/${idDoctor}/interventions/create-intervention`}
               className="bg-black  rounded-full shadow-xl  mb-5 text-white hover:text-white hover:border-2 hover:border-white "
-              Une
-              nouvelle
-              intervention
             >
               <p className="flex px-6 py-2">Une nouvelle intervention</p>
             </Link>
           </div>
         </section>
+        <CreateContentForm />
       </div>
     </div>
   );
