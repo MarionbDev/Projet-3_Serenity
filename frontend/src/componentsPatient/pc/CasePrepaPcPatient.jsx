@@ -4,7 +4,7 @@ export default function CasePrepaPcPatient() {
   const { id } = useParams();
 
   return (
-    <div className=" ml-72 mr-8 flex gap-4 justify-evenly flex-wrap mt-8">
+    <div className=" ml-72 mr-8 flex gap-4 justify-evenly flex-wrap mt-20">
       <NavLink to={`/patients/${id}/ma-preparation/comprendre-mon-operation`}>
         {({ isActive }) => (
           <button
