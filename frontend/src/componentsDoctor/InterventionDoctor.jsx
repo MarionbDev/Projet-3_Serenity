@@ -143,7 +143,7 @@ export default function InterventionDoctor() {
                                     <p>{item.patient.lastname}</p>
                                   </div>
                                   <div className="flex justify-end ">
-                                    <p className="mr-6 text-[14px]">
+                                    <p className="mr-6 w-[150px] text-[14px]">
                                       {surgeryTypes &&
                                         convertDateFormat(item.time)}
                                     </p>
@@ -211,7 +211,7 @@ export default function InterventionDoctor() {
 
               <div className="flex justify-center mt-2 gap-6 ">
                 <Link
-                  to={`/doctors/${idDoctor}/patients/create-intervention`}
+                  to={`/doctors/${idDoctor}/interventions/create-intervention`}
                   className="text-[#FFFFFF] bg-[#323847] sm:rounded-full sm:mt-3 sm:w-20 sm:hover:bg-white/30  sm:hover:font-semibold"
                 >
                   <p className=" text-center p-1">Oui</p>

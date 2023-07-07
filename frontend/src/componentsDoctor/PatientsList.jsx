@@ -71,17 +71,12 @@ export default function DoctorPatientList() {
             placeholder="Nom de votre patient "
             onChange={(e) => setSearchInput(e.target.value)}
           />
-          <div className="flex  ml-[35rem] items-center">
-            <button type="button">
-              <img src={edit} alt="edit" className="w-[24px] h-[24px] mr-8" />
-            </button>
-          </div>
         </div>
         <section>
-          <div className="flex grid-cols-5 gap-[9%] border-t-[1px] border-[#a5a5a5]/20 ml-[32px]  text-gray-500 mt-5 pt-2 text-[16px] h-[28px] w-[991px]">
+          <div className="flex grid-cols-5 gap-[56px] border-t-[1px] border-[#a5a5a5]/20 ml-[32px]  text-gray-500 mt-5 pt-2 text-[16px] h-[28px] w-[991px]">
             <p className="ml-8">Prénom</p>
             <p>Nom</p>
-            <p>Téléphone fixe</p>
+            <p className="ml-6">Téléphone fixe</p>
             <p>Téléphone portable</p>
             <p>Mail</p>
           </div>
@@ -104,13 +99,20 @@ export default function DoctorPatientList() {
                       key={item.id}
                       className="flex justify-between ml-8 text-[16px] list-disc mb-2"
                     >
-                      <div className="flex grid-cols-5 gap-14">
+                      <div className="flex grid-cols-5 gap-10">
                         <p className="w-20">{item.firstname}</p>
                         <p className="w-20">{item.lastname}</p>
                         <p className="w-36">{item.tel_fixe}</p>
-                        <p className="w-36">{item.tel_portable}</p>
-                        <p className="w-56">{item.mail}</p>
-                        <div className="flex">
+                        <p className=" w-32">{item.tel_portable}</p>
+                        <p className="w-72 text-">{item.mail}</p>
+                        <div className="flex ">
+                          <button type="button">
+                            <img
+                              src={edit}
+                              alt="edit"
+                              className="w-[24px] h-[24px] mr-8"
+                            />
+                          </button>
                           <button
                             type="button"
                             onClick={() => deleteIntervention(item.id)}
