@@ -13,7 +13,7 @@ function PrepaEtapeThreeOne() {
     <>
       <div>
         <HeaderMobilePrepaPatient />
-        <Link to={`/patients/${idPatient}/preparer-mon-arrivee`}>
+        <Link to={`/patients/${idPatient}/ma-preparation/preparer-mon-arrivee`}>
           <img src={Arrow} alt="doc15" className="mb-2 ml-3" />
         </Link>
         <HeaderPreparation
@@ -27,7 +27,9 @@ function PrepaEtapeThreeOne() {
       <ImageListThree />
       <div>
         {" "}
-        <Link to={`/patients/${idPatient}/preparer-mon-arrivee/2`}>
+        <Link
+          to={`/patients/${idPatient}/ma-preparation/preparer-mon-arrivee/2`}
+        >
           <button
             type="button"
             className="flex items-center rounded-xl m-8 p-4 h-14 text-xl mt-5 bg-pink-400"

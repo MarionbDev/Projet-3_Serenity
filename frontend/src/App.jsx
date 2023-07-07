@@ -8,7 +8,7 @@ import "react-responsive-modal/styles.css";
 import "./modalStyles.css";
 import Home from "./pages/Home";
 import Connexion from "./pages/Connexion";
-// import LatLongApi from "./pages/LatLongApi";
+import LatLongApi from "./pages/LatLongApi";
 import AccueilDoctorMobile from "./pageDoctor/AccueilDoctorMobile";
 import AccueilDoctor from "./pageDoctor/AccueilDoctor";
 import InterventionDoctor from "./componentsDoctor/InterventionDoctor";
@@ -31,7 +31,7 @@ import Administratif from "./componentsPatient/pc/Administratif";
 import MonArrivee from "./componentsPatient/pc/MonArrivee";
 import Anticiper from "./componentsPatient/pc/Anticiper";
 import CheckList from "./componentsPatient/pc/CheckList";
-import CasePrepaPcPatient from "./componentsPatient/pc/CasePrepaPcPatient";
+import ChangePassword from "./componentsDoctor/ChangePassword";
 
 function getCurrentDimension() {
   return {
@@ -58,13 +58,17 @@ function App() {
     <UserContextProvider>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/changer-mon-mot-de-passe" element={<ChangePassword />} />
         <Route
           path="/patients"
           element={<Connexion utilisateur="patients" />}
         />
         {window.innerWidth < 768 ? (
           <>
-            <Route path="/patients/:id" element={<PrepaPatientMobile />} />
+            <Route
+              path="/patients/:id/ma-preparation"
+              element={<PrepaPatientMobile />}
+            />
             <Route
               path="/patients/:id/ma-preparation/comprendre-mon-operation"
               element={<PreparationEtapeFirst />}
@@ -82,28 +86,28 @@ function App() {
               path="/patients/:id/ma-preparation/anticiper-ma-sortie"
               element={<PreparationEtapeFour />}
             />
-            {/* <Route
+            <Route
               path="/patients/:id/ma-preparation/anticiper-ma-sortie/latlong"
               element={<LatLongApi />}
-            /> */}
+            />
             <Route
               path="/patients/:id/ma-preparation/Ma-check-list"
               element={<PreparationEtapeFive />}
             />
             <Route
-              path="/patients/:id/preparer-mon-arrivee/1"
+              path="/patients/:id/ma-preparation/preparer-mon-arrivee/1"
               element={<PrepaEtapeThreeOne />}
             />
             <Route
-              path="/patients/:id/preparer-mon-arrivee/2"
+              path="/patients/:id/ma-preparation/preparer-mon-arrivee/2"
               element={<PrepaEtapeThreeTwo />}
             />
             <Route
-              path="/patients/:id/anticiper-ma-sortie"
+              path="/patients/:id/ma-preparation/anticiper-ma-sortie"
               element={<PreparationEtapeFour />}
             />
             <Route
-              path="/patients/:id/Ma-check-list"
+              path="/patients/:id/ma-preparation/Ma-check-list"
               element={<PreparationEtapeFive />}
             />
 
@@ -117,20 +121,18 @@ function App() {
             />
           </>
         ) : (
-          <Route path="/patients/:id" element={<PrepaPatientPcOne />}>
-            <Route path="ma-preparation" element={<CasePrepaPcPatient />}>
-              <Route
-                path="comprendre-mon-operation"
-                element={<MonOperation />}
-              />
-              <Route
-                path="demarches-administratives"
-                element={<Administratif />}
-              />
-              <Route path="preparer-mon-arrivee" element={<MonArrivee />} />
-              <Route path="anticiper-ma-sortie" element={<Anticiper />} />
-              <Route path="Ma-check-list" element={<CheckList />} />
-            </Route>
+          <Route
+            path="/patients/:id/ma-preparation"
+            element={<PrepaPatientPcOne />}
+          >
+            <Route path="comprendre-mon-operation" element={<MonOperation />} />
+            <Route
+              path="demarches-administratives"
+              element={<Administratif />}
+            />
+            <Route path="preparer-mon-arrivee" element={<MonArrivee />} />
+            <Route path="anticiper-ma-sortie" element={<Anticiper />} />
+            <Route path="Ma-check-list" element={<CheckList />} />
           </Route>
         )}
 
@@ -144,9 +146,7 @@ function App() {
           path="/patients/:id/messagerie"
           element={<PrepaPatientPcOne />}
         />
-        <Route path="/doctor" element={<Connexion utilisateur="doctor" />} />
         <Route path="/doctors" element={<Connexion utilisateur="doctors" />} />
-
         <Route
           path="/doctors/:id"
           element={<AccueilDoctor utilisateur="/doctors/:id" />}
