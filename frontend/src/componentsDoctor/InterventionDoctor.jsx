@@ -93,7 +93,7 @@ export default function InterventionDoctor() {
             className="relative left-12 bottom-1 w-[24px] h-[24px] mt-5 mr-4 flex"
           />
           <input
-            className="h-[56px] w-[320px] text-gray-500 pl-10 bg-[#282b33]  shadow-slate-950/70 shadow-sm rounded-2xl italic text-[#FFFFFF]"
+            className="h-[56px] w-[320px] pl-10 bg-[#282b33]  shadow-slate-950/70 shadow-sm rounded-2xl italic text-[#FFFFFF]"
             type="text"
             placeholder="Votre intervention "
             onChange={(e) => setSearchInput(e.target.value)}
