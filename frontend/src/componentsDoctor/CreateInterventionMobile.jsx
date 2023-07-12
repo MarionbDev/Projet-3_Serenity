@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import SideBarDoctor from "./SideBarDoctor";
 import edit from "../assets/logo/logoDoctor/edit.png";
 import HeaderDoctor from "./HeaderDoctor";
 
-export default function CreateIntervention() {
+export default function CreateInterventionMobile() {
   const [name, setName] = useState("");
   const [doctorId, setDoctorId] = useState("");
   const [patientId, setPatientId] = useState("");
@@ -103,24 +102,23 @@ export default function CreateIntervention() {
 
   return (
     <div className="min-h-screen bg-[#242731]">
-      <SideBarDoctor />
-      <div className="absolute w-2/3 mt-[48px] ml-[321px] text-[#FFFFFF]">
+      <div className=" text-[#FFFFFF]">
         <HeaderDoctor text="Ajoutez une intervention !" />
       </div>
-      <div className="flex justify-center items-center h-screen">
-        <div className="absolute left-[321px] top-[172px] rounded-2xl shadow-lg shadow-slate-950/70">
-          <div className="flex mt-[32px]">
-            <div className="flex ml-[35rem] items-center">
+      <div className="flex ">
+        <div className=" rounded-2xl shadow-lg shadow-slate-950/70">
+          <div className="">
+            <div className="">
               <button type="button">
                 <img src={edit} alt="edit" className="w-[24px] h-[24px] mr-8" />
               </button>
             </div>
           </div>
           <section className="relative">
-            <div className="absolute left-24 right-4 top-7 bottom-37 bg-dark-02 rounded-24" />
+            <div className="bg-dark-02 rounded-24" />
             <form onSubmit={handleSubmit} className="p-4">
               <div className="flex flex-col">
-                <div className="grid grid-cols-3 gap-4">
+                <div className="">
                   <div className="flex flex-col">
                     <label
                       htmlFor="surgeryType"
@@ -196,7 +194,7 @@ export default function CreateIntervention() {
                     </select>
                   </div>
                 </div>
-                <div className="grid grid-cols-3 gap-4 py-4">
+                <div className="">
                   <div className="flex flex-col">
                     <label
                       htmlFor="dateTime"
