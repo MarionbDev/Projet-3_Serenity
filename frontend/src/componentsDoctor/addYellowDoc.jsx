@@ -1,12 +1,45 @@
 import React from "react";
 
-const AddYellowDoc = () => (
-  <div className="w-400 h-400 bg-yellow-400 rounded-10 flex justify-start">
-    <div className="flex flex-col justify-center items-start pl-20 h-full w-full">
-      <div className="w-300 h-80 bg-yellow-400 rounded-10 mb-20" />
-      <div className="w-100 h-26.67% bg-white rounded-10" />
+const addYellowDoc = () => (
+  <div
+    style={{
+      width: "675px",
+      height: "400px",
+      backgroundColor: "#242731",
+      borderRadius: "10px",
+      display: "flex",
+      justifyContent: "flex-start",
+    }}
+  >
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        paddingLeft: "20px",
+        height: "100%",
+        width: "100%",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          height: "80px",
+          backgroundColor: "#F3D03D",
+          borderRadius: "10px",
+          marginBottom: "20px",
+        }}
+      />
+      <div
+        style={{
+          width: "100px",
+          height: "26.67%",
+          backgroundColor: "white",
+          borderRadius: "10px",
+        }}
+      />
     </div>
   </div>
 );
 
-export default AddYellowDoc;
+export default addYellowDoc;

@@ -36,6 +36,7 @@ import Anticiper from "./componentsPatient/pc/Anticiper";
 import CheckList from "./componentsPatient/pc/CheckList";
 import ChangePassword from "./componentsDoctor/ChangePassword";
 import ChangePasswordPatient from "./componentsDoctor/ChangePasswordPatient";
+import EditContents from "./pageDoctor/EditContent";
 
 function getCurrentDimension() {
   return {
@@ -169,6 +170,10 @@ function App() {
         <Route
           path="/doctors/:id/interventions"
           element={<InterventionDoctor />}
+        />
+        <Route
+          path="/doctors/:id/interventions/EditContents"
+          element={<EditContents />}
         />
         <Route
           path="/doctors/:id/interventions/create-intervention"

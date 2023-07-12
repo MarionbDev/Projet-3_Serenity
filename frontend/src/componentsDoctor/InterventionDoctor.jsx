@@ -9,6 +9,7 @@ import SideBarDoctor from "./SideBarDoctor";
 import HeaderDoctor from "./HeaderDoctor";
 import imgList from "../assets/images/Img.png";
 import CreateContentForm from "./addContents";
+import edit from "../assets/logo/logoDoctor/edit.png";
 
 export default function InterventionDoctor() {
   const [surgeryTypes, setSurgeryTypes] = useState([]);
@@ -174,6 +175,20 @@ export default function InterventionDoctor() {
                                         className="w-[20px] h-[20px]"
                                       />
                                     </button>
+                                    <Link
+                                      to={`/doctors/${idDoctor}/interventions/EditContents`}
+                                    >
+                                      <button
+                                        type="button"
+                                        onClick={() => true}
+                                      >
+                                        <img
+                                          src={edit}
+                                          alt="edit"
+                                          className="w-[18px] h-[18px] ml-2"
+                                        />
+                                      </button>
+                                    </Link>
                                   </div>
                                 </li>
                               </div>
