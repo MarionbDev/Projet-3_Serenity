@@ -105,7 +105,7 @@ export default function CreateIntervention() {
     <div className="min-h-screen bg-[#242731]">
       <SideBarDoctor />
       <div className="absolute w-2/3 mt-[48px] ml-[321px] text-[#FFFFFF]">
-        <HeaderDoctor text="ajout d'une intervention" />
+        <HeaderDoctor text="Ajoutez une intervention !" />
       </div>
       <div className="flex justify-center items-center h-screen">
         <div className="absolute left-[321px] top-[172px] rounded-2xl shadow-lg shadow-slate-950/70">
@@ -216,9 +216,10 @@ export default function CreateIntervention() {
                 <div className="mt-4">
                   <button
                     type="submit"
-                    className="px-4 py-2 bg-primary rounded-full text-white"
+                    className="bg-[#323847] rounded-full shadow-slate-950/90 shadow-xl mb-5 text-white
+                    hover:text-white sm:hover:bg-white/30"
                   >
-                    Create Intervention
+                    <p className="flex px-6 py-2">Enregistrer</p>
                   </button>
                 </div>
               </div>

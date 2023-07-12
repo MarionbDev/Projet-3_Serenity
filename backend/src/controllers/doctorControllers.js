@@ -51,7 +51,7 @@ const edit = (req, res) => {
     });
 };
 
-const add = (req, res) => {
+const add = (req, res, next) => {
   const doctor = req.body;
 
   // TODO validations (length, format...)
@@ -59,7 +59,8 @@ const add = (req, res) => {
   models.doctor
     .insert(doctor)
     .then(([result]) => {
-      res.location(`/doctors/${result.insertId}`).sendStatus(201);
+      res.location(`/doctors/${result.insertId}`);
+      next();
     })
     .catch((err) => {
       console.error(err);

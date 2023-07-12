@@ -4,12 +4,18 @@ const doctorControllers = require("../controllers/doctorControllers");
 const surgeryTypeControllers = require("../controllers/surgeryTypeControllers");
 const passwordControllers = require("../controllers/passwordControllers");
 const authControllers = require("../controllers/authControllers");
+const emailControllers = require("../controllers/emailControllers");
 
 router.get("/", doctorControllers.browse);
 router.get("/:id", authControllers.verifyToken, doctorControllers.read);
 router.get("/:id/interventions", surgeryTypeControllers.allInterventions);
 router.put("/:id", passwordControllers.hashPassword, doctorControllers.edit);
-router.post("/", passwordControllers.hashPassword, doctorControllers.add);
+router.post(
+  "/",
+  passwordControllers.hashPassword,
+  doctorControllers.add,
+  emailControllers.sendEmailAndChangePasswordDoctor
+);
 router.post(
   "/login",
   doctorControllers.login,

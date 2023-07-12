@@ -82,8 +82,8 @@ export default function CreateDoctor() {
   //   setAwardAndRecognition(e.target.value);
   // };
 
-  const handleSubmit = () => {
-    //  e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
     const data = {
       firstname,
