@@ -140,10 +140,10 @@ export default function CreatePatient() {
         },
         body: JSON.stringify(data),
       })
-        .then((res) => {
-          // console.log(res);
-          return res.json();
-        })
+        // .then((res) => {
+        //   // console.log(res);
+        //   return res.json();
+        // })
         .then(() => {
           navigate(`/doctors/${idDoctor}/patients/`);
         })
