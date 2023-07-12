@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function ChangePasswordDoctor() {
+export default function ChangePasswordPatient() {
   const navigate = useNavigate();
 
   const [mail, setMail] = useState("");
@@ -30,7 +30,7 @@ export default function ChangePasswordDoctor() {
     if (!mail || !password) {
       alert("You must provide an email and a password !");
     } else {
-      fetch(`${import.meta.env.VITE_BACKEND_URL}/api/doctors/login`, {
+      fetch(`${import.meta.env.VITE_BACKEND_URL}/api/patients/login`, {
         method: "POST",
         credentials: "include",
         headers: {
@@ -47,7 +47,7 @@ export default function ChangePasswordDoctor() {
         .then((data) => {
           if (newPassword === confirmNewPassword) {
             fetch(
-              `${import.meta.env.VITE_BACKEND_URL}/api/doctors/${data.id}`,
+              `${import.meta.env.VITE_BACKEND_URL}/api/patients/${data.id}`,
               {
                 method: "PUT",
                 credentials: "include",
@@ -57,17 +57,15 @@ export default function ChangePasswordDoctor() {
                 body: JSON.stringify({
                   firstname: data.firstname,
                   lastname: data.lastname,
-                  tel: data.tel,
                   mail: data.mail,
                   password: newPassword,
-                  role: data.role,
                   id: data.id,
                 }),
               }
             )
               .then(() => {
                 console.warn("ok");
-                navigate("/doctors");
+                navigate("/patients");
               })
               .catch((err) => {
                 console.error(err);

@@ -46,7 +46,7 @@ const sendEmailAndChangePasswordPatient = (req, res) => {
     from: SMTP_SENDIN_USER,
     to: mail,
     subject: "Première connexion à votre espace Patient",
-    html: `<h2 style="font-size: 32px">Bonjour ${firstname}</h2><p>Votre espace Patient a bien été crée au sein de notre structure.</p><p>Votre identifiant : ${mail}</p><p>Votre mot de passe provisoire est votre prénom (sans majuscule)</p><p>Pour modifier votre mot de passe et sécuriser votre compte, cliquez sur le lien suivant : </p> <a href=${process.env.FRONTEND_URL}/changer-mon-mot-de-passe>Cliquez ici</a>`,
+    html: `<h2 style="font-size: 32px">Bonjour ${firstname}</h2><p>Votre espace Patient a bien été crée au sein de notre structure.</p><p>Votre identifiant : ${mail}</p><p>Votre mot de passe provisoire est votre prénom (sans majuscule)</p><p>Pour modifier votre mot de passe et sécuriser votre compte, cliquez sur le lien suivant : </p> <a href=${process.env.FRONTEND_URL}/changer-mon-mot-de-passe-patient>Cliquez ici</a>`,
   };
 
   transporter

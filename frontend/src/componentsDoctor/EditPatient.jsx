@@ -23,7 +23,6 @@ export default function EditPatient() {
   const [telFix, setTelFix] = useState("");
   const [telPort, setTelPort] = useState("");
   const [mail, setMail] = useState("");
-  const [hashedPassword, setHashedPassword] = useState("");
   const navigate = useNavigate();
 
   const { idDoctor } = useUserContext();
@@ -51,7 +50,6 @@ export default function EditPatient() {
         setOccupation(data.occupation);
         setNumberOfChildren(data.number_of_children);
         setMail(data.mail);
-        setHashedPassword(data.hashedPassword);
       })
       .catch((err) => console.error(err));
   };
@@ -76,8 +74,6 @@ export default function EditPatient() {
       tel_fixe: telFix,
       tel_portable: telPort,
       mail,
-      hashedPassword,
-      patientId,
     };
 
     fetch(`${import.meta.env.VITE_BACKEND_URL}/api/patients/${patientId}`, {
@@ -229,7 +225,7 @@ export default function EditPatient() {
                       Nombre d'enfant :
                     </label>
                     <input
-                      className="bg-[#242731] w-72 ml-2 px-4 py-1 text-white rounded-md hover:bg-[#424655]"
+                      className="bg-[#242731] w-16 ml-2 px-4 py-1 text-white rounded-md hover:bg-[#424655]"
                       type="number"
                       id="number-of-children"
                       value={numberOfChildren}
@@ -353,7 +349,7 @@ export default function EditPatient() {
                       Code Postal :
                     </label>
                     <input
-                      className="bg-[#242731] w-72 ml-2 px-4 py-1 text-white rounded-md hover:bg-[#424655]"
+                      className="bg-[#242731] w-28 ml-2 px-4 py-1 text-white rounded-md hover:bg-[#424655]"
                       type="number"
                       id="zip-code"
                       value={zipCode}

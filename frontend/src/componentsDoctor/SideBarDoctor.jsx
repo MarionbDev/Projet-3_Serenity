@@ -4,7 +4,6 @@ import { useUserContext } from "../contexts/UserContext";
 import logoPraticient from "../assets/logo/logoDoctor/Chart.png";
 import logoPatient from "../assets/logo/logoDoctor/Discovery.png";
 import logoInterventions from "../assets/logo/logoDoctor/Wallet.png";
-import logoAvatar from "../assets/logo/logoPatient/avatar1.png";
 import logoActivity from "../assets/logo/logoPatient/activite.png";
 
 export default function SideBarDoctor() {
@@ -157,13 +156,6 @@ export default function SideBarDoctor() {
             )}
           </NavLink>
         </div>
-      </div>
-
-      <div className="flex invisible md:visible md:mt-16  md:ml-4 lg:mt-14 xl:mt-40">
-        <img className="md:ml-4 md:w-14" src={logoAvatar} alt="avatar" />
-        <p className="md:m-3 text-gray-500 font-semibold">
-          Dr {doctor.lastname}
-        </p>
       </div>
     </div>
   );
