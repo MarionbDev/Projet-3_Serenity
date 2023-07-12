@@ -35,6 +35,7 @@ import MonArrivee from "./componentsPatient/pc/MonArrivee";
 import Anticiper from "./componentsPatient/pc/Anticiper";
 import CheckList from "./componentsPatient/pc/CheckList";
 import ChangePassword from "./componentsDoctor/ChangePassword";
+import ChangePasswordPatient from "./componentsDoctor/ChangePasswordPatient";
 
 function getCurrentDimension() {
   return {
@@ -62,6 +63,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/changer-mon-mot-de-passe" element={<ChangePassword />} />
+        <Route
+          path="/changer-mon-mot-de-passe-patient"
+          element={<ChangePasswordPatient />}
+        />
+
         <Route
           path="/patients"
           element={<Connexion utilisateur="patients" />}
