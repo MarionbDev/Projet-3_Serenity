@@ -5,14 +5,16 @@ import { useUserContext } from "../contexts/UserContext";
 import SideBarDoctor from "./SideBarDoctor";
 import HeaderDoctor from "./HeaderDoctor";
 import search from "../assets/logo/logoDoctor/Search.png";
-import edit from "../assets/logo/logoDoctor/edit.png";
 import trash from "../assets/logo/logoDoctor/trash.png";
+import view from "../assets/logo/logoDoctor/view.svg";
 
 export default function DoctorPatientList() {
   const [patient, setPatient] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [selectedPatientId, setSelectedPatientId] = useState(null);
 
   const [open, setOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
 
   const { idDoctor } = useUserContext();
   // const { idPatient } = useUserContext();
@@ -20,8 +22,20 @@ export default function DoctorPatientList() {
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
 
+  // const deleteOnOpenModal = () => setDeleteOpen(true);
+  const deleteOnCloseModal = () => setDeleteOpen(false);
+
   const handleNonButtonClick = () => {
     onCloseModal();
+  };
+
+  const handleNonDeleteButtonClick = () => {
+    deleteOnCloseModal();
+  };
+
+  const handleDeleteOpenModal = (patientId) => {
+    setSelectedPatientId(patientId);
+    setDeleteOpen(true);
   };
 
   const getAllPatients = () => {
@@ -37,18 +51,24 @@ export default function DoctorPatientList() {
     getAllPatients();
   }, []);
 
-  const deleteIntervention = (id) => {
+  const deleteIntervention = () => {
     // if (confirm("Voulez-vous supprimer cette intervention ?")) {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/patients/${id}`, {
-      method: "DELETE",
-      credentials: "include",
-    })
-      .then(() => getAllPatients())
+    fetch(
+      `${import.meta.env.VITE_BACKEND_URL}/api/patients/${selectedPatientId}`,
+      {
+        method: "DELETE",
+        credentials: "include",
+      }
+    )
+      .then(() => {
+        getAllPatients();
+        deleteOnCloseModal();
+      })
       .catch((err) => console.error(err));
     // }
   };
 
-  if (!patient) {
+  if (!patient.length === 0) {
     return <p>Loading page</p>;
   }
 
@@ -63,10 +83,10 @@ export default function DoctorPatientList() {
           <img
             src={search}
             alt="search"
-            className="relative left-12 bottom-1 w-[24px] h-[24px] mt-5 mr-4 flex"
+            className="relative left-12 bottom-2 w-[24px] h-[24px] mt-5 mr-4 flex"
           />
           <input
-            className="h-[56px] w-[320px] text-gray-500 pl-10 bg-[#282b33]  shadow-slate-950/70 shadow-sm rounded-2xl"
+            className="italic h-[46px] w-[320px] text-gray-500 pl-10 bg-[#282b33]  shadow-slate-950/70 shadow-sm rounded-2xl"
             type="text"
             placeholder="Nom de votre patient "
             onChange={(e) => setSearchInput(e.target.value)}
@@ -106,16 +126,21 @@ export default function DoctorPatientList() {
                         <p className=" w-32">{item.tel_portable}</p>
                         <p className="w-72 text-">{item.mail}</p>
                         <div className="flex ">
-                          <button type="button">
-                            <img
-                              src={edit}
-                              alt="edit"
-                              className="w-[24px] h-[24px] mr-8"
-                            />
-                          </button>
+                          <Link to={`/doctors/${idDoctor}/patients/${item.id}`}>
+                            <button
+                              type="button"
+                              onClick={() => setSelectedPatientId(item.id)}
+                            >
+                              <img
+                                src={view}
+                                alt="edit"
+                                className="w-[18px] h-[18px] mr-8"
+                              />
+                            </button>
+                          </Link>
                           <button
                             type="button"
-                            onClick={() => deleteIntervention(item.id)}
+                            onClick={() => handleDeleteOpenModal(item.id)}
                           >
                             <img
                               src={trash}
@@ -130,7 +155,48 @@ export default function DoctorPatientList() {
               </div>
             </ul>
           </div>
+
           <div className="flex justify-center mt-8">
+            <Modal
+              open={deleteOpen}
+              onClose={deleteOnCloseModal}
+              center
+              classNames={{ overlay: "customOverlay", modal: "customModal" }}
+              closeIcon={
+                <span
+                  style={{
+                    fontSize: "20px",
+                    width: "18px",
+                    height: "18px",
+                    color: "white",
+                  }}
+                >
+                  X
+                </span>
+              }
+            >
+              <h1 className="text-[#FFFFFF] text-center">
+                Souhaitez-vous supprimer ce patient ?
+              </h1>
+              <div className="flex justify-center mt-2 gap-6 ">
+                <button
+                  type="button"
+                  onClick={deleteIntervention}
+                  className="text-[#FFFFFF] bg-[#323847] sm:rounded-full sm:mt-3 sm:w-20 sm:hover:bg-white/30  sm:hover:font-semibold"
+                >
+                  Oui
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleNonDeleteButtonClick}
+                  className="text-[#FFFFFF] bg-[#323847] sm:rounded-full sm:mt-3 sm:w-20 sm:hover:bg-white/30  sm:hover:font-semibold"
+                >
+                  <p className=" text-center p-1">Non</p>
+                </button>
+              </div>
+            </Modal>
+
             <Modal
               open={open}
               onClose={onCloseModal}
@@ -173,7 +239,7 @@ export default function DoctorPatientList() {
             <button
               type="button"
               onClick={onOpenModal}
-              className="bg-[#323847] rounded-full shadow-xl mb-5 text-white
+              className="bg-[#323847] rounded-full shadow-slate-950/90 shadow-xl mb-5 text-white
             hover:text-white sm:hover:bg-white/30  "
             >
               <p className="flex px-6 py-2">Un nouveau patient</p>

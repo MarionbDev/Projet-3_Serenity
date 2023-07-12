@@ -10,7 +10,8 @@ const hashingOptions = {
 const hashPassword = (req, res, next) => {
   const { password } = req.body;
   if (!password) {
-    res.sendStatus(400);
+    // res.sendStatus(400);
+    next();
   } else {
     argon2
       .hash(password, hashingOptions)

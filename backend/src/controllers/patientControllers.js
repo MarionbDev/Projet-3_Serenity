@@ -20,7 +20,9 @@ const read = (req, res) => {
       if (rows[0] == null) {
         res.sendStatus(404);
       } else {
-        res.send(rows[0]);
+        const patient = rows[0];
+        delete patient.hashedPassword;
+        res.send(patient);
       }
     })
     .catch((err) => {
@@ -51,16 +53,17 @@ const edit = (req, res) => {
     });
 };
 
-const add = (req, res) => {
+const add = (req, res, next) => {
   const patient = req.body;
 
   // TODO validations (length, format...)
 
   models.patient
     .insert(patient)
-    .then(([result]) => {
+    .then(() => {
       // res.location(`/patients/${result.insertId}`).sendStatus(201);
-      res.status(201).json(result);
+      // res.location(`/patients/${result.insertId}`);
+      next();
     })
     .catch((err) => {
       console.error(err);
