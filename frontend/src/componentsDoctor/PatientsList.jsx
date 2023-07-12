@@ -242,7 +242,7 @@ export default function DoctorPatientList() {
               className="bg-[#323847] rounded-full shadow-slate-950/90 shadow-xl mb-5 text-white
             hover:text-white sm:hover:bg-white/30  "
             >
-              <p className="flex px-6 py-2">Un nouveau patient</p>
+              <p className="flex px-7 py-2">Un nouveau patient</p>
             </button>
           </div>
         </section>
