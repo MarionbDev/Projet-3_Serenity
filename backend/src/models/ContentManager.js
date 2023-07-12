@@ -7,7 +7,7 @@ class ContentManager extends AbstractManager {
 
   insert(content) {
     return this.database.query(
-      `insert into ${this.table} (title, type, timing, description, source, step, category, ) values (?, ?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (title, type, timing, description, source, step, category, protocol_id) values (?, ?, ?, ?, ?, ?, ? ,?)`,
       [
         content.title,
         content.type,
@@ -16,13 +16,14 @@ class ContentManager extends AbstractManager {
         content.source,
         content.step,
         content.category,
+        content.protocol_id,
       ]
     );
   }
 
   update(content) {
     return this.database.query(
-      `update ${this.table} set title = ?, type = ?, timing = ?, description = ?, source = ?, step = ?, category = ?  where id = ?`,
+      `update ${this.table} set title = ?, type = ?, timing = ?, description = ?, source = ?, step = ?, category = ?, protocol_id = ?  where id = ?`,
       [
         content.title,
         content.type,
@@ -31,6 +32,7 @@ class ContentManager extends AbstractManager {
         content.source,
         content.step,
         content.category,
+        content.protocol_id,
         content.id,
       ]
     );

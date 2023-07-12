@@ -34,6 +34,7 @@ import Administratif from "./componentsPatient/pc/Administratif";
 import MonArrivee from "./componentsPatient/pc/MonArrivee";
 import Anticiper from "./componentsPatient/pc/Anticiper";
 import CheckList from "./componentsPatient/pc/CheckList";
+import FileUploader from "./componentsDoctor/addContents";
 import ChangePassword from "./componentsDoctor/ChangePassword";
 
 function getCurrentDimension() {
@@ -196,6 +197,9 @@ function App() {
           path="/doctors/:id/interventions/create-intervention"
           element={<CreateIntervention />}
         />
+
+        {/* Route pour le composant FileUploader */}
+        <Route path="/upload" element={<FileUploader />} />
       </Routes>
     </UserContextProvider>
   );

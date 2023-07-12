@@ -58,7 +58,15 @@ const add = (req, res) => {
   models.content
     .insert(content)
     .then(([result]) => {
-      res.location(`/contents/${result.insertId}`).sendStatus(201);
+      models.content
+        .find(result.insertId)
+        .then(([contentCreated]) => {
+          res.status(201).json(contentCreated);
+        })
+        .catch((err) => {
+          console.error(err);
+          res.sendStatus(500);
+        });
     })
     .catch((err) => {
       console.error(err);

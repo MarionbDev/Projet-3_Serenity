@@ -8,6 +8,7 @@ import search from "../assets/logo/logoDoctor/Search.png";
 import SideBarDoctor from "./SideBarDoctor";
 import HeaderDoctor from "./HeaderDoctor";
 import imgList from "../assets/images/Img.png";
+import CreateContentForm from "./addContents";
 
 export default function InterventionDoctor() {
   const [surgeryTypes, setSurgeryTypes] = useState([]);
@@ -33,7 +34,6 @@ export default function InterventionDoctor() {
       .then((res) => res.json())
       .then((data) => {
         setSurgeryTypes(data);
-        console.warn(data);
       });
   };
 
@@ -55,7 +55,6 @@ export default function InterventionDoctor() {
   useEffect(() => {
     if (idDoctor !== "") {
       getAllSurgeryTypes();
-      console.warn(surgeryTypes);
     }
   }, [idDoctor]);
 
@@ -70,7 +69,7 @@ export default function InterventionDoctor() {
   }
 
   return (
-    <div className="min-h-screen bg-[#242731]">
+    <div className="h-[105vh] bg-[#242731]">
       <SideBarDoctor />
       <div className="absolute  w-2/3 mt-[48px] ml-[321px] text-[#FFFFFF]">
         <HeaderDoctor text="Une nouvelle intervention ?!" />
@@ -225,6 +224,7 @@ export default function InterventionDoctor() {
             </Modal>
           </div>
         </section>
+        <CreateContentForm />
       </div>
     </div>
   );
