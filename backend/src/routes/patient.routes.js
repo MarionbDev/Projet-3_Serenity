@@ -4,6 +4,7 @@ const patientControllers = require("../controllers/patientControllers");
 const interventionControllers = require("../controllers/interventionControllers");
 const passwordControllers = require("../controllers/passwordControllers");
 const authControllers = require("../controllers/authControllers");
+const emailControllers = require("../controllers/emailControllers");
 
 router.get("/", patientControllers.browse);
 router.get("/:id", patientControllers.read);
@@ -13,7 +14,12 @@ router.get(
   interventionControllers.findIntervention
 );
 router.put("/:id", passwordControllers.hashPassword, patientControllers.edit);
-router.post("/", passwordControllers.hashPassword, patientControllers.add);
+router.post(
+  "/",
+  passwordControllers.hashPassword,
+  patientControllers.add,
+  emailControllers.sendEmailAndChangePasswordPatient
+);
 router.post(
   "/login",
   patientControllers.login,

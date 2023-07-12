@@ -34,7 +34,7 @@ export default function DoctorList() {
     <div className="min-h-screen bg-[#242731]">
       <SideBarDoctor />
       <div className="absolute  w-2/3 mt-[48px] ml-[321px] text-[#FFFFFF]">
-        <HeaderDoctor text="Un nouveau praticient ?!" />
+        <HeaderDoctor text="Liste des praticiens" />
       </div>
       <div className="absolute w-[1055px] h-96 ml-[321px] mt-[172px] rounded-2xl shadow-lg shadow-slate-950/70    ">
         <div className="flex mt-[32px] ">
