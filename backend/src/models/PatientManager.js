@@ -7,10 +7,25 @@ class PatientManager extends AbstractManager {
 
   insert(patient) {
     return this.database.query(
-      `insert into ${this.table} (firstname, lastname, mail, hashedPassword) values (?, ?, ?, ?)`,
+      `insert into ${this.table} ( lastname, firstname, maiden_name, image, birthday, sexe, title, family_situation, professionnal_situation, occupation, number_of_children, road, country, zip_code, city, tel_fixe, tel_portable, mail, hashedPassword) values (?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?)`,
       [
-        patient.firstname,
         patient.lastname,
+        patient.firstname,
+        patient.maiden_name,
+        patient.image,
+        patient.birthday,
+        patient.sexe,
+        patient.title,
+        patient.family_situation,
+        patient.professionnal_situation,
+        patient.occupation,
+        patient.number_of_children,
+        patient.road,
+        patient.country,
+        patient.zip_code,
+        patient.city,
+        patient.tel_fixe,
+        patient.tel_portable,
         patient.mail,
         patient.hashedPassword,
       ]
@@ -19,10 +34,25 @@ class PatientManager extends AbstractManager {
 
   update(patient) {
     return this.database.query(
-      `update ${this.table} set firstname = ?, lastname = ?, mail = ?, hashedPassword = ?  where id = ?`,
+      `update ${this.table} set lastname = ?, firstname = ?, maiden_name = ?, image = ?, birthday = ?, sexe = ?, title = ?, family_situation = ?, professionnal_situation = ?, occupation = ?, number_of_children = ?, road = ?, country = ?, zip_code = ?, city = ?, tel_fixe = ?, tel_portable = ?, mail = ?, hashedPassword = ?  where id = ?`,
       [
-        patient.firstname,
         patient.lastname,
+        patient.firstname,
+        patient.maiden_name,
+        patient.image,
+        patient.birthday,
+        patient.sexe,
+        patient.title,
+        patient.family_situation,
+        patient.professionnal_situation,
+        patient.occupation,
+        patient.number_of_children,
+        patient.road,
+        patient.country,
+        patient.zip_code,
+        patient.city,
+        patient.tel_fixe,
+        patient.tel_portable,
         patient.mail,
         patient.hashedPassword,
         patient.id,

@@ -5,7 +5,6 @@ import { convertDateFormat, convertHourFormat } from "../services/convertTime";
 import SideBarDoctor from "../componentsDoctor/SideBarDoctor";
 import HeaderDoctor from "../componentsDoctor/HeaderDoctor";
 import search from "../assets/logo/logoDoctor/Search.png";
-import notification from "../assets/logo/logoDoctor/bell.png";
 
 export default function AccueilDoctor() {
   const [patients, setPatients] = useState([]);
@@ -99,13 +98,6 @@ export default function AccueilDoctor() {
             placeholder="Nom de votre patient "
             onChange={(e) => setSearchInput(e.target.value)}
           />
-          <div className="rounded-full md:h-[50px] md:w-[54px] md:mr-4 md:mt-[-30px]  shadow-lg shadow-slate-950/80 flex md:justify-center md:items-center lg:ml-[-90px] lg:w-[40px] lg:h-[40px] xl:ml-20 xl:mt-[-18px] xl:mr-0 2xl:mt-[-15px] 2xl:mr-8">
-            <img
-              src={notification}
-              alt="notification"
-              className=" w-[24px] h-[24px]  "
-            />
-          </div>
         </div>
         <div className="flex  md:m-6  md:overflow-y-auto md:overflow-hidden md:h-[370px] md:border-[1px] md:border-[#a5a5a5]/20 lg:h-[490px] xl:h-[570px] ">
           <ul className="md:overflow-y-auto  flex md:flex-col md:m-4 md:overflow-hidden text-[#FFFFFF] md:w-[391px] lg:w-[200px]  xl:w-[391px]  ">
@@ -120,7 +112,7 @@ export default function AccueilDoctor() {
                     .includes(searchInput.toLowerCase())
               )
               .map((patient) => (
-                <Link to="patients">
+                <Link to={`patients/${patient.id}`}>
                   <li
                     key={`item-${patients.id}`}
                     className="flex md:gap-2 md:mb-3 text-[16px] "
@@ -133,11 +125,6 @@ export default function AccueilDoctor() {
           </ul>
         </div>
       </div>
-      {/* <div className="flex absolute md:ml-72 md:mt-5  text-[#FFFFFF] md:w-[800px] lg:mt-[210px] ">
-        <p className="italic md:invisible lg:visible text-[16px]">
-          Informations sur le patient :
-        </p>
-      </div> */}
     </div>
   );
 }

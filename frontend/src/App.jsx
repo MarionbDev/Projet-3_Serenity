@@ -16,7 +16,9 @@ import PrepaPatientMobile from "./pagePatient/PrepaPatientMobile";
 import InterventionDoctorMobile from "./componentsDoctor/InterventionDoctorMobile";
 import DoctorList from "./componentsDoctor/DoctorList";
 import DoctorPatientList from "./componentsDoctor/PatientsList";
+import DoctorPatientListMobile from "./componentsDoctor/PatientsListMobile";
 import CreatePatient from "./componentsDoctor/CreatePatient";
+import EditPatient from "./componentsDoctor/EditPatient";
 import PreparationEtapeFirst from "./pagePatient/PreparationEtapeFirst";
 import PreparationEtapeTwo from "./pagePatient/PreparationEtapeTwo";
 import PreparationEtapeThree from "./pagePatient/PreparationEtapeThree";
@@ -26,6 +28,7 @@ import PrepaPatientPcOne from "./pagePatient/PrepaPatientPcOne";
 import PrepaEtapeThreeOne from "./pagePatient/PrepaEtapeThreeOne";
 import PrepaEtapeThreeTwo from "./pagePatient/PrepaEtapeThreeTwo";
 import CreateIntervention from "./componentsDoctor/CreateIntervention";
+import CreateInterventionMobile from "./componentsDoctor/CreateInterventionMobile";
 import MonOperation from "./componentsPatient/pc/MonOperation";
 import Administratif from "./componentsPatient/pc/Administratif";
 import MonArrivee from "./componentsPatient/pc/MonArrivee";
@@ -111,13 +114,18 @@ function App() {
               element={<PreparationEtapeFive />}
             />
 
-            <Route
-              path="/doctors/:id"
-              element={<AccueilDoctorMobile utilisateur="/doctors/:id" />}
-            />
+            <Route path="/doctors/:id" element={<AccueilDoctorMobile />} />
             <Route
               path="/doctors/:id/interventions"
               element={<InterventionDoctorMobile />}
+            />
+            <Route
+              path="/doctors/:id/interventions/create-intervention"
+              element={<CreateInterventionMobile />}
+            />
+            <Route
+              path="/doctors/:id/patients/"
+              element={<DoctorPatientListMobile />}
             />
           </>
         ) : (
@@ -177,6 +185,10 @@ function App() {
         <Route
           path="/doctors/:id/patients/create-patient"
           element={<CreatePatient />}
+        />
+        <Route
+          path="/doctors/:id/patients/:patientId" // !!!!!!
+          element={<EditPatient />}
         />
 
         {/* Nouvelle route pour créer une intervention */}

@@ -44,14 +44,12 @@ export default function InterventionDoctor() {
   };
 
   const deleteIntervention = (id) => {
-    // if (confirm("Voulez-vous supprimer cette intervention ?")) {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/api/surgeryTypes/${id}`, {
       method: "DELETE",
       credentials: "include",
     })
       .then(() => getAllSurgeryTypes())
       .catch((err) => console.error(err));
-    // }
   };
 
   useEffect(() => {
@@ -82,10 +80,10 @@ export default function InterventionDoctor() {
           <img
             src={search}
             alt="search"
-            className="relative left-12 bottom-1 w-[24px] h-[24px] mt-5 mr-4 flex"
+            className="relative left-12 bottom-2 w-[24px] h-[24px] mt-5 mr-4 flex"
           />
           <input
-            className="h-[56px] w-[320px] text-gray-500 pl-10 bg-[#282b33]  shadow-slate-950/70 shadow-sm rounded-2xl italic text-[#FFFFFF]"
+            className="h-[46px] w-[320px] text-gray-500 pl-10 bg-[#282b33]  shadow-slate-950/70 shadow-sm rounded-2xl italic "
             type="text"
             placeholder="Votre intervention "
             onChange={(e) => setSearchInput(e.target.value)}
@@ -182,7 +180,7 @@ export default function InterventionDoctor() {
             <button
               type="button"
               onClick={onOpenModal}
-              className="bg-[#323847] rounded-full shadow-xl mb-5 text-white
+              className="bg-[#323847] rounded-full shadow-slate-950/90 shadow-xl mb-5 text-white
             hover:text-white sm:hover:bg-white/30  "
             >
               <p className="flex px-6 py-2">Une nouvelle intervention</p>
