@@ -83,7 +83,7 @@ export default function DoctorList() {
         <div className="flex justify-center mt-8">
           <PrivateLink
             to={`/doctors/${idDoctor}/praticiens/admin/CreateDoctor`}
-            text="ADD"
+            text="Un nouveau praticien"
             authorizedRoles={["Admin"]}
           />
         </div>
