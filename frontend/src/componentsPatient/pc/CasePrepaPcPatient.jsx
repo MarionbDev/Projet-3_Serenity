@@ -34,7 +34,7 @@ export default function CasePrepaPcPatient() {
             <button
               className={
                 isActive
-                  ? "border-4 rounded-2xl border-teal-600 w-32 h-32"
+                  ? "border-4 rounded-2xl border-cyan-400 w-32 h-32"
                   : "border-4 bg-gray-200 rounded-2xl w-32 h-32"
               }
               type="button"
