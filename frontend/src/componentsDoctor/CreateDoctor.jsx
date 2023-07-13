@@ -179,7 +179,7 @@ export default function CreateDoctor() {
                   </div>
                   <div className="flex flex-col items-start">
                     <label htmlFor="role" className="text-base mb-2 text-white">
-                      Role
+                      Rôle
                     </label>
                     <input
                       className="w-full px-4 py-1 text-black rounded-md"
@@ -223,7 +223,7 @@ export default function CreateDoctor() {
                         htmlFor="language"
                         className="text-base mb-2 text-white"
                       >
-                        Language
+                        Langues
                       </label>
                       <textarea
                         rows={8}
