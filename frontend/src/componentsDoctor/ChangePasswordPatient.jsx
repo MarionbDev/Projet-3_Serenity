@@ -28,7 +28,9 @@ export default function ChangePasswordPatient() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!mail || !password) {
-      alert("You must provide an email and a password !");
+      alert(
+        "Vous devez renseigner votre adresse email et votre mot de passe !"
+      );
     } else {
       fetch(`${import.meta.env.VITE_BACKEND_URL}/api/patients/login`, {
         method: "POST",
@@ -85,73 +87,77 @@ export default function ChangePasswordPatient() {
   };
 
   return (
-    <div className="min-h-screen bg-[#242731]">
-      <section className="relative">
-        <div className="absolute left-24 right-4 top-7 bottom-37 bg-dark-02 rounded-24" />
-        <form onSubmit={handleSubmit} className="p-4">
-          <div className="flex flex-col items-center">
-            <label htmlFor="mail" className="text-2xl mb-2 text-white">
-              email
-            </label>
-            <input
-              className="px-4 py-1 text-black rounded-full"
-              type="email"
-              id="mail"
-              value={mail}
-              onChange={handleChangeMail}
-            />
-          </div>
-          <div className="flex flex-col items-center">
-            <label htmlFor="password" className="text-2xl mb-2 text-white">
-              Mot de passe actuel
-            </label>
-            <input
-              className="px-4 py-1 text-black rounded-full"
-              type="password"
-              id="password"
-              value={password}
-              onChange={handleChangePassword}
-            />
-          </div>
-          <div className="flex flex-col items-center">
-            <label htmlFor="new-password" className="text-2xl mb-2 text-white">
-              Nouveau mot de passe
-            </label>
-            <input
-              className="px-4 py-1 text-black rounded-full"
-              type="password"
-              id="new-password"
-              value={newPassword}
-              onChange={handleChangeNewPassword}
-            />
-          </div>
-          <div className="flex flex-col items-center">
-            <label
-              htmlFor="confirm-new-password"
-              className="text-2xl mb-2 text-white"
-            >
-              Confirmer le nouveau mot de passe
-            </label>
-            <input
-              className="px-4 py-1 text-black rounded-full"
-              type="password"
-              id="confirm-new-password"
-              value={confirmNewPassword}
-              onChange={handleChangeConfirmNewPassword}
-            />
-          </div>
+    <div className=" flex flex-col justify-center items-center min-h-screen bg-teal-500 ">
+      <div className="mb-16">
+        <h1 className="font-extrabold text-white text-4xl h-16 flex justify-center md:text-6xl p-5">
+          Modifiez votre mot de passe
+        </h1>
+      </div>
+      <form onSubmit={handleSubmit} className="p-4 flex flex-col items-start">
+        <label htmlFor="mail" className="font-bold text-white text-base">
+          email
+        </label>
+        <input
+          className="bg-teal-600 rounded-lg text-black w-60 h-8 p-2 md:w-96"
+          type="email"
+          id="mail"
+          value={mail}
+          onChange={handleChangeMail}
+          required
+        />
 
-          {/* Ajoutez d'autres labels ici */}
-          <div className="flex justify-center">
-            <button
-              type="submit"
-              className="bg-black text-white px-6 py-2 rounded-full mt-6"
-            >
-              Confirmer
-            </button>
-          </div>
-        </form>
-      </section>
+        <label
+          htmlFor="password"
+          className="font-bold text-white text-base mt-6"
+        >
+          Mot de passe actuel
+        </label>
+        <input
+          className="bg-teal-600 rounded-lg text-black w-60 h-8 p-2 md:w-96"
+          type="password"
+          id="password"
+          value={password}
+          onChange={handleChangePassword}
+        />
+
+        <label
+          htmlFor="new-password"
+          className="font-bold text-white text-base mt-6"
+        >
+          Nouveau mot de passe
+        </label>
+        <input
+          className="bg-teal-600 rounded-lg text-black w-60 h-8 p-2 md:w-96"
+          type="password"
+          id="new-password"
+          value={newPassword}
+          onChange={handleChangeNewPassword}
+        />
+
+        <label
+          htmlFor="confirm-new-password"
+          className="font-bold text-white text-base mt-6"
+        >
+          Confirmer le nouveau mot de passe
+        </label>
+        <input
+          className="bg-teal-600 rounded-lg text-black w-60 h-8 p-2 md:w-96"
+          type="password"
+          id="confirm-new-password"
+          value={confirmNewPassword}
+          onChange={handleChangeConfirmNewPassword}
+        />
+
+        {/* Ajoutez d'autres labels ici */}
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            className="mx-auto bg-rose-400 text-white font-bold text-2xl mt-14 rounded-lg w-40 h-10 md:w-52 md:h-12 "
+          >
+            Confirmer
+          </button>
+        </div>
+      </form>
     </div>
   );
 }

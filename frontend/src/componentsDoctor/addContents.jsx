@@ -122,113 +122,195 @@ export default function CreateContentForm() {
   };
 
   return (
-    <div>
-      <div className="create-content-form-container">
-        <h2>Ajouter un nouveau contenu</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="protocol">Protocole :</label>
-            <select
-              id="protocol"
-              name="protocol"
-              value={selectedProtocol}
-              onChange={handleChangeProtocol}
-            >
-              <option value="">Sélectionnez un protocole</option>
-              {protocols.map((protocol) => (
-                <option key={protocol.id} value={protocol.id}>
-                  {protocol.title}
-                </option>
-              ))}
-            </select>
+    <div className="mt-20">
+      <div className="create-content-form-container min-h-screen bg-[#242731]">
+        <h2 className="text-white italic text-xl pl-4 text-center mb-5">
+          Ajouter un nouveau contenu
+        </h2>
+        <div className="flex justify-center items-center">
+          <div className="rounded-2xl shadow-lg shadow-slate-950/70 mb-10">
+            <section className="">
+              <p className="text-white italic text-sm pl-4">
+                * Champs obligatoires
+              </p>
+              <div className="bg-dark-02 rounded-24">
+                <form onSubmit={handleSubmit} className="mt-2 px-4">
+                  <div className="flex flex-col ">
+                    <div className="grid lg:grid-cols-2 gap-4 overflow-y-auto pb-5 lg:h-[370px] ">
+                      <div className="form-group flex flex-col items-start">
+                        <label
+                          htmlFor="protocol"
+                          className="text-base mb-2 text-white"
+                        >
+                          Protocole :
+                        </label>
+                        <select
+                          id="protocol"
+                          name="protocol"
+                          value={selectedProtocol}
+                          className="px-4 py-1 text-black rounded-md w-full"
+                          onChange={handleChangeProtocol}
+                        >
+                          <option value="">Sélectionnez un protocole</option>
+                          {protocols.map((protocol) => (
+                            <option key={protocol.id} value={protocol.id}>
+                              {protocol.title}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      <div className="form-group flex flex-col items-start">
+                        <label
+                          htmlFor="title"
+                          className="text-base mb-2 text-white"
+                        >
+                          Titre :
+                        </label>
+                        <input
+                          type="text"
+                          id="title"
+                          name="title"
+                          value={title}
+                          onChange={handleChangeTitle}
+                          className="px-4 py-1 text-black rounded-md w-full"
+                        />
+                      </div>
+
+                      <div className="form-group flex flex-col items-start">
+                        <label
+                          htmlFor="type"
+                          className="text-base mb-2 text-white"
+                        >
+                          Type :
+                        </label>
+                        <select
+                          id="type"
+                          name="type"
+                          value={type}
+                          onChange={handleChangeType}
+                          className="px-4 py-1 text-black rounded-md w-full"
+                        >
+                          <option value="image">Image</option>
+                          <option value="video">Vidéo</option>
+                          <option value="text">Texte</option>
+                        </select>
+                      </div>
+
+                      <div className="form-group flex flex-col items-start">
+                        <label
+                          htmlFor="timing"
+                          className="text-base mb-2 text-white"
+                        >
+                          Durée :
+                        </label>
+                        <input
+                          type="text"
+                          id="timing"
+                          name="timing"
+                          value={timing}
+                          onChange={handleChangeTiming}
+                          className="px-4 py-1 text-black rounded-md w-full"
+                        />
+                      </div>
+
+                      <div className="form-group flex flex-col items-start">
+                        <label
+                          htmlFor="description"
+                          className="text-base mb-2 text-white"
+                        >
+                          Description :
+                        </label>
+                        <textarea
+                          id="description"
+                          name="description"
+                          value={description}
+                          onChange={handleChangeDescription}
+                          className="px-4 py-1 text-black rounded-md w-full"
+                        />
+                      </div>
+
+                      <div className="form-group flex flex-col items-start">
+                        <label
+                          htmlFor="source"
+                          className="text-base mb-2 text-white"
+                        >
+                          Source :
+                        </label>
+                        <input
+                          type="file"
+                          id="source"
+                          name="source"
+                          accept={imageTypes.join(",")}
+                          onChange={handleChangeSource}
+                          className="px-4 py-1 text-white rounded-md w-full"
+                        />
+                      </div>
+
+                      <div className="form-group flex flex-col items-start">
+                        <label
+                          htmlFor="step"
+                          className="text-base mb-2 text-white"
+                        >
+                          Étape :
+                        </label>
+                        <input
+                          type="text"
+                          id="step"
+                          name="step"
+                          value={step}
+                          onChange={handleChangeStep}
+                          className="px-4 py-1 text-black rounded-md w-full"
+                        />
+                      </div>
+
+                      <div className="form-group flex flex-col items-start">
+                        <label
+                          htmlFor="category"
+                          className="text-base mb-2 text-white"
+                        >
+                          Catégorie :
+                        </label>
+                        <select
+                          id="category"
+                          name="category"
+                          value={category}
+                          onChange={handleChangeCategory}
+                          className="px-4 py-1 text-black rounded-md w-full"
+                        >
+                          <option value="compréhension">Compréhension</option>
+                          <option value="démonstration">Démonstration</option>
+                          <option value="expérimentation">
+                            Expérimentation
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div className="text-center ">
+                      <button
+                        type="submit"
+                        className="bg-[#323847] rounded-full shadow-slate-950/90 shadow-xl mb-5 text-white
+                    hover:text-white sm:hover:bg-white/30 w-5/12 mx-4"
+                      >
+                        <p className="px-6 py-2 text-center">Ajouter</p>
+                      </button>
+
+                      <Link to="/">
+                        <button
+                          type="submit"
+                          className="bg-[#323847] rounded-full shadow-slate-950/90 shadow-xl mb-5 text-white
+                    hover:text-white sm:hover:bg-white/30 w-5/12"
+                        >
+                          <p className="px-6 py-2 text-center">Retour</p>
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </section>
           </div>
-
-          <div className="form-group">
-            <label htmlFor="title">Titre :</label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              value={title}
-              onChange={handleChangeTitle}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="type">Type :</label>
-            <select
-              id="type"
-              name="type"
-              value={type}
-              onChange={handleChangeType}
-            >
-              <option value="image">Image</option>
-              <option value="video">Vidéo</option>
-              <option value="text">Texte</option>
-            </select>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="timing">Durée :</label>
-            <input
-              type="text"
-              id="timing"
-              name="timing"
-              value={timing}
-              onChange={handleChangeTiming}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="description">Description :</label>
-            <textarea
-              id="description"
-              name="description"
-              value={description}
-              onChange={handleChangeDescription}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="source">Source :</label>
-            <input
-              type="file"
-              id="source"
-              name="source"
-              accept={imageTypes.join(",")}
-              onChange={handleChangeSource}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="step">Étape :</label>
-            <input
-              type="text"
-              id="step"
-              name="step"
-              value={step}
-              onChange={handleChangeStep}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="category">Catégorie :</label>
-            <select
-              id="category"
-              name="category"
-              value={category}
-              onChange={handleChangeCategory}
-            >
-              <option value="compréhension">Compréhension</option>
-              <option value="démonstration">Démonstration</option>
-              <option value="expérimentation">Expérimentation</option>
-            </select>
-          </div>
-
-          <button type="submit">Ajouter</button>
-        </form>
-
-        <Link to="/">Retour</Link>
+        </div>
       </div>
     </div>
   );
