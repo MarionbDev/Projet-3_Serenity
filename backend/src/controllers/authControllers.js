@@ -33,7 +33,8 @@ const createToken = (req, res) => {
 const verifyToken = (req, res, next) => {
   const token = req.cookies.jwtToken;
   if (!token) {
-    res.status(401).send("You're not login");
+    // res.status(401).send("You're not login");
+    next();
   } else {
     jwt.verify(token, JWT_SECRET, (err, decoded) => {
       if (err) {

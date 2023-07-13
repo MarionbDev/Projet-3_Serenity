@@ -1,4 +1,7 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Modal } from "react-responsive-modal";
 import { useUserContext } from "../contexts/UserContext";
 import trash from "../assets/logo/logoDoctor/trash.png";
 import PrivateLink from "../components/PrivateLink";
@@ -11,7 +14,30 @@ import view from "../assets/logo/logoDoctor/view.svg";
 export default function DoctorList() {
   const [praticien, setPraticien] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [selectedDoctorId, setSelectedDoctorId] = useState(null);
+
+  const [open, setOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
+
   const { idDoctor } = useUserContext();
+
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
+
+  const deleteOnCloseModal = () => setDeleteOpen(false);
+
+  const handleNonButtonClick = () => {
+    onCloseModal();
+  };
+
+  const handleNonDeleteButtonClick = () => {
+    deleteOnCloseModal();
+  };
+
+  const handleDeleteOpenModal = (patientId) => {
+    setSelectedDoctorId(patientId);
+    setDeleteOpen(true);
+  };
 
   const getAllPraticien = () => {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/api/doctors/`)
@@ -28,11 +54,32 @@ export default function DoctorList() {
     }
   }, []);
 
+  const deleteIntervention = () => {
+    // if (confirm("Voulez-vous supprimer cette intervention ?")) {
+    fetch(
+      `${import.meta.env.VITE_BACKEND_URL}/api/doctors/${selectedDoctorId}`,
+      {
+        method: "DELETE",
+        credentials: "include",
+      }
+    )
+      .then(() => {
+        getAllPraticien();
+        deleteOnCloseModal();
+      })
+      .catch((err) => console.error(err));
+    // }
+  };
+
+  if (!praticien.length === 0) {
+    return <p>Loading page</p>;
+  }
+
   return (
     <div className="min-h-screen bg-[#242731]">
       <SideBarDoctor />
       <div className="absolute  w-2/3 mt-[48px] ml-[321px] text-[#FFFFFF]">
-        <HeaderDoctor text="Liste des praticiens" />
+        <HeaderDoctor text="Liste des praticiens :" />
       </div>
       <div className="absolute w-[1055px] ml-[321px] mt-[162px] rounded-2xl shadow-lg shadow-slate-950/70  h-[500px]">
         <div className="flex mt-[32px] ">
@@ -82,15 +129,22 @@ export default function DoctorList() {
                         <p className=" w-48">{doctor.tel_portable}</p>
                         <p className="w-72 text-">{doctor.mail}</p>
                         <div className="flex ">
-                          <button type="button">
-                            <img
-                              src={view}
-                              alt="edit"
-                              className="w-[18px] h-[18px] mr-8"
-                            />
-                          </button>
+                          <Link
+                            to={`/doctors/${idDoctor}/praticiens/${doctor.id}`}
+                          >
+                            <button type="button">
+                              <img
+                                src={view}
+                                alt="edit"
+                                className="w-[18px] h-[18px] mr-8"
+                              />
+                            </button>
+                          </Link>
 
-                          <button type="button">
+                          <button
+                            type="button"
+                            onClick={() => handleDeleteOpenModal(doctor.id)}
+                          >
                             <img
                               src={trash}
                               alt="trash"
@@ -104,6 +158,45 @@ export default function DoctorList() {
               </div>
             </ul>
           </div>
+          <Modal
+            open={deleteOpen}
+            onClose={deleteOnCloseModal}
+            center
+            classNames={{ overlay: "customOverlay", modal: "customModal" }}
+            closeIcon={
+              <span
+                style={{
+                  fontSize: "20px",
+                  width: "18px",
+                  height: "18px",
+                  color: "white",
+                }}
+              >
+                X
+              </span>
+            }
+          >
+            <h1 className="text-[#FFFFFF] text-center">
+              Souhaitez-vous supprimer ce praticien ?
+            </h1>
+            <div className="flex justify-center mt-2 gap-6 ">
+              <button
+                type="button"
+                onClick={deleteIntervention}
+                className="text-[#FFFFFF] bg-[#323847] sm:rounded-full sm:mt-3 sm:w-20 sm:hover:bg-white/30  sm:hover:font-semibold"
+              >
+                Oui
+              </button>
+
+              <button
+                type="button"
+                onClick={handleNonDeleteButtonClick}
+                className="text-[#FFFFFF] bg-[#323847] sm:rounded-full sm:mt-3 sm:w-20 sm:hover:bg-white/30  sm:hover:font-semibold"
+              >
+                <p className=" text-center p-1">Non</p>
+              </button>
+            </div>
+          </Modal>
         </section>
         <div className=" flex justify-center mt-[280px]">
           <PrivateLink
