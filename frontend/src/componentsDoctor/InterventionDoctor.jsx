@@ -176,7 +176,7 @@ export default function InterventionDoctor() {
                                       />
                                     </button>
                                     <Link
-                                      to={`/doctors/${idDoctor}/interventions/EditContents`}
+                                      to={`/doctors/${idDoctor}/interventions/EditContents?id=${surgeryType.id}`}
                                     >
                                       <button
                                         type="button"
