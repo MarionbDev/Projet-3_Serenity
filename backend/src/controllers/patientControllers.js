@@ -20,6 +20,7 @@ const read = (req, res) => {
       if (rows[0] == null) {
         res.sendStatus(404);
       } else {
+        // pour ne pas retourner le hashedPassword dans le front
         const patient = rows[0];
         delete patient.hashedPassword;
         res.send(patient);

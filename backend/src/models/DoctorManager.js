@@ -20,18 +20,10 @@ class DoctorManager extends AbstractManager {
   }
 
   update(doctor) {
-    return this.database.query(
-      `update ${this.table} set firstname = ?, lastname = ?, tel = ?, mail = ?, hashedPassword = ?, role = ?  where id = ?`,
-      [
-        doctor.firstname,
-        doctor.lastname,
-        doctor.tel,
-        doctor.mail,
-        doctor.hashedPassword,
-        doctor.role,
-        doctor.id,
-      ]
-    );
+    return this.database.query(`update ${this.table} set ?  where id = ?`, [
+      doctor,
+      doctor.id,
+    ]);
   }
 
   findByEmail(mail) {
