@@ -117,17 +117,22 @@ export default function CreateDoctor() {
 
   return (
     <div className="min-h-screen bg-[#242731]">
-      <SideBarDoctor />
-      <div className="absolute  w-2/3 mt-[48px] ml-[321px] text-[#FFFFFF]">
+      <div className="hidden md:block">
+        <SideBarDoctor />
+      </div>
+      <div className="md:ml-[321px] py-5 md:py-14 text-[#FFFFFF]">
         <HeaderDoctor text="Un nouveau praticien ?!" />
       </div>
-      <div className="flex justify-center items-center h-screen">
-        <div className="absolute  left-[321px] top-[172px] rounded-2xl shadow-lg shadow-slate-950/70 w-[1055px] h-[500px]">
-          <section className="relative">
-            <div className=" bg-dark-02 rounded-24" />
+      <div className="flex justify-center items-center md:ml-64">
+        <div className="rounded-2xl shadow-lg shadow-slate-950/70 mb-10">
+          <section className="">
+            <p className="text-white italic text-sm pl-4">
+              * Champs obligatoires
+            </p>
+            <div className="bg-dark-02 rounded-24" />
             <form onSubmit={handleSubmit} className="mt-2 px-4">
               <div className="flex flex-col">
-                <div className="grid grid-cols-2 gap-4  overflow-y-auto pb-5 h-[420px]">
+                <div className="grid lg:grid-cols-2 gap-4 overflow-y-auto pb-5 lg:h-[370px] ">
                   <div className="flex flex-col items-start">
                     <label
                       htmlFor="firstname"
@@ -136,7 +141,7 @@ export default function CreateDoctor() {
                       Prénom
                     </label>
                     <input
-                      className="w-96 px-4 py-1 text-black rounded-md"
+                      className="px-4 py-1 text-black rounded-md w-full"
                       type="text"
                       id="firstname"
                       required
@@ -152,7 +157,7 @@ export default function CreateDoctor() {
                       Nom
                     </label>
                     <input
-                      className="w-96 px-4 py-1 text-black rounded-md"
+                      className="w-full px-4 py-1 text-black rounded-md"
                       type="text"
                       id="lastname"
                       required
@@ -165,7 +170,7 @@ export default function CreateDoctor() {
                       Téléphone
                     </label>
                     <input
-                      className="w-96 px-4 py-1 text-black rounded-md"
+                      className="w-full px-4 py-1 text-black rounded-md"
                       type="text"
                       id="tel"
                       value={tel}
@@ -174,10 +179,10 @@ export default function CreateDoctor() {
                   </div>
                   <div className="flex flex-col items-start">
                     <label htmlFor="role" className="text-base mb-2 text-white">
-                      Role
+                      Rôle
                     </label>
                     <input
-                      className="w-96 px-4 py-1 text-black rounded-md"
+                      className="w-full px-4 py-1 text-black rounded-md"
                       type="text"
                       id="role"
                       value={role}
@@ -190,7 +195,7 @@ export default function CreateDoctor() {
                       Mail
                     </label>
                     <input
-                      className="w-96 px-4 py-1 text-black rounded-md"
+                      className="w-full px-4 py-1 text-black rounded-md"
                       type="email"
                       id="mail"
                       value={mail}
@@ -205,7 +210,7 @@ export default function CreateDoctor() {
                       Mot de passe
                     </label>
                     <input
-                      className="w-96 px-4 py-1 text-black rounded-md"
+                      className="w-full px-4 py-1 text-black rounded-md"
                       type="password"
                       id="password"
                       value={password}
@@ -218,34 +223,16 @@ export default function CreateDoctor() {
                         htmlFor="language"
                         className="text-base mb-2 text-white"
                       >
-                        Language
+                        Langues
                       </label>
                       <textarea
                         rows={8}
                         cols={40}
-                        className="w-96 h-20 px-2 py-2 text-black rounded-md"
+                        className="w-full h-20 px-2 py-2 text-black rounded-md"
                         type="text"
                         id="language"
                         value={language}
                         onChange={handleChangeLanguage}
-                      />
-                    </div>
-
-                    <div className="flex flex-col items-start">
-                      <label
-                        htmlFor="bio"
-                        className="text-base mb-2 text-white"
-                      >
-                        Biographie
-                      </label>
-                      <textarea
-                        rows={8}
-                        cols={40}
-                        className="w-[905px] h-24 px-2 py-2 text-black rounded-md"
-                        type="text"
-                        id="bio"
-                        value={bio}
-                        onChange={handleChangeBio}
                       />
                     </div>
                   </div>
@@ -259,11 +246,25 @@ export default function CreateDoctor() {
                     <textarea
                       rows={8}
                       cols={40}
-                      className="w-96 h-20 px-2 py-2 text-black rounded-md"
+                      className="w-full h-20 px-2 py-2 text-black rounded-md"
                       type="text"
                       id="certificate"
                       value={certificate}
                       onChange={handleChangeCertificate}
+                    />
+                  </div>
+                  <div className="lg:col-span-2 flex flex-col items-start">
+                    <label htmlFor="bio" className="text-base mb-2 text-white">
+                      Biographie
+                    </label>
+                    <textarea
+                      rows={8}
+                      cols={40}
+                      className="w-full h-24 px-2 py-2 text-black rounded-md"
+                      type="text"
+                      id="bio"
+                      value={bio}
+                      onChange={handleChangeBio}
                     />
                   </div>
                   <div className="flex flex-col items-start">
@@ -276,7 +277,7 @@ export default function CreateDoctor() {
                     <textarea
                       rows={8}
                       cols={40}
-                      className="w-96 h-20 px-2 py-2 text-black rounded-md"
+                      className="w-full h-20 px-2 py-2 text-black rounded-md"
                       type="text"
                       id="otherFormation"
                       value={otherFormation}
@@ -293,7 +294,7 @@ export default function CreateDoctor() {
                     <textarea
                       rows={8}
                       cols={40}
-                      className="w-96 h-20 px-2 py-2 text-black rounded-md"
+                      className="w-full h-20 px-2 py-2 text-black rounded-md"
                       type="text"
                       id="experience"
                       value={experience}
@@ -311,7 +312,7 @@ export default function CreateDoctor() {
                     <textarea
                       rows={8}
                       cols={40}
-                      className="w-96 h-20 px-2 py-2 text-black rounded-md"
+                      className="w-full h-20 px-2 py-2 text-black rounded-md"
                       type="text"
                       id="worksAndPublication"
                       value={worksAndPublication}
@@ -328,14 +329,14 @@ export default function CreateDoctor() {
                     <textarea
                       rows={8}
                       cols={40}
-                      className="w-96 h-20 px-2 py-2 text-black rounded-md"
+                      className="w-full h-20 px-2 py-2 text-black rounded-md"
                       type="text"
                       id="awardAndRecognition"
                       value={awardAndRecognition}
                       onChange={handleChangeAwardAndRecognition}
                     />
                   </div>
-                  <div className="flex flex-col items-start">
+                  <div className="lg:col-span-2 flex flex-col items-start">
                     <label
                       htmlFor="partnership"
                       className="text-base mb-2 text-white"
@@ -343,7 +344,7 @@ export default function CreateDoctor() {
                       Partenaires Professionnels
                     </label>
                     <input
-                      className="w-96 px-4 py-1 text-black rounded-md"
+                      className="w-full px-4 py-1 text-black rounded-md"
                       type="text"
                       id="partnership"
                       value={partnership}
