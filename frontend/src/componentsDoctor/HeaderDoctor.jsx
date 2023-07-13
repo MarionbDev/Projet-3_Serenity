@@ -3,7 +3,6 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useUserContext } from "../contexts/UserContext";
 import serenity from "../assets/logo/logoPatient/logoSerenity.png";
-import logoAvatar from "../assets/logo/logoPatient/avatar1.png";
 
 export default function HeaderDoctor({ text }) {
   const id = parseInt(useParams().id, 10);
@@ -39,12 +38,12 @@ export default function HeaderDoctor({ text }) {
   }
 
   return (
-    <div className="  flex flex-col md:flex-row ">
+    <div className="md:flex-row ">
       <div className="flex justify-between">
         <Link
           to={`/doctors/${id}/`}
-          className="flex mt-4 ml-4 md:absolute md:ml-[-290px] md:mt-8
-          lg:mt-[0px]"
+          className="md:flex ml-4 md:fixed md:ml-[-290px]
+          "
         >
           <img
             src={serenity}
@@ -55,24 +54,13 @@ export default function HeaderDoctor({ text }) {
             SERENITY
           </p>
         </Link>
-
-        <div className="flex justify-end mr-3 mt-4 md:hidden md:mt-48 md:ml-4">
-          <p className="text-[16px] mt-1 mr-3 md:m-3 text-gray-500 font-semibold">
-            Dr {doctor.lastname}
-          </p>
-          <img
-            className="shadow-slate-950/60 w-8 h-8 shadow-lg rounded-full md:ml-4 md:w-18"
-            src={logoAvatar}
-            alt="avatar"
-          />
-        </div>
       </div>
 
-      <div className="flex items-center flex-col justify-center pt-8  sm:pt-16 md:pt-8 text-[#FFFFFF] md:items-start lg:pt-0 lg:mt-[-0px] ">
+      <div className="flex items-center flex-col justify-center  text-[#FFFFFF] md:items-start ">
         <p className="mb-1 text-[18px] font-semibold md:text-[24px]">
           Bonjour Dr {doctor.lastname} ,
         </p>
-        <p className="italic md:text-[28px]  xl:text-[35px]">{text}</p>
+        <p className="italic md:text-[35px]">{text}</p>
       </div>
     </div>
   );
