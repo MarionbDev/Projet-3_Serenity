@@ -37,6 +37,7 @@ import Anticiper from "./componentsPatient/pc/Anticiper";
 import CheckList from "./componentsPatient/pc/CheckList";
 import FileUploader from "./componentsDoctor/addContents";
 import ChangePassword from "./componentsDoctor/ChangePassword";
+import CasePrepaPcPatient from "./componentsPatient/pc/CasePrepaPcPatient";
 import ChangePasswordPatient from "./componentsDoctor/ChangePasswordPatient";
 
 function getCurrentDimension() {
@@ -139,7 +140,7 @@ function App() {
         ) : (
           <Route
             path="/patients/:id/ma-preparation"
-            element={<PrepaPatientPcOne />}
+            element={<CasePrepaPcPatient />}
           >
             <Route path="comprendre-mon-operation" element={<MonOperation />} />
             <Route
