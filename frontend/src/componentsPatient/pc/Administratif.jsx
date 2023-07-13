@@ -99,7 +99,7 @@ export default function Administratif() {
 
   return (
     <div className="mt-[40px] w-[70vw] border-4 rounded-2xl border-cyan-400 bg-gray-100">
-      <p className="c mt-4 ml-8 text-xl">La fiche administrative</p>
+      <p className="mt-8 ml-8 text-xl">La fiche administrative</p>
 
       <div className="ml-8 text-base">
         <p className="mt-8 font-bold">État civil</p>
