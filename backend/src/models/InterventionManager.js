@@ -21,7 +21,7 @@ class InterventionManager extends AbstractManager {
 
   interventionInfo(idPatient) {
     return this.database.query(
-      `SELECT d.lastname, s.name, p.firstname, p.image, i.time FROM ${this.table} AS i JOIN patient AS p ON p.id=i.patient_id JOIN surgery_type AS s ON s.intervention_id=i.id JOIN doctor AS d ON d.id=s.doctor_id WHERE p.id= ?`,
+      `SELECT d.lastname, s.name, p.firstname, p.image, i.time, i.id FROM ${this.table} AS i JOIN patient AS p ON p.id=i.patient_id JOIN surgery_type AS s ON s.intervention_id=i.id JOIN doctor AS d ON d.id=s.doctor_id WHERE p.id= ?`,
       [idPatient]
     );
   }
