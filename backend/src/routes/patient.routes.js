@@ -2,11 +2,13 @@ const router = require("express").Router();
 
 const patientControllers = require("../controllers/patientControllers");
 const interventionControllers = require("../controllers/interventionControllers");
+const contentControllers = require("../controllers/contentControllers");
 const passwordControllers = require("../controllers/passwordControllers");
 const authControllers = require("../controllers/authControllers");
 const emailControllers = require("../controllers/emailControllers");
 
 router.get("/", patientControllers.browse);
+router.post("/:id/contents", contentControllers.browseByIntervention);
 router.get("/:id", patientControllers.read);
 router.get(
   "/:id/home",

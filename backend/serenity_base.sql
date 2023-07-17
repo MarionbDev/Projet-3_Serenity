@@ -48,7 +48,7 @@ DROP TABLE IF EXISTS `content`;
 CREATE TABLE `content` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
-  `type` enum('image','video') NOT NULL,
+  `type` enum('image','video','text') NOT NULL,
   `timing` time DEFAULT NULL,
   `description` text NOT NULL,
   `source` varchar(255) NOT NULL,
