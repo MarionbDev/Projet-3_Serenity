@@ -38,6 +38,7 @@ const ChecklistManager = require("./ChecklistManager");
 const PodcastManager = require("./PodcastManager");
 const SurgeryTypeManager = require("./SurgeryTypeManager");
 const ProtocolManager = require("./ProtocolManager");
+const PatientContentManager = require("./PatientContentManager");
 
 models.doctor = new DoctorManager();
 models.doctor.setDatabase(pool);
@@ -57,6 +58,8 @@ models.surgeryType = new SurgeryTypeManager();
 models.surgeryType.setDatabase(pool);
 models.protocol = new ProtocolManager();
 models.protocol.setDatabase(pool);
+models.patientContent = new PatientContentManager();
+models.patientContent.setDatabase(pool);
 
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
