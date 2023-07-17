@@ -76,6 +76,28 @@ function PreparationEtapeFive() {
         <div className="mb-10">
           <label
             style={{
+              backgroundColor: isChecked[5] ? "rgba(72, 187, 120, 0.5)" : "",
+            }}
+            className="w-36 h-12 p-5 rounded-xl container shadow-md"
+          >
+            <input
+              type="checkbox"
+              className="mr-2"
+              checked={isChecked[5]}
+              onChange={() => handleCheckboxChange(5)}
+            />
+            <span
+              style={{
+                textDecoration: isChecked[5] ? "line-through" : "none",
+              }}
+            >
+              Test COVID
+            </span>
+          </label>
+        </div>
+        <div className="mb-10">
+          <label
+            style={{
               backgroundColor: isChecked[2] ? "rgba(72, 187, 120, 0.5)" : "",
             }}
             className="w-36 h-12 p-5 rounded-xl container shadow-md"
@@ -91,7 +113,7 @@ function PreparationEtapeFive() {
                 textDecoration: isChecked[2] ? "line-through" : "none",
               }}
             >
-              Test Covid
+              Carte vitale
             </span>
           </label>
         </div>
@@ -113,7 +135,7 @@ function PreparationEtapeFive() {
                 textDecoration: isChecked[3] ? "line-through" : "none",
               }}
             >
-              Carte bleue
+              Carte mutuelle
             </span>
           </label>
         </div>

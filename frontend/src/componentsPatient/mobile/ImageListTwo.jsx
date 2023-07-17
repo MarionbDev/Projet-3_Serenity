@@ -88,7 +88,7 @@ function ImageList() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col ">
       <div className="">
         <div className="flex flex-col items-center">
           <img src={image6} alt="doc6" className="mx-1 w-30 h-auto" />
@@ -101,7 +101,7 @@ function ImageList() {
           />
         </div>
         <div className="flex flex-col items-center">
-          <img src={image6} alt="doc7" className="mx-1 w-30 h-auto" />
+          <img src={image6} alt="doc7" className="mt-2 mx-1 w-30 h-auto" />
           <p className="ml-10 mb-2 w-44 h-auto text-sm">Consentement éclairé</p>
           <input
             className="ml-20 rounded-full text-black px-2 py-1"
@@ -127,7 +127,7 @@ function ImageList() {
         <div className="flex justify-end">
           <button
             type="button"
-            className="ml-20 mt-2 px-4 py-2 text-white bg-teal-400  rounded-md"
+            className="mt-2 px-4 py-2 text-white bg-teal-400  rounded-md"
             onClick={handleFileUpload}
           >
             Envoyer
