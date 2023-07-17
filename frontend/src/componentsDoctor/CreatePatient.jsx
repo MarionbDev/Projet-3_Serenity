@@ -140,10 +140,10 @@ export default function CreatePatient() {
         },
         body: JSON.stringify(data),
       })
-        .then((res) => {
-          // console.log(res);
-          return res.json();
-        })
+        // .then((res) => {
+        //   // console.log(res);
+        //   return res.json();
+        // })
         .then(() => {
           navigate(`/doctors/${idDoctor}/patients/`);
         })
@@ -157,20 +157,22 @@ export default function CreatePatient() {
 
   return (
     <div className="min-h-screen bg-[#242731]">
-      <SideBarDoctor />
-      <div className="absolute  w-2/3 mt-[48px] ml-[321px] text-[#FFFFFF]">
+      <div className="hidden md:block">
+        <SideBarDoctor />
+      </div>
+      <div className="md:ml-[321px] py-5 md:py-14 text-[#FFFFFF]">
         <HeaderDoctor text="Un nouveau patient ?!" />
       </div>
-      <div className="flex justify-center items-center min-h-screen ">
-        <div className="absolute left-[321px] top-[172px] rounded-2xl shadow-lg shadow-slate-950/70 w-[1055px] h-[500px]">
-          <section className="relative ">
+      <div className="flex justify-center items-center md:ml-64">
+        <div className="rounded-2xl shadow-lg shadow-slate-950/70 mb-10">
+          <section className="">
             <p className="text-white italic text-sm pl-4">
               * Champs obligatoires
             </p>
-            <div className="absolute left-24 right-4 top-9 bg-dark-02 rounded-24">
+            <div className="bg-dark-02 rounded-24">
               <form onSubmit={handleSubmit} className="mt-2 px-4">
                 <div className="flex flex-col ">
-                  <div className="grid grid-cols-2 gap-4  overflow-y-auto pb-5 h-[370px] ">
+                  <div className="grid lg:grid-cols-2 gap-4 overflow-y-auto pb-5 lg:h-[370px] ">
                     <div className="flex flex-col items-start">
                       <label
                         htmlFor="firstname"
@@ -179,7 +181,7 @@ export default function CreatePatient() {
                         Prénom *
                       </label>
                       <input
-                        className="w-96 px-4 py-1 text-black rounded-md"
+                        className="px-4 py-1 text-black rounded-md w-full"
                         type="text"
                         id="firstname"
                         required
@@ -195,7 +197,7 @@ export default function CreatePatient() {
                         Nom *
                       </label>
                       <input
-                        className="w-96 px-4 py-1 text-black rounded-md"
+                        className="px-4 py-1 text-black rounded-md w-full"
                         type="text"
                         id="lastname"
                         required
@@ -211,14 +213,14 @@ export default function CreatePatient() {
                         Nom de jeune fille
                       </label>
                       <input
-                        className="w-96 px-4 py-1 text-black rounded-md"
+                        className="px-4 py-1 text-black rounded-md w-full"
                         type="text"
                         id="nom de jeune fille"
                         value={maidenName}
                         onChange={handleChangeMaidenName}
                       />
                     </div>
-                    <div className="flex gap-8">
+                    <div className="flex gap-4">
                       <div className="flex flex-col items-start">
                         <label
                           htmlFor="sexe"
@@ -227,7 +229,7 @@ export default function CreatePatient() {
                           Sexe
                         </label>
                         <select
-                          className="w-30 px-4 py-1  text-black rounded-md"
+                          className="px-4 py-1  text-black rounded-md w-full"
                           id="sexe"
                           value={sexe}
                           onChange={handleChangeSexe}
@@ -245,7 +247,7 @@ export default function CreatePatient() {
                           Date de naissance *
                         </label>
                         <input
-                          className="w-[210px] px-4 py-1 text-black rounded-md"
+                          className="px-4 py-1 text-black rounded-md w-full"
                           type="date"
                           id="birthday"
                           value={birthday}
@@ -262,7 +264,7 @@ export default function CreatePatient() {
                         Situation familiale
                       </label>
                       <select
-                        className="w-96 px-4 py-1 text-black rounded-md"
+                        className="px-4 py-1 text-black rounded-md w-full"
                         id="family-situation"
                         value={familySituation}
                         onChange={handleChangeFamilySituation}
@@ -282,10 +284,10 @@ export default function CreatePatient() {
                         htmlFor="number-of-children"
                         className=" text-base mb-2 text-white"
                       >
-                        Nombre d'enfant
+                        Nombre d'enfants
                       </label>
                       <input
-                        className="w-16 px-4 py-1 text-black rounded-md"
+                        className="px-4 py-1 text-black rounded-md w-full"
                         type="number"
                         id="number-of-children"
                         value={numberOfChildren}
@@ -301,7 +303,7 @@ export default function CreatePatient() {
                         Situation professionnelle
                       </label>
                       <select
-                        className="w-96 px-4 py-1 text-black rounded-md"
+                        className="px-4 py-1 text-black rounded-md w-full"
                         id="professionnal_situation"
                         value={professionnalSituation}
                         onChange={handleChangeProfessionnalSituation}
@@ -334,7 +336,7 @@ export default function CreatePatient() {
                         Métier
                       </label>
                       <input
-                        className="w-96 px-4 py-1 text-black rounded-md"
+                        className="px-4 py-1 text-black rounded-md w-full"
                         type="text"
                         id="occupation"
                         value={occupation}
@@ -350,7 +352,7 @@ export default function CreatePatient() {
                         Téléphone fixe
                       </label>
                       <input
-                        className="w-96 px-4 py-1 text-black rounded-md"
+                        className="px-4 py-1 text-black rounded-md w-full"
                         type="text"
                         id="tel"
                         value={telFix}
@@ -366,7 +368,7 @@ export default function CreatePatient() {
                         Téléphone portable
                       </label>
                       <input
-                        className="w-96 px-4 py-1 text-black rounded-md"
+                        className="px-4 py-1 text-black rounded-md w-full"
                         type="text"
                         id="tel-mobile"
                         value={telPort}
@@ -381,7 +383,7 @@ export default function CreatePatient() {
                         Mail *
                       </label>
                       <input
-                        className="w-96 px-4 py-1 text-black rounded-md"
+                        className="px-4 py-1 text-black rounded-md w-full"
                         type="email"
                         id="mail"
                         required
@@ -398,7 +400,7 @@ export default function CreatePatient() {
                         Mot de passe *
                       </label>
                       <input
-                        className="w-96 px-4 py-1 text-black rounded-md"
+                        className="px-4 py-1 text-black rounded-md w-full"
                         type="password"
                         id="password"
                         required
@@ -415,7 +417,7 @@ export default function CreatePatient() {
                         N°, rue, route, avenue ...
                       </label>
                       <input
-                        className="w-96 px-4 py-1 text-black rounded-md"
+                        className="px-4 py-1 text-black rounded-md w-full"
                         type="text"
                         id="road"
                         value={road}
@@ -431,7 +433,7 @@ export default function CreatePatient() {
                         Code Postal
                       </label>
                       <input
-                        className="px-4 py-1 text-black rounded-md"
+                        className="px-4 py-1 text-black rounded-md w-full"
                         type="number"
                         id="zip-code"
                         value={zipCode}
@@ -447,7 +449,7 @@ export default function CreatePatient() {
                         Ville
                       </label>
                       <input
-                        className="w-96 px-4 py-1 text-black rounded-md"
+                        className="px-4 py-1 text-black rounded-md w-full"
                         type="text"
                         id="city"
                         value={city}
@@ -462,7 +464,7 @@ export default function CreatePatient() {
                         Pays
                       </label>
                       <input
-                        className="w-96 px-4 py-1 text-black rounded-md"
+                        className="px-4 py-1 text-black rounded-md w-full"
                         type="text"
                         id="country"
                         value={country}

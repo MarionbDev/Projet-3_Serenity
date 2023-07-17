@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { UserContextProvider } from "./contexts/UserContext";
 import CreateDoctor from "./componentsDoctor/CreateDoctor";
+import EditDoctor from "./componentsDoctor/EditDoctor";
 import PrivateRoutes from "./components/PrivateRoutes";
 import "./App.css";
 import "react-responsive-modal/styles.css";
@@ -36,6 +37,8 @@ import Anticiper from "./componentsPatient/pc/Anticiper";
 import CheckList from "./componentsPatient/pc/CheckList";
 import FileUploader from "./componentsDoctor/addContents";
 import ChangePassword from "./componentsDoctor/ChangePassword";
+import CasePrepaPcPatient from "./componentsPatient/pc/CasePrepaPcPatient";
+import ChangePasswordPatient from "./componentsDoctor/ChangePasswordPatient";
 
 function getCurrentDimension() {
   return {
@@ -63,6 +66,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/changer-mon-mot-de-passe" element={<ChangePassword />} />
+        <Route
+          path="/changer-mon-mot-de-passe-patient"
+          element={<ChangePasswordPatient />}
+        />
+
         <Route
           path="/patients"
           element={<Connexion utilisateur="patients" />}
@@ -132,7 +140,7 @@ function App() {
         ) : (
           <Route
             path="/patients/:id/ma-preparation"
-            element={<PrepaPatientPcOne />}
+            element={<CasePrepaPcPatient />}
           >
             <Route path="comprendre-mon-operation" element={<MonOperation />} />
             <Route
@@ -190,6 +198,10 @@ function App() {
         <Route
           path="/doctors/:id/patients/:patientId" // !!!!!!
           element={<EditPatient />}
+        />
+        <Route
+          path="/doctors/:id/praticiens/:praticienId" // !!!!!!
+          element={<EditDoctor />}
         />
 
         {/* Nouvelle route pour créer une intervention */}

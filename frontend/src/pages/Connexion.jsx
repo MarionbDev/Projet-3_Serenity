@@ -1,14 +1,24 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import { Modal } from "react-responsive-modal";
 import { useUserContext } from "../contexts/UserContext";
 
 function Connexion({ utilisateur }) {
-  const { setIdPatient, setIdDoctor, setRole } = useUserContext();
+  const { setIdPatient, idPatient, idDoctor, setIdDoctor, setRole } =
+    useUserContext();
   const navigate = useNavigate();
   const [passwordIsVisible, setPasswordIsVisible] = useState(false);
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
+  const [open, setOpen] = useState(false);
+
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
+
+  const handleNonButtonClick = () => {
+    onCloseModal();
+  };
 
   const handleChangeMail = (e) => {
     setMail(e.target.value);
@@ -39,7 +49,6 @@ function Connexion({ utilisateur }) {
           return res.json();
         })
         .then((data) => {
-          console.warn(data.id);
           navigate(
             `/${utilisateur}/${data.id}/${
               utilisateur === "patients" ? "ma-preparation" : ""
@@ -55,6 +64,7 @@ function Connexion({ utilisateur }) {
           }
         })
         .catch((err) => {
+          onOpenModal();
           console.error(err);
           // alert("Error to login please try again !");
         });
@@ -134,9 +144,6 @@ function Connexion({ utilisateur }) {
             )}
           </button>
         </div>
-        {/* <Link className="text-base text-black" to="/password">
-          Mot de passe oublié?
-        </Link> */}
         <button
           className="mx-auto bg-rose-400 text-white font-bold text-2xl mt-14 rounded-lg w-40 h-10 md:w-52 md:h-12 "
           type="submit"
@@ -144,6 +151,40 @@ function Connexion({ utilisateur }) {
           S'identifier
         </button>
       </form>
+      {!idDoctor || !idPatient ? (
+        <Modal
+          open={open}
+          onClose={onCloseModal}
+          center
+          classNames={{ overlay: "customOverlay", modal: "customModal" }}
+          closeIcon={
+            <span
+              style={{
+                fontSize: "20px",
+                width: "20px",
+                height: "20px",
+                color: "white",
+              }}
+            >
+              X
+            </span>
+          }
+        >
+          <h1 className="text-[#FFFFFF] font-semibold">
+            Identifiant et/ou mot de passe invalide
+          </h1>
+
+          <div className="flex justify-center mt-2 gap-6 ">
+            <button
+              type="button"
+              onClick={handleNonButtonClick}
+              className="text-[#FFFFFF] bg-[#323847] sm:rounded-full sm:mt-3 sm:w-20 sm:hover:bg-white/30  sm:hover:font-semibold"
+            >
+              <p className=" text-center p-1">ok</p>
+            </button>
+          </div>
+        </Modal>
+      ) : null}
     </div>
   );
 }

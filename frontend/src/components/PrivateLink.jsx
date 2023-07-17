@@ -9,12 +9,15 @@ export default function PrivateLink({ to, text, authorizedRoles }) {
   if (authorizedRoles.find((item) => item === role)) {
     return (
       <li className="mx-4 p-1 list-none">
-        <NavLink
-          className="bg-black inline-block rounded-full shadow-xl px-6 py-2 text-white hover:text-white hover:border-2 hover:border-white"
-          to={to}
-        >
-          {text}
-        </NavLink>
+        <div className="flex justify-center ">
+          <NavLink
+            className="bg-[#323847] py-2 px-4 rounded-full shadow-slate-950/90 shadow-xl mb-5 text-white
+            hover:text-white sm:hover:bg-white/30"
+            to={to}
+          >
+            {text}
+          </NavLink>
+        </div>
       </li>
     );
   }
