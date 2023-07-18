@@ -37,6 +37,13 @@ class ContentManager extends AbstractManager {
       ]
     );
   }
+
+  getAllContentByIntervention(id) {
+    return this.database.query(
+      `SELECT c.id, c.title, c.type, c.description, c.source, c.step, c.category, p.id, p.title from intervention as i JOIN protocol as p on p.id=i.protocol_id JOIN content as c on c.protocol_id = p.id where i.id = ?`,
+      [id]
+    );
+  }
 }
 
 module.exports = ContentManager;

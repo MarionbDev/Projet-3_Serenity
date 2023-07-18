@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const imageTypes = ["image/jpeg", "image/jpg", "image/png"];
+const imageTypes = ["image/jpeg", "image/jpg", "image/png", "application/pdf"];
 
 export default function CreateContentForm() {
   const [protocols, setProtocols] = useState("");

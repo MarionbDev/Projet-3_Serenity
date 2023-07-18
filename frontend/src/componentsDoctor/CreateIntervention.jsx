@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import SideBarDoctor from "./SideBarDoctor";
-import edit from "../assets/logo/logoDoctor/edit.png";
 import HeaderDoctor from "./HeaderDoctor";
 
 export default function CreateIntervention() {
@@ -103,70 +102,68 @@ export default function CreateIntervention() {
 
   return (
     <div className="min-h-screen bg-[#242731]">
-      <SideBarDoctor />
-      <div className="absolute w-2/3 mt-[48px] ml-[321px] text-[#FFFFFF]">
+      <div className="hidden md:block">
+        <SideBarDoctor />
+      </div>
+      <div className="md:ml-[321px] py-5 md:py-14 text-[#FFFFFF]">
         <HeaderDoctor text="Ajoutez une intervention !" />
       </div>
-      <div className="flex justify-center items-center h-screen">
-        <div className="absolute left-[321px] top-[172px] rounded-2xl shadow-lg shadow-slate-950/70">
-          <div className="flex mt-[32px]">
-            <div className="flex ml-[35rem] items-center">
-              <button type="button">
-                <img src={edit} alt="edit" className="w-[24px] h-[24px] mr-8" />
-              </button>
-            </div>
-          </div>
-          <section className="relative">
-            <div className="absolute left-24 right-4 top-7 bottom-37 bg-dark-02 rounded-24" />
-            <form onSubmit={handleSubmit} className="p-4">
+      <div className="flex justify-center items-center md:ml-64">
+        <div className="rounded-2xl shadow-lg shadow-slate-950/70 mb-10">
+          <section className="">
+            <p className="text-white italic text-sm pl-4">
+              * Champs obligatoires
+            </p>
+            <div className="bg-dark-02 rounded-24" />
+            <form onSubmit={handleSubmit} className="mt-2 px-4">
               <div className="flex flex-col">
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="flex flex-col">
+                <div className="grid lg:grid-cols-2 gap-4 overflow-y-auto pb-5  ">
+                  <div className="flex flex-col items-start">
                     <label
                       htmlFor="surgeryType"
                       className="text-base mb-2 text-white"
                     >
-                      Surgery Type
+                      Type d'opération *
                     </label>
                     <input
                       type="text"
                       id="surgeryType"
-                      className="px-4 py-1 text-black rounded-full"
+                      className="px-4 py-1 text-black rounded-md w-full"
                       value={name}
                       onChange={handleChangeName}
-                      placeholder="Enter surgery type"
+                      placeholder="Renseigner un type d'opération"
                     />
                   </div>
-                  <div className="flex flex-col col-span-2">
+                  <div className="flex flex-col items-start">
                     <label
                       htmlFor="protocol"
                       className="text-base mb-2 text-white"
                     >
-                      Protocol
+                      Protocole *
                     </label>
                     <input
                       type="text"
                       id="protocol"
-                      className="px-4 py-1 text-black rounded-full"
+                      className="px-4 py-1 text-black rounded-md w-full"
                       value={title}
                       onChange={handleChangeProtocol}
-                      placeholder="Enter a protocol to follow"
+                      placeholder="Renseigner un protocole"
                     />
                   </div>
-                  <div className="flex flex-col">
+                  <div className="flex flex-col items-start">
                     <label
                       htmlFor="doctor"
                       className="text-base mb-2  text-white"
                     >
-                      Doctor
+                      Praticien *
                     </label>
                     <select
                       id="doctor"
-                      className="px-4 py-1 text-black rounded-full"
+                      className="px-4 py-1 text-black rounded-md w-full"
                       value={doctorId}
                       onChange={handleChangeDoctorId}
                     >
-                      <option value="">Select a doctor</option>
+                      <option value="">Selectionner un praticien</option>
                       {doctorsList.map((doc) => (
                         <option key={doc.id} value={doc.id}>
                           {doc.firstname} {doc.lastname}
@@ -174,20 +171,20 @@ export default function CreateIntervention() {
                       ))}
                     </select>
                   </div>
-                  <div className="flex flex-col">
+                  <div className="flex flex-col items-start">
                     <label
                       htmlFor="patient"
                       className="text-base mb-2 text-white"
                     >
-                      Patient
+                      Patient *
                     </label>
                     <select
                       id="patient"
-                      className="px-4 py-1 text-black rounded-full"
+                      className="px-4 py-1 text-black rounded-md w-full"
                       value={patientId}
                       onChange={handleChangePatient}
                     >
-                      <option value="">Select a patient</option>
+                      <option value="">Selectionner un patient</option>
                       {patientsList.map((patient) => (
                         <option key={patient.id} value={patient.id}>
                           {patient.firstname} {patient.lastname}
@@ -202,18 +199,18 @@ export default function CreateIntervention() {
                       htmlFor="dateTime"
                       className="text-base mb-2 text-white"
                     >
-                      Date & Time
+                      Date & Heure *
                     </label>
                     <input
                       type="datetime-local"
                       id="time"
-                      className="px-4 py-1 text-black rounded-full"
+                      className="px-4 py-1 text-black rounded-md w-full"
                       value={time}
                       onChange={handleChangeTime}
                     />
                   </div>
                 </div>
-                <div className="mt-4">
+                <div className="flex justify-center mt-5">
                   <button
                     type="submit"
                     className="bg-[#323847] rounded-full shadow-slate-950/90 shadow-xl mb-5 text-white

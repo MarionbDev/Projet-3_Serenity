@@ -48,7 +48,7 @@ DROP TABLE IF EXISTS `content`;
 CREATE TABLE `content` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
-  `type` enum('image','video') NOT NULL,
+  `type` enum('image','video','text') NOT NULL,
   `timing` time DEFAULT NULL,
   `description` text NOT NULL,
   `source` varchar(255) NOT NULL,
@@ -294,6 +294,37 @@ LOCK TABLES `surgery_type` WRITE;
 /*!40000 ALTER TABLE `surgery_type` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+--
+-- Table structure for table `patient_content`
+--
+
+DROP TABLE IF EXISTS `patient_content`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `patient_content` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `mutual_file` varchar(255) DEFAULT NULL,
+  `consent_file` varchar(255) DEFAULT NULL,
+  `administrative_sheet_file` varchar(255) DEFAULT NULL,
+  `patient_id` int NOT NULL,
+  `intervention_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_patient_content_patient` (`patient_id`),
+  KEY `fk_patient_content_intervention` (`intervention_id`),
+  CONSTRAINT `fk_patient_content_patient` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`id`),
+  CONSTRAINT `fk_patient_content_intervention` FOREIGN KEY (`intervention_id`) REFERENCES `intervention` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `patient_content`
+--
+
+LOCK TABLES `patient_content` WRITE;
+/*!40000 ALTER TABLE `patient_content` DISABLE KEYS */;
+/*!40000 ALTER TABLE `patient_content` ENABLE KEYS */;
+UNLOCK TABLES;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
