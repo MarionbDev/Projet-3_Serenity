@@ -21,6 +21,7 @@ export default function SideBarDoctor() {
         console.warn(data);
       });
   };
+
   useEffect(() => {
     if (idDoctor !== "") {
       getAllPraticien();
@@ -29,7 +30,7 @@ export default function SideBarDoctor() {
   }, []);
 
   return (
-    <div className=" md:min-h-screen md:mt-3 md:w-64 md:border-r-[1px] md:border-[#a5a5a5]/20  md:fixed ">
+    <div className="md:min-h-screen md:mt-3 md:w-64 md:border-r-[1px] md:border-[#a5a5a5]/20  md:fixed ">
       <div className="flex flex-col items-center md:items-start md:mt-40 lg:mt-36 md:ml-4">
         <p className="text-gray-500 invisible  text-[12px] md:visible  md:pb-4">
           Console d'administration
@@ -155,6 +156,40 @@ export default function SideBarDoctor() {
               </div>
             )}
           </NavLink>
+
+          {/* New NavLink to "Liste des professionnels médicaux" */}
+          <NavLink to={`/doctors/${id}/professionals`}>
+            {({ isActive }) => (
+              <div className=" mb-5 shadow-slate-950/80 shadow-lg border-[#a5a5a5]/20  border-2 py-5 px-12 rounded-lg md:px-0 md:py-1 md:border-none md:mb-0 md:shadow-none">
+                <button
+                  className={
+                    isActive
+                      ? "flex md:items-center md:bg-indigo-500 rounded-lg md:w-[13rem]  md:h-14"
+                      : "flex md:items-center md:rounded-lg md:h-14 md:w-[13rem]"
+                  }
+                  type="button"
+                >
+                  {/* Add the path to the new icon here */}
+                  <img
+                    className=" mr-4 md:ml-7 md:mr-2"
+                    src={logoInterventions}
+                    alt="icon"
+                  />
+                  <p
+                    className={
+                      isActive
+                        ? "md:m-2 text-[#FFFFFF] font-semibold"
+                        : "text-[#FFFFFF] md:m-2 md:text-gray-500 font-semibold"
+                    }
+                  >
+                    Liste des professionnels
+                  </p>
+                </button>
+              </div>
+            )}
+          </NavLink>
+
+          {/* ... Remaining code ... */}
         </div>
       </div>
     </div>

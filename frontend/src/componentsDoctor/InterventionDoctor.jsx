@@ -8,7 +8,6 @@ import search from "../assets/logo/logoDoctor/Search.png";
 import SideBarDoctor from "./SideBarDoctor";
 import HeaderDoctor from "./HeaderDoctor";
 import imgList from "../assets/images/Img.png";
-import CreateContentForm from "./addContents";
 import edit from "../assets/logo/logoDoctor/edit.png";
 
 export default function InterventionDoctor() {
@@ -250,7 +249,6 @@ export default function InterventionDoctor() {
             </Modal>
           </div>
         </section>
-        <CreateContentForm />
       </div>
     </div>
   );

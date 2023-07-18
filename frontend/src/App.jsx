@@ -39,6 +39,8 @@ import ChangePassword from "./componentsDoctor/ChangePassword";
 import CasePrepaPcPatient from "./componentsPatient/pc/CasePrepaPcPatient";
 import ChangePasswordPatient from "./componentsDoctor/ChangePasswordPatient";
 import EditContents from "./pageDoctor/EditContent";
+import ProfessionalGuy from "./componentsDoctor/ProList";
+import CreateProfessional from "./componentsDoctor/CreatPro";
 
 function getCurrentDimension() {
   return {
@@ -206,6 +208,14 @@ function App() {
         <Route
           path="/doctors/:id/praticiens/:praticienId" // !!!!!!
           element={<EditDoctor />}
+        />
+        <Route
+          path="doctors/:id/professionals" // !!!!!!
+          element={<ProfessionalGuy />}
+        />
+        <Route
+          path="/doctors/:id/professionals/CreatPro"
+          element={<CreateProfessional />}
         />
 
         {/* Nouvelle route pour créer une intervention */}
