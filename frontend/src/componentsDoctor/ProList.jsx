@@ -1,15 +1,17 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal } from "react-responsive-modal";
-import { Link } from "react-router-dom"; // Ajout de l'import pour utiliser le composant Link
+import { Link } from "react-router-dom";
 import { useUserContext } from "../contexts/UserContext";
 import SideBarDoctor from "./SideBarDoctor";
 import HeaderDoctor from "./HeaderDoctor";
 
 function ProfessionalGuy() {
+  // State variables
   const [professionels, setProfessionels] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [open, setOpen] = useState(false);
 
+  // Functions for handling modal open/close
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
 
@@ -17,8 +19,10 @@ function ProfessionalGuy() {
     onCloseModal();
   };
 
+  // Accessing user context (idDoctor)
   const { idDoctor } = useUserContext();
 
+  // Function to fetch all professionels
   const getAllProfessionels = () => {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/api/profesionnels`)
       .then((res) => res.json())
@@ -27,6 +31,7 @@ function ProfessionalGuy() {
       });
   };
 
+  // Effects for fetching professionels when idDoctor and searchInput changes
   useEffect(() => {
     if (idDoctor !== "") {
       getAllProfessionels();
@@ -39,32 +44,44 @@ function ProfessionalGuy() {
     }
   }, [searchInput]);
 
+  // Render loading message if professionels are not available yet
   if (!professionels) {
     return <p>Loading page</p>;
   }
 
+  // Render the component with fetched professionels
   return (
     <div className="h-[105vh] bg-[#242731]">
+      {/* Sidebar */}
       <SideBarDoctor />
-      <div className="absolute  w-2/3 mt-[48px] ml-[321px] text-[#FFFFFF]">
+
+      {/* Header */}
+      <div className="absolute w-2/3 mt-[48px] ml-[321px] text-[#FFFFFF]">
         <HeaderDoctor text="Liste des professionnels médicaux" />
       </div>
-      <div className="absolute w-[1055px]  ml-[321px] mt-[162px] rounded-2xl shadow-lg shadow-slate-950/70  h-[500px]  ">
-        <div className="flex mt-[32px]  ">
+
+      {/* Content */}
+      <div className="absolute w-[1055px] ml-[321px] mt-[162px] rounded-2xl shadow-lg shadow-slate-950/70 h-[500px]">
+        {/* Search input */}
+        <div className="flex mt-[32px]">
           <input
-            className="h-[56px] w-[320px] text-gray-500 pl-10 bg-[#282b33]  shadow-slate-950/70 shadow-sm rounded-2xl italic text-[#FFFFFF]"
+            className="h-[56px] w-[320px] text-gray-500 pl-10 bg-[#282b33] shadow-slate-950/70 shadow-sm rounded-2xl italic text-[#FFFFFF]"
             type="text"
             placeholder="Rechercher un professionnel"
             onChange={(e) => setSearchInput(e.target.value)}
           />
         </div>
+
+        {/* List of professionels */}
         <section>
-          <div className="flex border-b-[1px] border-[#a5a5a5]/20 ml-[32px]  text-gray-500 mt-8 text-[16px] h-[45px] w-[991px]">
+          <div className="flex border-b-[1px] border-[#a5a5a5]/20 ml-[32px] text-gray-500 mt-8 text-[16px] h-[45px] w-[991px]">
             <p className="ml-8">Nom</p>
-            {/* Add more columns here if needed */}
+            <p className="ml-8">Prénom</p>
+            <p className="ml-8">Spécialité</p>
+            <p className="ml-8">Adresse</p>
           </div>
           <div>
-            <ul className="overflow-y-auto overflow-hidden h-[230px] text-[#FFFFFF] w-[991px] flex flex-col  border-b-[1px] border-[#a5a5a5]/20  mt-[31px]">
+            <ul className="overflow-y-auto overflow-hidden h-[230px] text-[#FFFFFF] w-[991px] flex flex-col border-b-[1px] border-[#a5a5a5]/20 mt-[31px]">
               {professionels
                 .filter((professionel) =>
                   professionel.firstname
@@ -77,19 +94,25 @@ function ProfessionalGuy() {
                     className="flex flex-col mb-8"
                   >
                     <p>{professionel.firstname}</p>
-                    {/* Add more information about the professionel as needed */}
+                    <p>{professionel.lastname}</p>
+                    <p>Spécialité: {professionel.speciality}</p>
+                    <p>
+                      Adresse: {professionel.road}, {professionel.zip_code}{" "}
+                      {professionel.city}, {professionel.country}
+                    </p>
                   </li>
                 ))}
             </ul>
+            {/* Button to open a modal */}
             <div className="flex justify-center mt-4">
               <button
                 type="button"
                 onClick={onOpenModal}
-                className="bg-[#323847] rounded-full shadow-xl mb-5 text-white
-                hover:text-white sm:hover:bg-white/30"
+                className="bg-[#323847] rounded-full shadow-xl mb-5 text-white hover:text-white sm:hover:bg-white/30"
               >
                 <p className="flex px-6 py-2">Un nouveau Profesionnel</p>
               </button>
+              {/* Modal for confirmation */}
               <Modal
                 open={open}
                 onClose={onCloseModal}
