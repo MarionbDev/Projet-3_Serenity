@@ -148,7 +148,6 @@ export default function ChangePasswordPatient() {
           onChange={handleChangeConfirmNewPassword}
         />
 
-        {/* Ajoutez d'autres labels ici */}
         <div className="flex justify-center">
           <button
             type="submit"

@@ -150,7 +150,7 @@ CREATE TABLE `patient` (
   `firstname` varchar(100) NOT NULL,
   `maiden_name` varchar(100) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
-  `birthday` date DEFAULT NULL,
+  `birthday` text DEFAULT NULL,
   `sexe` enum('Masculin','Féminin') DEFAULT NULL,
   `title` enum('Sans','Mademoiselle','Madame','Monsieur') DEFAULT NULL,
   `family_situation` enum('Marié(e)','Pacsé(e)','Célibataire','Séparé(e)','Veuf(ve)','Divorcé(e)') DEFAULT NULL,

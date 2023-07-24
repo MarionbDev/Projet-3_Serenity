@@ -171,7 +171,7 @@ export default function InterventionDoctor() {
                                       <img
                                         src={trash}
                                         alt="trash"
-                                        className="w-[20px] h-[20px]"
+                                        className="w-[24px] h-[24px] hover:scale-110 duration-100"
                                       />
                                     </button>
                                     <Link
@@ -204,8 +204,8 @@ export default function InterventionDoctor() {
             <button
               type="button"
               onClick={onOpenModal}
-              className="bg-[#323847] rounded-full shadow-xl mb-5 text-white
-            hover:text-white sm:hover:bg-white/30  "
+              className="bg-[#323847] rounded-full shadow-slate-950/90 shadow-xl mb-5 text-white
+            hover:text-white sm:hover:bg-white/30  duration-300 "
             >
               <p className="flex px-6 py-2">Une nouvelle intervention</p>
             </button>
@@ -234,14 +234,14 @@ export default function InterventionDoctor() {
               <div className="flex justify-center mt-2 gap-6 ">
                 <Link
                   to={`/doctors/${idDoctor}/interventions/create-intervention`}
-                  className="text-[#FFFFFF] bg-[#323847] sm:rounded-full sm:mt-3 sm:w-20 sm:hover:bg-white/30  sm:hover:font-semibold"
+                  className="text-[#FFFFFF] bg-[#323847] sm:rounded-full sm:mt-3 sm:w-20 sm:hover:bg-white/30  sm:hover:font-semibold  duration-300"
                 >
                   <p className=" text-center p-1">Oui</p>
                 </Link>
                 <button
                   type="button"
                   onClick={handleNonButtonClick}
-                  className="text-[#FFFFFF] bg-[#323847] sm:rounded-full sm:mt-3 sm:w-20 sm:hover:bg-white/30  sm:hover:font-semibold"
+                  className="text-[#FFFFFF] bg-[#323847] sm:rounded-full sm:mt-3 sm:w-20 sm:hover:bg-white/30  sm:hover:font-semibold  duration-300"
                 >
                   <p className=" text-center p-1">Non</p>
                 </button>

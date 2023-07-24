@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../contexts/UserContext";
 import SideBarDoctor from "./SideBarDoctor";
 import HeaderDoctor from "./HeaderDoctor";
 
 export default function CreateDoctor() {
+  const { idDoctor } = useUserContext();
   const navigate = useNavigate();
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
@@ -109,9 +111,9 @@ export default function CreateDoctor() {
       },
       body: JSON.stringify(data),
     })
-      .then((res) => res.json())
-      .then((responseData) => {
-        navigate(`/doctors/${responseData.id}`);
+      // .then((res) => res.json())
+      .then(() => {
+        navigate(`/doctors/${idDoctor}/praticiens/`);
       });
   };
 
@@ -129,7 +131,6 @@ export default function CreateDoctor() {
             <p className="text-white italic text-sm pl-4">
               * Champs obligatoires
             </p>
-            <div className="bg-dark-02 rounded-24" />
             <form onSubmit={handleSubmit} className="mt-2 px-4">
               <div className="flex flex-col">
                 <div className="grid lg:grid-cols-2 gap-4 overflow-y-auto pb-5 lg:h-[370px] ">
@@ -352,12 +353,11 @@ export default function CreateDoctor() {
                     />
                   </div>
                 </div>
-                {/* Ajoutez d'autres labels ici */}
                 <div className="flex justify-center mt-5">
                   <button
                     type="submit"
                     className="bg-[#323847] rounded-full shadow-slate-950/90 shadow-xl mb-5 text-white
-                    hover:text-white sm:hover:bg-white/30"
+                    hover:text-white sm:hover:bg-white/30  duration-300"
                   >
                     <p className="flex px-6 py-2">Enregistrer</p>
                   </button>
