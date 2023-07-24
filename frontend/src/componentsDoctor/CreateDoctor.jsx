@@ -139,7 +139,7 @@ export default function CreateDoctor() {
                       htmlFor="firstname"
                       className=" text-base mb-2 text-white"
                     >
-                      Prénom
+                      Prénom *
                     </label>
                     <input
                       className="px-4 py-1 text-black rounded-md w-full"
@@ -155,7 +155,7 @@ export default function CreateDoctor() {
                       htmlFor="lastname"
                       className="text-base mb-2 text-white"
                     >
-                      Nom
+                      Nom *
                     </label>
                     <input
                       className="w-full px-4 py-1 text-black rounded-md"
@@ -180,7 +180,7 @@ export default function CreateDoctor() {
                   </div>
                   <div className="flex flex-col items-start">
                     <label htmlFor="role" className="text-base mb-2 text-white">
-                      Rôle
+                      Rôle *
                     </label>
                     <input
                       className="w-full px-4 py-1 text-black rounded-md"
@@ -193,7 +193,7 @@ export default function CreateDoctor() {
 
                   <div className="flex flex-col items-start">
                     <label htmlFor="mail" className="text-base mb-2 text-white">
-                      Mail
+                      Mail *
                     </label>
                     <input
                       className="w-full px-4 py-1 text-black rounded-md"
@@ -208,7 +208,7 @@ export default function CreateDoctor() {
                       htmlFor="password"
                       className="text-base mb-2 text-white"
                     >
-                      Mot de passe
+                      Mot de passe *
                     </label>
                     <input
                       className="w-full px-4 py-1 text-black rounded-md"

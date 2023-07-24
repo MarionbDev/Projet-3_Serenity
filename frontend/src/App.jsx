@@ -36,10 +36,12 @@ import EditAdministratif from "./componentsPatient/pc/EditAdministratif";
 import MonArrivee from "./componentsPatient/pc/MonArrivee";
 import Anticiper from "./componentsPatient/pc/Anticiper";
 import CheckList from "./componentsPatient/pc/CheckList";
-import FileUploader from "./componentsDoctor/addContents";
 import ChangePassword from "./componentsDoctor/ChangePassword";
 import CasePrepaPcPatient from "./componentsPatient/pc/CasePrepaPcPatient";
 import ChangePasswordPatient from "./componentsDoctor/ChangePasswordPatient";
+import EditContents from "./pageDoctor/EditContent";
+import ProfessionalGuy from "./componentsDoctor/ProList";
+import CreateProfessional from "./componentsDoctor/CreatPro";
 
 function getCurrentDimension() {
   return {
@@ -179,6 +181,10 @@ function App() {
           element={<InterventionDoctor />}
         />
         <Route
+          path="/doctors/:id/interventions/EditContents"
+          element={<EditContents />}
+        />
+        <Route
           path="/doctors/:id/interventions/create-intervention"
           element={<CreateIntervention />}
         />
@@ -208,15 +214,20 @@ function App() {
           path="/doctors/:id/praticiens/:praticienId" // !!!!!!
           element={<EditDoctor />}
         />
+        <Route
+          path="doctors/:id/professionals" // !!!!!!
+          element={<ProfessionalGuy />}
+        />
+        <Route
+          path="/doctors/:id/professionals/CreatPro"
+          element={<CreateProfessional />}
+        />
 
         {/* Nouvelle route pour créer une intervention */}
         <Route
           path="/doctors/:id/interventions/create-intervention"
           element={<CreateIntervention />}
         />
-
-        {/* Route pour le composant FileUploader */}
-        <Route path="/upload" element={<FileUploader />} />
       </Routes>
     </UserContextProvider>
   );

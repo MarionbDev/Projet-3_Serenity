@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.content
+  models.patientContent
     .findAll()
     .then(([rows]) => {
       res.send(rows);
@@ -12,21 +12,8 @@ const browse = (req, res) => {
     });
 };
 
-const browseByIntervention = (req, res) => {
-  const { id } = req.body;
-  models.content
-    .getAllContentByIntervention(id)
-    .then(([rows]) => {
-      res.send(rows);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-
 const read = (req, res) => {
-  models.content
+  models.patientContent
     .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
@@ -42,14 +29,14 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const content = req.body;
+  const patientContent = req.body;
 
   // TODO validations (length, format...)
 
-  content.id = parseInt(req.params.id, 10);
+  patientContent.id = parseInt(req.params.id, 10);
 
-  models.content
-    .update(content)
+  models.patientContent
+    .update(patientContent)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -64,22 +51,14 @@ const edit = (req, res) => {
 };
 
 const add = (req, res) => {
-  const content = req.body;
+  const patientContent = req.body;
 
   // TODO validations (length, format...)
 
-  models.content
-    .insert(content)
-    .then(([result]) => {
-      models.content
-        .find(result.insertId)
-        .then(([contentCreated]) => {
-          res.status(201).json(contentCreated);
-        })
-        .catch((err) => {
-          console.error(err);
-          res.sendStatus(500);
-        });
+  models.patientContent
+    .insert(patientContent)
+    .then(() => {
+      res.sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
@@ -88,7 +67,7 @@ const add = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  models.content
+  models.patientContent
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
@@ -109,5 +88,4 @@ module.exports = {
   edit,
   add,
   destroy,
-  browseByIntervention,
 };

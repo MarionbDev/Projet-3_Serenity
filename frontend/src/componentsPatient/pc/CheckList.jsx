@@ -101,30 +101,7 @@ export default function CheckList() {
                 textDecoration: isChecked[3] ? "line-through" : "none",
               }}
             >
-              Carte bleue
-            </span>
-          </label>
-        </div>
-
-        <div className="mb-10">
-          <label
-            style={{
-              backgroundColor: isChecked[4] ? "rgba(72, 187, 120, 0.5)" : "",
-            }}
-            className="w-36 h-12 p-5 rounded-xl container shadow-md"
-          >
-            <input
-              type="checkbox"
-              className="mr-2"
-              checked={isChecked[4]}
-              onChange={() => handleCheckboxChange(4)}
-            />
-            <span
-              style={{
-                textDecoration: isChecked[4] ? "line-through" : "none",
-              }}
-            >
-              Get influenza vaccine each fall
+              Carte vitale
             </span>
           </label>
         </div>
@@ -147,35 +124,11 @@ export default function CheckList() {
                 textDecoration: isChecked[5] ? "line-through" : "none",
               }}
             >
-              Consultation anesthésique
-            </span>
-          </label>
-        </div>
-
-        <div className="mb-10">
-          <label
-            style={{
-              backgroundColor: isChecked[6] ? "rgba(72, 187, 120, 0.5)" : "",
-            }}
-            className="w-36 h-12 p-5 rounded-xl container shadow-md"
-          >
-            <input
-              type="checkbox"
-              className="mr-2"
-              checked={isChecked[6]}
-              onChange={() => handleCheckboxChange(6)}
-            />
-            <span
-              style={{
-                textDecoration: isChecked[6] ? "line-through" : "none",
-              }}
-            >
-              Consultation anesthésique
+              Carte mutuelle
             </span>
           </label>
         </div>
       </div>
     </div>
-    //  </div>
   );
 }

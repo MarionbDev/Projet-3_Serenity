@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const imageTypes = ["image/jpeg", "image/jpg", "image/png"];
+const imageTypes = ["image/jpeg", "image/jpg", "image/png", "application/pdf"];
 
 export default function CreateContentForm() {
   const [protocols, setProtocols] = useState("");
@@ -123,12 +123,12 @@ export default function CreateContentForm() {
 
   return (
     <div className="mt-20">
-      <div className="create-content-form-container min-h-screen bg-[#242731]">
+      <div className="create-content-form-container  ">
         <h2 className="text-white italic text-xl pl-4 text-center mb-5">
           Ajouter un nouveau contenu
         </h2>
         <div className="flex justify-center items-center">
-          <div className="rounded-2xl shadow-lg shadow-slate-950/70 mb-10">
+          <div className="rounded-2xl  mb-10">
             <section className="">
               <p className="text-white italic text-sm pl-4">
                 * Champs obligatoires

@@ -111,39 +111,39 @@ export default function CreateIntervention() {
 
   return (
     <div className="min-h-screen bg-[#242731]">
-      <SideBarDoctor />
+      <div className="hidden md:block">
+        <SideBarDoctor />
+      </div>
       <div className="md:ml-[321px] py-5 md:py-14 text-[#FFFFFF]">
         <HeaderDoctor text="Ajoutez une intervention !" />
       </div>
       <div className="flex justify-center items-center md:ml-64">
         <div className="rounded-2xl shadow-lg shadow-slate-950/70 mb-10">
           <section className="">
-            <div className="flex mt-[32px]">
-              <p className="text-white italic text-sm pl-4">
-                * Champs obligatoires
-              </p>
-            </div>
+            <p className="text-white italic text-sm pl-4">
+              * Champs obligatoires
+            </p>
             <div className="bg-dark-02 rounded-24" />
-            <form onSubmit={handleSubmit} className="p-4">
+            <form onSubmit={handleSubmit} className="mt-2 px-4">
               <div className="flex flex-col">
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="flex flex-col">
+                <div className="grid lg:grid-cols-2 gap-4 overflow-y-auto pb-5  ">
+                  <div className="flex flex-col items-start">
                     <label
                       htmlFor="surgeryType"
                       className="text-base mb-2 text-white"
                     >
-                      Type de chirurgie *
+                      Type d'opération *
                     </label>
                     <input
                       type="text"
                       id="surgeryType"
-                      className=" px-4 py-1 text-black rounded-md w-full"
+                      className="px-4 py-1 text-black rounded-md w-full"
                       value={name}
                       onChange={handleChangeName}
-                      placeholder="Entrez le type de chirurgie"
+                      placeholder="Renseigner un type d'opération"
                     />
                   </div>
-                  <div className="flex flex-col col-span-2">
+                  <div className="flex flex-col items-start">
                     <label
                       htmlFor="protocol"
                       className="text-base mb-2 text-white"
@@ -153,18 +153,18 @@ export default function CreateIntervention() {
                     <input
                       type="text"
                       id="protocol"
-                      className=" px-4 py-1 text-black rounded-md w-full"
+                      className="px-4 py-1 text-black rounded-md w-full"
                       value={title}
                       onChange={handleChangeProtocol}
-                      placeholder="Entrez le protocol à partager"
+                      placeholder="Renseigner un protocole"
                     />
                   </div>
-                  <div className="flex flex-col">
+                  <div className="flex flex-col items-start">
                     <label
                       htmlFor="doctor"
                       className="text-base mb-2  text-white"
                     >
-                      Docteur *
+                      Praticien *
                     </label>
                     <select
                       id="doctor"
@@ -172,7 +172,7 @@ export default function CreateIntervention() {
                       value={doctorId}
                       onChange={handleChangeDoctorId}
                     >
-                      <option value="">Sélectionner un docteur</option>
+                      <option value="">Selectionner un praticien</option>
                       {doctorsList.map((doc) => (
                         <option key={doc.id} value={doc.id}>
                           {doc.firstname} {doc.lastname}
@@ -180,7 +180,7 @@ export default function CreateIntervention() {
                       ))}
                     </select>
                   </div>
-                  <div className="flex flex-col">
+                  <div className="flex flex-col items-start">
                     <label
                       htmlFor="patient"
                       className="text-base mb-2 text-white"
@@ -193,7 +193,7 @@ export default function CreateIntervention() {
                       value={patientId}
                       onChange={handleChangePatient}
                     >
-                      <option value="">Sélectionner un patient</option>
+                      <option value="">Selectionner un patient</option>
                       {patientsList.map((patient) => (
                         <option key={patient.id} value={patient.id}>
                           {patient.firstname} {patient.lastname}
@@ -208,7 +208,7 @@ export default function CreateIntervention() {
                       htmlFor="dateTime"
                       className="text-base mb-2 text-white"
                     >
-                      Date & Time *
+                      Date & Heure *
                     </label>
                     <input
                       type="datetime-local"
