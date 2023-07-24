@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../contexts/UserContext";
+
 import SideBarDoctor from "./SideBarDoctor";
 import HeaderDoctor from "./HeaderDoctor";
 
 export default function CreateIntervention() {
+  const { idDoctor } = useUserContext();
+  const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [doctorId, setDoctorId] = useState("");
   const [patientId, setPatientId] = useState("");
@@ -83,7 +89,10 @@ export default function CreateIntervention() {
                 intervention_id: interventionId,
               }),
             })
-              .then((res) => res.json())
+              // .then((res) => res.json())
+              .then(() => {
+                navigate(`/doctors/${idDoctor}/interventions/`);
+              })
               .then((surgeryTypeData) => {
                 console.warn(surgeryTypeData);
               })
@@ -213,8 +222,9 @@ export default function CreateIntervention() {
                 <div className="flex justify-center mt-5">
                   <button
                     type="submit"
+                    onClick={handleSubmit}
                     className="bg-[#323847] rounded-full shadow-slate-950/90 shadow-xl mb-5 text-white
-                    hover:text-white sm:hover:bg-white/30"
+                    hover:text-white sm:hover:bg-white/30  duration-300"
                   >
                     <p className="flex px-6 py-2">Enregistrer</p>
                   </button>

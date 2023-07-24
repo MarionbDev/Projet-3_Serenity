@@ -32,14 +32,16 @@ import CreateIntervention from "./componentsDoctor/CreateIntervention";
 import CreateInterventionMobile from "./componentsDoctor/CreateInterventionMobile";
 import MonOperation from "./componentsPatient/pc/MonOperation";
 import Administratif from "./componentsPatient/pc/Administratif";
+import EditAdministratif from "./componentsPatient/pc/EditAdministratif";
 import MonArrivee from "./componentsPatient/pc/MonArrivee";
 import Anticiper from "./componentsPatient/pc/Anticiper";
 import CheckList from "./componentsPatient/pc/CheckList";
-import FileUploader from "./componentsDoctor/addContents";
 import ChangePassword from "./componentsDoctor/ChangePassword";
 import CasePrepaPcPatient from "./componentsPatient/pc/CasePrepaPcPatient";
 import ChangePasswordPatient from "./componentsDoctor/ChangePasswordPatient";
-// import MonArriveeDeux from "./componentsPatient/pc/MonArriveeDeux";
+import EditContents from "./pageDoctor/EditContent";
+import ProfessionalGuy from "./componentsDoctor/ProList";
+import CreateProfessional from "./componentsDoctor/CreatPro";
 
 function getCurrentDimension() {
   return {
@@ -148,10 +150,11 @@ function App() {
               path="demarches-administratives"
               element={<Administratif />}
             />
+            <Route
+              path="edit-demarches-administratives"
+              element={<EditAdministratif />}
+            />
             <Route path="preparer-mon-arrivee" element={<MonArrivee />} />
-            {/* <Route path="1" element={<MonArrivee />} />
-              <Route path="2" element={<MonArriveeDeux />} /> */}
-
             <Route path="anticiper-ma-sortie" element={<Anticiper />} />
             <Route path="Ma-check-list" element={<CheckList />} />
           </Route>
@@ -176,6 +179,10 @@ function App() {
         <Route
           path="/doctors/:id/interventions"
           element={<InterventionDoctor />}
+        />
+        <Route
+          path="/doctors/:id/interventions/EditContents"
+          element={<EditContents />}
         />
         <Route
           path="/doctors/:id/interventions/create-intervention"
@@ -207,15 +214,20 @@ function App() {
           path="/doctors/:id/praticiens/:praticienId" // !!!!!!
           element={<EditDoctor />}
         />
+        <Route
+          path="doctors/:id/professionals" // !!!!!!
+          element={<ProfessionalGuy />}
+        />
+        <Route
+          path="/doctors/:id/professionals/CreatPro"
+          element={<CreateProfessional />}
+        />
 
         {/* Nouvelle route pour créer une intervention */}
         <Route
           path="/doctors/:id/interventions/create-intervention"
           element={<CreateIntervention />}
         />
-
-        {/* Route pour le composant FileUploader */}
-        <Route path="/upload" element={<FileUploader />} />
       </Routes>
     </UserContextProvider>
   );

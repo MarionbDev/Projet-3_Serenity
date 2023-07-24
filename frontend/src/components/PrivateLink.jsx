@@ -12,7 +12,7 @@ export default function PrivateLink({ to, text, authorizedRoles }) {
         <div className="flex justify-center ">
           <NavLink
             className="bg-[#323847] py-2 px-4 rounded-full shadow-slate-950/90 shadow-xl mb-5 text-white
-            hover:text-white sm:hover:bg-white/30"
+            hover:text-white sm:hover:bg-white/30  duration-300"
             to={to}
           >
             {text}
