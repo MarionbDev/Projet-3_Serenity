@@ -17,8 +17,8 @@ export default function CasePrepaPcPatient() {
             <button
               className={
                 isActive
-                  ? "border-4 border-yellow-500 rounded-2xl h-32 w-32"
-                  : "border-4 bg-gray-200 rounded-2xl h-32 w-32"
+                  ? "border-4 border-yellow-500 rounded-2xl h-32 w-32 "
+                  : "border-4 hover:border-yellow-500 duration-300  bg-gray-200 rounded-2xl h-32 w-32"
               }
               type="button"
             >
@@ -34,8 +34,8 @@ export default function CasePrepaPcPatient() {
             <button
               className={
                 isActive
-                  ? "border-4 rounded-2xl border-cyan-400 w-32 h-32"
-                  : "border-4 bg-gray-200 rounded-2xl w-32 h-32"
+                  ? "border-4 rounded-2xl border-cyan-400 w-32 h-32 "
+                  : "border-4 hover:border-cyan-400 bg-gray-200 duration-300 rounded-2xl w-32 h-32"
               }
               type="button"
             >
@@ -49,8 +49,8 @@ export default function CasePrepaPcPatient() {
             <button
               className={
                 isActive
-                  ? "border-4 rounded-2xl border-pink-400 h-32 w-32"
-                  : "border-4 bg-gray-200 rounded-2xl h-32 w-32"
+                  ? "border-4 rounded-2xl border-pink-400 h-32 w-32 duration-300"
+                  : "border-4 hover:border-pink-400 bg-gray-200 duration-300 rounded-2xl h-32 w-32"
               }
               type="button"
             >
@@ -64,8 +64,8 @@ export default function CasePrepaPcPatient() {
             <button
               className={
                 isActive
-                  ? "border-4 rounded-2xl border-green-400 h-32 w-32"
-                  : "border-4 bg-gray-200 rounded-2xl h-32 w-32"
+                  ? "border-4 rounded-2xl border-green-400 h-32 w-32 duration-300"
+                  : "border-4 hover:border-green-400 duration-300 bg-gray-200 rounded-2xl h-32 w-32"
               }
               type="button"
             >
@@ -79,8 +79,8 @@ export default function CasePrepaPcPatient() {
             <button
               className={
                 isActive
-                  ? "border-4 rounded-2xl border-indigo-500 h-32 w-32"
-                  : "border-4 bg-gray-200 rounded-2xl h-32 w-32"
+                  ? "border-4 rounded-2xl border-indigo-500 duration-300 h-32 w-32"
+                  : "border-4 hover:border-indigo-500 duration-300 bg-gray-200 rounded-2xl h-32 w-32"
               }
               type="button"
             >

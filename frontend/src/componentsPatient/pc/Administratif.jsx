@@ -73,7 +73,7 @@ export default function Administratif() {
         >
           <button
             type="button"
-            className="border-2 rounded-xl p-3  border-cyan-400 bg-white hover:bg-cyan-100"
+            className="border-2 rounded-xl p-3 duration-300 border-cyan-400 bg-white hover:bg-cyan-100"
           >
             <p>Mettre à jour mes données</p>
           </button>

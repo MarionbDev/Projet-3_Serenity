@@ -19,7 +19,7 @@ export default function CheckList() {
             style={{
               backgroundColor: isChecked[0] ? "rgba(72, 187, 120, 0.5)" : "",
             }}
-            className="w-36 h-12 p-5 rounded-xl container shadow-md"
+            className="w-36 h-12 p-5 rounded-xl container shadow-md hover:bg-indigo-100 duration-300"
           >
             <input
               type="checkbox"
@@ -42,7 +42,7 @@ export default function CheckList() {
             style={{
               backgroundColor: isChecked[1] ? "rgba(72, 187, 120, 0.5)" : "",
             }}
-            className="w-36 h-12 p-5 rounded-xl container shadow-md"
+            className="w-36 h-12 p-5 rounded-xl container shadow-md hover:bg-indigo-100 duration-300"
           >
             <input
               type="checkbox"
@@ -65,7 +65,7 @@ export default function CheckList() {
             style={{
               backgroundColor: isChecked[2] ? "rgba(72, 187, 120, 0.5)" : "",
             }}
-            className="w-36 h-12 p-5 rounded-xl container shadow-md"
+            className="w-36 h-12 p-5 rounded-xl container shadow-md hover:bg-indigo-100 duration-300"
           >
             <input
               type="checkbox"
@@ -88,7 +88,7 @@ export default function CheckList() {
             style={{
               backgroundColor: isChecked[3] ? "rgba(72, 187, 120, 0.5)" : "",
             }}
-            className="w-36 h-12 p-5 rounded-xl container shadow-md"
+            className="w-36 h-12 p-5 rounded-xl container shadow-md hover:bg-indigo-100 duration-300"
           >
             <input
               type="checkbox"
@@ -111,7 +111,7 @@ export default function CheckList() {
             style={{
               backgroundColor: isChecked[5] ? "rgba(72, 187, 120, 0.5)" : "",
             }}
-            className="w-36 h-12 p-5 rounded-xl container shadow-md"
+            className="w-36 h-12 p-5 rounded-xl container shadow-md hover:bg-indigo-100 duration-300"
           >
             <input
               type="checkbox"
