@@ -39,6 +39,7 @@ import FileUploader from "./componentsDoctor/addContents";
 import ChangePassword from "./componentsDoctor/ChangePassword";
 import CasePrepaPcPatient from "./componentsPatient/pc/CasePrepaPcPatient";
 import ChangePasswordPatient from "./componentsDoctor/ChangePasswordPatient";
+// import MonArriveeDeux from "./componentsPatient/pc/MonArriveeDeux";
 
 function getCurrentDimension() {
   return {
@@ -148,6 +149,9 @@ function App() {
               element={<Administratif />}
             />
             <Route path="preparer-mon-arrivee" element={<MonArrivee />} />
+            {/* <Route path="1" element={<MonArrivee />} />
+              <Route path="2" element={<MonArriveeDeux />} /> */}
+
             <Route path="anticiper-ma-sortie" element={<Anticiper />} />
             <Route path="Ma-check-list" element={<CheckList />} />
           </Route>

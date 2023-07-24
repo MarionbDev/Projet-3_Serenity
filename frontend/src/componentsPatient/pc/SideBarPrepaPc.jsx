@@ -176,7 +176,7 @@ export default function SideBarPrepaPc() {
           )}
         </NavLink>
       </div>
-      <div className=" mt-40 ml-4 flex">
+      <div className=" mt-28 ml-4 flex">
         {interventionInfo.image !== null ? (
           interventionInfo.image
         ) : (
