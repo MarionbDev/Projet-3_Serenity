@@ -73,7 +73,7 @@ export default function LatLongApi() {
           onClick={() => {
             setCurrentSpeciality("Psychologue");
           }}
-          className="mx-auto flex justify-center mb-1 rounded-xl mt-4 bg-green-400 p-2 text-base w-40 text-white"
+          className="mx-auto flex justify-center mb-1 rounded-xl mt-4 hover:bg-green-500 duration-300 bg-green-400 p-2 text-base w-40 text-white"
         >
           Psychologue
         </button>
@@ -82,7 +82,7 @@ export default function LatLongApi() {
           onClick={() => {
             setCurrentSpeciality("Kinésithérapeute");
           }}
-          className="mx-auto flex justify-center mb-1 rounded-xl mt-4 bg-green-400 p-2 text-base w-40 text-white"
+          className="mx-auto flex justify-center mb-1 rounded-xl mt-4 hover:bg-green-500 duration-300 bg-green-400 p-2 text-base w-40 text-white"
         >
           Kinésithérapeute
         </button>
@@ -91,7 +91,7 @@ export default function LatLongApi() {
           onClick={() => {
             setCurrentSpeciality("Infirmier");
           }}
-          className="mx-auto flex justify-center mb-1 rounded-xl mt-4 bg-green-400 p-2 text-base w-40 text-white"
+          className="mx-auto flex justify-center mb-1 rounded-xl mt-4 hover:bg-green-500 duration-300 bg-green-400 p-2 text-base w-40 text-white"
         >
           Infirmier
         </button>
@@ -100,7 +100,7 @@ export default function LatLongApi() {
           onClick={() => {
             setCurrentSpeciality("");
           }}
-          className="mx-auto flex justify-center mb-1 rounded-xl mt-4 bg-green-400 p-2 text-base w-40 text-white"
+          className="mx-auto flex justify-center mb-1 rounded-xl mt-4 hover:bg-green-500 duration-300 bg-green-400 p-2 text-base w-40 text-white"
         >
           Tous
         </button>

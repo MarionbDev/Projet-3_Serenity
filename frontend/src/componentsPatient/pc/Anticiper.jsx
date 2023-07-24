@@ -5,7 +5,7 @@ export default function Anticiper() {
   const [mapIsVisible, setMapIsVisible] = useState(false);
 
   return (
-    <div className=" mt-[40px] w-[70vw] border-4 rounded-2xl border-green-400 bg-gray-100">
+    <div className=" mt-[40px] w-[70vw] border-4 rounded-2xl  border-green-400 bg-gray-100">
       <div>
         <p className="mt-8 text-center ml-10 mb-2 mr-5">
           Afin de securiser votre retour à la maison votre chirurgien vous
@@ -18,7 +18,7 @@ export default function Anticiper() {
         ) : (
           <button
             type="button"
-            className="flex justify-center mb-1 rounded-xl mt-4 bg-green-400 w-6/12 mx-auto"
+            className="flex justify-center mb-1 rounded-xl mt-4 hover:bg-green-500 duration-300 bg-green-400 w-6/12 mx-auto"
             onClick={() => {
               setMapIsVisible(true);
             }}

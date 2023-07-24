@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useUserContext } from "../contexts/UserContext";
 import SideBarDoctor from "./SideBarDoctor";
 import HeaderDoctor from "./HeaderDoctor";
+import search from "../assets/logo/logoDoctor/Search.png";
 
 function ProfessionalGuy() {
   // State variables
@@ -64,6 +65,11 @@ function ProfessionalGuy() {
       <div className="absolute w-[1055px] ml-[321px] mt-[162px] rounded-2xl shadow-lg shadow-slate-950/70 h-[500px]">
         {/* Search input */}
         <div className="flex mt-[32px]">
+          <img
+            src={search}
+            alt="search"
+            className=" relative left-12 bottom-2 w-[24px] h-[24px] mt-5 mr-4 flex"
+          />
           <input
             className="h-[56px] w-[320px] text-gray-500 pl-10 bg-[#282b33] shadow-slate-950/70 shadow-sm rounded-2xl italic text-[#FFFFFF]"
             type="text"
@@ -108,7 +114,7 @@ function ProfessionalGuy() {
               <button
                 type="button"
                 onClick={onOpenModal}
-                className="bg-[#323847] rounded-full shadow-xl mb-5 text-white hover:text-white sm:hover:bg-white/30"
+                className="bg-[#323847] duration-300 rounded-full shadow-xl mb-5 text-white hover:text-white sm:hover:bg-white/30"
               >
                 <p className="flex px-6 py-2">Un nouveau Profesionnel</p>
               </button>
@@ -138,14 +144,14 @@ function ProfessionalGuy() {
                 <div className="flex justify-center mt-2 gap-6 ">
                   <Link
                     to={`/doctors/${idDoctor}/professionals/CreatPro`}
-                    className="text-[#FFFFFF] bg-[#323847] sm:rounded-full sm:mt-3 sm:w-20 sm:hover:bg-white/30 sm:hover:font-semibold"
+                    className="duration-300 text-[#FFFFFF] bg-[#323847] sm:rounded-full sm:mt-3 sm:w-20 sm:hover:bg-white/30 sm:hover:font-semibold"
                   >
                     <p className=" text-center p-1">Oui</p>
                   </Link>
                   <button
                     type="button"
                     onClick={handleNonButtonClick}
-                    className="text-[#FFFFFF] bg-[#323847] sm:rounded-full sm:mt-3 sm:w-20 sm:hover:bg-white/30 sm:hover:font-semibold"
+                    className="duration-300 text-[#FFFFFF] bg-[#323847] sm:rounded-full sm:mt-3 sm:w-20 sm:hover:bg-white/30 sm:hover:font-semibold"
                   >
                     <p className=" text-center p-1">Non</p>
                   </button>
