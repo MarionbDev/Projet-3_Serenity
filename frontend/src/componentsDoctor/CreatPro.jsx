@@ -3,6 +3,8 @@ import SideBarDoctor from "./SideBarDoctor";
 import edit from "../assets/logo/logoDoctor/edit.png";
 import HeaderDoctor from "./HeaderDoctor";
 
+const imageTypes = ["image/jpeg", "image/jpg", "image/png", "application/pdf"];
+
 export default function CreateProfessional() {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
@@ -17,33 +19,45 @@ export default function CreateProfessional() {
   useEffect(() => {
     fetch("http://localhost:8000/api/doctors")
       .then((res) => res.json())
-      .then((data) => setProList(data));
+      .then((data) => {
+        setProList(data); // Store the fetched data in proList
+      });
   }, []);
+
+  const handleChangeImage = (e) => {
+    const selectedFile = e.target.files[0];
+    if (selectedFile && imageTypes.includes(selectedFile.type)) {
+      setImage(selectedFile);
+    } else {
+      setImage(null);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const formData = new FormData();
+    formData.append("firstname", firstname);
+    formData.append("lastname", lastname);
+    formData.append("tel", tel);
+    formData.append("speciality", speciality);
+    formData.append("road", road);
+    formData.append("city", city);
+    formData.append("zip_code", zipCode);
+    formData.append("country", "France");
+    formData.append("image", image);
+
     fetch("http://localhost:8000/api/profesionnels", {
       method: "POST",
       credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        firstname,
-        lastname,
-        tel,
-        image,
-        speciality,
-        road,
-        city,
-        zip_code: zipCode,
-        country: "France",
-      }),
+      body: formData,
     })
-      .then((res) => res.json())
-      .then((professionalData) => {
-        console.warn(professionalData);
+      .then((response) => {
+        if (response.ok) {
+          console.warn("Success");
+        } else {
+          console.error("Error");
+        }
       })
       .catch((error) => {
         console.error(error);
@@ -117,18 +131,20 @@ export default function CreateProfessional() {
                       placeholder="Entrez le téléphone du professionnel"
                     />
                   </div>
-                  <div className="flex flex-col">
+                  <div className="form-group flex flex-col items-start">
                     <label
-                      htmlFor="image"
+                      htmlFor="source"
                       className="text-base mb-2 text-white"
                     >
-                      Image
+                      Source :
                     </label>
                     <input
                       type="file"
                       id="image"
-                      className="px-4 py-1 text-black rounded-full"
-                      onChange={(e) => setImage(e.target.files[0])}
+                      name="image"
+                      accept={imageTypes.join(",")}
+                      onChange={handleChangeImage}
+                      className="px-4 py-1 text-white rounded-md w-full"
                     />
                   </div>
                   <div className="flex flex-col col-span-2">
@@ -210,18 +226,18 @@ export default function CreateProfessional() {
           </section>
         </div>
       </div>
-      <div className="flex justify-center items-center mt-4">
-        <div className="bg-white rounded-lg p-4 max-w-[600px]">
-          <h2 className="text-2xl font-semibold mb-4">List of Professionals</h2>
-          <ul>
-            {proList.map((professional) => (
-              <li key={professional.id}>
-                {professional.firstname} {professional.lastname} -{" "}
-                {professional.speciality}
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div className="flex justify-center items-center mt-4" />
+
+      {/* Display the fetched data from proList */}
+      <div>
+        <h2>Fetched Professionals:</h2>
+        <ul>
+          {proList.map((pro) => (
+            <li key={pro.id}>
+              {pro.firstname} {pro.lastname} - {pro.speciality}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

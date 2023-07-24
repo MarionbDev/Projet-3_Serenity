@@ -148,7 +148,7 @@ export default function LatLongApi() {
           <figure className="m-4 bg-gray-200 hover:bg-gray-300 rounded-lg duration-300 lg:flex  lg:mx-auto lg:justify-stretch lg:h-36">
             <img
               className=" rounded-t-lg h-full lg:w-36 lg:h-36 lg:rounded-l-lg lg:rounded-none"
-              src={adress.image}
+              src={`${import.meta.env.VITE_ASSETS_IMAGES_URL}/${adress.image}`}
               alt="spécialiste"
             />
             <figcaption className=" text-center px-2 ">
