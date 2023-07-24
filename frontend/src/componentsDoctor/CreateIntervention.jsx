@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../contexts/UserContext";
+
 import SideBarDoctor from "./SideBarDoctor";
-import edit from "../assets/logo/logoDoctor/edit.png";
 import HeaderDoctor from "./HeaderDoctor";
 
 export default function CreateIntervention() {
+  const { idDoctor } = useUserContext();
+  const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [doctorId, setDoctorId] = useState("");
   const [patientId, setPatientId] = useState("");
@@ -84,7 +89,10 @@ export default function CreateIntervention() {
                 intervention_id: interventionId,
               }),
             })
-              .then((res) => res.json())
+              // .then((res) => res.json())
+              .then(() => {
+                navigate(`/doctors/${idDoctor}/interventions/`);
+              })
               .then((surgeryTypeData) => {
                 console.warn(surgeryTypeData);
               })
@@ -104,20 +112,18 @@ export default function CreateIntervention() {
   return (
     <div className="min-h-screen bg-[#242731]">
       <SideBarDoctor />
-      <div className="absolute w-2/3 mt-[48px] ml-[321px] text-[#FFFFFF]">
+      <div className="md:ml-[321px] py-5 md:py-14 text-[#FFFFFF]">
         <HeaderDoctor text="Ajoutez une intervention !" />
       </div>
-      <div className="flex justify-center items-center h-screen">
-        <div className="absolute left-[321px] top-[172px] rounded-2xl shadow-lg shadow-slate-950/70">
-          <div className="flex mt-[32px]">
-            <div className="flex ml-[35rem] items-center">
-              <button type="button">
-                <img src={edit} alt="edit" className="w-[24px] h-[24px] mr-8" />
-              </button>
+      <div className="flex justify-center items-center md:ml-64">
+        <div className="rounded-2xl shadow-lg shadow-slate-950/70 mb-10">
+          <section className="">
+            <div className="flex mt-[32px]">
+              <p className="text-white italic text-sm pl-4">
+                * Champs obligatoires
+              </p>
             </div>
-          </div>
-          <section className="relative">
-            <div className="absolute left-24 right-4 top-7 bottom-37 bg-dark-02 rounded-24" />
+            <div className="bg-dark-02 rounded-24" />
             <form onSubmit={handleSubmit} className="p-4">
               <div className="flex flex-col">
                 <div className="grid grid-cols-3 gap-4">
@@ -126,15 +132,15 @@ export default function CreateIntervention() {
                       htmlFor="surgeryType"
                       className="text-base mb-2 text-white"
                     >
-                      Surgery Type
+                      Type de chirurgie *
                     </label>
                     <input
                       type="text"
                       id="surgeryType"
-                      className="px-4 py-1 text-black rounded-full"
+                      className=" px-4 py-1 text-black rounded-md w-full"
                       value={name}
                       onChange={handleChangeName}
-                      placeholder="Enter surgery type"
+                      placeholder="Entrez le type de chirurgie"
                     />
                   </div>
                   <div className="flex flex-col col-span-2">
@@ -142,15 +148,15 @@ export default function CreateIntervention() {
                       htmlFor="protocol"
                       className="text-base mb-2 text-white"
                     >
-                      Protocol
+                      Protocole *
                     </label>
                     <input
                       type="text"
                       id="protocol"
-                      className="px-4 py-1 text-black rounded-full"
+                      className=" px-4 py-1 text-black rounded-md w-full"
                       value={title}
                       onChange={handleChangeProtocol}
-                      placeholder="Enter a protocol to follow"
+                      placeholder="Entrez le protocol à partager"
                     />
                   </div>
                   <div className="flex flex-col">
@@ -158,15 +164,15 @@ export default function CreateIntervention() {
                       htmlFor="doctor"
                       className="text-base mb-2  text-white"
                     >
-                      Doctor
+                      Docteur *
                     </label>
                     <select
                       id="doctor"
-                      className="px-4 py-1 text-black rounded-full"
+                      className="px-4 py-1 text-black rounded-md w-full"
                       value={doctorId}
                       onChange={handleChangeDoctorId}
                     >
-                      <option value="">Select a doctor</option>
+                      <option value="">Sélectionner un docteur</option>
                       {doctorsList.map((doc) => (
                         <option key={doc.id} value={doc.id}>
                           {doc.firstname} {doc.lastname}
@@ -179,15 +185,15 @@ export default function CreateIntervention() {
                       htmlFor="patient"
                       className="text-base mb-2 text-white"
                     >
-                      Patient
+                      Patient *
                     </label>
                     <select
                       id="patient"
-                      className="px-4 py-1 text-black rounded-full"
+                      className="px-4 py-1 text-black rounded-md w-full"
                       value={patientId}
                       onChange={handleChangePatient}
                     >
-                      <option value="">Select a patient</option>
+                      <option value="">Sélectionner un patient</option>
                       {patientsList.map((patient) => (
                         <option key={patient.id} value={patient.id}>
                           {patient.firstname} {patient.lastname}
@@ -202,22 +208,23 @@ export default function CreateIntervention() {
                       htmlFor="dateTime"
                       className="text-base mb-2 text-white"
                     >
-                      Date & Time
+                      Date & Time *
                     </label>
                     <input
                       type="datetime-local"
                       id="time"
-                      className="px-4 py-1 text-black rounded-full"
+                      className="px-4 py-1 text-black rounded-md w-full"
                       value={time}
                       onChange={handleChangeTime}
                     />
                   </div>
                 </div>
-                <div className="mt-4">
+                <div className="flex justify-center mt-5">
                   <button
                     type="submit"
+                    onClick={handleSubmit}
                     className="bg-[#323847] rounded-full shadow-slate-950/90 shadow-xl mb-5 text-white
-                    hover:text-white sm:hover:bg-white/30"
+                    hover:text-white sm:hover:bg-white/30  duration-300"
                   >
                     <p className="flex px-6 py-2">Enregistrer</p>
                   </button>

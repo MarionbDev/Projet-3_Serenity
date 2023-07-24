@@ -1,18 +1,17 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useUserContext } from "../../contexts/UserContext";
 import {
   convertDateFormat,
   convertHourFormat,
 } from "../../services/convertTime";
-import notif from "../../assets/logo/logoPatient/Notification.png";
 
 export default function HeaderPrepaPatientPc() {
   const navigate = useNavigate();
   const id = parseInt(useParams().id, 10);
 
   const [interventionInfo, setInterventionInfo] = useState("");
-  const { idPatient } = useUserContext();
+  const { idPatient, setIdPatient } = useUserContext();
 
   const getInterventionInfo = () => {
     fetch(
@@ -29,6 +28,18 @@ export default function HeaderPrepaPatientPc() {
         setInterventionInfo(data);
       });
   };
+
+  // Décompte date
+  const current = new Date();
+  const interventionDate = new Date(interventionInfo.time);
+  const diffInMilliseconds = interventionDate - current;
+  const diffInDays = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
+
+  const handleLogout = () => {
+    setIdPatient("");
+    navigate("/");
+  };
+
   useEffect(() => {
     if (idPatient !== "") {
       getInterventionInfo();
@@ -50,28 +61,33 @@ export default function HeaderPrepaPatientPc() {
         <p className="mt-1 text-4xl font-semibold">Comment allez-vous ?</p>
       </div>
 
-      <div className="flex items-center mt-10">
-        <div className="text-center border bg-pink-100 rounded-lg w-20 h-[70px]">
-          <p className="mt-2 text-xs text-gray-500">jour</p>
-          <p className="text-3xl">20</p>
+      <div className="flex mt-10 gap-20">
+        <div className="flex items-center">
+          <div className="text-center border bg-pink-100 rounded-lg w-20 h-[70px]">
+            <p className="mt-2 text-xs text-gray-500">Jour</p>
+            <p className="text-3xl">{diffInDays}</p>
+          </div>
+          <div className="flex justify-start m-1 flex-col ml-5 ">
+            <p className="text-sm font-semibold">{interventionInfo.name}</p>
+            <p className="text-xs font-medium">
+              {interventionInfo && convertDateFormat(interventionInfo.time)}
+            </p>
+            <p className="text-sm font-semibold">
+              {interventionInfo && convertHourFormat(interventionInfo.time)}
+            </p>
+          </div>{" "}
         </div>
-        <div className="flex justify-start m-1 flex-col ml-5 ">
-          <p className="text-sm font-semibold">{interventionInfo.name}</p>
-          <p className="text-xs font-medium">
-            {interventionInfo && convertDateFormat(interventionInfo.time)}
-          </p>
-          <p className="text-sm font-semibold">
-            {interventionInfo && convertHourFormat(interventionInfo.time)}
-          </p>
+        <div className="flex items-start">
+          <Link to="/">
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="bg-indigo-50 px-4 py-2 rounded-full hover:bg-indigo-500 hover:text-white"
+            >
+              Déconnexion
+            </button>
+          </Link>
         </div>
-      </div>
-      <div className="flex items-center mt-10">
-        <button
-          type="button"
-          className="rounded-full shadow-lg shadow-[#abacae] flex w-10 h-10 justify-center items-center"
-        >
-          <img className="" src={notif} alt="notif" />
-        </button>
       </div>
     </div>
   );

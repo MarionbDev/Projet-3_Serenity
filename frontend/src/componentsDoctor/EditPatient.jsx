@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useUserContext } from "../contexts/UserContext";
 // import { convertDateFormat } from "../services/convertTime";
 import SideBarDoctor from "./SideBarDoctor";
@@ -189,6 +189,7 @@ export default function EditPatient() {
                       className="bg-[#242731] ml-2 px-4 py-1 text-white rounded-md hover:bg-[#424655]"
                       id="birthday"
                       type="text"
+                      placeholder="JJ/MM/AAAA"
                       value={birthday}
                       onChange={(e) => setBirthday(e.target.value)}
                     />
@@ -389,16 +390,14 @@ export default function EditPatient() {
                 </div>
               </div>
               <div className="flex justify-center border-t-[1px] border-[#a5a5a5]/20 mt-14 ">
-                <Link to={`/doctors/${idDoctor}/patients/`}>
-                  <button
-                    type="submit"
-                    className="bg-[#323847]  rounded-full shadow-slate-950/90 shadow-xl mt-6 text-white
+                <button
+                  type="submit"
+                  className="bg-[#323847]  rounded-full shadow-slate-950/90 shadow-xl mt-6 text-white
                   hover:text-white sm:hover:bg-white/30"
-                    onClick={handleUpdatePatient}
-                  >
-                    <p className="flex px-6 py-2">Modifier</p>
-                  </button>
-                </Link>
+                  onClick={handleUpdatePatient}
+                >
+                  <p className="flex px-6 py-2">Modifier</p>
+                </button>
               </div>
             </form>
           </div>

@@ -248,7 +248,8 @@ export default function CreatePatient() {
                         </label>
                         <input
                           className="px-4 py-1 text-black rounded-md w-full"
-                          type="date"
+                          type="text"
+                          placeholder="JJ/MM/AAAA"
                           id="birthday"
                           value={birthday}
                           onChange={handleChangeBirthday}
@@ -479,7 +480,7 @@ export default function CreatePatient() {
                       type="submit"
                       onClick={handleSubmit}
                       className="bg-[#323847] rounded-full shadow-slate-950/90 shadow-xl mb-5 text-white
-                    hover:text-white sm:hover:bg-white/30"
+                    hover:text-white sm:hover:bg-white/30  duration-300"
                     >
                       <p className="flex px-6 py-2">Enregistrer</p>
                     </button>

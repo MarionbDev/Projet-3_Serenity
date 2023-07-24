@@ -1,4 +1,4 @@
-import { NavLink, useParams, Outlet } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useUserContext } from "../../contexts/UserContext";
 import avatar from "../../assets/logo/logoPatient/avatar1.png";
@@ -187,7 +187,6 @@ export default function SideBarPrepaPc() {
           {interventionInfo.firstname}
         </p>
       </div>
-      <Outlet />
     </div>
   );
 }

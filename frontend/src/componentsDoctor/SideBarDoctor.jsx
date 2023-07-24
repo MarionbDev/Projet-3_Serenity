@@ -1,4 +1,4 @@
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams, Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useUserContext } from "../contexts/UserContext";
 import logoPraticient from "../assets/logo/logoDoctor/Chart.png";
@@ -9,7 +9,8 @@ import logoActivity from "../assets/logo/logoPatient/activite.png";
 export default function SideBarDoctor() {
   const [doctor, setDoctor] = useState({});
   const { id } = useParams();
-  const { idDoctor } = useUserContext();
+  const navigate = useNavigate();
+  const { idDoctor, setIdDoctor } = useUserContext();
 
   const getAllPraticien = () => {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/api/doctors/${idDoctor}/`, {
@@ -21,12 +22,18 @@ export default function SideBarDoctor() {
         console.warn(data);
       });
   };
+
   useEffect(() => {
     if (idDoctor !== "") {
       getAllPraticien();
       console.warn(doctor);
     }
   }, []);
+
+  const handleLogout = () => {
+    setIdDoctor("");
+    navigate("/");
+  };
 
   return (
     <div className=" md:min-h-screen md:mt-3 md:w-64 md:border-r-[1px] md:border-[#a5a5a5]/20  md:fixed ">
@@ -155,6 +162,17 @@ export default function SideBarDoctor() {
               </div>
             )}
           </NavLink>
+        </div>
+        <div className="  mt-48 shadow-slate-950/80 shadow-lg py-5 px-12 rounded-lg md:px-0 md:py-1 md:border-none md:mb-0 md:shadow-none  ">
+          <Link to="/">
+            <button
+              type="button"
+              onClick={handleLogout}
+              className=" flex justify-center  text-gray-500 border-2 border-gray-700 hover:text-[#FFFFFF] hover:bg-slate-700 duration-300 md:items-center rounded-lg md:w-[13rem] md:h-14"
+            >
+              <p className="md:m-2 font-semibold">Déconnexion</p>
+            </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -32,6 +32,7 @@ import CreateIntervention from "./componentsDoctor/CreateIntervention";
 import CreateInterventionMobile from "./componentsDoctor/CreateInterventionMobile";
 import MonOperation from "./componentsPatient/pc/MonOperation";
 import Administratif from "./componentsPatient/pc/Administratif";
+import EditAdministratif from "./componentsPatient/pc/EditAdministratif";
 import MonArrivee from "./componentsPatient/pc/MonArrivee";
 import Anticiper from "./componentsPatient/pc/Anticiper";
 import CheckList from "./componentsPatient/pc/CheckList";
@@ -146,6 +147,10 @@ function App() {
             <Route
               path="demarches-administratives"
               element={<Administratif />}
+            />
+            <Route
+              path="edit-demarches-administratives"
+              element={<EditAdministratif />}
             />
             <Route path="preparer-mon-arrivee" element={<MonArrivee />} />
             <Route path="anticiper-ma-sortie" element={<Anticiper />} />
