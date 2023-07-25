@@ -63,7 +63,7 @@ export default function HeaderPrepaPatientPc() {
 
       <div className="flex mt-10 gap-20">
         <div className="flex items-center">
-          <div className="text-center border bg-pink-100 rounded-lg w-20 h-[70px]">
+          <div className="text-center border  bg-pink-100 rounded-lg w-20 h-[70px]">
             <p className="mt-2 text-xs text-gray-500">Jour</p>
             <p className="text-3xl">{diffInDays}</p>
           </div>

@@ -160,7 +160,7 @@ export default function CreatePatient() {
       <div className="hidden md:block">
         <SideBarDoctor />
       </div>
-      <div className="md:ml-[321px] py-5 md:py-14 text-[#FFFFFF]">
+      <div className="md:ml-[321px] py-5 md:py-9 text-[#FFFFFF]">
         <HeaderDoctor text="Un nouveau patient ?!" />
       </div>
       <div className="flex justify-center items-center md:ml-64">

@@ -8,7 +8,7 @@ import search from "../assets/logo/logoDoctor/Search.png";
 import SideBarDoctor from "./SideBarDoctor";
 import HeaderDoctor from "./HeaderDoctor";
 import imgList from "../assets/images/Img.png";
-import edit from "../assets/logo/logoDoctor/edit.png";
+import view from "../assets/logo/logoDoctor/view.svg";
 
 export default function InterventionDoctor() {
   const [surgeryTypes, setSurgeryTypes] = useState([]);
@@ -160,20 +160,7 @@ export default function InterventionDoctor() {
                                         convertHourFormat(item.time)}
                                     </p>
                                   </div>
-
                                   <div className="flex">
-                                    <button
-                                      type="button"
-                                      onClick={() =>
-                                        deleteIntervention(item.surgeryTypeId)
-                                      }
-                                    >
-                                      <img
-                                        src={trash}
-                                        alt="trash"
-                                        className="w-[24px] h-[24px] hover:scale-110 duration-100"
-                                      />
-                                    </button>
                                     <Link
                                       to={`/doctors/${idDoctor}/interventions/EditContents?id=${surgeryType.id}`}
                                     >
@@ -182,12 +169,26 @@ export default function InterventionDoctor() {
                                         onClick={() => true}
                                       >
                                         <img
-                                          src={edit}
+                                          src={view}
                                           alt="edit"
-                                          className="w-[18px] h-[18px] ml-2"
+                                          className="w-[20px] h-[20px] mt-1 mr-8 hover:scale-110 duration-100 "
                                         />
                                       </button>
                                     </Link>
+                                    <div className="flex">
+                                      <button
+                                        type="button"
+                                        onClick={() =>
+                                          deleteIntervention(item.surgeryTypeId)
+                                        }
+                                      >
+                                        <img
+                                          src={trash}
+                                          alt="trash"
+                                          className="w-[24px] h-[24px] hover:scale-110 duration-100 "
+                                        />
+                                      </button>
+                                    </div>
                                   </div>
                                 </li>
                               </div>

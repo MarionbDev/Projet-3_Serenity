@@ -145,7 +145,7 @@ function Connexion({ utilisateur }) {
           </button>
         </div>
         <button
-          className="mx-auto bg-rose-400 text-white font-bold text-2xl mt-14 rounded-lg w-40 h-10 md:w-52 md:h-12 "
+          className="duration-300 mx-auto  hover:bg-rose-500 shadow-md shadow-rose-600 bg-rose-400 text-white font-bold text-2xl mt-14 rounded-lg w-40 h-10 md:w-52 md:h-12 "
           type="submit"
         >
           S'identifier
