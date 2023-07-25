@@ -1,5 +1,4 @@
 import { NavLink, useParams, Outlet } from "react-router-dom";
-import SideBarPrepaPc from "./SideBarPrepaPc";
 import HeaderPrepaPatientPc from "./HeaderPrepaPatientPc";
 
 export default function CasePrepaPcPatient() {
@@ -7,11 +6,12 @@ export default function CasePrepaPcPatient() {
 
   return (
     <div className="min-h-screen">
-      <SideBarPrepaPc />
+      {/* <SideBarPrepaPc /> */}
+
       <div className="">
         <HeaderPrepaPatientPc />
       </div>
-      <div className=" ml-72 mr-8 flex gap-4 justify-evenly flex-wrap mt-20">
+      <div className=" flex gap-4 justify-evenly flex-wrap mt-20">
         <NavLink to={`/patients/${id}/ma-preparation/comprendre-mon-operation`}>
           {({ isActive }) => (
             <button

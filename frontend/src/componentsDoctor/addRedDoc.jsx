@@ -26,8 +26,6 @@ const AddRedDoc = () => {
         display: "flex",
         justifyContent: "flex-start",
       }}
-      onClick={handleDivClick}
-      onKeyDown={handleKeyDown} // Add keyboard listener
     >
       <div
         style={{
@@ -69,7 +67,13 @@ const AddRedDoc = () => {
             cursor: "pointer",
           }}
         >
-          <h3>Ajouter</h3>
+          <button
+            type="button"
+            onClick={handleDivClick}
+            onKeyDown={handleKeyDown}
+          >
+            <h3>Ajouter</h3>
+          </button>
         </div>
         {isContentVisible && (
           <CreateContentForm style={{ marginTop: "20px" }} />

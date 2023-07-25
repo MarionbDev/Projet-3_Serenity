@@ -10,7 +10,7 @@ export default function CheckList() {
   };
 
   return (
-    <div className="mt-[40px] w-[70vw] border-4 rounded-2xl border-indigo-500 bg-gray-100">
+    <div className="mt-[40px] w-[70vw] border-4 rounded-2xl border-indigo-500 bg-gray-100 mb-10">
       <p className="mt-8 ml-8 text-xl">Ma checklist avant le départ</p>
       {/* <div className="mt-8 ml-8  w-60 h-16 "> */}
       <div className="flex flex-col ml-10 mt-8">

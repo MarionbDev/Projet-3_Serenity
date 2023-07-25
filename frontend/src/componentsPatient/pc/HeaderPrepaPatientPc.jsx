@@ -1,6 +1,8 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useUserContext } from "../../contexts/UserContext";
+import logoSerenity from "../../assets/logo/logoPatient/logoSerenity.png";
+
 import {
   convertDateFormat,
   convertHourFormat,
@@ -53,7 +55,11 @@ export default function HeaderPrepaPatientPc() {
   }, [id]);
 
   return (
-    <div className="flex justify-around ml-[256px]">
+    <div className="flex justify-around">
+      <div className="flex pt-[59px] pl-8 ">
+        <img className="w-[45px] h-[42px] " src={logoSerenity} alt="logo" />
+        <p className="text-black text-[20px] ml-2 ">SERENITY</p>
+      </div>
       <div className="flex-col mt-10">
         <p className="text-2xl font-medium">
           Bonjour {interventionInfo.firstname}

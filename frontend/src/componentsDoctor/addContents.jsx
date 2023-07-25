@@ -11,8 +11,8 @@ export default function CreateContentForm() {
   const [timing, setTiming] = useState("");
   const [description, setDescription] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
-  const [step, setStep] = useState("");
-  const [category, setCategory] = useState("compréhension");
+  const [step, setStep] = useState("1");
+  const [category] = useState("compréhension");
 
   const getAllProtocols = () => {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/api/protocols`, {
@@ -65,25 +65,10 @@ export default function CreateContentForm() {
     setSelectedFile(file);
   };
 
-  const handleChangeStep = (e) => {
-    setStep(e.target.value);
-  };
-
-  const handleChangeCategory = (e) => {
-    setCategory(e.target.value);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (
-      !title ||
-      !selectedProtocol ||
-      !timing ||
-      !description ||
-      !selectedFile ||
-      !step
-    ) {
+    if (!title || !selectedProtocol || !description || !selectedFile) {
       alert("Veuillez remplir tous les champs obligatoires.");
     } else {
       const contentData = new FormData();
@@ -108,9 +93,9 @@ export default function CreateContentForm() {
           setTitle("");
           setType("image");
           setTiming("");
-          setDescription("");
+          setDescription("Compréhension");
           setSelectedFile(null);
-          setStep("");
+          setStep(1);
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -122,13 +107,13 @@ export default function CreateContentForm() {
   };
 
   return (
-    <div className="mt-20">
-      <div className="create-content-form-container  ">
+    <div>
+      <div className="create-content-form-container ml-52  ">
         <h2 className="text-white italic text-xl pl-4 text-center mb-5">
           Ajouter un nouveau contenu
         </h2>
-        <div className="flex justify-center items-center">
-          <div className="rounded-2xl  mb-10">
+        <div className="flex justify-center items-center ">
+          <div className="rounded-2xl shadow-lg shadow-slate-950/70 mb-10">
             <section className="">
               <p className="text-white italic text-sm pl-4">
                 * Champs obligatoires
@@ -245,45 +230,6 @@ export default function CreateContentForm() {
                           onChange={handleChangeSource}
                           className="px-4 py-1 text-white rounded-md w-full"
                         />
-                      </div>
-
-                      <div className="form-group flex flex-col items-start">
-                        <label
-                          htmlFor="step"
-                          className="text-base mb-2 text-white"
-                        >
-                          Étape :
-                        </label>
-                        <input
-                          type="text"
-                          id="step"
-                          name="step"
-                          value={step}
-                          onChange={handleChangeStep}
-                          className="px-4 py-1 text-black rounded-md w-full"
-                        />
-                      </div>
-
-                      <div className="form-group flex flex-col items-start">
-                        <label
-                          htmlFor="category"
-                          className="text-base mb-2 text-white"
-                        >
-                          Catégorie :
-                        </label>
-                        <select
-                          id="category"
-                          name="category"
-                          value={category}
-                          onChange={handleChangeCategory}
-                          className="px-4 py-1 text-black rounded-md w-full"
-                        >
-                          <option value="compréhension">Compréhension</option>
-                          <option value="démonstration">Démonstration</option>
-                          <option value="expérimentation">
-                            Expérimentation
-                          </option>
-                        </select>
                       </div>
                     </div>
                     <div className="text-center ">

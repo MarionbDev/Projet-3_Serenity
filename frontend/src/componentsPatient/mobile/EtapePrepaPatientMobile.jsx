@@ -51,7 +51,7 @@ export default function EtapePrepaPatientMobile() {
           type="button"
           className="w-[100%] h-20 rounded-xl mt-4 bg-indigo-500"
         >
-          <p className="p-4 text-base w-52 text-white">
+          <p className="flex justify-start pl-4 -mt-6 text-xs text-white font-semibold">
             Ma check-list avant le départ à la Clinique
           </p>
         </button>

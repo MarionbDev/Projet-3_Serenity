@@ -18,16 +18,14 @@ const AddYellowDoc = () => {
     <div
       role="button" // Add role attribute to indicate the element is interactive
       tabIndex="0" // Make the element focusable using tabbing
+      className="mx-auto w-8/12 mt-10"
       style={{
-        width: "675px",
-        height: "400px",
         backgroundColor: "#242731",
         borderRadius: "10px",
         display: "flex",
         justifyContent: "flex-start",
       }}
-      onClick={handleDivClick}
-      onKeyDown={handleKeyDown} // Add keyboard listener
+      // Add keyboard listener
     >
       <div
         style={{
@@ -67,7 +65,14 @@ const AddYellowDoc = () => {
             cursor: "pointer",
           }}
         >
-          <h3>Ajouter</h3>
+          <button
+            type="button"
+            onClick={handleDivClick}
+            onKeyDown={handleKeyDown}
+            className="w-32 h-28"
+          >
+            <h3>Ajouter</h3>
+          </button>
         </div>
         {isContentVisible && (
           <CreateContentForm style={{ marginTop: "20px" }} />
