@@ -88,51 +88,41 @@ function ImageList() {
   };
 
   return (
-    <div className="flex flex-col ">
-      <div className="">
-        <div className="flex flex-col items-center">
-          <img src={image6} alt="doc6" className="mx-1 w-30 h-auto" />
-          <p className="ml-10 mb-2 w-44 h-auto text-sm">Fiche administrative</p>
-          <input
-            className="ml-20 rounded-full text-black px-2 py-1"
-            type="file"
-            id="uploadFile1"
-            onChange={handleChangeUploadFile}
-          />
-        </div>
-        <div className="flex flex-col items-center">
-          <img src={image6} alt="doc7" className="mt-2 mx-1 w-30 h-auto" />
-          <p className="ml-10 mb-2 w-44 h-auto text-sm">Consentement éclairé</p>
-          <input
-            className="ml-20 rounded-full text-black px-2 py-1"
-            type="file"
-            id="uploadFile2"
-            onChange={handleChangeUploadFile}
-          />
-        </div>
-      </div>
-      <div className="p-2">
-        <div className="flex flex-col items-center">
-          <img src={image8} alt="doc8" className="mx-1 w-30 h-auto" />
-          <p className="ml-10 mb-2 w-44 h-auto text-sm">
-            Votre retour mutuelle
-          </p>
-          <input
-            className="ml-20 rounded-full text-black px-2 py-1"
-            type="file"
-            id="uploadFile3"
-            onChange={handleChangeUploadFile}
-          />
-        </div>
-        <div className="flex justify-end">
-          <button
-            type="button"
-            className="mt-2 px-4 py-2 text-white bg-teal-400  rounded-md"
-            onClick={handleFileUpload}
-          >
-            Envoyer
-          </button>
-        </div>
+    <div className="">
+      <div className="flex flex-col items-center">
+        <img src={image6} alt="doc6" className="w-30" />
+        <p className="text-sm mb-4">Fiche administrative</p>
+        <input
+          className="text-black mb-6 ml-10"
+          type="file"
+          id="uploadFile1"
+          onChange={handleChangeUploadFile}
+        />
+
+        <img src={image6} alt="doc7" className="w-30" />
+        <p className="text-sm mb-4">Consentement éclairé</p>
+        <input
+          className="text-black mb-6 ml-10"
+          type="file"
+          id="uploadFile2"
+          onChange={handleChangeUploadFile}
+        />
+
+        <img src={image8} alt="doc8" className="w-30" />
+        <p className="text-sm mb-4">Votre retour mutuelle</p>
+        <input
+          className="text-black mb-6 ml-10"
+          type="file"
+          id="uploadFile3"
+          onChange={handleChangeUploadFile}
+        />
+        <button
+          type="button"
+          className=" text-white bg-teal-400 rounded-xl w-32 h-14 text-xl mt-5"
+          onClick={handleFileUpload}
+        >
+          Envoyer
+        </button>
       </div>
     </div>
   );

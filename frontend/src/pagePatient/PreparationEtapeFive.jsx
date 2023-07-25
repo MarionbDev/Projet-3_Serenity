@@ -21,7 +21,7 @@ function PreparationEtapeFive() {
       <div className="mb-20">
         <HeaderMobilePrepaPatient />
         <Link to={`/patients/${idPatient}/ma-preparation`}>
-          <img src={Arrow} alt="doc14" className="mb-2 ml-3" />
+          <img src={Arrow} alt="doc14" className="mb-8 ml-8" />
         </Link>
         <HeaderPreparation
           text="Ma check list avant le départ à la Clinique"

@@ -13,7 +13,7 @@ function PreparationEtapeFirst() {
     <div>
       <HeaderMobilePrepaPatient />
       <Link to={`/patients/${idPatient}/ma-preparation`}>
-        <img src={Arrow} alt="doc10" className="mb-2 ml-3" />
+        <img src={Arrow} alt="doc10" className="mb-8 ml-8" />
       </Link>
       <HeaderPreparation text="Comprendre mon opération" color="bg-amber-300" />
       <p className="ml-14 mb-2">Schémas et documentations</p>

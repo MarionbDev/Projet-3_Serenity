@@ -16,7 +16,7 @@ function PreparationEtapeFour() {
       <div>
         <HeaderMobilePrepaPatient />
         <Link to={`/patients/${idPatient}/ma-preparation`}>
-          <img src={Arrow} alt="doc13" className="mb-2 ml-3" />
+          <img src={Arrow} alt="doc13" className="mb-8 ml-8" />
         </Link>
         <HeaderPreparation
           text="Anticiper ma sortie en prenant rendez-vous"

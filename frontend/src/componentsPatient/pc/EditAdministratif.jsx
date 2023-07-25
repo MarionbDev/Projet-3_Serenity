@@ -362,7 +362,7 @@ export default function EditAdministratif() {
             <button
               type="button"
               onClick={handleUpdateAdministratif}
-              className="border-2 rounded-xl p-3 border-cyan-400 bg-white hover:bg-cyan-100"
+              className="border-2 rounded-xl p-3 duration-300 border-cyan-400 bg-white hover:bg-cyan-100"
             >
               <p>Enregistrer</p>
             </button>

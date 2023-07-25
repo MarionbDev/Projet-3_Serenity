@@ -36,7 +36,7 @@ export default function SideBarDoctor() {
   };
 
   return (
-    <div className="md:min-h-screen md:mt-3 md:w-64 md:border-r-[1px] md:border-[#a5a5a5]/20  md:fixed ">
+    <div className="md:min-h-screen md:mt-3 md:w-64 md:border-r-[1px] md:border-[#a5a5a5]/20   md:fixed ">
       <div className="flex flex-col items-center md:items-start md:mt-40 lg:mt-36 md:ml-4">
         <p className="text-gray-500 invisible  text-[12px] md:visible  md:pb-4">
           Console d'administration
@@ -166,12 +166,12 @@ export default function SideBarDoctor() {
           {/* New NavLink to "Liste des professionnels médicaux" */}
           <NavLink to={`/doctors/${id}/professionals`}>
             {({ isActive }) => (
-              <div className=" mb-5 shadow-slate-950/80 shadow-lg border-[#a5a5a5]/20  border-2 py-5 px-12 rounded-lg md:px-0 md:py-1 md:border-none md:mb-0 md:shadow-none">
+              <div className=" mb-5  shadow-slate-950/80 shadow-lg border-[#a5a5a5]/20  border-2 py-5 px-12 rounded-lg md:px-0 md:py-1 md:border-none md:mb-0 md:shadow-none">
                 <button
                   className={
                     isActive
-                      ? "flex md:items-center md:bg-indigo-500 rounded-lg md:w-[13rem]  md:h-14"
-                      : "flex md:items-center md:rounded-lg md:h-14 md:w-[13rem]"
+                      ? "flex md:items-center  md:bg-indigo-500 rounded-lg md:w-[13rem]  md:h-14"
+                      : "flex md:items-center text-left md:rounded-lg md:h-14 md:w-[13rem]"
                   }
                   type="button"
                 >
@@ -184,7 +184,7 @@ export default function SideBarDoctor() {
                   <p
                     className={
                       isActive
-                        ? "md:m-2 text-[#FFFFFF] font-semibold"
+                        ? "md:m-2 text-[#FFFFFF] text-left font-semibold"
                         : "text-[#FFFFFF] md:m-2 md:text-gray-500 font-semibold"
                     }
                   >
@@ -194,17 +194,15 @@ export default function SideBarDoctor() {
               </div>
             )}
           </NavLink>
-
-          {/* ... Remaining code ... */}
         </div>
-        <div className="  mt-48 shadow-slate-950/80 shadow-lg py-5 px-12 rounded-lg md:px-0 md:py-1 md:border-none md:mb-0 md:shadow-none  ">
+        <div className="  shadow-slate-950/80 shadow-lg py-5 px-12 rounded-lg md:px-0 md:py-1 md:border-none md:mb-0 md:shadow-none md:h-40  flex items-end ">
           <Link to="/">
             <button
               type="button"
               onClick={handleLogout}
               className=" flex justify-center  text-gray-500 border-2 border-gray-700 hover:text-[#FFFFFF] hover:bg-slate-700 duration-300 md:items-center rounded-lg md:w-[13rem] md:h-14"
             >
-              <p className="md:m-2 font-semibold">Déconnexion</p>
+              <p className="m-2 font-semibold">Déconnexion</p>
             </button>
           </Link>
         </div>

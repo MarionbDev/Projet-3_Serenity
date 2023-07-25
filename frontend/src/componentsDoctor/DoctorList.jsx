@@ -182,7 +182,7 @@ export default function DoctorList() {
                 <button
                   type="button"
                   onClick={deleteIntervention}
-                  className="text-[#FFFFFF] bg-[#323847] sm:rounded-full sm:mt-3 sm:w-20 sm:hover:bg-white/30  sm:hover:font-semibold"
+                  className=" duration-300 text-[#FFFFFF] bg-[#323847] sm:rounded-full sm:mt-3 sm:w-20 sm:hover:bg-white/30  sm:hover:font-semibold"
                 >
                   Oui
                 </button>
@@ -190,7 +190,7 @@ export default function DoctorList() {
                 <button
                   type="button"
                   onClick={handleNonDeleteButtonClick}
-                  className="text-[#FFFFFF] bg-[#323847] sm:rounded-full sm:mt-3 sm:w-20 sm:hover:bg-white/30  sm:hover:font-semibold"
+                  className=" duration-300 text-[#FFFFFF] bg-[#323847] sm:rounded-full sm:mt-3 sm:w-20 sm:hover:bg-white/30  sm:hover:font-semibold"
                 >
                   <p className=" text-center p-1">Non</p>
                 </button>
