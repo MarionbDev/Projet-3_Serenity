@@ -25,8 +25,7 @@ export default function Administratif() {
 
   return (
     <div className="mt-[40px] w-[70vw] border-4 rounded-2xl border-cyan-400 bg-gray-100 py-8 mb-10">
-      <p className=" ml-8 text-xl">La fiche administrative</p>
-
+      <p className=" ml-8 text-xl mb-2">La fiche administrative</p>
       <div className="text-base ">
         <div className="flex flex-col pl-20 pr-18">
           <p className="mt-2 mb-1 font-bold">État civil</p>
