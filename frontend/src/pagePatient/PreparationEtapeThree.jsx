@@ -1,9 +1,11 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 import { Link } from "react-router-dom";
 import Arrow from "../assets/images/Arrow.png";
 import { useUserContext } from "../contexts/UserContext";
-
 import HeaderMobilePrepaPatient from "../componentsPatient/mobile/HeaderMobilePrepaPatient";
 import HeaderPreparation from "../componentsPatient/mobile/HeaderPreparation";
+import nature from "../assets/videos/nature.mp4";
+import relax2 from "../assets/videos/relax2.mp4";
 
 function PreparationEtapeThree() {
   const { idPatient } = useUserContext();
@@ -12,28 +14,24 @@ function PreparationEtapeThree() {
     <div>
       <HeaderMobilePrepaPatient />
       <Link to={`/patients/${idPatient}/ma-preparation`}>
-        <img src={Arrow} alt="doc12" className="mb-8 ml-8" />
+        <img src={Arrow} alt="doc15" className="mb-8 ml-8" />
       </Link>
       <HeaderPreparation
         text="Préparer mon arrivée en toute sérénité"
         color="bg-pink-400"
       />
       <div className="flex flex-col items-center">
-        <p className="ml-10 mb-2">
-          Préparons nous à vivre la journée de l'intervention une première fois,
-          histoire d'être en toute sérénité le jour J{" "}
-        </p>
-
-        <Link
-          to={`/patients/${idPatient}/ma-preparation/preparer-mon-arrivee/1`}
-        >
-          <button
-            type="button"
-            className="flex items-center rounded-xl m-8 p-4 h-14 text-xl mt-20 bg-pink-400"
-          >
-            <p className="p-4 w-52 text-white">Je commence !</p>
-          </button>
-        </Link>
+        <p className=" mb-8 text-xl">Votre parcours en quelques étapes</p>
+        <div className="mb-8">
+          <video controls width="300">
+            <source src={nature} />
+          </video>{" "}
+        </div>
+        <div className="mb-8">
+          <video controls width="300">
+            <source src={relax2} />
+          </video>
+        </div>
       </div>
     </div>
   );
