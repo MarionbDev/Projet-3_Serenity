@@ -67,7 +67,7 @@ export default function CreateProfessional() {
         <SideBarDoctor />
       </div>
       <div className="md:ml-[321px] py-2 md:py-9 text-[#FFFFFF]">
-        <HeaderDoctor text="Un nouveau professionnels ?!" />
+        <HeaderDoctor text="Un nouveau professionnel ?!" />
       </div>
       <div className="flex justify-center items-center md:ml-64">
         <div className="rounded-2xl shadow-lg shadow-slate-950/70 mb-10">
