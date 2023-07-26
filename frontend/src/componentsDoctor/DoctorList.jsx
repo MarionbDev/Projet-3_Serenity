@@ -44,13 +44,11 @@ export default function DoctorList() {
       .then((res) => res.json())
       .then((data) => {
         setPraticien(data);
-        console.warn(data);
       });
   };
   useEffect(() => {
     if (idDoctor !== "") {
       getAllPraticien();
-      console.warn(praticien);
     }
   }, []);
 

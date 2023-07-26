@@ -93,9 +93,7 @@ export default function CreateIntervention() {
               .then(() => {
                 navigate(`/doctors/${idDoctor}/interventions/`);
               })
-              .then((surgeryTypeData) => {
-                console.warn(surgeryTypeData);
-              })
+              // .then(() => {})
               .catch((error) => {
                 console.error(error);
               });

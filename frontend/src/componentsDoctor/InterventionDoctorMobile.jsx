@@ -21,7 +21,6 @@ export default function InterventionDoctor() {
       .then((res) => res.json())
       .then((data) => {
         setSurgeryTypes(data);
-        console.warn(data);
       });
   };
 
@@ -43,7 +42,6 @@ export default function InterventionDoctor() {
   useEffect(() => {
     if (idDoctor !== "") {
       getAllSurgeryTypes();
-      console.warn(surgeryTypes);
     }
   }, [idDoctor]);
 

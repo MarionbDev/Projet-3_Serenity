@@ -51,25 +51,33 @@ export default function MonOperation() {
   return (
     <div className=" mt-[40px] w-[70vw] border-4 rounded-2xl border-yellow-500 bg-gray-100 mb-10">
       <div className=" my-5">
-        <ul
-          className="flex flex-wrap gap-5 mx-5 items-center
+        {images.length > 0 ? (
+          <ul
+            className="flex flex-wrap gap-5 mx-5 items-center
         "
-        >
-          {images.map((image) => (
-            <a
-              href={`${import.meta.env.VITE_ASSETS_IMAGES_URL}/${image.source}`}
-            >
-              <li
-                key={image.source}
-                className="mb-4 bg-amber-300 h-32 w-32 rounded-lg hover:bg-amber-200 hover:scale-105 duration-300"
+          >
+            {images.map((image) => (
+              <a
+                href={`${import.meta.env.VITE_ASSETS_IMAGES_URL}/${
+                  image.source
+                }`}
               >
-                <p className="text-white text-center px-1">
-                  {image.description}
-                </p>
-              </li>
-            </a>
-          ))}
-        </ul>
+                <li
+                  key={image.source}
+                  className="mb-4 bg-amber-300 h-32 w-32 rounded-lg hover:bg-amber-200 hover:scale-105 duration-300"
+                >
+                  <p className="text-white text-center px-1">
+                    {image.description}
+                  </p>
+                </li>
+              </a>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-center">
+            Pas de contenu à afficher pour le moment
+          </p>
+        )}
       </div>
     </div>
   );

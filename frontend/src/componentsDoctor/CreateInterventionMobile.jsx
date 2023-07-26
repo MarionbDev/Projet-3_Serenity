@@ -84,9 +84,9 @@ export default function CreateInterventionMobile() {
               }),
             })
               .then((res) => res.json())
-              .then((surgeryTypeData) => {
-                console.warn(surgeryTypeData);
-              })
+              // .then((surgeryTypeData) => {
+              //   console.warn(surgeryTypeData);
+              // })
               .catch((error) => {
                 console.error(error);
               });

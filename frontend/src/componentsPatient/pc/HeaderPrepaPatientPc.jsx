@@ -88,7 +88,7 @@ export default function HeaderPrepaPatientPc() {
             <button
               type="button"
               onClick={handleLogout}
-              className="bg-indigo-50 px-4 py-2 rounded-full hover:bg-indigo-500 hover:text-white"
+              className="bg-indigo-50 px-4 py-2 rounded-full hover:bg-indigo-500 hover:text-white duration-500"
             >
               Déconnexion
             </button>
