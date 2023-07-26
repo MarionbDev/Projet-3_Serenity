@@ -1,15 +1,24 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Modal } from "react-responsive-modal";
 import { useUserContext } from "../contexts/UserContext";
 
 function Connexion({ utilisateur }) {
-  const { setIdPatient } = useUserContext();
-  const { setIdDoctor } = useUserContext();
+  const { setIdPatient, idPatient, idDoctor, setIdDoctor, setRole } =
+    useUserContext();
   const navigate = useNavigate();
   const [passwordIsVisible, setPasswordIsVisible] = useState(false);
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
+  const [open, setOpen] = useState(false);
+
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
+
+  const handleNonButtonClick = () => {
+    onCloseModal();
+  };
 
   const handleChangeMail = (e) => {
     setMail(e.target.value);
@@ -25,8 +34,9 @@ function Connexion({ utilisateur }) {
     if (!mail || !password) {
       alert("You must provide an email and a password !");
     } else {
-      fetch(`${import.meta.env.VITE_BACKEND_URL}/api/${utilisateur}s/login`, {
+      fetch(`${import.meta.env.VITE_BACKEND_URL}/api/${utilisateur}/login`, {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
@@ -39,17 +49,24 @@ function Connexion({ utilisateur }) {
           return res.json();
         })
         .then((data) => {
-          console.warn(data.id);
-          navigate(`/${utilisateur}/${data.id}`);
-          if (utilisateur === "patient") {
+          navigate(
+            `/${utilisateur}/${data.id}/${
+              utilisateur === "patients" ? "ma-preparation" : ""
+            }`
+          );
+          if (utilisateur === "patients") {
             setIdPatient(data.id);
           } else {
             setIdDoctor(data.id);
           }
+          if (data.role) {
+            setRole(data.role);
+          }
         })
         .catch((err) => {
+          onOpenModal();
           console.error(err);
-          alert("Error to login please try again !");
+          // alert("Error to login please try again !");
         });
     }
     // Réinitialiser les valeurs du formulaire
@@ -60,7 +77,7 @@ function Connexion({ utilisateur }) {
   return (
     <div className="flex flex-col justify-center items-center min-h-screen bg-teal-500 ">
       <div className=" mb-36">
-        <h1 className="font-extrabold text-white text-5xl h-16 flex justify-center md:text-6xl">
+        <h1 className="font-extrabold text-white text-4xl h-16 flex justify-center md:text-6xl">
           Connectez vous
         </h1>
         <h2 className="font-extrabold text-white text-xl h-0 flex justify-center md:text-3xl">
@@ -127,16 +144,47 @@ function Connexion({ utilisateur }) {
             )}
           </button>
         </div>
-        <Link className="text-base text-black" to="/password">
-          Mot de passe oublié?
-        </Link>
         <button
-          className="mx-auto bg-rose-400 text-white font-bold text-2xl mt-14 rounded-lg w-40 h-10 md:w-52 md:h-12 "
+          className="duration-300 mx-auto  hover:bg-rose-500 shadow-md shadow-rose-600 bg-rose-400 text-white font-bold text-2xl mt-14 rounded-lg w-40 h-10 md:w-52 md:h-12 "
           type="submit"
         >
           S'identifier
         </button>
       </form>
+      {!idDoctor || !idPatient ? (
+        <Modal
+          open={open}
+          onClose={onCloseModal}
+          center
+          classNames={{ overlay: "customOverlay", modal: "customModal" }}
+          closeIcon={
+            <span
+              style={{
+                fontSize: "20px",
+                width: "20px",
+                height: "20px",
+                color: "white",
+              }}
+            >
+              X
+            </span>
+          }
+        >
+          <h1 className="text-[#FFFFFF] font-semibold">
+            Identifiant et/ou mot de passe invalide
+          </h1>
+
+          <div className="flex justify-center mt-2 gap-6 ">
+            <button
+              type="button"
+              onClick={handleNonButtonClick}
+              className="text-[#FFFFFF] bg-[#323847] sm:rounded-full sm:mt-3 sm:w-20 sm:hover:bg-white/30  sm:hover:font-semibold"
+            >
+              <p className=" text-center p-1">ok</p>
+            </button>
+          </div>
+        </Modal>
+      ) : null}
     </div>
   );
 }

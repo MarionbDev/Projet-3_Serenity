@@ -24,7 +24,7 @@ class ProfesionnelManager extends AbstractManager {
 
   update(profesionnel) {
     return this.database.query(
-      `update ${this.table} set lastname = ?, firstname = ?, tel = ?, image = ?, speciality = ?, road = ?, city = ?, zip_code = ?, country = ? = ? where id = ?`,
+      `update ${this.table} set lastname = ?, firstname = ?, tel = ?, image = ?, speciality = ?, road = ?, city = ?, zip_code = ?, country = ?  where id = ?`,
       [
         profesionnel.lastname,
         profesionnel.firstname,
@@ -37,6 +37,13 @@ class ProfesionnelManager extends AbstractManager {
         profesionnel.country,
         profesionnel.id,
       ]
+    );
+  }
+
+  updateLatLong(proId) {
+    return this.database.query(
+      `update ${this.table} set latitude = ?, longitude = ? where id = ?`,
+      [proId.latitude, proId.longitude, proId.id]
     );
   }
 }

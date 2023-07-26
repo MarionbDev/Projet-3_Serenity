@@ -48,7 +48,7 @@ DROP TABLE IF EXISTS `content`;
 CREATE TABLE `content` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
-  `type` enum('image','video') NOT NULL,
+  `type` enum('image','video','text') NOT NULL,
   `timing` time DEFAULT NULL,
   `description` text NOT NULL,
   `source` varchar(255) NOT NULL,
@@ -83,7 +83,7 @@ CREATE TABLE `doctor` (
   `lastname` varchar(100) NOT NULL,
   `tel` varchar(50) NOT NULL,
   `mail` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `hashedPassword` varchar(255) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `language` varchar(255) DEFAULT NULL,
   `bio` text,
@@ -150,7 +150,7 @@ CREATE TABLE `patient` (
   `firstname` varchar(100) NOT NULL,
   `maiden_name` varchar(100) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
-  `birthday` date DEFAULT NULL,
+  `birthday` text DEFAULT NULL,
   `sexe` enum('Masculin','Féminin') DEFAULT NULL,
   `title` enum('Sans','Mademoiselle','Madame','Monsieur') DEFAULT NULL,
   `family_situation` enum('Marié(e)','Pacsé(e)','Célibataire','Séparé(e)','Veuf(ve)','Divorcé(e)') DEFAULT NULL,
@@ -163,7 +163,7 @@ CREATE TABLE `patient` (
   `city` varchar(50) DEFAULT NULL,
   `tel_fixe` varchar(50) DEFAULT NULL,
   `mail` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `hashedPassword` varchar(255) NOT NULL,
   `tel_portable` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `mail` (`mail`)
@@ -221,10 +221,12 @@ CREATE TABLE `profesionnel` (
   `lastname` varchar(100) NOT NULL,
   `tel` varchar(50) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
-  `speciality` varchar(100) NOT NULL,
+  `speciality` enum('Psychologue','Kinésithérapeute','Infirmier') NOT NULL,
   `road` varchar(100) NOT NULL,
   `city` varchar(50) NOT NULL,
   `zip_code` int NOT NULL,
+  `latitude` Decimal(8,6) NULL,
+  `longitude` Decimal(9,6) NULL,
   `country` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -274,12 +276,12 @@ CREATE TABLE `surgery_type` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `doctor_id` int NOT NULL,
-  `intervention_id` int NOT NULL,
+  `intervention_id` int NULL,
   PRIMARY KEY (`id`),
   KEY `fk_surgery_type_doctor` (`doctor_id`),
   KEY `fk_surgery_type_intervention` (`intervention_id`),
   CONSTRAINT `fk_surgery_type_doctor` FOREIGN KEY (`doctor_id`) REFERENCES `doctor` (`id`),
-  CONSTRAINT `fk_surgery_type_intervention` FOREIGN KEY (`intervention_id`) REFERENCES `intervention` (`id`)
+  CONSTRAINT `fk_surgery_type_intervention` FOREIGN KEY (`intervention_id`) REFERENCES `intervention` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -292,6 +294,37 @@ LOCK TABLES `surgery_type` WRITE;
 /*!40000 ALTER TABLE `surgery_type` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+--
+-- Table structure for table `patient_content`
+--
+
+DROP TABLE IF EXISTS `patient_content`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `patient_content` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `mutual_file` varchar(255) DEFAULT NULL,
+  `consent_file` varchar(255) DEFAULT NULL,
+  `administrative_sheet_file` varchar(255) DEFAULT NULL,
+  `patient_id` int NOT NULL,
+  `intervention_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_patient_content_patient` (`patient_id`),
+  KEY `fk_patient_content_intervention` (`intervention_id`),
+  CONSTRAINT `fk_patient_content_patient` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`id`),
+  CONSTRAINT `fk_patient_content_intervention` FOREIGN KEY (`intervention_id`) REFERENCES `intervention` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `patient_content`
+--
+
+LOCK TABLES `patient_content` WRITE;
+/*!40000 ALTER TABLE `patient_content` DISABLE KEYS */;
+/*!40000 ALTER TABLE `patient_content` ENABLE KEYS */;
+UNLOCK TABLES;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

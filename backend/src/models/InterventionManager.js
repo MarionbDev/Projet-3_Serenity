@@ -7,21 +7,21 @@ class InterventionManager extends AbstractManager {
 
   insert(intervention) {
     return this.database.query(
-      `insert into ${this.table} (time, ) values (?)`,
-      [intervention.time]
+      `insert into ${this.table} (time, patient_id, protocol_id) values (?, ?, ?)`,
+      [intervention.time, intervention.patient_id, intervention.protocol_id]
     );
   }
 
   update(intervention) {
     return this.database.query(
-      `update ${this.table} set time = ? = ? where id = ?`,
+      `update ${this.table} set time = ?  where id = ?`,
       [intervention.time, intervention.id]
     );
   }
 
   interventionInfo(idPatient) {
     return this.database.query(
-      `SELECT d.lastname, s.name, p.firstname, p.image, i.time FROM ${this.table} AS i JOIN patient AS p ON p.id=i.patient_id JOIN surgery_type AS s ON s.intervention_id=i.id JOIN doctor AS d ON d.id=s.doctor_id WHERE p.id= ?`,
+      `SELECT d.lastname, s.name, p.firstname, p.image, i.time, i.id FROM ${this.table} AS i JOIN patient AS p ON p.id=i.patient_id JOIN surgery_type AS s ON s.intervention_id=i.id JOIN doctor AS d ON d.id=s.doctor_id WHERE p.id= ?`,
       [idPatient]
     );
   }

@@ -52,13 +52,12 @@ const edit = (req, res) => {
 
 const add = (req, res) => {
   const intervention = req.body;
-
-  // TODO validations (length, format...)
+  // console.log(intervention);
 
   models.intervention
     .insert(intervention)
     .then(([result]) => {
-      res.location(`/interventions/${result.insertId}`).sendStatus(201);
+      res.status(201).json(result);
     })
     .catch((err) => {
       console.error(err);
@@ -83,7 +82,24 @@ const destroy = (req, res) => {
 };
 
 const findIntervention = (req, res) => {
-  const { idPatient } = req.body;
+  const idPatient = req.params.id;
+  models.intervention
+    .interventionInfo(parseInt(idPatient, 10))
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows[0]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+const interventionInfo = (req, res) => {
+  const idPatient = req.params.id;
   models.intervention
     .interventionInfo(parseInt(idPatient, 10))
     .then(([rows]) => {
@@ -105,4 +121,5 @@ module.exports = {
   add,
   destroy,
   findIntervention,
+  interventionInfo,
 };

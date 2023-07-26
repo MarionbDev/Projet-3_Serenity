@@ -12,6 +12,19 @@ const browse = (req, res) => {
     });
 };
 
+const browseByIntervention = (req, res) => {
+  const { id } = req.body;
+  models.content
+    .getAllContentByIntervention(id)
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const read = (req, res) => {
   models.content
     .find(req.params.id)
@@ -58,7 +71,15 @@ const add = (req, res) => {
   models.content
     .insert(content)
     .then(([result]) => {
-      res.location(`/contents/${result.insertId}`).sendStatus(201);
+      models.content
+        .find(result.insertId)
+        .then(([contentCreated]) => {
+          res.status(201).json(contentCreated);
+        })
+        .catch((err) => {
+          console.error(err);
+          res.sendStatus(500);
+        });
     })
     .catch((err) => {
       console.error(err);
@@ -88,4 +109,5 @@ module.exports = {
   edit,
   add,
   destroy,
+  browseByIntervention,
 };

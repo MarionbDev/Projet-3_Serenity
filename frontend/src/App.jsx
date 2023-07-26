@@ -1,14 +1,45 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { UserContextProvider } from "./contexts/UserContext";
-import CreateDoctor from "./components/CreateDoctor";
+import CreateDoctor from "./componentsDoctor/CreateDoctor";
+import EditDoctor from "./componentsDoctor/EditDoctor";
+import PrivateRoutes from "./components/PrivateRoutes";
 import "./App.css";
+import "react-responsive-modal/styles.css";
+import "./modalStyles.css";
 import Home from "./pages/Home";
 import Connexion from "./pages/Connexion";
-import AccueilDoctor from "./pages/AccueilDoctor";
-import InterventionDoctor from "./components/InterventionDoctor";
-import PrepaPatientMobile from "./pages/PrepaPatientMobile";
-import PrepaPatientPc from "./pages/PrepaPatientPc";
+import LatLongApi from "./pages/LatLongApi";
+import AccueilDoctorMobile from "./pageDoctor/AccueilDoctorMobile";
+import AccueilDoctor from "./pageDoctor/AccueilDoctor";
+import InterventionDoctor from "./componentsDoctor/InterventionDoctor";
+import PrepaPatientMobile from "./pagePatient/PrepaPatientMobile";
+import InterventionDoctorMobile from "./componentsDoctor/InterventionDoctorMobile";
+import DoctorList from "./componentsDoctor/DoctorList";
+import DoctorPatientList from "./componentsDoctor/PatientsList";
+import DoctorPatientListMobile from "./componentsDoctor/PatientsListMobile";
+import CreatePatient from "./componentsDoctor/CreatePatient";
+import EditPatient from "./componentsDoctor/EditPatient";
+import PreparationEtapeFirst from "./pagePatient/PreparationEtapeFirst";
+import PreparationEtapeTwo from "./pagePatient/PreparationEtapeTwo";
+import PreparationEtapeThree from "./pagePatient/PreparationEtapeThree";
+import PreparationEtapeFour from "./pagePatient/PreparationEtapeFour";
+import PreparationEtapeFive from "./pagePatient/PreparationEtapeFive";
+import PrepaPatientPcOne from "./pagePatient/PrepaPatientPcOne";
+import CreateIntervention from "./componentsDoctor/CreateIntervention";
+import CreateInterventionMobile from "./componentsDoctor/CreateInterventionMobile";
+import MonOperation from "./componentsPatient/pc/MonOperation";
+import Administratif from "./componentsPatient/pc/Administratif";
+import EditAdministratif from "./componentsPatient/pc/EditAdministratif";
+import MonArrivee from "./componentsPatient/pc/MonArrivee";
+import Anticiper from "./componentsPatient/pc/Anticiper";
+import CheckList from "./componentsPatient/pc/CheckList";
+import ChangePassword from "./componentsDoctor/ChangePassword";
+import CasePrepaPcPatient from "./componentsPatient/pc/CasePrepaPcPatient";
+import ChangePasswordPatient from "./componentsDoctor/ChangePasswordPatient";
+import EditContents from "./pageDoctor/EditContent";
+import ProfessionalGuy from "./componentsDoctor/ProList";
+import CreateProfessional from "./componentsDoctor/CreatPro";
 
 function getCurrentDimension() {
   return {
@@ -16,6 +47,7 @@ function getCurrentDimension() {
     height: window.innerHeight,
   };
 }
+
 function App() {
   const [screenSize, setScreenSize] = useState(getCurrentDimension());
 
@@ -29,34 +61,163 @@ function App() {
       window.removeEventListener("resize", updateDimension);
     };
   }, [screenSize]);
+
   return (
     <UserContextProvider>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/patient" element={<Connexion utilisateur="patient" />} />
-        {window.innerWidth < 768 ? (
-          <Route path="/patient/:id" element={<PrepaPatientMobile />} />
-        ) : (
-          // <Route
-          //   path="/patient/:id/comprendre-mon-operation"
-          //   element={<PreparationEtapeFirst />}
-          // />
+        <Route path="/changer-mon-mot-de-passe" element={<ChangePassword />} />
+        <Route
+          path="/changer-mon-mot-de-passe-patient"
+          element={<ChangePasswordPatient />}
+        />
 
-          <Route path="/patient/:id" element={<PrepaPatientPc />} />
+        <Route
+          path="/patients"
+          element={<Connexion utilisateur="patients" />}
+        />
+        {window.innerWidth < 768 ? (
+          <>
+            <Route
+              path="/patients/:id/ma-preparation"
+              element={<PrepaPatientMobile />}
+            />
+            <Route
+              path="/patients/:id/ma-preparation/comprendre-mon-operation"
+              element={<PreparationEtapeFirst />}
+            />
+            <Route
+              path="/patients/:id/ma-preparation/demarches-administratives"
+              intervention
+              element={<PreparationEtapeTwo />}
+            />
+            <Route
+              path="/patients/:id/ma-preparation/preparer-mon-arrivee"
+              element={<PreparationEtapeThree />}
+            />
+            <Route
+              path="/patients/:id/ma-preparation/anticiper-ma-sortie"
+              element={<PreparationEtapeFour />}
+            />
+            <Route
+              path="/patients/:id/ma-preparation/anticiper-ma-sortie/latlong"
+              element={<LatLongApi />}
+            />
+            <Route
+              path="/patients/:id/ma-preparation/Ma-check-list"
+              element={<PreparationEtapeFive />}
+            />
+            <Route
+              path="/patients/:id/ma-preparation/anticiper-ma-sortie"
+              element={<PreparationEtapeFour />}
+            />
+            <Route
+              path="/patients/:id/ma-preparation/Ma-check-list"
+              element={<PreparationEtapeFive />}
+            />
+
+            <Route path="/doctors/:id" element={<AccueilDoctorMobile />} />
+            <Route
+              path="/doctors/:id/interventions"
+              element={<InterventionDoctorMobile />}
+            />
+            <Route
+              path="/doctors/:id/interventions/create-intervention"
+              element={<CreateInterventionMobile />}
+            />
+            <Route
+              path="/doctors/:id/patients/"
+              element={<DoctorPatientListMobile />}
+            />
+          </>
+        ) : (
+          <Route
+            path="/patients/:id/ma-preparation"
+            element={<CasePrepaPcPatient />}
+          >
+            <Route path="comprendre-mon-operation" element={<MonOperation />} />
+            <Route
+              path="demarches-administratives"
+              element={<Administratif />}
+            />
+            <Route
+              path="edit-demarches-administratives"
+              element={<EditAdministratif />}
+            />
+            <Route path="preparer-mon-arrivee" element={<MonArrivee />} />
+            <Route path="anticiper-ma-sortie" element={<Anticiper />} />
+            <Route path="Ma-check-list" element={<CheckList />} />
+          </Route>
         )}
 
-        <Route path="/doctor" element={<Connexion utilisateur="doctor" />} />
+        <Route path="/patients/:id/serenite" element={<PrepaPatientPcOne />} />
+        <Route path="/patients/:id/agenda" element={<PrepaPatientPcOne />} />
         <Route
-          path="/doctor/:id"
-          element={<AccueilDoctor utilisateur="/doctor/:id" />}
+          path="/patients/:id/notifications"
+          element={<PrepaPatientPcOne />}
         />
         <Route
-          path="/doctor/:id/intervention"
-          element={
-            <InterventionDoctor utilisateur="/doctor/:id/intervention" />
-          }
+          path="/patients/:id/messagerie"
+          element={<PrepaPatientPcOne />}
         />
-        <Route path="/create-doctor" element={<CreateDoctor />} />
+        <Route path="/doctors" element={<Connexion utilisateur="doctors" />} />
+        <Route
+          path="/doctors/:id"
+          element={<AccueilDoctor utilisateur="/doctors/:id" />}
+        />
+
+        <Route
+          path="/doctors/:id/interventions"
+          element={<InterventionDoctor />}
+        />
+        <Route
+          path="/doctors/:id/interventions/EditContents"
+          element={<EditContents />}
+        />
+        <Route
+          path="/doctors/:id/interventions/create-intervention"
+          element={<CreateIntervention />}
+        />
+
+        <Route
+          path="/doctors/:id/praticiens"
+          element={<PrivateRoutes authorizedRoles={["Admin", "Praticien"]} />}
+        >
+          <Route path="" index element={<DoctorList />} />
+          <Route
+            path="admin"
+            element={<PrivateRoutes authorizedRoles={["Admin"]} />}
+          >
+            <Route path="CreateDoctor" element={<CreateDoctor />} />
+          </Route>
+        </Route>
+        <Route path="/doctors/:id/patients/" element={<DoctorPatientList />} />
+        <Route
+          path="/doctors/:id/patients/create-patient"
+          element={<CreatePatient />}
+        />
+        <Route
+          path="/doctors/:id/patients/:patientId" // !!!!!!
+          element={<EditPatient />}
+        />
+        <Route
+          path="/doctors/:id/praticiens/:praticienId" // !!!!!!
+          element={<EditDoctor />}
+        />
+        <Route
+          path="doctors/:id/professionals" // !!!!!!
+          element={<ProfessionalGuy />}
+        />
+        <Route
+          path="/doctors/:id/professionals/CreatPro"
+          element={<CreateProfessional />}
+        />
+
+        {/* Nouvelle route pour créer une intervention */}
+        <Route
+          path="/doctors/:id/interventions/create-intervention"
+          element={<CreateIntervention />}
+        />
       </Routes>
     </UserContextProvider>
   );

@@ -7,22 +7,36 @@ class PatientManager extends AbstractManager {
 
   insert(patient) {
     return this.database.query(
-      `insert into ${this.table} (firstname, lastname, mail, password) values (?, ?, ?, ?)`,
-      [patient.firstname, patient.lastname, patient.mail, patient.password]
+      `insert into ${this.table} ( lastname, firstname, maiden_name, image, birthday, sexe, title, family_situation, professionnal_situation, occupation, number_of_children, road, country, zip_code, city, tel_fixe, tel_portable, mail, hashedPassword) values (?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?)`,
+      [
+        patient.lastname,
+        patient.firstname,
+        patient.maiden_name,
+        patient.image,
+        patient.birthday,
+        patient.sexe,
+        patient.title,
+        patient.family_situation,
+        patient.professionnal_situation,
+        patient.occupation,
+        patient.number_of_children,
+        patient.road,
+        patient.country,
+        patient.zip_code,
+        patient.city,
+        patient.tel_fixe,
+        patient.tel_portable,
+        patient.mail,
+        patient.hashedPassword,
+      ]
     );
   }
 
   update(patient) {
-    return this.database.query(
-      `update ${this.table} set firstname = ?, lastname = ?, mail = ?, password = ? = ? where id = ?`,
-      [
-        patient.firstname,
-        patient.lastname,
-        patient.mail,
-        patient.password,
-        patient.id,
-      ]
-    );
+    return this.database.query(`update ${this.table} set ? where id = ?`, [
+      patient,
+      patient.id,
+    ]);
   }
 
   findByEmail(mail) {

@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 const models = require("../models");
 
 const browse = (req, res) => {
@@ -19,7 +20,10 @@ const read = (req, res) => {
       if (rows[0] == null) {
         res.sendStatus(404);
       } else {
-        res.send(rows[0]);
+        // pour ne pas retourner le hashedPassword dans le front
+        const doctor = rows[0];
+        delete doctor.hashedPassword;
+        res.send(doctor);
       }
     })
     .catch((err) => {
@@ -50,7 +54,7 @@ const edit = (req, res) => {
     });
 };
 
-const add = (req, res) => {
+const add = (req, res, next) => {
   const doctor = req.body;
 
   // TODO validations (length, format...)
@@ -58,7 +62,8 @@ const add = (req, res) => {
   models.doctor
     .insert(doctor)
     .then(([result]) => {
-      res.location(`/doctors/${result.insertId}`).sendStatus(201);
+      res.location(`/doctors/${result.insertId}`);
+      next();
     })
     .catch((err) => {
       console.error(err);
@@ -82,20 +87,34 @@ const destroy = (req, res) => {
     });
 };
 
-const login = (req, res) => {
-  const { mail, password } = req.body;
+const login = (req, res, next) => {
+  const { mail } = req.body;
 
   models.doctor
     .findByEmail(mail)
     .then(([doctors]) => {
-      if (doctors.length === 0) {
-        res.sendStatus(404);
-      } else if (doctors[0].password !== password) {
+      if (doctors[0] != null) {
+        req.doctor = doctors[0];
+        next();
+      } else {
+        res.sendStatus(401);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+const findSurgeriesAndPatients = (req, res) => {
+  const idDoctor = req.params.id;
+  models.doctor
+    .findAllPraticiensWithSurgeryQuantityAndPatientQuantity(idDoctor)
+    .then(([rows]) => {
+      if (rows[0] == null) {
         res.sendStatus(404);
       } else {
-        const doctor = { ...doctors[0] };
-        delete doctor.password;
-        res.json(doctor);
+        res.send(rows);
       }
     })
     .catch((err) => {
@@ -111,4 +130,5 @@ module.exports = {
   add,
   destroy,
   login,
+  findSurgeriesAndPatients,
 };
