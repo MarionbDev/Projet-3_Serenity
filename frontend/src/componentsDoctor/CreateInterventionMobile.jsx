@@ -12,11 +12,11 @@ export default function CreateInterventionMobile() {
   const [title, setTitle] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/doctors")
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/doctors`)
       .then((res) => res.json())
       .then((data) => setDoctorsList(data));
 
-    fetch("http://localhost:8000/api/patients")
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/patients`)
       .then((res) => res.json())
       .then((data) => setPatientsList(data));
   }, []);
@@ -44,7 +44,7 @@ export default function CreateInterventionMobile() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:8000/api/protocols", {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/protocols`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -57,7 +57,7 @@ export default function CreateInterventionMobile() {
       .then((protocolData) => {
         const protocolId = protocolData.insertId;
 
-        fetch("http://localhost:8000/api/interventions", {
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/api/interventions`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -72,7 +72,7 @@ export default function CreateInterventionMobile() {
           .then((interventionData) => {
             const interventionId = interventionData.insertId;
 
-            fetch("http://localhost:8000/api/surgeryTypes", {
+            fetch(`${import.meta.env.VITE_BACKEND_URL}/api/surgeryTypes`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",

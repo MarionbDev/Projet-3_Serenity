@@ -46,7 +46,7 @@ export default function CreateProfessional() {
     formData.append("country", "France");
     formData.append("image", image);
 
-    fetch("http://localhost:8000/api/profesionnels", {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/professionnels`, {
       method: "POST",
       credentials: "include",
       body: formData,
