@@ -49,7 +49,7 @@ export default function MonOperation() {
   }, [idPatient]);
 
   return (
-    <div className=" mt-[40px] w-[70vw] border-4 rounded-2xl border-yellow-500 bg-gray-100">
+    <div className=" mt-[40px] w-[70vw] border-4 rounded-2xl border-yellow-500 bg-gray-100 mb-10">
       <div className=" my-5">
         <ul
           className="flex flex-wrap gap-5 mx-5 items-center

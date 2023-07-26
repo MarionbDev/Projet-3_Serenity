@@ -2,6 +2,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "../App.css";
 
 import { useState, useEffect } from "react";
+import proImage from "../assets/images/pro.jpg";
 
 function getCurrentDimension() {
   return {
@@ -127,8 +128,10 @@ export default function LatLongApi() {
               <Popup>
                 <figure className=" w-48 bg-gray-200 rounded-lg">
                   <img
-                    className="rounded-t-md mb-2"
-                    src={adress.image}
+                    className="mx-auto rounded-t-lg h-full lg:w-36 lg:h-36 lg:rounded-l-lg lg:rounded-none"
+                    src={`${import.meta.env.VITE_ASSETS_IMAGES_URL}/${
+                      adress.image
+                    }`}
                     alt="spécialiste"
                   />
                   <figcaption className="text-center pb-2">
@@ -146,11 +149,21 @@ export default function LatLongApi() {
       <div className="mt-4 w-full mx-auto lg:flex lg:flex-wrap lg:gap-2">
         {adresses.map((adress) => (
           <figure className="m-4 bg-gray-200 hover:bg-gray-300 rounded-lg duration-300 lg:flex  lg:mx-auto lg:justify-stretch lg:h-36">
-            <img
-              className=" rounded-t-lg h-full lg:w-36 lg:h-36 lg:rounded-l-lg lg:rounded-none"
-              src={`${import.meta.env.VITE_ASSETS_IMAGES_URL}/${adress.image}`}
-              alt="spécialiste"
-            />
+            {adress.image ? (
+              <img
+                className=" rounded-t-lg h-full lg:w-36 lg:h-36 lg:rounded-l-lg lg:rounded-none"
+                src={`${import.meta.env.VITE_ASSETS_IMAGES_URL}/${
+                  adress.image
+                }`}
+                alt="spécialiste"
+              />
+            ) : (
+              <img
+                className=" rounded-t-lg h-full lg:w-36 lg:h-36 lg:rounded-l-lg lg:rounded-none"
+                src={proImage}
+                alt="spécialiste"
+              />
+            )}
             <figcaption className=" text-center px-2 ">
               <h3 className="font-bold pt-2">{`${adress.firstname} ${adress.lastname}`}</h3>
               <p>{`${adress.speciality} : ${adress.tel}`}</p>

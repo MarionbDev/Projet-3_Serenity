@@ -80,44 +80,48 @@ function ProfessionalGuy() {
 
         {/* List of professionels */}
         <section>
-          <div className="flex border-b-[1px] border-[#a5a5a5]/20 ml-[32px] text-gray-500 mt-8 text-[16px] h-[45px] w-[991px]">
+          <div className="flex grid-cols-5 gap-[56px] border-t-[1px] border-[#a5a5a5]/20 ml-[32px]  text-gray-500 mt-5 pt-2 text-[16px] h-[28px] w-[991px]">
             <p className="ml-8">Nom</p>
             <p className="ml-8">Prénom</p>
             <p className="ml-8">Spécialité</p>
             <p className="ml-8">Adresse</p>
           </div>
-          <div>
-            <ul className="overflow-y-auto overflow-hidden h-[230px] text-[#FFFFFF] w-[991px] flex flex-col border-b-[1px] border-[#a5a5a5]/20 mt-[31px]">
-              {professionels
-                .filter((professionel) =>
-                  professionel.firstname
-                    .toLowerCase()
-                    .includes(searchInput.toLowerCase())
-                )
-                .map((professionel) => (
-                  <li
-                    key={`professionel-${professionel.id}`}
-                    className="flex flex-col mb-8"
-                  >
-                    <p>{professionel.firstname}</p>
-                    <p>{professionel.lastname}</p>
-                    <p>Spécialité: {professionel.speciality}</p>
-                    <p>
-                      Adresse: {professionel.road}, {professionel.zip_code}{" "}
-                      {professionel.city}, {professionel.country}
-                    </p>
-                  </li>
-                ))}
+          <div className="flex border-b-[1px] border-[#a5a5a5]/20 ml-[32px]  text-gray-500 mt-4 text-[16px] h-[1px] w-[991px]">
+            <ul className="overflow-y-auto overflow-hidden h-[15rem] text-[#FFFFFF] w-[991px] flex flex-col  border-b-[1px] border-[#a5a5a5]/20  mt-[20px]">
+              <div className="w-[720px] ">
+                {professionels
+                  .filter((professionel) =>
+                    professionel.firstname
+                      .toLowerCase()
+                      .includes(searchInput.toLowerCase())
+                  )
+                  .map((professionel) => (
+                    <li
+                      key={`professionel-${professionel.id}`}
+                      className="flex justify-between ml-8 text-[16px] list-disc mb-2"
+                    >
+                      <div className="flex grid-cols-5 gap-10">
+                        <p className="w-20">{professionel.firstname}</p>
+                        <p className="w-20">{professionel.lastname}</p>
+                        <p className="w-20">{professionel.speciality}</p>
+                        <p className="ml-16 w-72">
+                          {professionel.road}, {professionel.zip_code}{" "}
+                          {professionel.city}, {professionel.country}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+              </div>
             </ul>
             {/* Button to open a modal */}
             <div className="flex justify-center mt-4">
-              <button
+              {/* <button
                 type="button"
                 onClick={onOpenModal}
                 className="bg-[#323847] duration-300 rounded-full shadow-xl mb-5 text-white hover:text-white sm:hover:bg-white/30"
               >
                 <p className="flex px-6 py-2">Un nouveau Profesionnel</p>
-              </button>
+              </button> */}
               {/* Modal for confirmation */}
               <Modal
                 open={open}
@@ -158,6 +162,16 @@ function ProfessionalGuy() {
                 </div>
               </Modal>
             </div>
+          </div>
+          <div className="flex justify-center mt-[280px]">
+            <button
+              type="button"
+              onClick={onOpenModal}
+              className="bg-[#323847] rounded-full shadow-slate-950/90 shadow-xl mb-5 text-white
+            hover:text-white sm:hover:bg-white/30  duration-300  "
+            >
+              <p className="flex px-7 py-2">Un nouveau professionnel</p>
+            </button>
           </div>
         </section>
       </div>
