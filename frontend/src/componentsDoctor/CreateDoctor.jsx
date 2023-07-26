@@ -104,7 +104,7 @@ export default function CreateDoctor() {
       awardAndRecognition,
     };
 
-    fetch("http://localhost:8000/api/doctors", {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/doctors`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
