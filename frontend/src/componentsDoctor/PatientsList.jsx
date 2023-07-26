@@ -43,7 +43,6 @@ export default function DoctorPatientList() {
       .then((res) => res.json())
       .then((data) => {
         setPatient(data);
-        console.warn(data);
       });
   };
 

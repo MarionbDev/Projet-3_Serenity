@@ -19,7 +19,6 @@ export default function AccueilDoctor() {
       .then((res) => res.json())
       .then((data) => {
         setPatients(data);
-        console.warn(data);
       });
   };
 
@@ -32,14 +31,12 @@ export default function AccueilDoctor() {
       .then((res) => res.json())
       .then((data) => {
         setSurgeryTypes(data);
-        console.warn(data);
       });
   };
 
   useEffect(() => {
     if (idDoctor !== "") {
       getAllSurgeryTypes();
-      console.warn(surgeryTypes);
     }
   }, [idDoctor]);
 

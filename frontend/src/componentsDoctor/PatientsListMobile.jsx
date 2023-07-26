@@ -40,7 +40,6 @@ export default function DoctorPatientListMobile() {
       .then((res) => res.json())
       .then((data) => {
         setPatient(data);
-        console.warn(data);
       });
   };
 

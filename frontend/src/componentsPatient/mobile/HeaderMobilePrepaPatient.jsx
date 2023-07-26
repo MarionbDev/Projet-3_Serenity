@@ -37,7 +37,14 @@ export default function HeaderMobilePrepaPatient() {
   }, [id]);
 
   if (interventionInfo === "") {
-    return <p>Chargement de la page</p>;
+    return (
+      <p
+        className="text-center
+    "
+      >
+        Pas d'intervention programmée
+      </p>
+    );
   }
 
   return (

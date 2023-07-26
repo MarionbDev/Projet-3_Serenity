@@ -34,7 +34,6 @@ const UserContextProvider = ({ children }) => {
           return res.json();
         })
         .then((data) => {
-          console.warn(data.id);
           navigate(location.pathname);
           if (!data.role) {
             setIdPatient(data.id);

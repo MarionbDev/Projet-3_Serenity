@@ -1,5 +1,5 @@
 import { NavLink, useParams, Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import { useUserContext } from "../contexts/UserContext";
 import logoPraticient from "../assets/logo/logoDoctor/Chart.png";
 import logoPatient from "../assets/logo/logoDoctor/Discovery.png";
@@ -7,28 +7,26 @@ import logoInterventions from "../assets/logo/logoDoctor/Wallet.png";
 import logoActivity from "../assets/logo/logoPatient/activite.png";
 
 export default function SideBarDoctor() {
-  const [doctor, setDoctor] = useState({});
+  // const [doctor, setDoctor] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
-  const { idDoctor, setIdDoctor } = useUserContext();
+  const { setIdDoctor } = useUserContext();
 
-  const getAllPraticien = () => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/doctors/${idDoctor}/`, {
-      credentials: "include",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setDoctor(data);
-        console.warn(data);
-      });
-  };
+  // const getAllPraticien = () => {
+  //   fetch(`${import.meta.env.VITE_BACKEND_URL}/api/doctors/${idDoctor}/`, {
+  //     credentials: "include",
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setDoctor(data);
+  //     });
+  // };
 
-  useEffect(() => {
-    if (idDoctor !== "") {
-      getAllPraticien();
-      console.warn(doctor);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (idDoctor !== "") {
+  //     getAllPraticien();
+  //   }
+  // }, []);
 
   const handleLogout = () => {
     setIdDoctor("");

@@ -52,9 +52,7 @@ export default function CreateProfessional() {
       body: formData,
     })
       .then((response) => {
-        if (response.ok) {
-          console.warn("Success");
-        } else {
+        if (!response.ok) {
           console.error("Error");
         }
       })

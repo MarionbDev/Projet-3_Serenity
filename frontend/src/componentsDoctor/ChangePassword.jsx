@@ -68,7 +68,6 @@ export default function ChangePasswordDoctor() {
               }
             )
               .then(() => {
-                console.warn("ok");
                 navigate("/doctors");
               })
               .catch((err) => {

@@ -66,7 +66,6 @@ export default function ChangePasswordPatient() {
               }
             )
               .then(() => {
-                console.warn("ok");
                 navigate("/patients");
               })
               .catch((err) => {
