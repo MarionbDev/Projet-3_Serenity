@@ -5,6 +5,7 @@ It's pre-configured with a set of tools which'll help students produce industry-
 
 ## Setup & Use
 
+
 ### Windows users
 
 Be sure to run these commands in a git terminal to avoid [issues with newline formats](https://en.wikipedia.org/wiki/Newline#Issues_with_different_newline_formats):
